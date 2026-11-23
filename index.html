@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Portail SAP du DP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: content column on the left, glossary pinned on the right (drawer on narrow screens). */
+:root{
+  --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;--soft:#EBEFF5;
+  --accent:#1B7287;--accent-soft:#E0F0F3;--mark:#FCE9B8;--focus:#E07A2F;
+  --k-deck:#3460A8;--k-doc:#2B7549;--k-frise:#A86E12;--k-act:#6A4FA3;--k-prat:#AF4234;
+  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:0 12px 40px rgba(17,26,40,.22);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;--soft:#222936;
+  --accent:#5FC0D4;--accent-soft:#16303A;--mark:#5A4710;--k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
+  --shadow:0 12px 40px rgba(0,0,0,.55);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;--soft:#222936;
+  --accent:#5FC0D4;--accent-soft:#16303A;--mark:#5A4710;--k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
+  --shadow:0 12px 40px rgba(0,0,0,.55);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+a{color:inherit}
+main{padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
+.inner{max-width:880px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:30px;line-height:1.2;margin:4px 0 8px;text-wrap:balance}
+.lede{color:var(--muted);max-width:64ch;margin:0}
+h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
+.sec-sub{color:var(--muted);margin:0 0 14px;font-size:14px}
+.path{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.path li{counter-increment:st;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.path li::before{content:counter(st);font-family:var(--mono);font-size:13px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--muted);margin-top:10px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0;transition:border-color .12s}
+.card:hover{border-color:var(--kc)}
+.card:focus-visible,.chip:focus-visible,.term-btn:focus-visible,.gl-toggle:focus-visible,.x:focus-visible,.doclink:focus-visible,#q:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.kind{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--kc)}
+.card b{display:block;font-size:15px;line-height:1.35;margin:2px 0}
+.card span.d{display:block;color:var(--muted);font-size:13.5px;line-height:1.45}
+.card .sub{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.card .sub a{font-size:12.5px;text-decoration:none;background:var(--soft);border-radius:6px;padding:2px 8px}
+.card .sub a:hover{text-decoration:underline}
+.k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
+.foot{margin-top:40px;font-size:13px;color:var(--muted)}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+
+<main><div class="inner">
+  <div class="eyebrow">Formation SAP · Directeur de programme</div>
+  <h1>Portail SAP du DP</h1>
+  <p class="lede">Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.</p>
+
+  <h2>Parcours conseillé</h2>
+  <p class="sec-sub">Du plus général au plus opérationnel.</p>
+  <ol class="path" id="path"></ol>
+
+  <h2>Les frises de A à Z</h2>
+  <p class="sec-sub">Chaque démarche sur une chronologie illustrée, avec un exemple fil rouge, l'apport de l'IA et les risques d'échec.</p>
+  <div class="cards" id="frises"></div>
+
+  <h2>Versions anglaises et supports annexes</h2>
+  <div class="cards" id="other"></div>
+
+  <p class="foot">Contenu générique, sans information propre à un client. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger.</p>
+</div></main>
+
+
+<script src="shared/glossaire-data.js"></script>
+<script src="shared/glossaire.js"></script>
+<script>
+const D=window.SAP_DOCS,KL=window.SAP_KL;
+const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
+const card=key=>{const d=D[key];return `<a class="card k-${d.k}" href="${window.SAP_HREF(d.u)}"${tgt(d.u)}><span class="kind">${KL[d.k]}</span><b>${d.t}</b><span class="d">${d.d}</span></a>`;};
+document.getElementById('path').innerHTML=["plan","synth","mig","act","act2","fiche","simu"].map(k=>`<li>${card(k)}</li>`).join('');
+document.getElementById('frises').innerHTML=["rollout","green","brown","blue"].map(k=>card(k)).join('');
+document.getElementById('other').innerHTML=["synthEN","migEN","script"].map(k=>card(k)).join('');
+</script>
+
+</body>
+</html>

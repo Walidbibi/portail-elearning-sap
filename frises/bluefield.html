@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}.back{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px}.back:hover{color:var(--ink)}.back:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}</style>
+<title>Démarche bluefield SAP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a left-to-right flow of five phase lanes; each step is a card that opens a detail popup. */
+:root{
+  --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;
+  --c0:#56657D;--c1:#3460A8;--c2:#1B7287;--c3:#A86E12;--c4:#AF4234;--c5:#2B7549;
+  --t0:#E9EDF3;--t1:#E3EAF7;--t2:#E0F0F3;--t3:#F7EEDC;--t4:#F7E3E0;--t5:#E1F0E6;
+  --gate:#17202E;--gate-ink:#FFFFFF;--aibg:#ECE9F7;--aiink:#4E3F99;--risk:#AF4234;--focus:#E07A2F;
+  --shadow:0 18px 50px rgba(17,26,40,.28);
+  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
+  --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
+  --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
+  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
+  --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
+  --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
+  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:1280px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:700}
+.lede{color:var(--muted);max-width:72ch;margin:0 0 20px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
+.lane{background:var(--tint);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.lane header{padding:2px 4px 6px;border-bottom:2px solid var(--col);margin-bottom:2px}
+.lane h2{font-size:17px;margin:0;color:var(--col)}
+.lane .eq{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.step{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;transition:transform .12s,border-color .12s}
+.step:hover{border-color:var(--col);transform:translateY(-1px)}
+.step:focus-visible,.gate:focus-visible,.band:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.num{font-family:var(--mono);font-size:13px;color:var(--col);font-weight:500;padding-top:1px}
+.step b{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
+.step small{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin-top:3px}
+.gate{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--gate);color:var(--gate-ink);border-radius:8px;padding:8px 10px;font-size:13px;font-weight:600}
+.gate::before{content:"";width:10px;height:10px;transform:rotate(45deg);background:var(--gate-ink);flex:none}
+.band{all:unset;box-sizing:border-box;cursor:pointer;display:inline-block;margin-top:14px;background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.band b{font-weight:600}.band span{color:var(--muted)}
+.note{margin-top:22px;font-size:13px;color:var(--muted);max-width:90ch}
+/* popup */
+.ov{position:fixed;inset:0;background:rgba(10,15,25,.5);z-index:20;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:center}
+.ov[hidden]{display:none}
+.dlg{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:100%;max-width:820px;max-height:100%;overflow:auto;position:relative;border-top:6px solid var(--col)}
+.dlg-h{padding:20px 56px 12px 24px}
+.dlg-h .eyebrow{color:var(--col)}
+.dlg-h h2{margin:4px 0 6px;font-size:22px;line-height:1.25;text-wrap:balance}
+.dlg-h p{margin:0;max-width:70ch}
+.owner{display:inline-block;margin-top:10px;font-size:12.5px;background:var(--tint);color:var(--ink);border-radius:20px;padding:3px 10px}
+.x{all:unset;cursor:pointer;position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-size:24px;color:var(--muted)}
+.x:hover,.x:focus-visible{background:var(--bg);color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;padding:4px 24px 8px}
+.grid section{min-width:0}
+.grid h3,.risks h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px;font-weight:500}
+.grid ul{margin:0;padding-left:18px}.grid li{margin:0 0 4px}
+.ai{margin:8px 24px 4px;background:var(--aibg);border-radius:10px;padding:2px 16px 10px}
+.ai h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--aiink);margin:12px 0 6px;font-weight:500;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ai ul{margin:0;padding-left:18px}.ai li{margin:0 0 4px}
+.gain{font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:12px;background:var(--surface);color:var(--ink);border-radius:20px;padding:1px 9px}
+.risks{padding:0 24px 16px}
+.ex{margin:0 24px 22px;border-left:4px solid var(--col);background:var(--tint);border-radius:0 10px 10px 0;padding:2px 16px 10px}
+.ex h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--col);margin:12px 0 4px;font-weight:500}
+.ex p{margin:0}
+.startb,.nb{all:unset;box-sizing:border-box;cursor:pointer;background:var(--gate);color:var(--gate-ink);border-radius:8px;padding:9px 14px;font-weight:600;font-size:14px}
+.startb:focus-visible,.nb:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.nav{position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 24px;background:var(--surface);border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.nb{font-family:var(--sans)}
+.nb[disabled]{opacity:.35;cursor:default}
+.risk{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding:9px 0;font-size:14px}
+.risk div:first-child{color:var(--risk);font-weight:500}
+.risk div:first-child::before{content:"Risque · ";font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.risk div:last-child::before{content:"Parade · ";font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--c4)}
+@media (max-width:1000px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.fail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.flow,.fail{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.risk{grid-template-columns:1fr;gap:2px}h1{font-size:25px}}
+@media (prefers-reduced-motion:reduce){.step{transition:none}.step:hover{transform:none}}
+.tl-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
+#tl{display:block;width:100%;min-width:980px;height:auto}
+#tl text{font-family:var(--sans)}
+#tl .ph{fill:#fff;font-size:14px;font-weight:600}
+#tl .mo{fill:var(--muted);font-size:12px;font-family:var(--mono)}
+#tl .grid{stroke:var(--line);stroke-width:1}
+#tl .golive{stroke:var(--c4);stroke-width:3}
+#tl .flag{fill:var(--c4)}
+#tl .gline{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 4;opacity:.6}
+#tl .gate-d{fill:var(--gate)}
+#tl .gl-t{fill:var(--gate-ink);font-size:10px;font-weight:700}
+#tl .b{fill:var(--tint);stroke:var(--col);stroke-width:1.5}
+#tl .ic-bg{fill:var(--col)}
+#tl .ic{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tl .bl{fill:var(--ink);font-size:13.5px;font-weight:600}
+#tl .hot{cursor:pointer;outline:none}
+#tl .hot:hover .b,#tl .hot:focus-visible .b{stroke-width:3}
+#tl .hot:hover .ic-bg,#tl .hot:focus-visible .ic-bg{stroke:var(--focus);stroke-width:3}
+#tl .hot:focus-visible .gate-d,#tl .hot:hover .gate-d{stroke:var(--focus);stroke-width:3}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 2px 0;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;vertical-align:-2px;margin-right:6px}
+.lg-bar{width:26px;height:12px;border-radius:6px;border:1.5px solid var(--c3);background:var(--t3)}
+.lg-gate{width:11px;height:11px;transform:rotate(45deg);background:var(--gate)}
+.lg-gl{width:3px;height:14px;background:var(--c4)}
+.fail{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fail h3{flex-basis:100%;margin:0 0 4px;font-size:16px}
+.fail span{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:13.5px}
+.fail span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--risk);margin-right:8px;vertical-align:1px}
+.story{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:0 0 14px}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <button type="button" class="back" onclick="history.length>1?history.back():(location.href='../')">← Portail</button>
+  <div class="eyebrow">Transition sélective vers S/4HANA · SAP Activate</div>
+  <h1>Une migration bluefield vers S/4HANA, de A à Z</h1>
+  <p class="lede">Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.</p>
+  <div class="story">
+    <span><b>Exemple fil rouge :</b> Alvéa (fictif), groupe agroalimentaire, deux ECC fusionnés dans un seul S/4HANA</span>
+    <button type="button" class="startb" id="start">Suivre l'exemple pas à pas →</button>
+  </div>
+  <div class="tl-wrap"><svg id="tl" role="img" aria-label="Chronologie d'une transition bluefield : phases SAP Activate, étapes et quality gates de M-13 à M+2"></svg></div>
+  <div class="legend">
+    <span><i class="lg-bar"></i>Étape</span><span><i class="lg-gate"></i>Quality gate</span><span><i class="lg-gl"></i>Go-live</span>
+  </div>
+  <button class="band" id="band" data-k="transverse" type="button"><b>En continu :</b> <span>gouvernance, frontière garder / reconcevoir, risques</span></button>
+  <div class="fail">
+    <h3>Les 5 causes d'échec les plus fréquentes</h3>
+    <span>Frontière garder / reconcevoir floue</span><span>Règles de transformation validées trop tard</span><span>Dépendance à l'outil et à l'expert</span><span>Réconciliation négligée</span><span>Bascule trop longue pour la fenêtre</span>
+  </div>
+  <p class="note">Démarche typique et durées indicatives. Le bluefield est l'approche dont les méthodes varient le plus selon l'intégrateur et l'outil de transition. Les chiffres de l'exemple sont fictifs.</p>
+</div>
+
+<div class="ov" id="ov" hidden>
+  <div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+    <button class="x" id="x" type="button" aria-label="Fermer">×</button>
+    <div id="dlg-body"></div>
+  </div>
+</div>
+
+<script>
+const PH=[{"id": 0, "name": "Discover", "eq": ""}, {"id": 1, "name": "Prepare", "eq": ""}, {"id": 2, "name": "Explore", "eq": ""}, {"id": 3, "name": "Realize", "eq": ""}, {"id": 4, "name": "Deploy", "eq": ""}, {"id": 5, "name": "Run", "eq": ""}];
+const S={"s1": {"p": 0, "n": "01", "t": "Business case et choix du bluefield", "s": "Garder ce qui marche, reconcevoir le reste", "obj": "Décider de passer à S/4HANA en gardant une partie de l'existant et en reconcevant le reste, avec une reprise sélective des données.", "act": ["Bilan de l'existant par domaine : ce qui fonctionne bien, ce qui doit changer", "Comparaison greenfield, brownfield, bluefield", "Identification des besoins de transformation : fusion de systèmes, harmonisation, réduction de l'historique", "Budget et planning macro"], "pre": ["Sponsor de direction", "Vision claire des domaines à transformer", "Accès aux systèmes existants pour les analyses"], "liv": ["Business case validé", "Décision bluefield et modèle de déploiement", "Feuille de route macro"], "ex": "Alvéa, groupe agroalimentaire, a deux ECC hérités d'une fusion : France et Espagne. La production et la qualité fonctionnent bien, la finance et les achats sont incohérents entre les deux pays. Choix : bluefield. On garde la production et la qualité, on reconçoit la finance et les achats, on fusionne tout dans un seul S/4HANA, avec cinq ans d'historique seulement.", "ai": ["Analyse de l'usage par domaine pour décider quoi garder", "Synthèse comparée des trois approches"], "aig": "Moyen", "own": "Direction générale et DSI côté client", "r": [["Bluefield choisi pour « avoir le meilleur des deux » sans savoir quoi garder : projet flou", "Décider dès Discover, domaine par domaine, garder ou reconcevoir"], ["Coût de l'outillage et des experts sous-estimé", "Chiffrer l'outil de transition et l'expertise dès le business case"]]}, "s2": {"p": 1, "n": "02", "t": "Lancement et gouvernance", "s": "Équipe, outil et expert de transition", "obj": "Mettre le projet en ordre de marche, avec l'outil et l'expertise de transition sélective.", "act": ["Charte projet, rôles, comités", "Choix de l'outil de transition sélective (SAP ou éditeur spécialisé) et de son expert", "Plan projet", "Contrats avec l'intégrateur, l'éditeur de l'outil et l'hébergeur"], "pre": ["Business case validé", "Budget alloué", "Sponsor nommé"], "liv": ["Charte projet", "Plan projet", "Organisation et gouvernance", "Outil de transition choisi"], "ex": "Alvéa retient un intégrateur et un éditeur spécialisé dans la transition sélective. Process owners nommés pour chaque domaine, avec une règle simple : la finance et les achats seront reconçus, les autres domaines seront repris.", "ai": ["Charte et plan à partir de modèles"], "aig": "Faible", "own": "Direction du programme côté client et intégrateur", "r": [["Trois prestataires sans chef d'orchestre : intégrateur, éditeur, hébergeur", "Un seul responsable de la transition, RACI signé par tous"], ["Dépendance à un expert rare de l'outil", "Clause de disponibilité et binôme formé côté intégrateur"]]}, "s3": {"p": 1, "n": "03", "t": "Analyse de l'existant", "s": "Readiness Check des deux systèmes", "obj": "Mesurer ce que la transition impose sur chaque système source.", "act": ["SAP Readiness Check de chaque ECC", "Inventaire du code spécifique et de son usage", "Comparaison du paramétrage entre les deux systèmes", "Volumétrie et historique par société"], "pre": ["Accès aux systèmes de production", "Experts fonctionnels et techniques"], "liv": ["Rapports Readiness Check", "Comparaison des paramétrages", "Inventaire du code et des volumes"], "ex": "Les deux ECC ont des plans de comptes différents, 800 et 1 100 objets spécifiques, et 15 ans d'historique. La production est paramétrée presque pareil dans les deux pays.", "ai": ["Comparaison automatique des paramétrages des deux systèmes", "Analyse de l'usage du code"], "aig": "Moyen à fort", "own": "Architectes et experts fonctionnels", "r": [["Différences entre systèmes découvertes en Realize", "Comparer le paramétrage dès Prepare"]]}, "s4": {"p": 1, "n": "04", "t": "Stratégie de transition", "s": "Quel socle, quelles données, quelle méthode", "obj": "Décider comment construire le système cible et quelles données y transférer.", "act": ["Choix du socle cible : copie convertie d'un ECC sans ses données (shell), ou nouveau système", "Périmètre des données : sociétés, années d'historique, objets", "Domaines gardés et domaines reconçus", "Stratégie de test et de réconciliation"], "pre": ["Analyse de l'existant", "Décision des domaines à reconcevoir"], "liv": ["Stratégie de transition validée", "Périmètre des données signé"], "ex": "Le socle cible est une copie convertie de l'ECC France, vidée de ses données. Les données des deux pays y seront transférées, avec cinq ans d'historique. L'ECC Espagne sera ensuite arrêté.", "ai": ["Simulation des volumes à transférer selon le périmètre d'historique"], "aig": "Faible à moyen", "own": "Architectes, responsable de la transition", "r": [["Périmètre des données qui change en cours de route : tout est à refaire", "Périmètre signé par le métier et le juridique en Prepare"], ["Obligations légales de conservation oubliées", "Faire valider la durée d'historique par le juridique et l'audit"]]}, "q1": {"p": 1, "gate": 1, "t": "Quality gate 1 · Fin de Prepare", "s": "", "obj": "Autoriser Explore : la stratégie de transition est arrêtée.", "act": ["Revue de la stratégie et du périmètre des données"], "pre": ["Stratégie validée", "Outil et expert en place", "Équipe nommée"], "liv": ["Décision de passage tracée"], "ex": "Passage autorisé. Condition : le juridique doit confirmer la durée d'historique de cinq ans pour les deux pays.", "ai": ["Consolidation de l'état des critères"], "aig": "Faible", "own": "Comité de pilotage", "r": [["Explore démarré sans périmètre de données signé", "Périmètre comme critère bloquant"]]}, "s5": {"p": 2, "n": "05", "t": "Ateliers garder ou reconcevoir", "s": "Fit-to-standard sur les domaines reconçus", "obj": "Confirmer domaine par domaine ce qu'on garde, et reconcevoir les domaines choisis à partir du standard.", "act": ["Fit-to-standard sur les domaines reconçus", "Analyse des changements S/4HANA sur les domaines gardés", "Harmonisation entre les deux pays", "Backlog des écarts et des adaptations"], "pre": ["Système de démonstration", "Process owners et key users des deux pays"], "liv": ["Décisions par domaine signées", "Backlog des écarts"], "ex": "Finance : un plan de comptes unique pour les deux pays, sur le standard S/4HANA. Achats : processus standard commun. Production et qualité : reprises telles quelles, avec les seuls changements imposés par S/4HANA.", "ai": ["Comparaison des processus des deux pays", "Comptes rendus et backlog générés"], "aig": "Moyen à fort", "own": "Consultants fonctionnels et process owners", "r": [["Chaque pays défend ses habitudes : harmonisation bloquée", "Arbitrage par le sponsor, standard par défaut"], ["Domaines « gardés » qui glissent vers une reconception", "Changement de périmètre via le change board seulement"]]}, "s6": {"p": 2, "n": "06", "t": "Règles de sélection et de transformation", "s": "Quelles données, transformées comment", "obj": "Écrire les règles qui sélectionnent et transforment les données lors du transfert.", "act": ["Règles de sélection : sociétés, périodes, objets", "Règles de transformation : ancien plan de comptes vers le nouveau, fusion des fournisseurs en double, renumérotation", "Conversion des clients et fournisseurs en Business Partners", "Nettoyage dans les systèmes sources"], "pre": ["Périmètre des données signé", "Décisions de reconception", "Data owners nommés"], "liv": ["Règles de sélection et de transformation validées", "Plan de nettoyage"], "ex": "Correspondance entre les deux anciens plans de comptes et le nouveau : 2 400 comptes ramenés à 900. 6 000 fournisseurs présents dans les deux pays fusionnés en un seul Business Partner.", "ai": ["Proposition des correspondances de comptes", "Détection des doublons entre les deux systèmes"], "aig": "Fort", "own": "Data owners, équipe transition, experts finance", "r": [["Règles écrites par l'IT seule : comptabilité fausse après transfert", "Validation par les experts finance et l'audit"], ["Règles validées trop tard : cycles de test à vide", "Règles figées avant le premier cycle de test"]]}, "s7": {"p": 2, "n": "07", "t": "Analyse du code et conception", "s": "Garder, corriger ou supprimer", "obj": "Décider du sort du code spécifique et concevoir les adaptations.", "act": ["Mesure de l'usage réel du code", "Contrôles automatiques (ATC)", "Décision : supprimer, corriger, remplacer", "Spécifications des développements des domaines reconçus"], "pre": ["Inventaire du code", "Décisions par domaine"], "liv": ["Plan de remédiation chiffré", "Spécifications"], "ex": "Sur 1 900 objets, 900 supprimés car inutilisés ou remplacés par le standard dans les domaines reconçus. 1 000 à corriger.", "ai": ["Correction assistée du code", "Repérage du code remplaçable par du standard"], "aig": "Fort", "own": "Équipe de développement et architectes", "r": [["Code des domaines reconçus corrigé au lieu d'être supprimé", "Supprimer par défaut dans les domaines reconçus"]]}, "q2": {"p": 2, "gate": 1, "t": "Quality gate 2 · Fin d'Explore", "s": "", "obj": "Autoriser Realize : décisions, règles de transformation et plan de remédiation validés.", "act": ["Revue des décisions par domaine", "Revue des règles de transformation"], "pre": ["Décisions signées", "Règles validées", "Plan de remédiation chiffré"], "liv": ["Décision de passage tracée"], "ex": "Règles finance validées par l'audit. Passage autorisé.", "ai": ["Consolidation de l'avancement"], "aig": "Faible", "own": "Comité de pilotage", "r": [["Realize lancé avec des règles finance non validées", "Validation finance comme critère bloquant"]]}, "s8": {"p": 3, "n": "08", "t": "Construction du socle cible", "s": "Copie convertie, sans données", "obj": "Construire le système S/4HANA cible, prêt à recevoir les données.", "act": ["Copie du paramétrage et du code de l'ECC source, sans les données", "Conversion technique de cette copie vers S/4HANA", "Contrôles techniques"], "pre": ["Stratégie de transition", "Infrastructure cible prête"], "liv": ["Socle S/4HANA converti et vide"], "ex": "Le socle est construit à partir de l'ECC France en trois semaines. Il contient le paramétrage et le code, mais aucune donnée de mouvement.", "ai": ["Analyse des journaux de conversion"], "aig": "Faible à moyen", "own": "Basis et équipe de transition", "r": [["Socle construit sur une source qui évolue encore", "Gel des évolutions sur la source, ou rétrofit organisé"]]}, "s9": {"p": 3, "n": "09", "t": "Reconception et remédiation", "s": "Nouveau paramétrage, code corrigé", "obj": "Paramétrer les domaines reconçus et corriger le code des domaines gardés.", "act": ["Paramétrage en sprints des domaines reconçus", "Correction du code", "Adaptations imposées par S/4HANA sur les domaines gardés", "Habilitations"], "pre": ["Socle cible", "Backlog et spécifications"], "liv": ["Domaines reconçus paramétrés", "Code corrigé et testé unitairement"], "ex": "Six sprints pour la finance et les achats, avec démonstration aux key users des deux pays. 1 000 objets corrigés en trois mois.", "ai": ["Correction assistée du code", "Documentation du paramétrage"], "aig": "Moyen à fort", "own": "Consultants et développeurs", "r": [["Démonstrations à un seul pays : l'autre découvre tout en recette", "Key users des deux pays à chaque démonstration"]]}, "s10": {"p": 3, "n": "10", "t": "Cycles de transfert à blanc", "s": "Sélectionner, transformer, charger, réconcilier", "obj": "Fiabiliser le transfert sélectif et le ramener dans la fenêtre de bascule.", "act": ["Trois ou quatre cycles de transfert sur des copies de production", "Contrôle des règles de transformation", "Réconciliation des montants et des quantités entre source et cible", "Mesure et réduction des durées"], "pre": ["Règles figées", "Socle cible prêt", "Outil de transition installé"], "liv": ["Rapports de réconciliation", "Durée de bascule maîtrisée"], "ex": "Cycle 1 : 140 écarts de réconciliation, 80 heures. Cycle 2 : 25 écarts, 60 heures. Cycle 3 : zéro écart, 50 heures, pour une fenêtre de 56 heures.", "ai": ["Réconciliation automatique source et cible", "Analyse des écarts"], "aig": "Fort", "own": "Équipe de transition et data owners", "r": [["Réconciliation partielle : écarts comptables découverts à la clôture", "Réconciliation complète et signée à chaque cycle"], ["Premier cycle trop tard", "Cycle 1 dès que le socle est prêt"]]}, "s11": {"p": 3, "n": "11", "t": "Tests et recette", "s": "Régression d'un côté, nouveaux processus de l'autre", "obj": "Tester les domaines gardés comme une conversion, et les domaines reconçus comme une nouvelle implémentation.", "act": ["Tests de régression sur les domaines gardés", "Tests d'intégration et recette complète sur les domaines reconçus", "Tests sur les données transférées", "Tests de performance"], "pre": ["Données d'un cycle de transfert", "Scénarios des deux types", "Key users des deux pays"], "liv": ["Rapports de tests", "Procès-verbal de recette signé"], "ex": "1 200 tests de régression pour la production et la qualité, 300 scénarios de bout en bout pour la finance et les achats. Recette signée par les deux pays.", "ai": ["Génération et automatisation des tests", "Tri des défauts"], "aig": "Fort", "own": "Test manager et key users", "r": [["Une seule stratégie de test pour tout : trous dans les domaines reconçus", "Deux approches de test distinctes"]]}, "s12": {"p": 3, "n": "12", "t": "Formation différenciée", "s": "Courte ou complète selon le domaine", "obj": "Former chacun selon ce qui change pour lui.", "act": ["Formation courte sur les changements pour les domaines gardés", "Formation complète aux nouveaux processus pour les domaines reconçus", "Communication dans les deux pays"], "pre": ["Solution stabilisée", "Utilisateurs par rôle et par pays"], "liv": ["Utilisateurs formés", "Supports en français et en espagnol"], "ex": "Deux heures pour les 500 utilisateurs de production et qualité. Trois jours pour les 120 utilisateurs de la finance et des achats, qui changent de processus.", "ai": ["Supports par rôle", "Traduction"], "aig": "Fort", "own": "Conduite du changement et key users", "r": [["Même formation pour tous : trop longue pour les uns, insuffisante pour les autres", "Formation par domaine et par rôle"]]}, "q3": {"p": 3, "gate": 1, "t": "Quality gate 3 · Fin de Realize", "s": "", "obj": "Autoriser la préparation finale : transfert fiable, solution testée.", "act": ["Revue du dernier cycle de transfert", "Revue des défauts"], "pre": ["Dernier cycle sans écart et dans la fenêtre", "Recette signée"], "liv": ["Décision de passage tracée"], "ex": "Dernier cycle sans écart, en 50 heures. Passage autorisé.", "ai": ["Consolidation des indicateurs"], "aig": "Faible", "own": "Comité de pilotage", "r": [["Passage avec des écarts de réconciliation « mineurs »", "Zéro écart comptable comme critère"]]}, "s13": {"p": 4, "n": "13", "t": "Préparation de la bascule", "s": "Runbook, répétition, retour arrière", "obj": "Préparer le transfert de production minute par minute.", "act": ["Runbook : arrêt des deux ECC, extraction, transformation, chargement, réconciliation", "Répétition générale", "Plan de retour arrière", "Communication aux partenaires"], "pre": ["Procédure de transfert stable", "Fenêtre validée"], "liv": ["Runbook validé", "Plan de retour arrière"], "ex": "Runbook de 520 tâches couvrant les deux pays. Répétition en 52 heures. Retour arrière : redémarrage des deux ECC, qui restent intacts.", "ai": ["Contrôle de cohérence du runbook"], "aig": "Faible à moyen", "own": "Cutover manager et équipe de transition", "r": [["Deux pays, deux calendriers : arrêt mal coordonné", "Une seule fenêtre, validée par les deux directions"]]}, "s14": {"p": 4, "n": "14", "t": "Go / no-go", "s": "Décider sur des faits", "gate": 1, "obj": "Décider, sur des critères écrits, si on bascule.", "act": ["Revue des critères", "Décision formelle"], "pre": ["Critères signés à l'avance"], "liv": ["Décision signée"], "ex": "20 critères verts. Go.", "ai": ["Tableau de bord des critères"], "aig": "Faible : la décision reste humaine", "own": "Comité de pilotage côté client", "r": [["Go malgré des écarts de réconciliation", "Critère non négociable"]]}, "s15": {"p": 4, "n": "15", "t": "Bascule", "s": "Transfert sélectif de production", "obj": "Transférer les données de production et ouvrir le nouveau système.", "act": ["Arrêt des deux ECC", "Transfert sélectif", "Réconciliation complète", "Ouverture"], "pre": ["Go validé", "Équipes en place"], "liv": ["S/4HANA en production", "Réconciliations signées"], "ex": "Arrêt des deux ECC le vendredi à 18 h. Transfert en 49 heures. Soldes et stocks réconciliés pour les deux pays. Ouverture le lundi à 6 h.", "ai": ["Réconciliation automatique avant / après"], "aig": "Moyen", "own": "Cutover manager et métier", "r": [["Réconciliation bâclée sous la pression du temps", "Réconciliation obligatoire et signée avant ouverture"]]}, "s16": {"p": 5, "n": "16", "t": "Hypercare", "s": "Stabiliser, réussir la première clôture", "obj": "Stabiliser le système et réussir la première clôture commune.", "act": ["Support renforcé dans les deux pays", "Suivi des incidents", "Première clôture sur le plan de comptes unique"], "pre": ["Équipe d'hypercare", "Critères de sortie"], "liv": ["Incidents résolus", "Première clôture réussie"], "ex": "Huit semaines. Les incidents viennent surtout de la finance, qui change de processus. La production, reprise telle quelle, est stable dès la première semaine.", "ai": ["Tri des tickets", "Suggestions de solutions"], "aig": "Fort", "own": "Équipe projet et support", "r": [["Hypercare dimensionnée pareil partout", "Renfort sur les domaines reconçus"]]}, "q4": {"p": 5, "gate": 1, "t": "Quality gate 4 · Sortie d'hypercare", "s": "", "obj": "Clore le projet.", "act": ["Revue de la stabilité", "Revue du transfert au run"], "pre": ["Indicateurs sous les seuils", "Aucun incident bloquant"], "liv": ["Clôture formelle"], "ex": "Sortie prononcée huit semaines après le go-live.", "ai": ["Calcul des indicateurs"], "aig": "Faible", "own": "Comité de pilotage", "r": [["Clôture avec des incidents ouverts", "Reprise formelle par le run"]]}, "s17": {"p": 5, "n": "17", "t": "Arrêt des anciens systèmes", "s": "Archiver, décommissionner, innover", "obj": "Arrêter les anciens systèmes et lancer la suite.", "act": ["Archivage de l'historique non transféré", "Décommissionnement des anciens ECC", "Feuille de route d'innovation"], "pre": ["Système stable", "Solution d'archivage consultable"], "liv": ["Anciens systèmes arrêtés", "Historique archivé et consultable"], "ex": "L'historique de plus de cinq ans est archivé et reste consultable pour l'audit. Les deux ECC sont arrêtés quatre mois après le go-live : économie de licences et d'hébergement.", "ai": ["Recherche dans l'historique archivé"], "aig": "Moyen", "own": "DSI", "r": [["Anciens systèmes gardés « au cas où » : double coût", "Date d'arrêt fixée dans le plan"]]}, "transverse": {"p": 0, "t": "En continu, du début à la fin", "s": "", "obj": "Tenir un projet hybride : piloter à la fois une conversion et une reconception.", "act": ["Comité de pilotage et quality gates", "Design authority : frontière entre domaines gardés et reconçus", "Change board", "Registre des risques, dont la dépendance à l'outil de transition"], "pre": ["Rôles et instances définis dès Prepare"], "liv": ["Décisions tracées", "Registre des risques à jour"], "ex": "Comité mensuel avec les deux pays. Risque principal suivi : la qualité des règles de transformation finance.", "ai": ["Suivi des décisions et des risques", "Attention : données client uniquement dans un outil validé par le client"], "aig": "Moyen", "own": "Direction du programme", "r": [["Frontière garder / reconcevoir qui bouge sans cesse", "Toute évolution de périmètre passe par le change board"]]}};
+const ORDER={"0": ["s1"], "1": ["s2", "s3", "s4", "q1"], "2": ["s5", "s6", "s7", "q2"], "3": ["s8", "s9", "s10", "s11", "s12", "q3"], "4": ["s13", "s14", "s15"], "5": ["s16", "q4", "s17"]};
+const pcol=p=>`--col:var(--c${p});--tint:var(--t${p})`;
+const SEQ=[].concat(...[0,1,2,3,4,5].map(p=>ORDER[p]));
+const IC={"s1": "M4 20V10 M10 20V4 M16 20v-7 M3 20h18", "s2": "M5 21V4 M5 4h12l-2 4 2 4H5", "s3": "M11 4a7 7 0 1 0 0 14a7 7 0 1 0 0-14 M16 16l5 5", "s4": "M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14", "s5": "M6 3v12 M18 9v12 M6 15a3 3 0 1 0 0 6a3 3 0 1 0 0-6 M18 3a3 3 0 1 0 0 6a3 3 0 1 0 0-6 M6 9c0 4 12 2 12 6", "s6": "M4 7h16 M4 12h10 M4 17h6 M17 13l3 3-3 3 M14 16h6", "s7": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16", "s8": "M12 3l9 5-9 5-9-5z M3 13l9 5 9-5", "s9": "M4 20l4-1 11-11-3-3L5 16z M14 7l3 3", "s10": "M4 12a8 8 0 0 1 14-5.3 M18 3v4h-4 M20 12a8 8 0 0 1-14 5.3 M6 21v-4h4", "s11": "M9 3h6 M10 3v6l-5 10a1 1 0 0 0 1 1.5h12a1 1 0 0 0 1-1.5L14 9V3 M7.5 14h9", "s12": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5", "s13": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2", "s14": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5", "s15": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01", "s16": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6", "s17": "M4 7h16v3H4z M5 10v10h14V10 M10 14h4"};
+const TL={"s1": [0, 1, "Business case"], "s2": [1, 1.6, "Lancement"], "s3": [1.1, 2.2, "Analyse de l'existant"], "s4": [1.7, 2.8, "Stratégie de transition"], "s5": [2.8, 5, "Garder ou reconcevoir"], "s6": [3.2, 6.5, "Règles de transformation"], "s7": [3.5, 5.5, "Analyse du code"], "s8": [5.5, 6.3, "Socle cible"], "s9": [6, 9.5, "Reconception et remédiation"], "s10": [6.5, 11.5, "Cycles de transfert à blanc"], "s11": [9, 11.5, "Tests et recette"], "s12": [10, 12.6, "Formation différenciée"], "s13": [11, 12.6, "Préparation bascule"], "s14": [12.7, 12.7, "Go / no-go"], "s15": [12.8, 13.1, "Bascule"], "s16": [13.1, 14.6, "Hypercare"], "s17": [14, 15, "Arrêt anciens systèmes"]};
+const GT={"q1": [2.8, "Q1"], "q2": [5.5, "Q2"], "q3": [11.5, "Q3"], "q4": [14.6, "Q4"]};
+const PSPAN=[[0, 1], [1, 2.8], [2.8, 5.5], [5.5, 11.5], [11.5, 13.1], [13.1, 15]];
+const W=1280,X0=24,X1=1250,MW=(X1-X0)/15,RH=40,TOP=92;
+const xm=m=>X0+m*MW;
+const svg=document.getElementById('tl');const NS="http://www.w3.org/2000/svg";
+const rows=Object.keys(TL);const H=TOP+rows.length*RH+20;
+svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const el=(t,a,p=svg)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+// phase columns + header
+PSPAN.forEach(([a,b],p)=>{
+  el('rect',{x:xm(a),y:TOP-8,width:xm(b)-xm(a),height:H-TOP,style:`fill:var(--t${p})`,opacity:.55});
+  el('rect',{x:xm(a)+1,y:6,width:xm(b)-xm(a)-2,height:28,rx:6,style:`fill:var(--c${p})`});
+  const t=el('text',{x:(xm(a)+xm(b))/2,y:25,'text-anchor':'middle',class:'ph'});t.textContent=PH[p].name;
+});
+// month axis
+const ML=["M-13", "M-12", "M-11", "M-10", "M-9", "M-8", "M-7", "M-6", "M-5", "M-4", "M-3", "M-2", "M-1", "Go-live", "M+1", "M+2"];
+ML.forEach((l,i)=>{const x=xm(i);el('line',{x1:x,y1:44,x2:x,y2:H-6,class:'grid'});const t=el('text',{x:x+4,y:58,class:'mo'});t.textContent=l;});
+// go-live line
+const gl=el('g',{class:'hot',tabindex:0,role:'button','aria-label':'Go-live : bascule','data-k':'s15'});
+el('line',{x1:xm(13),y1:62,x2:xm(13),y2:H-6,class:'golive'},gl);
+el('path',{d:`M${xm(13)} 64h40l-8 7 8 7h-40z`,class:'flag'},gl);
+// gates
+for(const k in GT){const [m,lab]=GT[k];const x=xm(m);
+  const g=el('g',{class:'hot',tabindex:0,role:'button','aria-label':S[k].t,'data-k':k});
+  el('line',{x1:x,y1:80,x2:x,y2:H-6,class:'gline'},g);
+  el('path',{d:`M${x} 64l11 11-11 11-11-11z`,class:'gate-d'},g);
+  const t=el('text',{x:x,y:79,'text-anchor':'middle',class:'gl-t'},g);t.textContent=lab;}
+// bars
+rows.forEach((k,i)=>{const [a,b,lab]=TL[k];const d=S[k];const p=d.p;const y=TOP+i*RH+RH/2;
+  const g=el('g',{class:'hot bar',tabindex:0,role:'button','aria-label':d.t,'data-k':k,style:`--col:var(--c${p});--tint:var(--t${p})`});
+  const tt=el('title',{},g);tt.textContent=d.t+(d.s?' : '+d.s:'');
+  const xa=xm(a),xb=Math.max(xm(b),xa);
+  if(xb-xa>4) el('rect',{x:xa,y:y-13,width:xb-xa,height:26,rx:13,class:'b'},g);
+  el('circle',{cx:xa,cy:y,r:16,class:'ic-bg'},g);
+  el('path',{d:IC[k],transform:`translate(${xa-9} ${y-9}) scale(.75)`,class:'ic'},g);
+  const est=lab.length*7.3;let tx,anchor='start';
+  if(xb-xa-26>est+8){tx=xa+24;}else if(xb+10+est<W-4){tx=Math.max(xb,xa+16)+10;}else{tx=xa-22;anchor='end';}
+  const t=el('text',{x:tx,y:y+4.5,'text-anchor':anchor,class:'bl'},g);t.textContent=lab;
+});
+
+const ov=document.getElementById('ov'),dlg=document.getElementById('dlg'),body=document.getElementById('dlg-body'),X=document.getElementById('x');
+let last=null;
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const list=a=>'<ul>'+a.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>';
+function open(k,src){
+  const d=S[k];if(!d)return;last=src;
+  dlg.style.cssText=pcol(d.p);
+  const ph=PH[d.p].name;
+  const eb=k==='transverse'?'Transverse':(d.gate&&!d.n?'Quality gate · '+ph:'Étape '+d.n+' · '+ph);
+  body.innerHTML=`<div class="dlg-h"><div class="eyebrow">${eb}</div><h2 id="dlg-title">${esc(d.t)}</h2><p>${esc(d.obj)}</p><span class="owner">Qui porte : ${esc(d.own)}</span></div>
+  <div class="grid"><section><h3>Activités</h3>${list(d.act)}</section><section><h3>Prérequis</h3>${list(d.pre)}</section><section><h3>Livrables</h3>${list(d.liv)}</section></div>
+  ${d.ai?`<div class="ai"><h3>Apport de l'IA <span class="gain">Gain : ${esc(d.aig)}</span></h3>${list(d.ai)}</div>`:''}
+  <div class="risks"><h3>Risques d'échec</h3>${d.r.map(r=>`<div class="risk"><div>${esc(r[0])}</div><div>${esc(r[1])}</div></div>`).join('')}</div>
+  ${d.ex?`<div class="ex"><h3>Dans l'exemple · Alvéa</h3><p>${esc(d.ex)}</p></div>`:''}`;
+  const i=SEQ.indexOf(k);
+  if(i>=0){body.insertAdjacentHTML('beforeend',`<div class="nav"><button type="button" class="nb" ${i===0?'disabled':''} data-go="${SEQ[i-1]||''}">← Précédent</button><span>${i+1} / ${SEQ.length}</span><button type="button" class="nb" ${i===SEQ.length-1?'disabled':''} data-go="${SEQ[i+1]||''}">Suivant →</button></div>`);}
+  ov.hidden=false;dlg.scrollTop=0;X.focus();
+}
+function close(){ov.hidden=true;if(last)last.focus();}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b&&b.id==='start')return;if(b&&!ov.contains(b))open(b.dataset.k,b);});
+X.addEventListener('click',close);
+svg.addEventListener('keydown',e=>{const g=e.target.closest('[data-k]');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(g.dataset.k,g);}});
+body.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g&&g.dataset.go)open(g.dataset.go,last);});
+document.getElementById('start').addEventListener('click',e=>open('s1',e.currentTarget));
+ov.addEventListener('click',e=>{if(e.target===ov)close();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!ov.hidden)close();});
+</script>
+
+<script src="../shared/glossaire-data.js"></script>
+<script src="../shared/glossaire.js"></script>
+</body>
+</html>
