@@ -83,9 +83,9 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 const D=window.SAP_DOCS,KL=window.SAP_KL;
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
 const card=key=>{const d=D[key];return `<a class="card k-${d.k}" href="${window.SAP_HREF(d.u)}"${tgt(d.u)}><span class="kind">${KL[d.k]}</span><b>${d.t}</b><span class="d">${d.d}</span></a>`;};
-document.getElementById('path').innerHTML=["plan","synth","mig","act","act2","fiche","simu"].map(k=>`<li>${card(k)}</li>`).join('');
+document.getElementById('path').innerHTML=["synth","mig","act","act2","fiche"].map(k=>`<li>${card(k)}</li>`).join('');
 document.getElementById('frises').innerHTML=["rollout","green","brown","blue"].map(k=>card(k)).join('');
-document.getElementById('other').innerHTML=["synthEN","migEN","script"].map(k=>card(k)).join('');
+document.getElementById('other').innerHTML=["simu","synthEN","migEN","script"].map(k=>card(k)).join('');
 </script>
 
 </body>

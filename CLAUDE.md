@@ -27,7 +27,7 @@ frises/greenfield.html     frise greenfield (SAP Activate)
 frises/brownfield.html     frise brownfield (SAP Activate)
 frises/bluefield.html      frise bluefield (SAP Activate)
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
-documents/                 les 10 supports en PDF, anonymisés
+documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
 ```
 
 Le site fonctionne en ouvrant `index.html` dans un navigateur, sans compilation. Le lecteur PDF demande un serveur (même local : `python3 -m http.server 8080`) et une connexion internet (PDF.js vient de cdnjs). `SAP_HREF` dans `glossaire-data.js` envoie tout PDF local vers le lecteur.
@@ -53,7 +53,6 @@ Ces documents existent comme artefacts privés sur claude.ai. Claude Code ne peu
 
 | Clé `SAP_DOCS` | Document | Type |
 |---|---|---|
-| plan | Plan de formation (9 modules) | Doc |
 | synth | Formation SAP · Synthèse (FR) | Deck |
 | synthEN | SAP Training · Summary (EN) | Deck |
 | mig | Migration ECC vers S/4HANA (FR) | Deck |

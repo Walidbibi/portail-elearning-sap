@@ -3,7 +3,6 @@
    [terme, nom complet, catégorie, définition, « pour le DP », [clés de documents]] */
 window.SAP_U="https://claude.ai/";
 window.SAP_DOCS={
- plan:{k:"doc",t:"Plan de formation",d:"Les 9 modules, leurs objectifs et l'ordre de progression.",u:"documents/plan-de-formation.pdf"},
  synth:{k:"deck",t:"Formation SAP · Synthèse",d:"Le deck complet : modules, processus, gouvernance, tests, bascule, run, roll-out.",u:"documents/formation-sap-synthese.pdf"},
  mig:{k:"deck",t:"Migration ECC vers S/4HANA",d:"Ce qui change entre ECC et S/4HANA, et les chemins pour y aller.",u:"documents/migration-ecc-s4hana.pdf"},
  fiche:{k:"doc",t:"Fiche de révision",d:"L'essentiel sur une page, à relire avant un entretien.",u:"documents/fiche-de-revision.pdf"},
