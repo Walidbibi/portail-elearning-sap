@@ -82,7 +82,7 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
 <p class="hint">Flèches ← → du clavier pour tourner les pages · « / » pour le glossaire</p>
 
 <script src="shared/glossaire-data.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="shared/pdfjs/pdf.min.js"></script>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -98,8 +98,8 @@ $('doc-title').textContent=entry.t;
 $('kind').textContent=(window.SAP_KL||{})[entry.k]||'Document';
 $('dl').href=src;$('dl').setAttribute('download',src.split('/').pop());
 
-if(!window.pdfjsLib){fail('Le lecteur n\'a pas pu se charger (connexion internet nécessaire). <a href="'+src+'" download>Télécharger le PDF</a>.');return;}
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+if(!window.pdfjsLib){fail('Le lecteur n\'a pas pu se charger (fichiers PDF.js introuvables). <a href="'+src+'" download>Télécharger le PDF</a>.');return;}
+pdfjsLib.GlobalWorkerOptions.workerSrc='shared/pdfjs/pdf.worker.min.js';
 
 const KEY='sap-page:'+src;let pdf=null,page=1,busy=false,queued=null;
 const store={get(){try{return +localStorage.getItem(KEY)||1}catch(e){return 1}},set(n){try{localStorage.setItem(KEY,n)}catch(e){}}};
