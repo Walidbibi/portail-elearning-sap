@@ -31,7 +31,7 @@ apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmana
 documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
 ```
 
-Le site fonctionne en ouvrant `index.html` dans un navigateur, sans compilation. Le lecteur PDF demande un serveur (même local : `python3 -m http.server 8080`) ; PDF.js est copié dans `shared/pdfjs/` (version 3.11.174), aucun CDN. `SAP_HREF` dans `glossaire-data.js` envoie tout PDF local vers le lecteur.
+Le site fonctionne en ouvrant `index.html` dans un navigateur, sans compilation. Le lecteur PDF demande un serveur (même local : `python3 -m http.server 8080`) et une connexion internet (PDF.js vient de cdnjs). `SAP_HREF` dans `glossaire-data.js` envoie tout PDF local vers le lecteur.
 
 ### Le glossaire
 
