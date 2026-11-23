@@ -27,6 +27,7 @@ frises/greenfield.html     frise greenfield (SAP Activate)
 frises/brownfield.html     frise brownfield (SAP Activate)
 frises/bluefield.html      frise bluefield (SAP Activate)
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
+apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, capture Chrome headless pour les frises), à refaire si le support change
 documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
 ```
 

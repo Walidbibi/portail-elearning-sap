@@ -29,17 +29,27 @@
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
 a{color:inherit}
 main{padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
-.inner{max-width:880px;margin:0 auto}
+.inner{max-width:1080px;margin:0 auto}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 h1{font-size:30px;line-height:1.2;margin:4px 0 8px;text-wrap:balance}
 .lede{color:var(--muted);max-width:64ch;margin:0}
 h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 .sec-sub{color:var(--muted);margin:0 0 14px;font-size:14px}
-.path{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
-.path li{counter-increment:st;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
-.path li::before{content:counter(st);font-family:var(--mono);font-size:13px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--muted);margin-top:10px}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.card{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0;transition:border-color .12s}
+/* grilles : 3 colonnes, 2 sur tablette, 1 sur téléphone */
+.path,.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.path{counter-reset:st}
+.path li{counter-increment:st;display:flex;min-width:0;position:relative}
+.path li>.card{flex:1}
+.path li::before{content:counter(st);position:absolute;z-index:1;top:8px;left:8px;font-family:var(--mono);font-size:13px;font-weight:500;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.25);pointer-events:none}
+@media (max-width:900px){.path,.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.path,.cards{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0;overflow:hidden;transition:border-color .12s}
+.thumb{display:block;position:relative;aspect-ratio:16/9;background:var(--soft);border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.card:hover .thumb img{transform:scale(1.02)}
+.thumb img{transition:transform .2s}
+.cbody{display:block;padding:12px 14px;min-width:0}
+@media (prefers-reduced-motion:reduce){.thumb img{transition:none}.card:hover .thumb img{transform:none}}
 .card:hover{border-color:var(--kc)}
 .card:focus-visible,.chip:focus-visible,.term-btn:focus-visible,.gl-toggle:focus-visible,.x:focus-visible,.doclink:focus-visible,#q:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .kind{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--kc)}
@@ -50,8 +60,6 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 .card .sub a:hover{text-decoration:underline}
 .k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
 .foot{margin-top:40px;font-size:13px;color:var(--muted)}
-.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:760px){.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -82,7 +90,7 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 <script>
 const D=window.SAP_DOCS,KL=window.SAP_KL;
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
-const card=key=>{const d=D[key];return `<a class="card k-${d.k}" href="${window.SAP_HREF(d.u)}"${tgt(d.u)}><span class="kind">${KL[d.k]}</span><b>${d.t}</b><span class="d">${d.d}</span></a>`;};
+const card=key=>{const d=D[key];return `<a class="card k-${d.k}" href="${window.SAP_HREF(d.u)}"${tgt(d.u)}><span class="thumb"><img src="apercus/${key}.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span><span class="cbody"><span class="kind">${KL[d.k]}</span><b>${d.t}</b><span class="d">${d.d}</span></span></a>`;};
 document.getElementById('path').innerHTML=["synth","mig","act","act2","fiche"].map(k=>`<li>${card(k)}</li>`).join('');
 document.getElementById('frises').innerHTML=["rollout","green","brown","blue"].map(k=>card(k)).join('');
 document.getElementById('other').innerHTML=["simu","synthEN","migEN","script"].map(k=>card(k)).join('');
