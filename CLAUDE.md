@@ -83,7 +83,7 @@ Champs de `frises/<nom>.json` :
 | `note` | note de bas de page |
 | `nomGate` (facultatif) | nom des gates, « Quality gate » par défaut (« Gate de passage » pour le roll-out) |
 | `couleurs` (facultatif) | couleur de chaque phase, en indice de la palette `--c0` à `--c5` ; par défaut la phase n prend la couleur n |
-| `couleurParade` (facultatif) | couleur de l'étiquette « Parade », indice de la palette ; `--c4` (rouge) par défaut |
+| `couleurParade` (facultatif) | couleur de l'étiquette « Parade », indice de la palette ; `--c5` (vert) par défaut, choisi par Walid le 24/11/2026 |
 | `chronologie` | `largeur` et `x1` (dimensions du dessin), `mois` (libellés de l'axe, un par mois), `golive` (`mois` : position, `etape` : étape ouverte au clic) |
 | `phases` | `[{id, name, eq}]`, une par colonne |
 | `etenduePhases` | `[début, fin]` de chaque phase, en mois depuis le début de l'axe |

@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maquette US-009 · Version anglaise du portail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Maquette statique : lot 2 (US-009, US-010, US-012, US-013). Variables reprises de index.html, frise.css et lecteur.html. */
+:root{
+  --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;--soft:#EBEFF5;
+  --accent:#1B7287;--accent-soft:#E0F0F3;--mark:#FCE9B8;--focus:#E07A2F;--rbg:#E6EAF0;
+  --k-deck:#3460A8;--k-doc:#2B7549;--k-frise:#A86E12;--k-act:#6A4FA3;--k-prat:#AF4234;
+  --c0:#56657D;--c1:#3460A8;--c2:#1B7287;--c3:#A86E12;--c4:#AF4234;--c5:#2B7549;
+  --t0:#E9EDF3;--t1:#E3EAF7;--t2:#E0F0F3;--t3:#F7EEDC;--t4:#F7E3E0;--t5:#E1F0E6;
+  --gate:#17202E;--gate-ink:#FFFFFF;
+  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:0 12px 40px rgba(17,26,40,.22);--page-shadow:0 6px 28px rgba(17,26,40,.18);
+  --mq:#6A4FA3;--mq-soft:#ECE9F7;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;--soft:#222936;
+  --accent:#5FC0D4;--accent-soft:#16303A;--mark:#5A4710;--rbg:#0E1218;
+  --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
+  --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
+  --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
+  --gate:#E9EDF3;--gate-ink:#12161D;--shadow:0 12px 40px rgba(0,0,0,.55);--page-shadow:0 6px 28px rgba(0,0,0,.6);
+  --mq:#B7A9F2;--mq-soft:#25213A;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;--soft:#222936;
+  --accent:#5FC0D4;--accent-soft:#16303A;--mark:#5A4710;--rbg:#0E1218;
+  --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
+  --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
+  --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
+  --gate:#E9EDF3;--gate-ink:#12161D;--shadow:0 12px 40px rgba(0,0,0,.55);--page-shadow:0 6px 28px rgba(0,0,0,.6);
+  --mq:#B7A9F2;--mq-soft:#25213A;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+a{color:inherit}
+img{max-width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* ---------- habillage de la maquette ---------- */
+.mq-page{max-width:1240px;margin:0 auto;padding:20px 16px 80px}
+@media (max-width:480px){.mq-page{padding:12px 8px 60px}}
+.mq-banner{border:1px dashed var(--mq);background:var(--mq-soft);border-radius:12px;padding:14px 16px;margin-bottom:28px}
+.mq-tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mq)}
+.mq-banner h1{font-size:22px;line-height:1.25;margin:4px 0 8px}
+.mq-banner p,.mq-banner li{font-size:14px;margin:0 0 6px;max-width:92ch}
+.mq-banner ul{margin:0 0 8px;padding-left:18px}
+.mq-banner h2{font-size:14px;margin:12px 0 4px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500}
+.mq-theme{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;font-size:13px;color:var(--muted)}
+.mq-theme button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font-size:13px;display:inline-flex;align-items:center}
+.mq-theme button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.mq-theme button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.screen{margin:44px 0 0}
+.screen>h2{font-size:21px;margin:0 0 4px}
+.screen>h2 .n{font-family:var(--mono);font-size:13px;color:var(--mq);margin-right:8px;font-weight:500}
+.screen>p.why{color:var(--muted);font-size:14px;margin:0 0 16px;max-width:90ch}
+.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
+.cap b{color:var(--mq);font-weight:500}
+.row{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.row>div{min-width:0;max-width:100%}
+.note{font-size:13px;color:var(--muted);margin:8px 0 0;max-width:60ch}
+.note b{color:var(--ink)}
+/* cadre bureau : largeur fixe, défile à l'intérieur sur petit écran (jamais la page) */
+.desk-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--bg);max-width:100%}
+.desk{width:1140px;display:grid;grid-template-columns:minmax(0,1fr) 340px;position:relative}
+.desk.full{grid-template-columns:minmax(0,1fr)}
+/* cadre téléphone : 390 px, réduit si l'écran est plus étroit */
+.phone{width:390px;max-width:100%;border:1px solid var(--line);border-radius:22px;overflow:hidden;position:relative;background:var(--bg);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.phone.h-home{height:720px}
+.phone.h-frise{height:560px}
+.phone.h-read{height:640px;display:flex;flex-direction:column;background:var(--rbg)}
+.phone.h-gl{height:720px}
+
+/* ---------- sélecteur de langue (le composant proposé) ---------- */
+.lang{display:inline-flex;flex:none;border:1px solid var(--line);border-radius:9px;background:var(--surface);overflow:hidden}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-width:44px;height:40px;padding:0 10px;display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--muted)}
+.lang button+button{border-left:1px solid var(--line)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.lang button:hover:not([aria-pressed="true"]){background:var(--soft);color:var(--ink)}
+.lang button:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.lang.float{position:absolute;left:16px;bottom:16px;z-index:3;box-shadow:var(--shadow)}
+
+/* ---------- accueil (repris de index.html) ---------- */
+.home{padding:28px 28px 40px;min-width:0}
+.phone .home{padding:20px 16px 90px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.top .eyebrow{padding-top:11px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.home h1{font-size:30px;line-height:1.2;margin:4px 0 8px;text-wrap:balance}
+.phone .home h1{font-size:27px}
+.lede{color:var(--muted);max-width:64ch;margin:0}
+.home h3{font-size:19px;margin:32px 0 4px;text-wrap:balance}
+.sec-sub{color:var(--muted);margin:0 0 14px;font-size:14px}
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.phone .cards{grid-template-columns:1fr}
+.cards li{display:flex;min-width:0;position:relative}
+.cards li>.card{flex:1}
+.cards.path{counter-reset:st}
+.cards.path li{counter-increment:st}
+.cards.path li::before{content:counter(st);position:absolute;z-index:1;top:8px;left:8px;font-family:var(--mono);font-size:13px;font-weight:500;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.card{display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0;overflow:hidden}
+.card:hover{border-color:var(--kc)}
+.thumb{display:block;position:relative;aspect-ratio:16/9;background:var(--soft);border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.cbody{display:block;padding:12px 14px;min-width:0}
+.kline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.kind{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--kc)}
+.card b{display:block;font-size:15px;line-height:1.35;margin:2px 0;overflow-wrap:anywhere}
+.card .d{display:block;color:var(--muted);font-size:13.5px;line-height:1.45}
+.k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
+/* étiquette « In French » : variante B (dans la carte) */
+.infr{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px;line-height:18px;white-space:nowrap}
+/* variante A (sur l'aperçu) */
+.infr-a{position:absolute;top:8px;right:8px;z-index:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--surface);border-radius:4px;padding:2px 7px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.foot{margin-top:36px;font-size:13px;color:var(--muted)}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,280px));gap:16px}
+@media (max-width:620px){.cmp{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- bouton flottant du glossaire (simulé dans le cadre) ---------- */
+.gl-open{position:absolute;right:16px;bottom:16px;z-index:3;background:var(--ink);color:var(--surface);font-weight:600;font-size:15px;padding:11px 16px;border-radius:24px;box-shadow:var(--shadow);border:0;font-family:var(--sans);cursor:pointer}
+
+/* ---------- glossaire (repris de shared/glossaire.js) ---------- */
+.gl{background:var(--surface);border-left:1px solid var(--line);display:flex;flex-direction:column;min-width:0;max-height:900px;overflow:hidden;font-size:15px}
+.phone .gl{position:absolute;inset:0;border-left:0;max-height:none;z-index:4}
+.gl-head{padding:18px 18px 10px;border-bottom:1px solid var(--line)}
+.gl-title{margin:0 0 10px;font-size:17px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.gl-count{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
+.gl-hide{all:unset;cursor:pointer;font-size:13px;color:var(--muted);padding:4px 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+.gl-q{width:100%;font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.gl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.gl-chip{font-size:12.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);color:var(--muted);background:none;font-family:var(--sans)}
+.gl-chip.on{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.gl-list{overflow:hidden;flex:1;padding:6px 10px 24px}
+.gl-letter{font-family:var(--mono);font-size:12px;color:var(--muted);padding:12px 8px 4px}
+.gl-term{display:block;padding:8px}
+.gl-term b{font-weight:600}
+.gl-f{color:var(--muted);font-size:13px;margin-left:6px}
+.gl-fr{display:inline-flex;align-items:baseline;gap:5px;color:var(--muted);font-size:13px;margin-left:6px}
+.gl-fr i{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.05em;border:1px solid var(--line);border-radius:3px;padding:0 4px;line-height:15px}
+.gl-term.open{background:var(--soft);border-radius:8px 8px 0 0}
+.gl-body{padding:0 8px 12px;font-size:14px}
+.gl-body p{margin:6px 0}
+.gl-dp{background:var(--accent-soft);border-radius:8px;padding:7px 10px;font-size:13.5px}
+.gl-dp-l{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.gl-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.gl-link{font-size:12.5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+.gl-link .infr{margin-left:6px;font-size:10px;line-height:16px}
+
+/* ---------- frise (repris de shared/frise.css) ---------- */
+.fz{padding:28px 28px 32px;min-width:0}
+.phone .fz{padding:16px 16px 80px}
+.fz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+.back{all:unset;cursor:pointer;display:inline-flex;align-items:center;min-height:40px;font-size:14px;font-weight:600;color:var(--muted)}
+.back:hover{color:var(--ink)}
+.fz h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance}
+.phone .fz h1{font-size:25px}
+.fz .lede{max-width:72ch;margin:0 0 18px}
+.story{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:0 0 14px}
+.startb{all:unset;box-sizing:border-box;cursor:pointer;background:var(--gate);color:var(--gate-ink);border-radius:8px;padding:9px 14px;font-weight:600;font-size:14px;min-height:40px;max-width:100%}
+.tl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;overflow:hidden}
+.tl-ph{display:flex;gap:3px}
+.tl-ph span{color:#fff;font-size:12px;font-weight:600;text-align:center;border-radius:3px;padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bars{position:relative;height:150px;margin-top:10px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/16 - 1px),var(--line) calc(100%/16 - 1px) calc(100%/16))}
+.tl-bars i{position:absolute;height:14px;border-radius:7px;border:1.5px solid var(--col);background:var(--tint)}
+.tl-bars em{position:absolute;font-style:normal;font-size:11.5px;font-weight:600;white-space:nowrap}
+.tl-gl{position:absolute;top:0;bottom:0;width:3px;background:var(--c4)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 2px 0;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;vertical-align:-2px;margin-right:6px}
+.lg-bar{width:26px;height:12px;border-radius:6px;border:1.5px solid var(--c3);background:var(--t3)}
+.lg-gate{width:11px;height:11px;transform:rotate(45deg);background:var(--gate)}
+.lg-gl{width:3px;height:14px;background:var(--c4)}
+
+/* ---------- lecteur (repris de lecteur.html) ---------- */
+.reader{background:var(--rbg);display:flex;flex-direction:column;min-width:0;height:600px}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line);min-width:0}
+.bar .back{font-weight:400;font-size:14px;padding:0 8px;border-radius:6px;white-space:nowrap}
+.title{flex:1;min-width:0;display:flex;flex-direction:column}
+.title .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.title b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;align-items:center;gap:6px}
+.ib{all:unset;box-sizing:border-box;cursor:pointer;width:38px;height:38px;display:grid;place-items:center;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.ib[aria-disabled="true"]{opacity:.35;cursor:default}
+.ib svg{width:18px;height:18px}
+.count{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:4px}
+.count input{width:3.2em;font:inherit;text-align:right;padding:5px 4px;border:1px solid var(--line);border-radius:6px;background:var(--rbg);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:14px;font-weight:600;padding:0 12px;height:40px;border-radius:8px;background:var(--accent);color:var(--surface);white-space:nowrap}
+.btn svg{width:16px;height:16px}
+.sep{width:1px;align-self:stretch;background:var(--line);margin:4px 2px}
+/* bandeau de langue : dans le flux, sous la barre, ne recouvre jamais la page */
+.langnote{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;padding:6px 16px;background:var(--accent-soft);border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.4;min-width:0}
+.langnote .fr{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;border:1px solid var(--accent);color:var(--accent);border-radius:3px;padding:0 5px;line-height:16px}
+.langnote a{color:var(--accent);font-weight:600;text-underline-offset:2px;display:inline-flex;align-items:center;min-height:32px}
+.stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:20px 64px}
+.page{display:block;box-shadow:var(--page-shadow);border-radius:2px;max-height:100%;max-width:100%;background:#fff}
+.side{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.12);right:10px}
+.side svg{width:20px;height:20px}
+.hint{font-size:12.5px;color:var(--muted);text-align:center;padding:0 16px 10px}
+.phone .bar{flex-wrap:wrap;row-gap:8px;gap:8px}
+.phone .title{order:-1;flex-basis:calc(100% - 90px)}
+.phone .nav{flex:1;justify-content:center}
+.phone .btn{padding:0;width:40px;justify-content:center}
+.phone .stage{padding:12px 8px;align-items:flex-start}
+.phone .page{max-height:none;width:100%}
+.phone .langnote{padding:6px 12px}
+</style>
+</head>
+<body>
+<div class="mq-page">
+
+<!-- ================= Bandeau de la maquette ================= -->
+<header class="mq-banner">
+  <span class="mq-tag">Maquette US-009 · avec US-010, US-012, US-013</span>
+  <h1>Version anglaise du portail</h1>
+  <p>Ce qui change : un sélecteur FR / EN en haut à droite de chaque page. En anglais, l'accueil n'affiche plus de doublons. Les documents restés en français portent l'étiquette « In French ». Le lecteur l'annonce aussi, dans un bandeau sous sa barre.</p>
+  <h2>Choix faits</h2>
+  <ul>
+    <li>Deux boutons FR et EN toujours visibles, l'actif en plein. On voit d'un coup d'œil où l'on est et où l'on peut aller.</li>
+    <li>Même place partout : le dernier élément à droite de l'en-tête. Le sélecteur défile avec la page. Il ne croise jamais le bouton « Glossaire », en bas à droite.</li>
+    <li>Changer de langue garde la page ouverte, y compris dans le lecteur. Un document français y reste ouvert, avec le bandeau.</li>
+    <li>Les textes anglais de cette maquette sont indicatifs. Ceux des traductions fournies par Walid font foi.</li>
+  </ul>
+  <h2>Variantes écartées</h2>
+  <ul>
+    <li>Drapeaux : un drapeau désigne un pays, pas une langue.</li>
+    <li>Liste déroulante : un clic de plus pour deux choix seulement.</li>
+    <li>Bouton unique « English » / « Français » : l'état actuel n'est pas visible.</li>
+    <li>Sélecteur dans le glossaire : absent quand le glossaire est fermé sur téléphone.</li>
+  </ul>
+  <div class="mq-theme" role="group" aria-label="Thème de la maquette"><span>Thème de la maquette :</span>
+    <button type="button" data-th="" aria-pressed="true">Auto</button>
+    <button type="button" data-th="light" aria-pressed="false">Clair</button>
+    <button type="button" data-th="dark" aria-pressed="false">Sombre</button>
+  </div>
+</header>
+
+<!-- ================= Écran 1 : le sélecteur ================= -->
+<section class="screen" aria-labelledby="e1">
+  <h2 id="e1"><span class="n">ÉCRAN 1</span>Le sélecteur FR / EN à trois endroits</h2>
+  <p class="why">Ici le site est en français : seul le sélecteur s'ajoute. Les boutons de la maquette sont cliquables et utilisables au clavier (Tab, puis Entrée ou Espace).</p>
+
+  <div class="cap"><b>1a</b> · Accueil · bureau (1440 px, réduit) · glossaire fixé à droite</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="home">
+      <div class="top">
+        <div class="eyebrow">Formation SAP · Directeur de programme</div>
+        <div data-lang="fr"></div>
+      </div>
+      <h1>Portail SAP du DP</h1>
+      <p class="lede">Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.</p>
+      <h3>Parcours conseillé</h3>
+      <p class="sec-sub">Du plus général au plus opérationnel.</p>
+      <ol class="cards path" data-cards="fr-path3"></ol>
+    </div>
+    <aside class="gl" data-gl="fr"></aside>
+  </div></div>
+  <p class="note">Le sélecteur est aligné sur le surtitre, en haut à droite de la colonne de contenu. Le glossaire fixé ne le recouvre pas.</p>
+
+  <div class="cap"><b>1b</b> · Accueil · téléphone (390 px) · deux emplacements possibles</div>
+  <div class="row">
+    <div>
+      <div class="cap"><b>Variante A</b> · en haut de page (recommandée)</div>
+      <div class="phone h-home">
+        <div class="home">
+          <div class="top">
+            <div class="eyebrow">Formation SAP · Directeur de programme</div>
+            <div data-lang="fr"></div>
+          </div>
+          <h1>Portail SAP du DP</h1>
+          <p class="lede">Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.</p>
+          <h3>Parcours conseillé</h3>
+          <p class="sec-sub">Du plus général au plus opérationnel.</p>
+          <ol class="cards path" data-cards="fr-path1"></ol>
+        </div>
+        <button class="gl-open" type="button" tabindex="-1">Glossaire</button>
+      </div>
+      <p class="note"><b>Pour :</b> rien ne flotte sur le contenu, un seul bouton flottant reste. <b>Contre :</b> il faut remonter en haut pour changer de langue. On change rarement de langue.</p>
+    </div>
+    <div>
+      <div class="cap"><b>Variante B</b> · flottant en bas à gauche</div>
+      <div class="phone h-home">
+        <div class="home">
+          <div class="eyebrow">Formation SAP · Directeur de programme</div>
+          <h1>Portail SAP du DP</h1>
+          <p class="lede">Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.</p>
+          <h3>Parcours conseillé</h3>
+          <p class="sec-sub">Du plus général au plus opérationnel.</p>
+          <ol class="cards path" data-cards="fr-path1"></ol>
+        </div>
+        <div class="float" data-lang="fr"></div>
+        <button class="gl-open" type="button" tabindex="-1">Glossaire</button>
+      </div>
+      <p class="note"><b>Pour :</b> toujours à portée de pouce. <b>Contre :</b> deux pastilles flottantes cachent le bas des cartes. Dans le lecteur, elles cacheraient la page.</p>
+    </div>
+  </div>
+
+  <div class="cap"><b>1c</b> · Frise · bureau (réduit) · à côté de « ← Portail »</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="fz">
+      <div class="fz-top"><button type="button" class="back">← Portail</button><div data-lang="fr"></div></div>
+      <div class="eyebrow">Nouvelle implémentation S/4HANA · SAP Activate</div>
+      <h1>Une migration greenfield vers S/4HANA, de A à Z</h1>
+      <p class="lede">Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.</p>
+      <div class="story"><span><b>Exemple fil rouge :</b> Calvane (fictif), fabricant de pompes, 3 usines, ERP maison remplacé par S/4HANA</span><button type="button" class="startb">Suivre l'exemple pas à pas →</button></div>
+      <div data-tl="fr"></div>
+    </div>
+    <aside class="gl" data-gl="fr-short"></aside>
+  </div></div>
+  <p class="note">Le bouton retour et le sélecteur partagent la même ligne. Rien ne bouge en dessous.</p>
+
+  <div class="cap"><b>1d</b> · Frise · téléphone (390 px)</div>
+  <div class="phone h-frise">
+    <div class="fz">
+      <div class="fz-top"><button type="button" class="back">← Portail</button><div data-lang="fr"></div></div>
+      <div class="eyebrow">Nouvelle implémentation S/4HANA · SAP Activate</div>
+      <h1>Une migration greenfield vers S/4HANA, de A à Z</h1>
+      <p class="lede">Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.</p>
+      <div class="story"><span><b>Exemple fil rouge :</b> Calvane (fictif), fabricant de pompes, 3 usines, ERP maison remplacé par S/4HANA</span><button type="button" class="startb">Suivre l'exemple pas à pas →</button></div>
+    </div>
+    <button class="gl-open" type="button" tabindex="-1">Glossaire</button>
+  </div>
+
+  <div class="cap"><b>1e</b> · Lecteur · bureau (réduit) · dernier élément de la barre</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="reader">
+      <header class="bar">
+        <a class="back" href="#e1">← Portail</a>
+        <div class="title"><span class="k">Deck</span><b>Formation SAP · Synthèse</b></div>
+        <div data-nav></div>
+        <a class="btn" href="#e1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Télécharger</a>
+        <span class="sep" aria-hidden="true"></span>
+        <div data-lang="fr"></div>
+      </header>
+      <div class="stage"><img class="page" src="../apercus/synth.jpg" alt="Page 1 du deck Formation SAP · Synthèse"><span class="side" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      <p class="hint">Flèches ← → du clavier pour tourner les pages · « / » pour le glossaire</p>
+    </div>
+    <aside class="gl" data-gl="fr-short"></aside>
+  </div></div>
+  <p class="note">Un trait fin sépare le sélecteur du bouton Télécharger : la langue n'est pas une action sur le document.</p>
+
+  <div class="cap"><b>1f</b> · Lecteur · téléphone (390 px) · deuxième ligne de la barre</div>
+  <div class="phone h-read">
+    <header class="bar">
+      <a class="back" href="#e1">← Portail</a>
+      <div class="title"><span class="k">Deck</span><b>Formation SAP · Synthèse</b></div>
+      <div data-nav></div>
+      <div data-lang="fr"></div>
+      <a class="btn" href="#e1" aria-label="Télécharger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+    </header>
+    <div class="stage"><img class="page" src="../apercus/synth.jpg" alt="Page 1 du deck Formation SAP · Synthèse"></div>
+    <button class="gl-open" type="button" tabindex="-1">Glossaire</button>
+  </div>
+  <p class="note">La deuxième ligne tient sur un téléphone de 375 px : pagination (environ 190 px), sélecteur (90 px), Télécharger (40 px). Sur un écran plus étroit, elle revient à la ligne au lieu de déborder.</p>
+</section>
+
+<!-- ================= Écran 2 : accueil en anglais ================= -->
+<section class="screen" aria-labelledby="e2" lang="en">
+  <h2 id="e2" lang="fr"><span class="n">ÉCRAN 2</span>L'accueil en anglais</h2>
+  <p class="why" lang="fr">Plus de section « Versions anglaises » : les cartes Synthèse et Migration ouvrent directement leur version anglaise. ACT100 et ACT200 existent en anglais : pas d'étiquette. Fiche de révision, simulation d'entretien et script de narration restent en français : étiquette « In French ». Les aperçus restent ceux d'aujourd'hui jusqu'à US-018.</p>
+
+  <div class="cap" lang="fr"><b>2a</b> · Bureau (réduit)</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="home">
+      <div class="top">
+        <div class="eyebrow">SAP training · Program Director</div>
+        <div data-lang="en"></div>
+      </div>
+      <h1>SAP Program Director's Portal</h1>
+      <p class="lede">All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.</p>
+      <h3>Recommended path</h3>
+      <p class="sec-sub">From the big picture to day-to-day delivery.</p>
+      <ol class="cards path" data-cards="en-path"></ol>
+      <h3>Timelines, from A to Z</h3>
+      <p class="sec-sub">Each approach on an illustrated timeline, with a running example, what AI brings, and the main failure risks.</p>
+      <ul class="cards" data-cards="en-frises"></ul>
+      <h3>Other resources</h3>
+      <ul class="cards" data-cards="en-other"></ul>
+      <p class="foot">Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them.</p>
+    </div>
+    <aside class="gl" data-gl="en"></aside>
+  </div></div>
+  <p class="note" lang="fr">Le type « Frise » devient <b>« Timeline »</b>. Les titres perdent le suffixe « (EN) », inutile dans un portail déjà en anglais. Neuf cartes au lieu de onze.</p>
+
+  <div class="row">
+    <div>
+      <div class="cap" lang="fr"><b>2b</b> · Téléphone (390 px) · haut de page</div>
+      <div class="phone h-home">
+        <div class="home">
+          <div class="top">
+            <div class="eyebrow">SAP training · Program Director</div>
+            <div data-lang="en"></div>
+          </div>
+          <h1>SAP Program Director's Portal</h1>
+          <p class="lede">All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.</p>
+          <h3>Recommended path</h3>
+          <p class="sec-sub">From the big picture to day-to-day delivery.</p>
+          <ol class="cards path" data-cards="en-path1"></ol>
+        </div>
+        <button class="gl-open" type="button" tabindex="-1">Glossary</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap" lang="fr"><b>2c</b> · Téléphone · plus bas : « Other resources »</div>
+      <div class="phone h-home">
+        <div class="home">
+          <h3 style="margin-top:4px">Other resources</h3>
+          <ul class="cards" data-cards="en-other"></ul>
+        </div>
+        <button class="gl-open" type="button" tabindex="-1">Glossary</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap" lang="fr"><b>2d</b> · L'étiquette « In French » : deux placements</div>
+  <div class="cmp">
+    <div>
+      <div class="cap" lang="fr"><b>Variante A</b> · sur l'aperçu</div>
+      <a class="card k-doc" href="#e2"><span class="thumb"><span class="infr-a">In French</span><img src="../apercus/fiche.jpg" alt="" onerror="this.remove()"></span><span class="cbody"><span class="kind">Doc</span><b>Review sheet</b><span class="d">The essentials on one page, to reread before an interview.</span></span></a>
+      <p class="note" lang="fr">Très visible. Mais disparaît si l'aperçu manque, et se lit mal sur un aperçu sombre.</p>
+    </div>
+    <div>
+      <div class="cap" lang="fr"><b>Variante B</b> · à côté du type (recommandée)</div>
+      <a class="card k-doc" href="#e2"><span class="thumb"><img src="../apercus/fiche.jpg" alt="" onerror="this.remove()"></span><span class="cbody"><span class="kline"><span class="kind">Doc</span><span class="infr">In French</span></span><b>Review sheet</b><span class="d">The essentials on one page, to reread before an interview.</span></span></a>
+      <p class="note" lang="fr">Lue juste avant le titre, par l'œil comme par un lecteur d'écran. Tient même sans aperçu.</p>
+    </div>
+    <div>
+      <div class="cap" lang="fr"><b>Sans étiquette</b> · document anglais</div>
+      <a class="card k-act" href="#e2"><span class="thumb"><img src="../apercus/act.jpg" alt="" onerror="this.remove()"></span><span class="cbody"><span class="kind">Certification</span><b>ACT100 · Study guide</b><span class="d">SAP Activate: all 7 chapters in one document, ready to print.</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Écran 3 : glossaire en anglais ================= -->
+<section class="screen" aria-labelledby="e3" lang="en">
+  <h2 id="e3" lang="fr"><span class="n">ÉCRAN 3</span>Le glossaire en anglais, termes dépliés</h2>
+  <p class="why" lang="fr">Quand le terme anglais remplace un terme français, le nom français s'affiche à côté, précédé d'un petit « FR ». On le distingue ainsi d'un nom complet (par exemple « ART · Agile Release Train »). La recherche trouve aussi le nom français.</p>
+  <div class="row">
+    <div>
+      <div class="cap" lang="fr"><b>3a</b> · Bureau · panneau fixé à droite (380 px)</div>
+      <div class="phone h-gl" style="width:380px;border-radius:12px"><aside class="gl" data-gl="en-open"></aside></div>
+    </div>
+    <div>
+      <div class="cap" lang="fr"><b>3b</b> · Téléphone (390 px) · tiroir ouvert</div>
+      <div class="phone h-gl"><aside class="gl" data-gl="en-open"></aside></div>
+    </div>
+  </div>
+  <p class="note" lang="fr">Les catégories anglaises sont un peu plus longues : elles reviennent à la ligne entre deux pastilles, sans déborder. Un lien vers un document français porterait la même étiquette : <a class="gl-link" href="#e3" lang="en">Doc · Review sheet<span class="infr">In French</span></a></p>
+</section>
+
+<!-- ================= Écran 4 : lecteur, document français ================= -->
+<section class="screen" aria-labelledby="e4" lang="en">
+  <h2 id="e4" lang="fr"><span class="n">ÉCRAN 4</span>Le lecteur en anglais sur un document français</h2>
+  <p class="why" lang="fr">Un bandeau d'une ligne, dans le flux, juste sous la barre. Il pousse la page vers le bas au lieu de la recouvrir. Il n'a pas de bouton fermer : il est court et rappelle une information utile à chaque page. Un document anglais n'a aucun bandeau.</p>
+
+  <div class="cap" lang="fr"><b>4a</b> · Bureau (réduit) · document français qui a une version anglaise</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="reader">
+      <header class="bar">
+        <a class="back" href="#e4">← Portal</a>
+        <div class="title"><span class="k">Deck</span><b lang="fr">Formation SAP · Synthèse</b></div>
+        <div data-nav="en"></div>
+        <a class="btn" href="#e4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>
+        <span class="sep" aria-hidden="true"></span>
+        <div data-lang="en"></div>
+      </header>
+      <p class="langnote" role="note"><span class="fr" aria-hidden="true">FR</span><span>This document is in French.</span><a href="#e4">Open the English version →</a></p>
+      <div class="stage"><img class="page" src="../apercus/synth.jpg" alt="Page 1 of the deck, in French"><span class="side" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      <p class="hint">← → arrow keys to turn pages · “/” for the glossary</p>
+    </div>
+    <aside class="gl" data-gl="en"></aside>
+  </div></div>
+  <p class="note" lang="fr">Cas rare : on y arrive par un lien français partagé, ou en passant en anglais dans le lecteur. Le titre reste celui du document ouvert, en français. Le lien ouvre <code>sap-training-summary-en.pdf</code> à la page 1.</p>
+
+  <div class="row">
+    <div>
+      <div class="cap" lang="fr"><b>4b</b> · Téléphone · sans version anglaise</div>
+      <div class="phone h-read">
+        <header class="bar">
+          <a class="back" href="#e4">← Portal</a>
+          <div class="title"><span class="k">Doc</span><b>Review sheet</b></div>
+          <div data-nav="en"></div>
+          <div data-lang="en"></div>
+          <a class="btn" href="#e4" aria-label="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+        </header>
+        <p class="langnote" role="note"><span class="fr" aria-hidden="true">FR</span><span>This document is in French.</span></p>
+        <div class="stage"><img class="page" src="../apercus/fiche.jpg" alt="Page 1 of the review sheet, in French"></div>
+        <button class="gl-open" type="button" tabindex="-1">Glossary</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap" lang="fr"><b>4c</b> · Téléphone · avec version anglaise</div>
+      <div class="phone h-read">
+        <header class="bar">
+          <a class="back" href="#e4">← Portal</a>
+          <div class="title"><span class="k">Deck</span><b lang="fr">Formation SAP · Synthèse</b></div>
+          <div data-nav="en"></div>
+          <div data-lang="en"></div>
+          <a class="btn" href="#e4" aria-label="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+        </header>
+        <p class="langnote" role="note"><span class="fr" aria-hidden="true">FR</span><span>This document is in French.</span><a href="#e4">Open the English version →</a></p>
+        <div class="stage"><img class="page" src="../apercus/synth.jpg" alt="Page 1 of the deck, in French"></div>
+        <button class="gl-open" type="button" tabindex="-1">Glossary</button>
+      </div>
+    </div>
+  </div>
+  <p class="note" lang="fr">Sur téléphone, le bandeau prend une ou deux lignes (34 à 52 px). Le texte revient à la ligne, il ne déborde pas.</p>
+</section>
+
+</div>
+
+<script>
+/* Petits gabarits pour éviter de répéter les cartes, le glossaire et la pagination. */
+(function(){
+const T={fr:{deck:'Deck',doc:'Doc',frise:'Frise',act:'Certification',prat:'Pratique'},en:{deck:'Deck',doc:'Doc',frise:'Timeline',act:'Certification',prat:'Practice'}};
+const C={
+  synth:['deck','Formation SAP · Synthèse',"Le deck complet : modules, processus, gouvernance, tests, bascule, run, roll-out."],
+  mig:['deck','Migration ECC vers S/4HANA',"Ce qui change entre ECC et S/4HANA, et les chemins pour y aller."],
+  act:['act','ACT100 · Livre de révision',"SAP Activate : les 7 chapitres en un seul document, à imprimer."],
+  synthEN:['deck','SAP Training · Summary','The full deck: modules, processes, governance, testing, cutover, run, roll-out.'],
+  migEN:['deck','ECC to S/4HANA Migration','What changes between ECC and S/4HANA, and the paths to get there.'],
+  actEN:['act','ACT100 · Study guide','SAP Activate: all 7 chapters in one document, ready to print.','act'],
+  act2EN:['act','ACT200 · Study guide','SAP Activate Agile: the complete study guide.','act2'],
+  ficheEN:['doc','Review sheet','The essentials on one page, to reread before an interview.','fiche',1],
+  rollout:['frise','Roll-out','Deploy a core model site by site: Diagnose, Adjust, Deploy.'],
+  green:['frise','Greenfield','New implementation, starting from the standard.'],
+  brown:['frise','Brownfield','Conversion of the existing ECC system.'],
+  blue:['frise','Bluefield','Selective transition: keep part, redesign the rest.'],
+  simuEN:['prat','Interview simulation','Typical questions and good answers, including warning thresholds.','simu',1],
+  scriptEN:['doc','Narration script','The text to read aloud to turn the decks into eLearning.','script',1]
+};
+const SETS={'fr-path3':['synth','mig','act'],'fr-path1':['synth'],'en-path':['synthEN','migEN','actEN','act2EN','ficheEN'],'en-path1':['synthEN','migEN'],'en-frises':['rollout','green','brown','blue'],'en-other':['simuEN','scriptEN']};
+function card(k,lg){const[t,ti,d,img,fr]=C[k];return `<a class="card k-${t}" href="#"${lg==='en'?'':' lang="fr"'}><span class="thumb"><img src="../apercus/${img||k}.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="cbody"><span class="kline"><span class="kind">${T[lg][t]}</span>${fr?'<span class="infr">In French</span>':''}</span><b${fr?' lang="en"':''}>${ti}</b><span class="d">${d}</span></span></a>`;}
+document.querySelectorAll('[data-cards]').forEach(el=>{const s=el.dataset.cards,lg=s.slice(0,2);el.innerHTML=SETS[s].map(k=>`<li>${card(k,lg)}</li>`).join('');});
+
+/* sélecteur : deux boutons, aria-pressed, lang sur chaque option */
+function lang(cur){const lab=cur==='en'?'Language':'Langue';return `<div class="lang" role="group" aria-label="${lab}"><button type="button" lang="fr" aria-pressed="${cur==='fr'}">FR<span class="sr"> Français</span></button><button type="button" lang="en" aria-pressed="${cur==='en'}">EN<span class="sr"> English</span></button></div>`;}
+document.querySelectorAll('[data-lang]').forEach(el=>{const f=el.classList.contains('float');el.outerHTML=lang(el.dataset.lang).replace('class="lang"','class="lang'+(f?' float':'')+'"');});
+document.addEventListener('click',e=>{const b=e.target.closest('.lang button');if(!b)return;b.parentNode.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));});
+
+/* pagination du lecteur */
+const chev=d=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
+document.querySelectorAll('[data-nav]').forEach(el=>{const en=el.dataset.nav==='en';el.outerHTML=`<div class="nav"><span class="ib" role="button" aria-disabled="true" aria-label="${en?'Previous page':'Page précédente'}">${chev('M15 18l-6-6 6-6')}</span><span class="count"><input type="text" value="1" aria-label="${en?'Page number':'Numéro de page'}"> / 110</span><span class="ib" role="button" tabindex="0" aria-label="${en?'Next page':'Page suivante'}">${chev('M9 18l6-6-6-6')}</span></div>`;});
+
+/* frise simplifiée (les noms de phases SAP Activate ne changent pas) */
+const PH=[['Discover',6,'c0'],['Prepare',10,'c1'],['Explore',16,'c2'],['Realize',37,'c3'],['Deploy',11,'c4'],['Run',10,'c5']];
+const BARS=[[1,3,6,'c0','Business case'],[2,8,4,'c1','Lancement'],[3,18,12,'c2','Fit-to-standard'],[4,34,40,'c3','Paramétrage en sprints'],[5,62,14,'c3','SIT et recette'],[6,76,10,'c4','Préparation bascule'],[7,90,9,'c5','Hypercare']];
+document.querySelectorAll('[data-tl]').forEach(el=>{el.outerHTML=`<div class="tl" aria-hidden="true"><div class="tl-ph">${PH.map(([n,w,c])=>`<span style="flex:${w};background:var(--${c})">${n}</span>`).join('')}</div><div class="tl-bars">${BARS.map(([r,x,w,c,l])=>`<i style="top:${r*19-12}px;left:${x}%;width:${w}%;--col:var(--${c});--tint:var(--t${c[1]})"></i><em style="top:${r*19-14}px;left:${x+w+1}%">${l}</em>`).join('')}<span class="tl-gl" style="left:87%"></span></div></div><div class="legend"><span><i class="lg-bar"></i>Étape</span><span><i class="lg-gate"></i>Quality gate</span><span><i class="lg-gl"></i>Go-live</span></div>`;});
+
+/* glossaire */
+const GL={
+  fr:{t:'Glossaire',h:'Masquer ✕',q:'Chercher : EWM, cutover, RICEFW…',chips:['Tout','Méthode et gouvernance','Modules et processus','Technique et intégration','Données et migration','Tests et bascule','Run et support','Agile et pilotage'],
+      list:`<div class="gl-letter">A</div><span class="gl-term"><b>ABAP</b></span><span class="gl-term"><b>ABAP Cloud</b></span><span class="gl-term"><b>API publiée</b><span class="gl-f">Released API</span></span><span class="gl-term"><b>Archivage</b></span><span class="gl-term"><b>ART</b><span class="gl-f">Agile Release Train</span></span><span class="gl-term"><b>ASN</b><span class="gl-f">Advance Shipping Notice</span></span><span class="gl-term"><b>ATC</b><span class="gl-f">ABAP Test Cockpit</span></span><div class="gl-letter">B</div><span class="gl-term"><b>BAdI</b><span class="gl-f">Business Add-In</span></span><span class="gl-term"><b>Basis</b></span><span class="gl-term"><b>Big bang</b></span><span class="gl-term"><b>Bluefield</b><span class="gl-f">Transition sélective</span></span>`},
+  en:{t:'Glossary',h:'Hide ✕',q:'Search: EWM, cutover, RICEFW…',chips:['All','Methodology and governance','Modules and processes','Technology and integration','Data and migration','Testing and cutover','Run and support','Agile and steering'],
+      list:`<div class="gl-letter">A</div><span class="gl-term"><b>ABAP</b></span><span class="gl-term"><b>ABAP Cloud</b></span><span class="gl-term"><b>Archiving</b><span class="gl-fr" lang="fr"><i>FR</i>Archivage</span></span><span class="gl-term"><b>ART</b><span class="gl-f">Agile Release Train</span></span><span class="gl-term"><b>ASN</b><span class="gl-f">Advance Shipping Notice</span></span><span class="gl-term"><b>ATC</b><span class="gl-f">ABAP Test Cockpit</span></span><div class="gl-letter">B</div><span class="gl-term"><b>BAdI</b><span class="gl-f">Business Add-In</span></span><span class="gl-term"><b>Basis</b></span><span class="gl-term"><b>Big bang</b></span><span class="gl-term"><b>Bluefield</b><span class="gl-f">Selective transition</span></span>`}
+};
+const OPEN=`<div class="gl-letter">C</div>
+<span class="gl-term"><b>Core model</b><span class="gl-f">Reference model</span></span>
+<span class="gl-term open" aria-expanded="true"><b>Cutover</b><span class="gl-fr" lang="fr"><i>FR</i>Bascule</span></span>
+<div class="gl-body"><p>Switch from the old to the new system in production.</p><div class="gl-links"><a class="gl-link" href="#e3">Deck · SAP Training · Summary</a><a class="gl-link" href="#e3">Timeline · Roll-out</a></div></div>
+<div class="gl-letter">D</div>
+<span class="gl-term"><b>Delta design</b><span class="gl-f">Local gap analysis</span></span>
+<span class="gl-term"><b>Dress rehearsal</b><span class="gl-fr" lang="fr"><i>FR</i>Répétition générale</span></span>
+<div class="gl-letter">F</div>
+<span class="gl-term open" aria-expanded="true"><b>Fit-to-standard</b></span>
+<div class="gl-body"><p>Workshops that show the business the SAP standard process and decide whether to adopt it.</p><p class="gl-dp"><span class="gl-dp-l">For the Program Director · </span>Replaces the ASAP Business Blueprint. Start from the standard and justify every gap.</p><div class="gl-links"><a class="gl-link" href="#e3">Timeline · Greenfield</a><a class="gl-link" href="#e3">Certification · ACT100 · Study guide</a></div></div>`;
+document.querySelectorAll('[data-gl]').forEach(el=>{const m=el.dataset.gl,g=GL[m.slice(0,2)],n=m.endsWith('short')?6:999;
+  el.setAttribute('aria-label',g.t);
+  el.innerHTML=`<div class="gl-head"><div class="gl-title"><span>${g.t}<span class="gl-count">136 / 136</span></span><button class="gl-hide" type="button">${g.h}</button></div><input class="gl-q" type="search" placeholder="${g.q}" aria-label="${g.t}"><div class="gl-chips">${g.chips.slice(0,n).map((c,i)=>`<span class="gl-chip${i?'':' on'}">${c}</span>`).join('')}</div></div><div class="gl-list">${m==='en-open'?OPEN:g.list}</div>`;});
+
+/* thème de la maquette */
+document.querySelectorAll('.mq-theme button').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.th;v?document.documentElement.setAttribute('data-theme',v):document.documentElement.removeAttribute('data-theme');document.querySelectorAll('.mq-theme button').forEach(x=>x.setAttribute('aria-pressed',x===b));}));
+})();
+</script>
+</body>
+</html>

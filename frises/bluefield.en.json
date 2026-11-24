@@ -1,0 +1,1015 @@
+{
+ "titreOnglet": "SAP bluefield approach",
+ "surtitre": "Selective transition to S/4HANA · SAP Activate",
+ "titre": "A bluefield migration to S/4HANA, from A to Z",
+ "intro": "The six SAP Activate phases on a timeline. Click a bar, a quality gate or the go-live to open the details.",
+ "exemple": {
+  "entreprise": "Alvéa",
+  "description": "Alvéa (fictional), food group, two ECC systems merged into a single S/4HANA"
+ },
+ "chronologieAria": "Bluefield transition timeline: SAP Activate phases, steps and quality gates from M-13 to M+2",
+ "enContinu": "governance, keep / redesign boundary, risks",
+ "causesTitre": "The 5 most common causes of failure",
+ "causes": [
+  "Fuzzy keep / redesign boundary",
+  "Transformation rules validated too late",
+  "Dependence on the tool and the expert",
+  "Reconciliation neglected",
+  "Cutover too long for the window"
+ ],
+ "note": "Typical approach and indicative durations. Bluefield is the approach whose methods vary most between integrators and transition tools. The example figures are fictional.",
+ "chronologie": {
+  "largeur": 1280,
+  "x1": 1250,
+  "mois": [
+   "M-13",
+   "M-12",
+   "M-11",
+   "M-10",
+   "M-9",
+   "M-8",
+   "M-7",
+   "M-6",
+   "M-5",
+   "M-4",
+   "M-3",
+   "M-2",
+   "M-1",
+   "Go-live",
+   "M+1",
+   "M+2"
+  ],
+  "golive": {
+   "mois": 13,
+   "etape": "s15"
+  }
+ },
+ "phases": [
+  {
+   "id": 0,
+   "name": "Discover",
+   "eq": ""
+  },
+  {
+   "id": 1,
+   "name": "Prepare",
+   "eq": ""
+  },
+  {
+   "id": 2,
+   "name": "Explore",
+   "eq": ""
+  },
+  {
+   "id": 3,
+   "name": "Realize",
+   "eq": ""
+  },
+  {
+   "id": 4,
+   "name": "Deploy",
+   "eq": ""
+  },
+  {
+   "id": 5,
+   "name": "Run",
+   "eq": ""
+  }
+ ],
+ "etenduePhases": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   2.8
+  ],
+  [
+   2.8,
+   5.5
+  ],
+  [
+   5.5,
+   11.5
+  ],
+  [
+   11.5,
+   13.1
+  ],
+  [
+   13.1,
+   15
+  ]
+ ],
+ "ordre": {
+  "0": [
+   "s1"
+  ],
+  "1": [
+   "s2",
+   "s3",
+   "s4",
+   "q1"
+  ],
+  "2": [
+   "s5",
+   "s6",
+   "s7",
+   "q2"
+  ],
+  "3": [
+   "s8",
+   "s9",
+   "s10",
+   "s11",
+   "s12",
+   "q3"
+  ],
+  "4": [
+   "s13",
+   "s14",
+   "s15"
+  ],
+  "5": [
+   "s16",
+   "q4",
+   "s17"
+  ]
+ },
+ "positions": {
+  "s1": [
+   0,
+   1,
+   "Business case"
+  ],
+  "s2": [
+   1,
+   1.6,
+   "Launch"
+  ],
+  "s3": [
+   1.1,
+   2.2,
+   "Landscape analysis"
+  ],
+  "s4": [
+   1.7,
+   2.8,
+   "Transition strategy"
+  ],
+  "s5": [
+   2.8,
+   5,
+   "Keep or redesign"
+  ],
+  "s6": [
+   3.2,
+   6.5,
+   "Transformation rules"
+  ],
+  "s7": [
+   3.5,
+   5.5,
+   "Code analysis"
+  ],
+  "s8": [
+   5.5,
+   6.3,
+   "Target base"
+  ],
+  "s9": [
+   6,
+   9.5,
+   "Redesign and remediation"
+  ],
+  "s10": [
+   6.5,
+   11.5,
+   "Mock transfer cycles"
+  ],
+  "s11": [
+   9,
+   11.5,
+   "Testing and acceptance"
+  ],
+  "s12": [
+   10,
+   12.6,
+   "Differentiated training"
+  ],
+  "s13": [
+   11,
+   12.6,
+   "Cutover prep"
+  ],
+  "s14": [
+   12.7,
+   12.7,
+   "Go / no-go"
+  ],
+  "s15": [
+   12.8,
+   13.1,
+   "Cutover"
+  ],
+  "s16": [
+   13.1,
+   14.6,
+   "Hypercare"
+  ],
+  "s17": [
+   14,
+   15,
+   "Old systems shutdown"
+  ]
+ },
+ "gates": {
+  "q1": [
+   2.8,
+   "Q1"
+  ],
+  "q2": [
+   5.5,
+   "Q2"
+  ],
+  "q3": [
+   11.5,
+   "Q3"
+  ],
+  "q4": [
+   14.6,
+   "Q4"
+  ]
+ },
+ "icones": {
+  "s1": "M4 20V10 M10 20V4 M16 20v-7 M3 20h18",
+  "s2": "M5 21V4 M5 4h12l-2 4 2 4H5",
+  "s3": "M11 4a7 7 0 1 0 0 14a7 7 0 1 0 0-14 M16 16l5 5",
+  "s4": "M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14",
+  "s5": "M6 3v12 M18 9v12 M6 15a3 3 0 1 0 0 6a3 3 0 1 0 0-6 M18 3a3 3 0 1 0 0 6a3 3 0 1 0 0-6 M6 9c0 4 12 2 12 6",
+  "s6": "M4 7h16 M4 12h10 M4 17h6 M17 13l3 3-3 3 M14 16h6",
+  "s7": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
+  "s8": "M12 3l9 5-9 5-9-5z M3 13l9 5 9-5",
+  "s9": "M4 20l4-1 11-11-3-3L5 16z M14 7l3 3",
+  "s10": "M4 12a8 8 0 0 1 14-5.3 M18 3v4h-4 M20 12a8 8 0 0 1-14 5.3 M6 21v-4h4",
+  "s11": "M9 3h6 M10 3v6l-5 10a1 1 0 0 0 1 1.5h12a1 1 0 0 0 1-1.5L14 9V3 M7.5 14h9",
+  "s12": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
+  "s13": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
+  "s14": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
+  "s15": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
+  "s16": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
+  "s17": "M4 7h16v3H4z M5 10v10h14V10 M10 14h4"
+ },
+ "etapes": {
+  "s1": {
+   "p": 0,
+   "n": "01",
+   "t": "Business case and choosing bluefield",
+   "s": "Keep what works, redesign the rest",
+   "obj": "Decide to move to S/4HANA while keeping part of the existing landscape and redesigning the rest, with a selective data transfer.",
+   "act": [
+    "Assessment of the current landscape by domain: what works well, what has to change",
+    "Comparison of greenfield, brownfield and bluefield",
+    "Identifying transformation needs: merging systems, harmonization, reducing history",
+    "Budget and high-level schedule"
+   ],
+   "pre": [
+    "Executive sponsor",
+    "Clear vision of the domains to transform",
+    "Access to the existing systems for analysis"
+   ],
+   "liv": [
+    "Validated business case",
+    "Bluefield decision and deployment model",
+    "High-level roadmap"
+   ],
+   "ex": "Alvéa, a food group, has two ECC systems inherited from a merger: France and Spain. Production and quality work well, finance and purchasing are inconsistent between the two countries. Choice: bluefield. Production and quality are kept, finance and purchasing are redesigned, and everything is merged into a single S/4HANA, with only five years of history.",
+   "ai": [
+    "Usage analysis by domain to decide what to keep",
+    "Comparative summary of the three approaches"
+   ],
+   "aig": "Medium",
+   "own": "Executive management and client IT",
+   "r": [
+    [
+     "Bluefield chosen to 'get the best of both' without knowing what to keep: fuzzy project",
+     "Decide from Discover, domain by domain, keep or redesign"
+    ],
+    [
+     "Cost of tooling and experts underestimated",
+     "Estimate the transition tool and expertise in the business case"
+    ]
+   ]
+  },
+  "s2": {
+   "p": 1,
+   "n": "02",
+   "t": "Launch and governance",
+   "s": "Team, tool and transition expert",
+   "obj": "Get the project up and running, with the tool and expertise for selective transition.",
+   "act": [
+    "Project charter, roles, committees",
+    "Choosing the selective transition tool (SAP or specialist vendor) and its expert",
+    "Project plan",
+    "Contracts with the integrator, the tool vendor and the hosting provider"
+   ],
+   "pre": [
+    "Validated business case",
+    "Allocated budget",
+    "Sponsor named"
+   ],
+   "liv": [
+    "Project charter",
+    "Project plan",
+    "Organization and governance",
+    "Transition tool chosen"
+   ],
+   "ex": "Alvéa selects an integrator and a vendor specialized in selective transition. Process owners are named for each domain, with a simple rule: finance and purchasing will be redesigned, the other domains will be carried over.",
+   "ai": [
+    "Charter and plan from templates"
+   ],
+   "aig": "Low",
+   "own": "Client program management and integrator",
+   "r": [
+    [
+     "Three providers with no conductor: integrator, vendor, hosting provider",
+     "One person accountable for the transition, RACI signed by all"
+    ],
+    [
+     "Dependence on a rare tool expert",
+     "Availability clause and a trained backup on the integrator side"
+    ]
+   ]
+  },
+  "s3": {
+   "p": 1,
+   "n": "03",
+   "t": "Analysis of the current landscape",
+   "s": "Readiness Check of the two systems",
+   "obj": "Measure what the transition demands of each source system.",
+   "act": [
+    "SAP Readiness Check of each ECC",
+    "Inventory of custom code and its usage",
+    "Comparing configuration between the two systems",
+    "Volumes and history by company"
+   ],
+   "pre": [
+    "Access to the production systems",
+    "Functional and technical experts"
+   ],
+   "liv": [
+    "Readiness Check reports",
+    "Configuration comparisons",
+    "Inventory of code and volumes"
+   ],
+   "ex": "The two ECC systems have different charts of accounts, 800 and 1,100 custom objects, and 15 years of history. Production is configured almost identically in both countries.",
+   "ai": [
+    "Automatic comparison of the two systems' configuration",
+    "Code usage analysis"
+   ],
+   "aig": "Medium to high",
+   "own": "Architects and functional experts",
+   "r": [
+    [
+     "Differences between systems discovered in Realize",
+     "Compare the configuration from Prepare"
+    ]
+   ]
+  },
+  "s4": {
+   "p": 1,
+   "n": "04",
+   "t": "Transition strategy",
+   "s": "Which base, which data, which method",
+   "obj": "Decide how to build the target system and which data to transfer into it.",
+   "act": [
+    "Choosing the target base: converted copy of an ECC without its data (shell), or a new system",
+    "Data scope: companies, years of history, objects",
+    "Domains kept and domains redesigned",
+    "Test and reconciliation strategy"
+   ],
+   "pre": [
+    "Analysis of the current landscape",
+    "Decision on the domains to redesign"
+   ],
+   "liv": [
+    "Validated transition strategy",
+    "Signed data scope"
+   ],
+   "ex": "The target base is a converted copy of the France ECC, emptied of its data. Data from both countries will be transferred into it, with five years of history. The Spain ECC will then be shut down.",
+   "ai": [
+    "Simulating volumes to transfer according to the history scope"
+   ],
+   "aig": "Low to medium",
+   "own": "Architects, transition lead",
+   "r": [
+    [
+     "Data scope that changes along the way: everything to redo",
+     "Scope signed by the business and legal in Prepare"
+    ],
+    [
+     "Legal retention obligations forgotten",
+     "Have legal and audit validate the history period"
+    ]
+   ]
+  },
+  "q1": {
+   "p": 1,
+   "gate": 1,
+   "t": "Quality gate 1 · End of Prepare",
+   "s": "",
+   "obj": "Authorize Explore: the transition strategy is settled.",
+   "act": [
+    "Review of the strategy and the data scope"
+   ],
+   "pre": [
+    "Validated strategy",
+    "Tool and expert in place",
+    "Team named"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Go-ahead granted. Condition: legal must confirm the five-year history period for both countries.",
+   "ai": [
+    "Consolidating the status of the criteria"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Explore started without a signed data scope",
+     "Scope as a blocking criterion"
+    ]
+   ]
+  },
+  "s5": {
+   "p": 2,
+   "n": "05",
+   "t": "Keep-or-redesign workshops",
+   "s": "Fit-to-standard on the redesigned domains",
+   "obj": "Confirm domain by domain what is kept, and redesign the chosen domains starting from the standard.",
+   "act": [
+    "Fit-to-standard on the redesigned domains",
+    "Analyzing the S/4HANA changes on the kept domains",
+    "Harmonization between the two countries",
+    "Backlog of gaps and adaptations"
+   ],
+   "pre": [
+    "Demonstration system",
+    "Process owners and key users from both countries"
+   ],
+   "liv": [
+    "Signed decisions per domain",
+    "Gap backlog"
+   ],
+   "ex": "Finance: a single chart of accounts for both countries, on the S/4HANA standard. Purchasing: a common standard process. Production and quality: carried over as they are, with only the changes imposed by S/4HANA.",
+   "ai": [
+    "Comparing the processes of the two countries",
+    "Minutes and backlog generated"
+   ],
+   "aig": "Medium to high",
+   "own": "Functional consultants and process owners",
+   "r": [
+    [
+     "Each country defends its habits: harmonization blocked",
+     "Arbitration by the sponsor, standard by default"
+    ],
+    [
+     "'Kept' domains drifting toward a redesign",
+     "Scope changes only through the change board"
+    ]
+   ]
+  },
+  "s6": {
+   "p": 2,
+   "n": "06",
+   "t": "Selection and transformation rules",
+   "s": "Which data, transformed how",
+   "obj": "Write the rules that select and transform the data during the transfer.",
+   "act": [
+    "Selection rules: companies, periods, objects",
+    "Transformation rules: old chart of accounts to the new one, merging duplicate suppliers, renumbering",
+    "Converting customers and suppliers into Business Partners",
+    "Cleansing in the source systems"
+   ],
+   "pre": [
+    "Signed data scope",
+    "Redesign decisions",
+    "Data owners named"
+   ],
+   "liv": [
+    "Validated selection and transformation rules",
+    "Cleansing plan"
+   ],
+   "ex": "Mapping between the two old charts of accounts and the new one: 2,400 accounts reduced to 900. 6,000 suppliers present in both countries merged into a single Business Partner.",
+   "ai": [
+    "Proposing account mappings",
+    "Detecting duplicates between the two systems"
+   ],
+   "aig": "High",
+   "own": "Data owners, transition team, finance experts",
+   "r": [
+    [
+     "Rules written by IT alone: wrong accounting after the transfer",
+     "Validation by finance experts and audit"
+    ],
+    [
+     "Rules validated too late: empty test cycles",
+     "Rules frozen before the first test cycle"
+    ]
+   ]
+  },
+  "s7": {
+   "p": 2,
+   "n": "07",
+   "t": "Code analysis and design",
+   "s": "Keep, fix or delete",
+   "obj": "Decide the fate of the custom code and design the adaptations.",
+   "act": [
+    "Measuring actual code usage",
+    "Automatic checks (ATC)",
+    "Decision: delete, fix, replace",
+    "Specifications of the developments in the redesigned domains"
+   ],
+   "pre": [
+    "Code inventory",
+    "Decisions per domain"
+   ],
+   "liv": [
+    "Estimated remediation plan",
+    "Specifications"
+   ],
+   "ex": "Of 1,900 objects, 900 are deleted because they are unused or replaced by the standard in the redesigned domains. 1,000 to fix.",
+   "ai": [
+    "Assisted code correction",
+    "Spotting code that can be replaced by the standard"
+   ],
+   "aig": "High",
+   "own": "Development team and architects",
+   "r": [
+    [
+     "Code in the redesigned domains fixed instead of deleted",
+     "Delete by default in the redesigned domains"
+    ]
+   ]
+  },
+  "q2": {
+   "p": 2,
+   "gate": 1,
+   "t": "Quality gate 2 · End of Explore",
+   "s": "",
+   "obj": "Authorize Realize: decisions, transformation rules and remediation plan validated.",
+   "act": [
+    "Review of decisions per domain",
+    "Review of the transformation rules"
+   ],
+   "pre": [
+    "Signed decisions",
+    "Validated rules",
+    "Estimated remediation plan"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Finance rules validated by audit. Go-ahead granted.",
+   "ai": [
+    "Consolidating progress"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Realize launched with unvalidated finance rules",
+     "Finance validation as a blocking criterion"
+    ]
+   ]
+  },
+  "s8": {
+   "p": 3,
+   "n": "08",
+   "t": "Building the target base",
+   "s": "Converted copy, without data",
+   "obj": "Build the target S/4HANA system, ready to receive the data.",
+   "act": [
+    "Copying the configuration and code of the source ECC, without the data",
+    "Technical conversion of this copy to S/4HANA",
+    "Technical checks"
+   ],
+   "pre": [
+    "Transition strategy",
+    "Target infrastructure ready"
+   ],
+   "liv": [
+    "Converted, empty S/4HANA base"
+   ],
+   "ex": "The base is built from the France ECC in three weeks. It holds the configuration and the code, but no transactional data.",
+   "ai": [
+    "Analyzing the conversion logs"
+   ],
+   "aig": "Low to medium",
+   "own": "Basis and transition team",
+   "r": [
+    [
+     "Base built on a source that is still changing",
+     "Freeze changes on the source, or organize a retrofit"
+    ]
+   ]
+  },
+  "s9": {
+   "p": 3,
+   "n": "09",
+   "t": "Redesign and remediation",
+   "s": "New configuration, fixed code",
+   "obj": "Configure the redesigned domains and fix the code of the kept domains.",
+   "act": [
+    "Sprint-based configuration of the redesigned domains",
+    "Code correction",
+    "Adaptations required by S/4HANA on the kept domains",
+    "Authorizations"
+   ],
+   "pre": [
+    "Target base",
+    "Backlog and specifications"
+   ],
+   "liv": [
+    "Redesigned domains configured",
+    "Code fixed and unit-tested"
+   ],
+   "ex": "Six sprints for finance and purchasing, with demonstrations to key users from both countries. 1,000 objects fixed in three months.",
+   "ai": [
+    "Assisted code correction",
+    "Documentation of the configuration"
+   ],
+   "aig": "Medium to high",
+   "own": "Consultants and developers",
+   "r": [
+    [
+     "Demonstrations for one country only: the other discovers everything at acceptance",
+     "Key users from both countries at every demonstration"
+    ]
+   ]
+  },
+  "s10": {
+   "p": 3,
+   "n": "10",
+   "t": "Mock transfer cycles",
+   "s": "Select, transform, load, reconcile",
+   "obj": "Make the selective transfer reliable and bring it within the cutover window.",
+   "act": [
+    "Three or four transfer cycles on production copies",
+    "Checking the transformation rules",
+    "Reconciling amounts and quantities between source and target",
+    "Measuring and reducing durations"
+   ],
+   "pre": [
+    "Frozen rules",
+    "Target base ready",
+    "Transition tool installed"
+   ],
+   "liv": [
+    "Reconciliation reports",
+    "Cutover duration under control"
+   ],
+   "ex": "Cycle 1: 140 reconciliation gaps, 80 hours. Cycle 2: 25 gaps, 60 hours. Cycle 3: zero gaps, 50 hours, for a 56-hour window.",
+   "ai": [
+    "Automatic source-to-target reconciliation",
+    "Gap analysis"
+   ],
+   "aig": "High",
+   "own": "Transition team and data owners",
+   "r": [
+    [
+     "Partial reconciliation: accounting gaps discovered at closing",
+     "Full, signed reconciliation at every cycle"
+    ],
+    [
+     "First cycle too late",
+     "Cycle 1 as soon as the base is ready"
+    ]
+   ]
+  },
+  "s11": {
+   "p": 3,
+   "n": "11",
+   "t": "Testing and acceptance",
+   "s": "Regression on one side, new processes on the other",
+   "obj": "Test the kept domains like a conversion, and the redesigned domains like a new implementation.",
+   "act": [
+    "Regression tests on the kept domains",
+    "Integration tests and full acceptance on the redesigned domains",
+    "Tests on the transferred data",
+    "Performance tests"
+   ],
+   "pre": [
+    "Data from a transfer cycle",
+    "Scenarios of both types",
+    "Key users from both countries"
+   ],
+   "liv": [
+    "Test reports",
+    "Signed acceptance report"
+   ],
+   "ex": "1,200 regression tests for production and quality, 300 end-to-end scenarios for finance and purchasing. Acceptance signed by both countries.",
+   "ai": [
+    "Test generation and automation",
+    "Defect triage"
+   ],
+   "aig": "High",
+   "own": "Test manager and key users",
+   "r": [
+    [
+     "A single test strategy for everything: gaps in the redesigned domains",
+     "Two distinct testing approaches"
+    ]
+   ]
+  },
+  "s12": {
+   "p": 3,
+   "n": "12",
+   "t": "Differentiated training",
+   "s": "Short or full depending on the domain",
+   "obj": "Train each person according to what changes for them.",
+   "act": [
+    "Short training on the changes for the kept domains",
+    "Full training on the new processes for the redesigned domains",
+    "Communication in both countries"
+   ],
+   "pre": [
+    "Stabilized solution",
+    "Users by role and by country"
+   ],
+   "liv": [
+    "Trained users",
+    "Materials in French and Spanish"
+   ],
+   "ex": "Two hours for the 500 production and quality users. Three days for the 120 finance and purchasing users, whose processes change.",
+   "ai": [
+    "Materials by role",
+    "Translation"
+   ],
+   "aig": "High",
+   "own": "Change management and key users",
+   "r": [
+    [
+     "Same training for everyone: too long for some, insufficient for others",
+     "Training by domain and by role"
+    ]
+   ]
+  },
+  "q3": {
+   "p": 3,
+   "gate": 1,
+   "t": "Quality gate 3 · End of Realize",
+   "s": "",
+   "obj": "Authorize the final preparation: reliable transfer, tested solution.",
+   "act": [
+    "Review of the last transfer cycle",
+    "Review of defects"
+   ],
+   "pre": [
+    "Last cycle with no gaps and within the window",
+    "Signed acceptance"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Last cycle with no gaps, in 50 hours. Go-ahead granted.",
+   "ai": [
+    "Consolidating indicators"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Go-ahead with 'minor' reconciliation gaps",
+     "Zero accounting gaps as the criterion"
+    ]
+   ]
+  },
+  "s13": {
+   "p": 4,
+   "n": "13",
+   "t": "Cutover preparation",
+   "s": "Runbook, rehearsal, fallback",
+   "obj": "Prepare the production transfer minute by minute.",
+   "act": [
+    "Runbook: shutdown of both ECCs, extraction, transformation, load, reconciliation",
+    "Dress rehearsal",
+    "Fallback plan",
+    "Communication to partners"
+   ],
+   "pre": [
+    "Stable transfer procedure",
+    "Validated window"
+   ],
+   "liv": [
+    "Validated runbook",
+    "Fallback plan"
+   ],
+   "ex": "Runbook of 520 tasks covering both countries. Rehearsal in 52 hours. Fallback: restart of both ECCs, which stay intact.",
+   "ai": [
+    "Runbook consistency check"
+   ],
+   "aig": "Low to medium",
+   "own": "Cutover manager and transition team",
+   "r": [
+    [
+     "Two countries, two calendars: poorly coordinated shutdown",
+     "A single window, validated by both management teams"
+    ]
+   ]
+  },
+  "s14": {
+   "p": 4,
+   "n": "14",
+   "t": "Go / no-go",
+   "s": "Decide on facts",
+   "gate": 1,
+   "obj": "Decide, on written criteria, whether to cut over.",
+   "act": [
+    "Review of criteria",
+    "Formal decision"
+   ],
+   "pre": [
+    "Criteria signed in advance"
+   ],
+   "liv": [
+    "Signed decision"
+   ],
+   "ex": "20 criteria green. Go.",
+   "ai": [
+    "Criteria dashboard"
+   ],
+   "aig": "Low: the decision stays human",
+   "own": "Client steering committee",
+   "r": [
+    [
+     "Go despite reconciliation gaps",
+     "Non-negotiable criterion"
+    ]
+   ]
+  },
+  "s15": {
+   "p": 4,
+   "n": "15",
+   "t": "Cutover",
+   "s": "Selective production transfer",
+   "obj": "Transfer the production data and open the new system.",
+   "act": [
+    "Shutting down both ECCs",
+    "Selective transfer",
+    "Full reconciliation",
+    "Opening"
+   ],
+   "pre": [
+    "Go validated",
+    "Teams in place"
+   ],
+   "liv": [
+    "S/4HANA in production",
+    "Signed reconciliations"
+   ],
+   "ex": "Both ECCs shut down Friday at 6 pm. Transfer in 49 hours. Balances and stock reconciled for both countries. Opening Monday at 6 am.",
+   "ai": [
+    "Automatic before / after reconciliation"
+   ],
+   "aig": "Medium",
+   "own": "Cutover manager and business",
+   "r": [
+    [
+     "Reconciliation rushed under time pressure",
+     "Reconciliation mandatory and signed before opening"
+    ]
+   ]
+  },
+  "s16": {
+   "p": 5,
+   "n": "16",
+   "t": "Hypercare",
+   "s": "Stabilize, get through the first closing",
+   "obj": "Stabilize the system and get through the first joint closing.",
+   "act": [
+    "Reinforced support in both countries",
+    "Incident tracking",
+    "First closing on the single chart of accounts"
+   ],
+   "pre": [
+    "Hypercare team",
+    "Exit criteria"
+   ],
+   "liv": [
+    "Incidents resolved",
+    "First closing completed"
+   ],
+   "ex": "Eight weeks. Incidents come mostly from finance, whose process changes. Production, carried over as is, is stable from the first week.",
+   "ai": [
+    "Ticket triage",
+    "Suggesting solutions"
+   ],
+   "aig": "High",
+   "own": "Project and support team",
+   "r": [
+    [
+     "Hypercare sized the same everywhere",
+     "Reinforcement on the redesigned domains"
+    ]
+   ]
+  },
+  "q4": {
+   "p": 5,
+   "gate": 1,
+   "t": "Quality gate 4 · Hypercare exit",
+   "s": "",
+   "obj": "Close the project.",
+   "act": [
+    "Review of stability",
+    "Review of the handover to run"
+   ],
+   "pre": [
+    "Indicators below thresholds",
+    "No blocking incident"
+   ],
+   "liv": [
+    "Formal closure"
+   ],
+   "ex": "Exit declared eight weeks after go-live.",
+   "ai": [
+    "Calculating indicators"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Closure with open incidents",
+     "Formal takeover by run"
+    ]
+   ]
+  },
+  "s17": {
+   "p": 5,
+   "n": "17",
+   "t": "Shutting down the old systems",
+   "s": "Archive, decommission, innovate",
+   "obj": "Shut down the old systems and launch what comes next.",
+   "act": [
+    "Archiving the history that was not transferred",
+    "Decommissioning the old ECCs",
+    "Innovation roadmap"
+   ],
+   "pre": [
+    "Stable system",
+    "Searchable archiving solution"
+   ],
+   "liv": [
+    "Old systems shut down",
+    "History archived and searchable"
+   ],
+   "ex": "History older than five years is archived and stays searchable for audit. Both ECCs are shut down four months after go-live: savings on licenses and hosting.",
+   "ai": [
+    "Search in the archived history"
+   ],
+   "aig": "Medium",
+   "own": "IT",
+   "r": [
+    [
+     "Old systems kept 'just in case': double cost",
+     "Shutdown date set in the plan"
+    ]
+   ]
+  },
+  "transverse": {
+   "p": 0,
+   "t": "Ongoing, from start to finish",
+   "s": "",
+   "obj": "Run a hybrid project: steer a conversion and a redesign at the same time.",
+   "act": [
+    "Steering committee and quality gates",
+    "Design authority: boundary between kept and redesigned domains",
+    "Change board",
+    "Risk register, including dependence on the transition tool"
+   ],
+   "pre": [
+    "Roles and bodies defined from Prepare"
+   ],
+   "liv": [
+    "Traced decisions",
+    "Up-to-date risk register"
+   ],
+   "ex": "Monthly committee with both countries. Main risk tracked: the quality of the finance transformation rules.",
+   "ai": [
+    "Tracking decisions and risks",
+    "Caution: client data only in a tool approved by the client"
+   ],
+   "aig": "Medium",
+   "own": "Program management",
+   "r": [
+    [
+     "Keep / redesign boundary that keeps moving",
+     "Any scope change goes through the change board"
+    ]
+   ]
+  }
+ }
+}

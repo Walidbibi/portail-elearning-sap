@@ -1,0 +1,1025 @@
+{
+ "titreOnglet": "SAP roll-out approach",
+ "surtitre": "Deploying a core model, site by site",
+ "titre": "An SAP roll-out approach, from A to Z",
+ "intro": "Click a bar, a gate or the go-live to open the details.",
+ "exemple": {
+  "entreprise": "Nordval, Porto site",
+  "description": "Nordval (fictional), Porto warehouse"
+ },
+ "chronologieAria": "Roll-out timeline: phases, steps and gates from M-8 to M+2",
+ "enContinu": "governance, risks, change management",
+ "causesTitre": "The 5 most common causes of failure",
+ "causes": [
+  "Unstable core model",
+  "Site barely involved",
+  "Dirty data",
+  "Compressed testing",
+  "Go-live under pressure"
+ ],
+ "note": "Generic approach with indicative durations, to be adapted to the program's method.",
+ "nomGate": "Gate",
+ "couleurs": [
+  0,
+  2,
+  3,
+  4,
+  5
+ ],
+ "chronologie": {
+  "largeur": 1240,
+  "x1": 1210,
+  "mois": [
+   "M-8",
+   "M-7",
+   "M-6",
+   "M-5",
+   "M-4",
+   "M-3",
+   "M-2",
+   "M-1",
+   "Go-live",
+   "M+1",
+   "M+2"
+  ],
+  "golive": {
+   "mois": 8,
+   "etape": "s13"
+  }
+ },
+ "phases": [
+  {
+   "id": 0,
+   "name": "Scoping",
+   "eq": "Prepare (program)"
+  },
+  {
+   "id": 1,
+   "name": "Diagnose",
+   "eq": "Prepare · Explore"
+  },
+  {
+   "id": 2,
+   "name": "Adjust",
+   "eq": "Realize"
+  },
+  {
+   "id": 3,
+   "name": "Deploy",
+   "eq": "Deploy"
+  },
+  {
+   "id": 4,
+   "name": "Run",
+   "eq": "Run"
+  }
+ ],
+ "etenduePhases": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   3,
+   7.3
+  ],
+  [
+   7.3,
+   8.15
+  ],
+  [
+   8.15,
+   10
+  ]
+ ],
+ "ordre": {
+  "0": [
+   "s1"
+  ],
+  "1": [
+   "s2",
+   "s3",
+   "s4",
+   "g1"
+  ],
+  "2": [
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9",
+   "g2"
+  ],
+  "3": [
+   "s10",
+   "s11",
+   "s12",
+   "s13"
+  ],
+  "4": [
+   "s14",
+   "s15",
+   "g3"
+  ]
+ },
+ "positions": {
+  "s1": [
+   0,
+   0.9,
+   "Wave plan"
+  ],
+  "s2": [
+   1,
+   1.6,
+   "SRA"
+  ],
+  "s3": [
+   1.5,
+   2.6,
+   "Gap analysis"
+  ],
+  "s4": [
+   2.5,
+   3,
+   "Baseline"
+  ],
+  "s5": [
+   3,
+   5.5,
+   "Build"
+  ],
+  "s6": [
+   2,
+   7.1,
+   "Data and mock loads"
+  ],
+  "s7": [
+   3,
+   7,
+   "Infra and equipment"
+  ],
+  "s8": [
+   5.5,
+   6.5,
+   "SIT"
+  ],
+  "s9": [
+   6.5,
+   7.3,
+   "Acceptance"
+  ],
+  "s10": [
+   7.3,
+   7.9,
+   "Training"
+  ],
+  "s11": [
+   6.8,
+   7.9,
+   "Cutover prep"
+  ],
+  "s12": [
+   7.9,
+   7.9,
+   "Go / no-go"
+  ],
+  "s13": [
+   7.95,
+   8.15,
+   "Cutover"
+  ],
+  "s14": [
+   8.15,
+   9.6,
+   "Hypercare"
+  ],
+  "s15": [
+   9,
+   9.8,
+   "Handover to run"
+  ]
+ },
+ "gates": {
+  "g1": [
+   3,
+   "G1"
+  ],
+  "g2": [
+   7.3,
+   "G2"
+  ],
+  "g3": [
+   9.8,
+   "G3"
+  ]
+ },
+ "icones": {
+  "s1": "M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14",
+  "s2": "M9 3h6v3H9z M7 4.5H5V21h14V4.5h-2 M8.5 13l2.5 2.5 4.5-5",
+  "s3": "M4 8h15l-3.5-3.5 M20 16H5l3.5 3.5",
+  "s4": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M12 11.5v1",
+  "s5": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
+  "s6": "M4 6c0-2.7 16-2.7 16 0s-16 2.7-16 0z M4 6v12c0 2.7 16 2.7 16 0V6 M4 12c0 2.7 16 2.7 16 0",
+  "s7": "M2 9a15 15 0 0 1 20 0 M5 12.5a10 10 0 0 1 14 0 M8.5 16a5 5 0 0 1 7 0 M12 19.5v.5",
+  "s8": "M9 15l6-6 M10.5 6l1.5-1.5a4 4 0 0 1 6 6L16.5 12 M13.5 18L12 19.5a4 4 0 0 1-6-6L7.5 12",
+  "s9": "M9 11a4 4 0 1 0 0-8a4 4 0 1 0 0 8 M2 21v-1a7 7 0 0 1 14 0v1 M16 10l2 2 4-4",
+  "s10": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
+  "s11": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
+  "s12": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
+  "s13": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
+  "s14": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
+  "s15": "M3 12h13 M12 7l5 5-5 5 M20.5 4v16"
+ },
+ "etapes": {
+  "s1": {
+   "p": 0,
+   "n": "01",
+   "t": "Wave plan",
+   "s": "Which sites, in what order, with which resources",
+   "obj": "Decide which sites move onto the core model, in what order and with which resources.",
+   "act": [
+    "Site inventory: size, complexity, criticality",
+    "Grouping sites into waves",
+    "Choosing a pilot site",
+    "Capacity of the deployment team",
+    "Blackout periods: closings, peak activity, holidays"
+   ],
+   "pre": [
+    "Core model stable and live on at least one site",
+    "Program sponsor and budget",
+    "Roll-out governance in place: committees, design authority, change board"
+   ],
+   "liv": [
+    "Wave plan",
+    "Roll-out organization",
+    "Budget per wave"
+   ],
+   "ai": [
+    "Analyze site data (volumes, materials, complexity) to rank sites and form waves",
+    "Simulate several wave plans and their load on the team"
+   ],
+   "aig": "Medium",
+   "ex": "Nordval has six sites to deploy. Lyon, the pilot site, has been running on the core model for six months. Porto is chosen for wave 2: mid-sized, with processes close to Lyon's. Mexico, more complex, goes in wave 3. Target go-live is March 15: December is ruled out because of the annual closing, summer because of holidays.",
+   "own": "Client program management, with the integrator",
+   "r": [
+    [
+     "Core model still unstable: every site pays for the fixes",
+     "Freeze one core model version per wave"
+    ],
+    [
+     "Overly ambitious waves, several large sites in parallel: team saturated",
+     "Limit parallel sites, start with a simple pilot"
+    ],
+    [
+     "Business calendar ignored: go-live in the middle of a closing",
+     "Build the blackout periods into the plan from day one"
+    ]
+   ]
+  },
+  "s2": {
+   "p": 1,
+   "n": "02",
+   "t": "Site Readiness Assessment",
+   "s": "Is the site ready, criterion by criterion?",
+   "obj": "Measure whether the site can receive the solution: processes, data, infrastructure, people, interfaces, cutover constraints.",
+   "act": [
+    "On-site visit and interviews",
+    "Rating each criterion green, amber or red",
+    "Action plan with an owner and a date for each action"
+   ],
+   "pre": [
+    "Standard assessment grid for the program",
+    "Site counterparts named: site director, local process owners",
+    "Access to the site's data and infrastructure"
+   ],
+   "liv": [
+    "Signed readiness report",
+    "Action plan"
+   ],
+   "ai": [
+    "Pre-fill the grid from site extracts: data quality, volumes",
+    "Process mining (e.g. SAP Signavio): see how the site really works, not what it says"
+   ],
+   "aig": "High",
+   "ex": "Three days on site. Processes: green. Data: amber, 18% of materials have no packaging unit. Infrastructure: red, no WiFi in the outdoor storage area. People: amber, a single key user for three processes. Actions: WiFi audit before end of October (Porto IT), two more key users named by the site director.",
+   "own": "Roll-out team and site management",
+   "r": [
+    [
+     "Self-declared assessment, 'everything is fine': surprises at build",
+     "Verify with evidence: data extracts, real WiFi test"
+    ],
+    [
+     "Actions with no owner or date: they stay red until go-live",
+     "Track every action in committee"
+    ],
+    [
+     "Site barely involved, then unavailable",
+     "Have the site director sign the report"
+    ]
+   ]
+  },
+  "s3": {
+   "p": 1,
+   "n": "03",
+   "t": "Gap analysis",
+   "s": "Core model versus site: adopt, adapt, refuse",
+   "obj": "Compare how the site works against the core model and decide on each gap.",
+   "act": [
+    "Fit-to-standard workshops with local key users, demonstration of the core model",
+    "List of gaps: legal, business, organizational",
+    "Decision per gap: standard, configuration, development or refusal",
+    "Design authority or change board review for gaps that touch the core model"
+   ],
+   "pre": [
+    "Core model documented: processes, configuration, developments",
+    "Site key users available and empowered to decide",
+    "Rules for handling gaps: who decides what"
+   ],
+   "liv": [
+    "Validated gap register",
+    "Delta specifications"
+   ],
+   "ai": [
+    "Compare the site's actual processes to the core model and pre-classify gaps",
+    "Check whether a similar gap has already been handled at another site"
+   ],
+   "aig": "Medium to high",
+   "ex": "Four workshops, eleven gaps. Portuguese customs labels are mandatory: gap accepted, a form will be developed. The site wants to keep its color-based bin marking: refused, standard EWM does the same thing differently. A putaway rule Porto proposes for all sites goes to the design authority. Result: six accepted, four refused, one under arbitration.",
+   "own": "Process owners and design authority",
+   "r": [
+    [
+     "The site recreates its old way of working through gaps: custom code explodes",
+     "Require a legal or quantified justification for every gap"
+    ],
+    [
+     "Gaps discovered only at acceptance: delays",
+     "Work processes end to end, not just screens"
+    ],
+    [
+     "Local gap pushed into the core model without arbitration: regression on other sites",
+     "Mandatory design authority review"
+    ]
+   ]
+  },
+  "s4": {
+   "p": 1,
+   "n": "04",
+   "t": "Site baseline",
+   "s": "Scope, schedule, budget and team locked",
+   "obj": "Lock the site's scope, schedule, budget and team.",
+   "act": [
+    "Estimating deltas, data, testing and training",
+    "Detailed schedule with milestones and gates",
+    "Staffing",
+    "Orders or contracts with suppliers"
+   ],
+   "pre": [
+    "Validated gap register",
+    "Team capacity known",
+    "Blackout periods confirmed"
+   ],
+   "liv": [
+    "Site project plan",
+    "Budget",
+    "Supplier commitments"
+   ],
+   "ai": [
+    "Estimating assisted by the history of previous sites",
+    "Spot tasks in the schedule that were underestimated compared to past sites"
+   ],
+   "aig": "Medium",
+   "ex": "Estimate: 180 days for the six gaps, 60 for data, 90 for testing, 40 for training. Seven-month schedule up to March 15. The supplier signs its commitment on the six validated gaps only; the gap at the design authority is provisioned separately.",
+   "own": "Site project manager and suppliers",
+   "r": [
+    [
+     "Estimating on gaps that are still vague: drift",
+     "Estimate only mature gaps, provision for the rest"
+    ],
+    [
+     "Schedule that squeezes testing to hit the date: bugs in production",
+     "Protect testing duration in the schedule"
+    ],
+    [
+     "Supplier commitment signed before gaps are validated: the supplier absorbs the cost",
+     "Make the commitment conditional on the validated baseline"
+    ]
+   ]
+  },
+  "g1": {
+   "p": 1,
+   "gate": 1,
+   "t": "Gate 1 · End of Diagnose",
+   "s": "",
+   "obj": "Authorize the move into Adjust: the site is understood, the scope locked, the plan funded.",
+   "act": [
+    "Review of the readiness report and action plan",
+    "Review of the gap register",
+    "Baseline approval in committee"
+   ],
+   "pre": [
+    "No blocking red in the SRA, or a credible plan to clear it",
+    "Gaps validated and signed",
+    "Baseline approved"
+   ],
+   "liv": [
+    "Traced go-ahead decision, with its conditions"
+   ],
+   "ai": [
+    "Automatically consolidate the status of the gate criteria"
+   ],
+   "aig": "Low",
+   "ex": "The committee authorizes the move into Adjust with one condition: the WiFi, still red, has a funded action plan and will be reviewed at gate 2.",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Gate passed 'with conditions' but the conditions are never followed up",
+     "Each condition has an owner, a date and committee follow-up"
+    ]
+   ]
+  },
+  "s5": {
+   "p": 2,
+   "n": "05",
+   "t": "Delta build",
+   "s": "Site configuration, developments, interfaces",
+   "obj": "Adapt the solution to the site.",
+   "act": [
+    "Configuring the site organization: company, plant, warehouse, bins",
+    "Developing the accepted gaps",
+    "Local interfaces",
+    "Unit tests"
+   ],
+   "pre": [
+    "Validated specifications",
+    "Development environments and transport route available",
+    "Core model version frozen"
+   ],
+   "liv": [
+    "Configuration and developments delivered to quality",
+    "Documented unit tests"
+   ],
+   "ai": [
+    "Draft specifications from the gap register",
+    "ABAP code generation and review (e.g. Joule for developers)"
+   ],
+   "aig": "Medium",
+   "ex": "The PT01 warehouse is configured: 2,400 bins. The customs form and the interface with the local carrier are developed. The carrier delivers its specifications three weeks late: the risk is raised in committee on day one.",
+   "own": "Functional and development teams",
+   "r": [
+    [
+     "Specifications that change during the build: delay and overrun",
+     "Every change goes through the change board"
+    ],
+    [
+     "Double maintenance with core model changes: conflicts",
+     "Organized transport calendar and retrofit"
+    ],
+    [
+     "Local interface depends on a third party: blocked",
+     "Identify the third party and its schedule from Diagnose"
+    ]
+   ]
+  },
+  "s6": {
+   "p": 2,
+   "n": "06",
+   "t": "Data and mock loads",
+   "s": "Clean, transform, load, check",
+   "obj": "Migrate correct and complete data within the time available.",
+   "act": [
+    "Cleansing data in the legacy system",
+    "Transformation rules",
+    "Two to three mock loads with business checks",
+    "Measuring reject rate and load time"
+   ],
+   "pre": [
+    "Site data owners named",
+    "Migration tool in place",
+    "Access to source data",
+    "Validated mapping rules"
+   ],
+   "liv": [
+    "Report for each mock load",
+    "Business-validated data",
+    "Load duration measured and carried into the runbook"
+   ],
+   "ai": [
+    "Detect duplicates, anomalies and inconsistent fields in the source data",
+    "Propose mapping rules",
+    "Automatically check each mock load"
+   ],
+   "aig": "High",
+   "ex": "Mock load 1: 22% rejects, mostly missing packaging units and duplicate bins. The data owner launches the cleansing. Mock load 2: 4% rejects. Mock load 3: 0.5%, load time 5h40, for an 8-hour cutover window.",
+   "own": "Client data owners and migration team",
+   "r": [
+    [
+     "Cleansing started too late: dirty data at go-live",
+     "Start from Diagnose, with a quality threshold per mock load"
+    ],
+    [
+     "Token business validation: errors found in production",
+     "The data owner signs each mock load"
+    ],
+    [
+     "Load duration unknown: cutover exceeds the window",
+     "Time every mock load"
+    ]
+   ]
+  },
+  "s7": {
+   "p": 2,
+   "n": "07",
+   "t": "Infrastructure and equipment",
+   "s": "Network, WiFi, terminals, printers, access",
+   "obj": "Make the site physically ready.",
+   "act": [
+    "Network and WiFi coverage, including storage areas",
+    "Workstations, mobile terminals, scanners, label printers",
+    "User access and authorizations",
+    "Connections to local systems"
+   ],
+   "pre": [
+    "Needs identified in the SRA",
+    "Budget and purchase lead times known",
+    "Site infrastructure team available"
+   ],
+   "liv": [
+    "Equipment installed and tested",
+    "Authorizations created and tested"
+   ],
+   "ai": [
+    "Analyze WiFi coverage surveys and spot risk areas",
+    "Generate authorization lists by role"
+   ],
+   "aig": "Low to medium",
+   "ex": "The audit finds two dead zones in the outdoor storage: six WiFi access points added. 45 terminals and 8 label printers ordered in October, delivered in January.",
+   "own": "Site IT",
+   "r": [
+    [
+     "Equipment purchase lead time underestimated: blocking at go-live",
+     "Order as soon as the baseline is set"
+    ],
+    [
+     "WiFi coverage never tested in real conditions: warehouse operators blocked",
+     "Test coverage zone by zone"
+    ],
+    [
+     "Authorizations created the day before: users without access",
+     "Create them before acceptance and test them"
+    ]
+   ]
+  },
+  "s8": {
+   "p": 2,
+   "n": "08",
+   "t": "Integration testing (SIT)",
+   "s": "End-to-end flows, interfaces included",
+   "obj": "Verify that processes work end to end, interfaces included.",
+   "act": [
+    "End-to-end scenarios: receiving, storage, picking, shipping",
+    "Interface testing",
+    "Defect fixing, tracked by severity"
+   ],
+   "pre": [
+    "Complete, up-to-date quality environment",
+    "Realistic test data from a mock load",
+    "Written scenarios",
+    "Third-party systems available"
+   ],
+   "liv": [
+    "Test report",
+    "Blocking and major defects fixed"
+   ],
+   "ai": [
+    "Generate test scenarios and datasets from the processes",
+    "Analyze, classify and deduplicate defects"
+   ],
+   "aig": "High",
+   "ex": "64 end-to-end scenarios, 37 defects, 3 of them blocking. Example: the carrier interface rejects deliveries of more than 99 parcels. Fixed in two weeks. Exit: zero blocking, two major with a workaround.",
+   "own": "Test team and integrator",
+   "r": [
+    [
+     "Incomplete or shared environment: testing blocked",
+     "Reserve the environment and the third-party systems"
+    ],
+    [
+     "Unrealistic test data: bugs in production",
+     "Test on data from a mock load"
+    ],
+    [
+     "Vague exit criteria: testing drags on",
+     "Set the exit criteria before starting"
+    ]
+   ]
+  },
+  "s9": {
+   "p": 2,
+   "n": "09",
+   "t": "Acceptance and regression",
+   "s": "Validation by the site, without breaking the others",
+   "obj": "Have the site's users validate the solution without degrading the sites already in production.",
+   "act": [
+    "Acceptance by key users on their real cases",
+    "Regression tests on production sites",
+    "Acceptance sign-off"
+   ],
+   "pre": [
+    "Integration testing finished according to its criteria",
+    "Key users available and trained on the test tool",
+    "Up-to-date regression set, automated where possible"
+   ],
+   "liv": [
+    "Signed acceptance report",
+    "Regression report"
+   ],
+   "ai": [
+    "Automate regression (e.g. Tricentis)",
+    "Summarize acceptance feedback and spot out-of-scope requests"
+   ],
+   "aig": "High",
+   "ex": "Six key users test for three weeks. Fourteen comments, including five new requests sent to the change board, two accepted for a later release. Regression on Lyon: 320 automated tests, all green. The site director signs the acceptance.",
+   "own": "Key users and process owners",
+   "r": [
+    [
+     "Key users tied up in their day job: rushed acceptance",
+     "Reserve their time in the schedule, with the site director's agreement"
+    ],
+    [
+     "Acceptance turns into a list of new requests: drift",
+     "Requests go to the change board, not into acceptance"
+    ],
+    [
+     "Regression neglected: outage on a site already in production",
+     "Make the set mandatory and automate it"
+    ]
+   ]
+  },
+  "g2": {
+   "p": 2,
+   "gate": 1,
+   "t": "Gate 2 · End of Adjust",
+   "s": "",
+   "obj": "Authorize the move into Deploy: the solution is tested, the data and the site are ready.",
+   "act": [
+    "Review of remaining defects",
+    "Review of mock loads",
+    "Review of infrastructure"
+   ],
+   "pre": [
+    "Zero blocking defects, major defects with a workaround",
+    "Acceptance signed",
+    "Mock loads within quality and duration thresholds",
+    "Infrastructure ready"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ai": [
+    "Consolidate the status of defects, mock loads and infrastructure"
+   ],
+   "aig": "Low",
+   "ex": "Zero blocking defects, mock loads within thresholds, WiFi turned green. Move into Deploy authorized.",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Defects downgraded to 'minor' to pass the gate",
+     "Severity arbitrated by the business, not by the team delivering"
+    ]
+   ]
+  },
+  "s10": {
+   "p": 3,
+   "n": "10",
+   "t": "Training and change management",
+   "s": "Users able to work from day 1",
+   "obj": "Make every user able to work from the first day.",
+   "act": [
+    "Materials and work instructions",
+    "Train-the-trainer: the key users",
+    "End-user training on a dedicated environment",
+    "Communication on changes to jobs"
+   ],
+   "pre": [
+    "Stabilized solution, after acceptance",
+    "Training environment with data",
+    "List of users by role"
+   ],
+   "liv": [
+    "Trained users, with an attendance rate",
+    "Materials",
+    "Job impact analysis"
+   ],
+   "ai": [
+    "Generate work instructions, materials and quizzes by role",
+    "Translate materials for foreign sites"
+   ],
+   "aig": "High",
+   "ex": "Four key users trained as trainers. The 40 warehouse operators are trained in three sessions, three weeks before go-live, on real cases: receiving a truck, picking an urgent order. Attendance: 95%.",
+   "own": "Change management and key users",
+   "r": [
+    [
+     "Training too early: forgotten by go-live",
+     "Train two to four weeks before"
+    ],
+    [
+     "Training on the tool but not on the new process: errors",
+     "Train by business scenario"
+    ],
+    [
+     "Resistance not addressed, managers absent: workarounds",
+     "Involve the site's managers"
+    ]
+   ]
+  },
+  "s11": {
+   "p": 3,
+   "n": "11",
+   "t": "Cutover preparation",
+   "s": "Runbook, rehearsal, fallback",
+   "obj": "Prepare the cutover minute by minute, then rehearse it.",
+   "act": [
+    "Runbook: task, owner, duration, dependency",
+    "Business stop and physical inventory",
+    "Dress rehearsal in real conditions",
+    "Point of no return and fallback plan"
+   ],
+   "pre": [
+    "Load durations measured",
+    "Cutover window validated with the business",
+    "Cutover team named"
+   ],
+   "liv": [
+    "Validated runbook",
+    "Rehearsal report",
+    "Tested fallback plan"
+   ],
+   "ai": [
+    "Check runbook consistency: dependencies, durations, forgotten tasks",
+    "Compare with the runbooks of previous sites"
+   ],
+   "aig": "Low to medium",
+   "ex": "Runbook of 186 tasks. Cutover from Friday 6 pm to Sunday 6 pm. Rehearsal three weeks before: 9h10 instead of the planned 8 hours, so two tasks are parallelized. Point of no return: Saturday 2 pm. Full physical inventory on Friday.",
+   "own": "Cutover manager",
+   "r": [
+    [
+     "No rehearsal: the real cutover overruns the window",
+     "At least one complete, timed rehearsal"
+    ],
+    [
+     "Fallback never tested: unusable on D-day",
+     "Test it during the rehearsal"
+    ],
+    [
+     "Physical stock differs from system stock: wrong data from day 1",
+     "Take inventory before the cutover"
+    ]
+   ]
+  },
+  "s12": {
+   "p": 3,
+   "n": "12",
+   "t": "Go / no-go",
+   "s": "Decide on facts",
+   "gate": 1,
+   "obj": "Decide, on criteria written in advance, whether to cut over.",
+   "act": [
+    "Review of criteria: testing, data, training, infrastructure, support, runbook",
+    "Final SRA",
+    "Formal, traced decision in committee"
+   ],
+   "pre": [
+    "Go / no-go criteria defined and signed in advance",
+    "Up-to-date status of each criterion"
+   ],
+   "liv": [
+    "Signed decision, with any reservations"
+   ],
+   "ai": [
+    "Prepare the criteria dashboard"
+   ],
+   "aig": "Low: the decision stays human",
+   "ex": "Wednesday committee: 14 criteria green, 1 amber, two key users on leave the first week. Decision: go with a reservation, a consultant from Lyon comes as reinforcement.",
+   "own": "Client steering committee",
+   "r": [
+    [
+     "Pressure of the date: go despite red criteria",
+     "Criteria set in advance and not renegotiable in the meeting"
+    ],
+    [
+     "Reservations not followed after the go: incidents",
+     "Each reservation has an owner and a date"
+    ],
+    [
+     "No-go seen as a failure: nobody dares propose it",
+     "Present it as a normal steering option"
+    ]
+   ]
+  },
+  "s13": {
+   "p": 3,
+   "n": "13",
+   "t": "Cutover and go-live",
+   "s": "Execute the runbook, open the site",
+   "obj": "Execute the cutover and start operations on the new solution.",
+   "act": [
+    "Executing the runbook",
+    "Loading the data",
+    "Reconciliation: stock, open items",
+    "Opening to users, first flows under watch"
+   ],
+   "pre": [
+    "Go validated",
+    "Cutover and support teams present",
+    "Vendor support notified"
+   ],
+   "liv": [
+    "System in production",
+    "Reconciliation signed by the business"
+   ],
+   "ai": [
+    "Monitor failing flows and reconciliation gaps in real time"
+   ],
+   "aig": "Medium",
+   "ex": "The old software stops Friday at 6 pm. Inventory, load, reconciliation: gap of 12 items out of 12,000, corrected before opening. Opening Sunday at 4 pm, first truck received Monday at 6 am.",
+   "own": "Cutover manager and business",
+   "r": [
+    [
+     "Forgotten task or poorly managed dependency: chain delay",
+     "Hourly checkpoints on the runbook"
+    ],
+    [
+     "Reconciliation skipped to save time: invisible stock gaps",
+     "Reconciliation mandatory before opening"
+    ],
+    [
+     "Fallback decided too late: neither the old nor the new system",
+     "Fallback criteria set before the point of no return"
+    ]
+   ]
+  },
+  "s14": {
+   "p": 4,
+   "n": "14",
+   "t": "Hypercare",
+   "s": "Stabilize the first weeks",
+   "obj": "Stabilize the site during the first weeks in production.",
+   "act": [
+    "Reinforced on-site support",
+    "Daily incident triage",
+    "Tracking indicators: incidents, failing flows, lead times",
+    "Quick fixes"
+   ],
+   "pre": [
+    "Hypercare team sized",
+    "Incident process and escalation path",
+    "Indicators and exit criteria defined"
+   ],
+   "liv": [
+    "Incidents resolved",
+    "Stabilization report",
+    "Exit criteria met"
+   ],
+   "ai": [
+    "Triage and classify tickets",
+    "Suggest solutions from already-resolved incidents",
+    "Spot trends before they become crises"
+   ],
+   "aig": "High",
+   "ex": "Four weeks of hypercare. Week 1: 85 tickets, 60% of them usage questions. Week 4: 9 tickets. Exit criterion: fewer than 10 tickets a week and no blocking incident for two weeks.",
+   "own": "Project and support team",
+   "r": [
+    [
+     "Experts leave too early for the next site: incidents unanswered",
+     "Lock the hypercare team until exit"
+    ],
+    [
+     "Endless hypercare: cost and confusion with run",
+     "Quantified exit criteria"
+    ],
+    [
+     "Unreported workarounds: hidden problems",
+     "Presence on the floor, listening to users"
+    ]
+   ]
+  },
+  "s15": {
+   "p": 4,
+   "n": "15",
+   "t": "Handover to run and lessons learned",
+   "s": "Hand over, improve the next wave",
+   "obj": "Hand maintenance over to run and improve the following waves.",
+   "act": [
+    "Knowledge transfer and documentation to run",
+    "Shadowing then reverse shadowing",
+    "Lessons learned",
+    "Updating the core model and the method"
+   ],
+   "pre": [
+    "Hypercare exit criteria met",
+    "Run team sized",
+    "Up-to-date documentation"
+   ],
+   "liv": [
+    "Handover report",
+    "Lessons learned",
+    "Core model improvement backlog"
+   ],
+   "ai": [
+    "Produce documentation for run",
+    "Synthesize lessons learned from all sites"
+   ],
+   "aig": "Medium",
+   "ex": "Two weeks of shadowing with the run team. Lessons learned: the first mock load came too late, and the WiFi should have been audited from scoping. Both points are added to the SRA grid for Mexico.",
+   "own": "Run and program management",
+   "r": [
+    [
+     "Handover without documentation: run still depends on the project team",
+     "Shadowing, then reverse shadowing, before releasing the team"
+    ],
+    [
+     "Lessons learned never done: same mistakes in the next wave",
+     "Mandatory workshop before the next site, with tracked actions"
+    ]
+   ]
+  },
+  "g3": {
+   "p": 4,
+   "gate": 1,
+   "t": "Gate 3 · Hypercare exit",
+   "s": "",
+   "obj": "Close the site project and confirm that run can take over alone.",
+   "act": [
+    "Review of stability indicators",
+    "Review of the handover to run"
+   ],
+   "pre": [
+    "Indicators below thresholds for an agreed period",
+    "No blocking incident still open",
+    "Run trained and documented"
+   ],
+   "liv": [
+    "Formal closure of the site"
+   ],
+   "ai": [
+    "Calculate stability indicators over the period"
+   ],
+   "aig": "Low",
+   "ex": "Hypercare exit declared six weeks after go-live. Three minor tickets are formally taken over by run.",
+   "own": "Steering committee and run manager",
+   "r": [
+    [
+     "Closure declared with incidents still open: run inherits a debt",
+     "List of open incidents formally taken over by run"
+    ]
+   ]
+  },
+  "transverse": {
+   "p": 0,
+   "t": "Ongoing, from start to finish",
+   "s": "",
+   "obj": "Run the roll-out end to end: decide fast, arbitrate cleanly, keep the site engaged.",
+   "act": [
+    "Steering committee: arbitration, gates, go / no-go",
+    "Design authority: compliance with the core model",
+    "Change board: every change to scope, schedule or budget",
+    "Risk register with alert thresholds",
+    "Change management and communication towards the site"
+   ],
+   "pre": [
+    "Roles and bodies defined from scoping",
+    "Site sponsor involved"
+   ],
+   "liv": [
+    "Traced decisions",
+    "Up-to-date risk register",
+    "Communication plan"
+   ],
+   "ai": [
+    "Committee minutes and decision tracking",
+    "Early risk detection from indicators",
+    "Caution: client data only in a tool approved by the client"
+   ],
+   "aig": "Medium",
+   "ex": "Monthly steering committee, then weekly for the last six weeks. The register tracks 14 risks; only the carrier delay and the WiFi turned red, and both were handled before gate 2.",
+   "own": "Program management",
+   "r": [
+    [
+     "Committees that observe without deciding: problems pile up",
+     "Every committee ends with traced decisions"
+    ],
+    [
+     "Indicators green, reality red: the watermelon effect",
+     "Quantified alert thresholds and checks on the ground"
+    ],
+    [
+     "Site sponsor absent: arbitration blocked",
+     "Have them sit on the site's gates"
+    ]
+   ]
+  }
+ }
+}

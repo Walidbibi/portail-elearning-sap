@@ -45,7 +45,7 @@ function lireJSON(chemin) {
 }
 
 // 1. Tous les JSON du site sont bien formés
-const jsons = ['documents.json', 'glossaire.json',
+const jsons = ['documents.json', 'glossaire.json', ...(existsSync(join(RACINE, 'glossaire.en.json')) ? ['glossaire.en.json'] : []),
   ...readdirSync(join(RACINE, 'shared', 'libelles')).filter(f => f.endsWith('.json')).map(f => `shared/libelles/${f}`),
   ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.json')).map(f => `frises/${f}`)];
 const J = {};
@@ -121,6 +121,37 @@ for (const page of readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.
     for (const champ of ['t', 'obj', 'act', 'pre', 'liv', 'own', 'r']) if (d[champ] === undefined) erreur(fj, l, `l'étape « ${k} » n'a pas de champ « ${champ} »`);
   }
   if (!E.transverse) erreur(fj, 1, `étape « transverse » absente : le bandeau « En continu » n'ouvrirait rien`);
+}
+
+// 4 bis. Versions anglaises : chaque fichier .en.json reste aligné sur son fichier français
+for (const fj of jsons.filter(f => /^frises\/.+\.en\.json$/.test(f))) {
+  const ffr = fj.replace('.en.json', '.json');
+  if (!J[fj] || !J[ffr]) { if (!existsSync(join(RACINE, ffr))) erreur(fj, 1, `pas de fichier français correspondant (${ffr})`); continue; }
+  const E = J[fj].data, F = J[ffr].data, t = J[fj].texte;
+  const memes = (a, b) => JSON.stringify(Object.keys(a || {})) === JSON.stringify(Object.keys(b || {}));
+  if (!memes(E.etapes, F.etapes)) erreur(fj, ligneDe(t, '"etapes"'), `les étapes ne sont pas les mêmes que dans ${ffr}`);
+  for (const champ of ['ordre', 'positions', 'gates', 'icones', 'etenduePhases'])
+    if (JSON.stringify(champ === 'positions' ? Object.values(E[champ] || {}).map(v => v.slice(0, 2)) : champ === 'gates' ? Object.values(E[champ] || {}).map(v => v[0]) : E[champ])
+      !== JSON.stringify(champ === 'positions' ? Object.values(F[champ] || {}).map(v => v.slice(0, 2)) : champ === 'gates' ? Object.values(F[champ] || {}).map(v => v[0]) : F[champ]))
+      erreur(fj, ligneDe(t, `"${champ}"`), `« ${champ} » diffère de ${ffr} : la chronologie anglaise ne correspondrait plus`);
+  if ((E.phases || []).length !== (F.phases || []).length) erreur(fj, ligneDe(t, '"phases"'), `nombre de phases différent de ${ffr}`);
+  for (const [k, d] of Object.entries(E.etapes || {})) {
+    const f = (F.etapes || {})[k]; if (!f) continue;
+    for (const c of ['act', 'pre', 'liv', 'ai', 'r']) if ((d[c] || []).length !== (f[c] || []).length)
+      erreur(fj, ligneDe(t, `"${k}": {`), `l'étape « ${k} » n'a pas le même nombre d'éléments dans « ${c} » qu'en français (${(d[c] || []).length} contre ${(f[c] || []).length})`);
+  }
+}
+const GE = J['glossaire.en.json'];
+if (GE && G) {
+  const f = 'glossaire.en.json', te = GE.data.termes || [], tf = G.data.termes || [];
+  if (te.length !== tf.length) erreur(f, 1, `${te.length} termes en anglais pour ${tf.length} en français`);
+  te.forEach((t, i) => {
+    const l = ligneDe(GE.texte, `"terme":${JSON.stringify(t.terme)}`);
+    if (tf[i] && t.termeFr !== tf[i].terme) erreur(f, l, `le terme « ${t.terme} » est au rang ${i + 1} mais renvoie à « ${t.termeFr} », alors que le français a « ${tf[i].terme} » à ce rang`);
+    if (!t.definition) erreur(f, l, `le terme « ${t.terme} » n'a pas de définition`);
+    if (t.categorie !== (tf[i] || {}).categorie) erreur(f, l, `le terme « ${t.terme} » n'a pas la même catégorie qu'en français`);
+    for (const k of t.documents || []) if (!docs[k]) erreur(f, l, `le terme « ${t.terme} » cite le document « ${k} », absent de documents.json`);
+  });
 }
 
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json

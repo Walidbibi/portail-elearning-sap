@@ -279,7 +279,7 @@ Règles communes au lot :
 - Aucune page ne présente de défilement horizontal en anglais, sur téléphone comme sur bureau.
 
 ### US-009 · Sélecteur de langue FR / EN et choix mémorisé
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui
@@ -300,9 +300,12 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · passée en « Prête pour maquette » sur accord de Walid (« Oui, démarre ») ; maquette commune du lot 2 confiée à ux-ui
+- 2026-11-24 · ux-ui · maquette prête : [maquettes/US-009-version-anglaise.html](maquettes/US-009-version-anglaise.html), écran 1 (sélecteur sur l'accueil, une frise et le lecteur, bureau et téléphone ; variantes A en haut de page / B flottant en bas à gauche). Suite : validation de Walid.
+- 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 
 ### US-010 · Interface et accueil en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : oui (la même que US-009 : l'accueil et une frise en anglais)
@@ -321,9 +324,12 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · passée en « Prête pour maquette » sur accord de Walid (« Oui, démarre ») ; maquette commune du lot 2 confiée à ux-ui
+- 2026-11-24 · ux-ui · maquette prête : [maquettes/US-009-version-anglaise.html](maquettes/US-009-version-anglaise.html), écrans 2 et 3 (accueil et glossaire en anglais, type « Timeline », nom français affiché à côté du terme). Textes anglais indicatifs, à relire par Walid. Suite : validation de Walid.
+- 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 
 ### US-011 · Glossaire en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul, dans le glossaire existant)
@@ -342,9 +348,11 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · traduction fournie par Walid : artefact « SAP Program Director Glossary (EN) » (https://claude.ai/artifact/MSH7TmrtZqBFQcoGscnMUs) : 136 termes dans le même ordre que glossaire.json, mêmes catégories, définition et « pour le DP » complets ; 37 termes renommés avec le nom français affiché à côté ; pas de clés de documents (reprendre celles du français). Contrôlé : aucun texte resté en français, aucun nom client.
+- 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 
 ### US-012 · Règle pour les documents sans version anglaise
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui
@@ -362,16 +370,19 @@ Règle proposée (à confirmer par Walid, Q7) :
 Critères d'acceptation
 - [ ] Le manifeste porte pour chaque document sa langue et, si elle existe, la clé de sa version dans l'autre langue.
 - [ ] En anglais, les cartes « Formation SAP · Synthèse » et « Migration ECC vers S/4HANA » ouvrent `synthEN` et `migEN`.
-- [ ] En anglais, les 7 autres documents portent l'étiquette « In French ».
+- [ ] En anglais, les documents restés en français (fiche de révision, simulation d'entretien, script de narration) portent l'étiquette « In French ». ACT100 et ACT200 ont une version anglaise (artefacts de Walid) : à exporter en PDF, contrôler et ajouter au manifeste.
 - [ ] En anglais, aucun document n'apparaît deux fois sur l'accueil.
 - [ ] Les liens du glossaire vers un document suivent la même règle.
 - [ ] En français, l'accueil reste identique aux captures de US-001.
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · passée en « Prête pour maquette » sur accord de Walid (« Oui, démarre ») ; maquette commune du lot 2 confiée à ux-ui
+- 2026-11-24 · ux-ui · maquette prête : [maquettes/US-009-version-anglaise.html](maquettes/US-009-version-anglaise.html), écran 2 (plus de section « Versions anglaises », étiquette « In French » : variantes A sur l'aperçu / B à côté du type). À noter : ACT100 et ACT200 existent en anglais, donc seuls 3 documents portent l'étiquette (le critère « les 7 autres documents » est à mettre à jour) ; leurs PDF anglais restent à déposer. Suite : validation de Walid.
+- 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 
 ### US-013 · Lecteur PDF : signaler la langue du document
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : oui
@@ -389,9 +400,12 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · passée en « Prête pour maquette » sur accord de Walid (« Oui, démarre ») ; maquette commune du lot 2 confiée à ux-ui
+- 2026-11-24 · ux-ui · maquette prête : [maquettes/US-009-version-anglaise.html](maquettes/US-009-version-anglaise.html), écran 4 (bandeau d'une ligne sous la barre du lecteur, dans le flux, sans bouton fermer ; lien « Open the English version → » quand elle existe). Suite : validation de Walid.
+- 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 
 ### US-014 · Frise greenfield en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul ; mise en page couverte par la maquette de US-009)
@@ -410,9 +424,11 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · traduction fournie par Walid : artefact « SAP greenfield approach (EN) » (https://claude.ai/artifact/4gCZnnTa5BQjP341z3w8vn) : 22 étapes, structure identique à greenfield.json. Contrôlé : aucun texte resté en français, aucun nom client.
+- 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 
 ### US-015 · Frise brownfield en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul)
@@ -427,9 +443,11 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · traduction fournie par Walid : artefact « SAP brownfield approach (EN) » (https://claude.ai/artifact/QUbcavCMmkohcsdZTp1VfZ) : 22 étapes, structure identique à brownfield.json. Contrôlé : aucun texte resté en français, aucun nom client.
+- 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 
 ### US-016 · Frise bluefield en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul)
@@ -443,9 +461,11 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · traduction fournie par Walid : artefact « SAP bluefield approach (EN) » (https://claude.ai/artifact/4yhJd84oYqtnYEjecAa43M) : 22 étapes, structure identique à bluefield.json. Contrôlé : aucun texte resté en français, aucun nom client.
+- 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 
 ### US-017 · Frise roll-out en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul)
@@ -460,6 +480,8 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · traduction fournie par Walid : artefact « SAP roll-out approach (EN) » (https://claude.ai/artifact/AeNu6YWM39KAabXjgt4M3j) : 19 étapes, structure identique à rollout.json ; gates nommées « Gate ». Contrôlé : aucun texte resté en français, aucun nom client.
+- 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 
 ### US-018 · Aperçus anglais des cartes
 - Statut : À affiner
@@ -505,3 +527,6 @@ Journal
 - 2026-11-24 · session principale · US-001 à US-008 repassées de « Prête à publier » à « À tester » à la demande de Walid : le test persona-pm avait été sauté à tort (le lot change la façon d'ouvrir le site et de mettre à jour les données). Suite : persona-pm en mode test sur le lot 1.
 - 2026-11-24 · session principale · Rapport persona-pm du lot 1 (« Prêt avec réserves ») examiné avec Walid. Réserves écartées : Walid ne modifie pas les fichiers lui-même dans GitHub, il passe par Claude, qui lance `node outils/verifier.mjs` avant chaque envoi ; le seul geste direct prévu (remplacer un PDF du même nom) ne touche aucun JSON. Le double-clic en local ne concerne pas le site en ligne. Points 7 et 8 (noms de champs des frises) à revoir avec la décision sur le rangement de l'anglais, au début du lot 2. Suite : publication du lot 1 sur accord de Walid.
 - 2026-11-24 · session principale · Lot 1 publié (US-001 à US-008 en « Fait »). Suite : lot 2, décision sur le rangement de l'anglais, puis maquette ux-ui de US-009.
+- 2026-11-24 · session principale · Walid a fourni les traductions anglaises du glossaire et des quatre frises (artefacts claude.ai), contrôlées et notées aux journaux de US-011 et US-014 à US-017. Ces stories deviennent de l'intégration, pas de la traduction. Existent aussi en anglais : ACT100 et ACT200 (livres de révision), à prendre en compte dans US-012.
+- 2026-11-24 · session principale · Lot 2 démarré. Décision technique (session principale) : un fichier par langue, même structure que le français : `shared/libelles/en.json`, `glossaire.en.json`, `frises/<nom>.en.json` ; texte absent en anglais = texte français affiché. `documents.json` reçoit par document sa langue et la clé de sa version dans l'autre langue (US-012). Rappel du mode de travail : Walid ne modifie pas les fichiers lui-même, il passe par Claude. US-009, US-010, US-012, US-013 en « Prête pour maquette » (une maquette commune) ; US-011, US-014 à US-017 en « Validée ». US-018 reste « À affiner » (après US-012 et US-017). Ouvert : couleur de l'étiquette « Parade » (verte dans le roll-out, rouge ailleurs).
+- 2026-11-24 · Walid · maquette du lot 2 validée avec ses 10 recommandations (sélecteur FR | EN sur chaque page, en haut à droite ; dans le lecteur à droite de Download ; « In French » à côté du type ; Frise → Timeline ; « Other resources » ; Study guide, Review sheet ; repère FR dans le glossaire ; bandeau du lecteur dans le flux). US-009, US-010, US-012, US-013 en « Validée ». Critère de US-012 corrigé (3 documents restent en français). Suite : développement de US-009 après le renouvellement de la limite d'usage.

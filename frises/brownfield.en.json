@@ -1,0 +1,1051 @@
+{
+ "titreOnglet": "SAP brownfield approach",
+ "surtitre": "ECC system conversion to S/4HANA · SAP Activate",
+ "titre": "A brownfield migration to S/4HANA, from A to Z",
+ "intro": "The six SAP Activate phases on a timeline. Click a bar, a quality gate or the go-live to open the details.",
+ "exemple": {
+  "entreprise": "Ternova",
+  "description": "Ternova (fictional), parts distributor, ECC since 2009 converted to S/4HANA"
+ },
+ "chronologieAria": "Brownfield conversion timeline: SAP Activate phases, steps and quality gates from M-12 to M+2",
+ "enContinu": "governance, ECC freeze, risks, downtime duration",
+ "causesTitre": "The 5 most common causes of failure",
+ "causes": [
+  "Readiness Check skimmed",
+  "Custom code underestimated",
+  "Business Partner handled too late",
+  "Downtime outside the window",
+  "Insufficient regression testing"
+ ],
+ "note": "Typical approach and indicative durations for a medium scope, to be adapted to each program. Discover takes place before the project starts. The example figures are fictional.",
+ "chronologie": {
+  "largeur": 1260,
+  "x1": 1230,
+  "mois": [
+   "M-12",
+   "M-11",
+   "M-10",
+   "M-9",
+   "M-8",
+   "M-7",
+   "M-6",
+   "M-5",
+   "M-4",
+   "M-3",
+   "M-2",
+   "M-1",
+   "Go-live",
+   "M+1",
+   "M+2"
+  ],
+  "golive": {
+   "mois": 12,
+   "etape": "s15"
+  }
+ },
+ "phases": [
+  {
+   "id": 0,
+   "name": "Discover",
+   "eq": ""
+  },
+  {
+   "id": 1,
+   "name": "Prepare",
+   "eq": ""
+  },
+  {
+   "id": 2,
+   "name": "Explore",
+   "eq": ""
+  },
+  {
+   "id": 3,
+   "name": "Realize",
+   "eq": ""
+  },
+  {
+   "id": 4,
+   "name": "Deploy",
+   "eq": ""
+  },
+  {
+   "id": 5,
+   "name": "Run",
+   "eq": ""
+  }
+ ],
+ "etenduePhases": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   2.5
+  ],
+  [
+   2.5,
+   5
+  ],
+  [
+   5,
+   10.5
+  ],
+  [
+   10.5,
+   12.1
+  ],
+  [
+   12.1,
+   14
+  ]
+ ],
+ "ordre": {
+  "0": [
+   "s1"
+  ],
+  "1": [
+   "s2",
+   "s3",
+   "s4",
+   "q1"
+  ],
+  "2": [
+   "s5",
+   "s6",
+   "s7",
+   "q2"
+  ],
+  "3": [
+   "s8",
+   "s9",
+   "s10",
+   "s11",
+   "s12",
+   "q3"
+  ],
+  "4": [
+   "s13",
+   "s14",
+   "s15"
+  ],
+  "5": [
+   "s16",
+   "q4",
+   "s17"
+  ]
+ },
+ "positions": {
+  "s1": [
+   0,
+   1,
+   "Business case"
+  ],
+  "s2": [
+   1,
+   1.5,
+   "Launch"
+  ],
+  "s3": [
+   1.1,
+   2.2,
+   "Readiness Check"
+  ],
+  "s4": [
+   1.6,
+   2.5,
+   "Conversion plan"
+  ],
+  "s5": [
+   2.5,
+   4.5,
+   "Change analysis"
+  ],
+  "s6": [
+   2.5,
+   9.5,
+   "Data preparation in ECC"
+  ],
+  "s7": [
+   3,
+   5,
+   "Code analysis"
+  ],
+  "s8": [
+   5,
+   6.2,
+   "1st mock conversion"
+  ],
+  "s9": [
+   5.8,
+   9,
+   "Remediation and adaptations"
+  ],
+  "s10": [
+   6.5,
+   10.5,
+   "Successive conversions"
+  ],
+  "s11": [
+   8.5,
+   10.5,
+   "Regression and acceptance"
+  ],
+  "s12": [
+   9.5,
+   11.6,
+   "Targeted training"
+  ],
+  "s13": [
+   10,
+   11.6,
+   "Cutover prep"
+  ],
+  "s14": [
+   11.7,
+   11.7,
+   "Go / no-go"
+  ],
+  "s15": [
+   11.8,
+   12.1,
+   "Production conversion"
+  ],
+  "s16": [
+   12.1,
+   13.4,
+   "Hypercare"
+  ],
+  "s17": [
+   13,
+   14,
+   "After the conversion"
+  ]
+ },
+ "gates": {
+  "q1": [
+   2.5,
+   "Q1"
+  ],
+  "q2": [
+   5,
+   "Q2"
+  ],
+  "q3": [
+   10.5,
+   "Q3"
+  ],
+  "q4": [
+   13.4,
+   "Q4"
+  ]
+ },
+ "icones": {
+  "s1": "M4 20V10 M10 20V4 M16 20v-7 M3 20h18",
+  "s2": "M5 21V4 M5 4h12l-2 4 2 4H5",
+  "s3": "M9 3h6v3H9z M7 4.5H5V21h14V4.5h-2 M8.5 13l2.5 2.5 4.5-5",
+  "s4": "M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14",
+  "s5": "M8 6h13 M8 12h13 M8 18h13 M3.5 6h.01 M3.5 12h.01 M3.5 18h.01",
+  "s6": "M4 6c0-2.7 16-2.7 16 0s-16 2.7-16 0z M4 6v12c0 2.7 16 2.7 16 0V6 M4 12c0 2.7 16 2.7 16 0",
+  "s7": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
+  "s8": "M4 12a8 8 0 0 1 14-5.3 M18 3v4h-4 M20 12a8 8 0 0 1-14 5.3 M6 21v-4h4",
+  "s9": "M4 20l4-1 11-11-3-3L5 16z M14 7l3 3",
+  "s10": "M12 7v5l3 2 M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18",
+  "s11": "M9 3h6 M10 3v6l-5 10a1 1 0 0 0 1 1.5h12a1 1 0 0 0 1-1.5L14 9V3 M7.5 14h9",
+  "s12": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
+  "s13": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
+  "s14": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
+  "s15": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
+  "s16": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
+  "s17": "M4 17l5-5 4 4 7-8 M15 8h5v5"
+ },
+ "etapes": {
+  "s1": {
+   "p": 0,
+   "n": "01",
+   "t": "Business case and choosing brownfield",
+   "s": "Convert the existing system rather than start from scratch",
+   "obj": "Decide to convert the existing ECC system to S/4HANA, and in which deployment model.",
+   "act": [
+    "Assessment of the current landscape: processes, custom code, volumes",
+    "Comparison of greenfield, brownfield and bluefield",
+    "First SAP Readiness Check and recommendations report",
+    "Budget and high-level schedule, taking the end of ECC maintenance into account"
+   ],
+   "pre": [
+    "Executive sponsor",
+    "Access to the production ECC system for analysis",
+    "Vision of the constraints: deadline, budget, business capacity"
+   ],
+   "liv": [
+    "Validated business case",
+    "Brownfield decision and deployment model",
+    "High-level roadmap"
+   ],
+   "ex": "Ternova has run on ECC since 2009. Its processes work well and the business does not want to redesign everything. End of maintenance is approaching: the migration has to be quick. Choice: brownfield, conversion to S/4HANA Cloud Private Edition via RISE. Budget of €4M, go-live targeted for a long weekend in May.",
+   "ai": [
+    "Analysis of actual transaction and custom code usage",
+    "Comparative summary of the three approaches"
+   ],
+   "aig": "Medium",
+   "own": "Executive management and client IT",
+   "r": [
+    [
+     "Brownfield chosen 'because it is simpler': the bad processes are kept too",
+     "List from the start what you want to improve after the conversion"
+    ],
+    [
+     "End-of-maintenance date dictates everything: unrealistic schedule",
+     "Plan backwards from the date, with a margin"
+    ]
+   ]
+  },
+  "s2": {
+   "p": 1,
+   "n": "02",
+   "t": "Launch and governance",
+   "s": "A more technical team",
+   "obj": "Get the project up and running, with a team suited to a conversion.",
+   "act": [
+    "Project charter, roles, committees",
+    "Conversion team: technical lead, Basis, developers",
+    "Project plan",
+    "Contracts with the integrator and the hosting provider"
+   ],
+   "pre": [
+    "Validated business case",
+    "Allocated budget",
+    "Sponsor named"
+   ],
+   "liv": [
+    "Project charter",
+    "Project plan",
+    "Organization and governance"
+   ],
+   "ex": "The team is more technical than in a greenfield: a conversion lead, developers for the custom code, a Basis team. The business is less involved, but key users remain essential for testing.",
+   "ai": [
+    "Charter and plan from templates"
+   ],
+   "aig": "Low",
+   "own": "Client program management and integrator",
+   "r": [
+    [
+     "Project seen as 'purely technical': the business disengages",
+     "Key users named and reserved for testing from the launch"
+    ],
+    [
+     "Unclear roles between integrator, hosting provider and SAP",
+     "RACI signed by all three"
+    ]
+   ]
+  },
+  "s3": {
+   "p": 1,
+   "n": "03",
+   "t": "SAP Readiness Check",
+   "s": "What will break or change",
+   "obj": "Measure precisely what the conversion imposes: simplification items, code, add-ons, volumes.",
+   "act": [
+    "Running the Readiness Check on production",
+    "Analyzing the relevant simplification items",
+    "Inventory of custom code and its usage",
+    "Checking add-ons and business functions",
+    "Sizing the HANA database"
+   ],
+   "pre": [
+    "SAP Notes and collectors installed on ECC",
+    "Access to production",
+    "Functional and technical experts to read the report"
+   ],
+   "liv": [
+    "Readiness Check report",
+    "List of items to handle",
+    "Inventory of code and add-ons"
+   ],
+   "ex": "The report lists 45 relevant simplification items. The heaviest: Business Partner, the Universal Journal and the end of LE-WM. 1,500 custom objects, 40% never executed in two years. A 2 TB database, brought down to 1.2 TB with archiving.",
+   "ai": [
+    "Reading and summarizing the report",
+    "Estimating remediation effort from similar projects"
+   ],
+   "aig": "Medium to high",
+   "own": "Conversion lead and architects",
+   "r": [
+    [
+     "Report skimmed: surprises during the conversion",
+     "Each item has an owner and a decision"
+    ],
+    [
+     "Incompatible third-party add-on discovered late",
+     "Check each add-on with its vendor from Prepare"
+    ]
+   ]
+  },
+  "s4": {
+   "p": 1,
+   "n": "04",
+   "t": "Conversion plan",
+   "s": "Method, downtime, code, testing",
+   "obj": "Set how the conversion will be done and within what limits.",
+   "act": [
+    "Choosing the technical method: conversion with the SUM tool, one-step database migration (DMO)",
+    "Downtime target",
+    "Strategy for custom code: delete, fix, replace",
+    "Regression test strategy"
+   ],
+   "pre": [
+    "Readiness Check report",
+    "Business constraints on downtime"
+   ],
+   "liv": [
+    "Validated conversion plan",
+    "Code and test strategies"
+   ],
+   "ex": "Method: conversion and database migration in a single step. Downtime target: 48 hours, over a long weekend. Unused custom code will be deleted, not fixed.",
+   "ai": [
+    "Simulating downtime durations by volume"
+   ],
+   "aig": "Low to medium",
+   "own": "Conversion lead and Basis",
+   "r": [
+    [
+     "Downtime target set without measurement: unachievable",
+     "Confirm it after the first mock conversion"
+    ],
+    [
+     "Unused code fixed 'to be safe': wasted effort",
+     "Delete what has not run in two years, after validation"
+    ]
+   ]
+  },
+  "q1": {
+   "p": 1,
+   "gate": 1,
+   "t": "Quality gate 1 · End of Prepare",
+   "s": "",
+   "obj": "Authorize Explore: the impacts of the conversion are known.",
+   "act": [
+    "Review of the Readiness Check and the conversion plan"
+   ],
+   "pre": [
+    "Report analyzed",
+    "Validated conversion plan",
+    "Team in place"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Go-ahead granted with one condition: archiving must start immediately, as it determines the downtime duration.",
+   "ai": [
+    "Consolidating the status of the criteria"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Gate passed without an archiving plan: downtime too long later",
+     "Archiving written in as a condition tracked in committee"
+    ]
+   ]
+  },
+  "s5": {
+   "p": 2,
+   "n": "05",
+   "t": "Change analysis",
+   "s": "Simplification items and new features to activate",
+   "obj": "Decide, for each change imposed by S/4HANA, how it will be absorbed, and which new features to activate.",
+   "act": [
+    "Workshops by domain on the simplification items",
+    "Choosing the new features to activate: Fiori apps, new functions",
+    "Decision on retired functions, for example LE-WM",
+    "Backlog of adaptations"
+   ],
+   "pre": [
+    "Readiness Check report",
+    "Key users and process owners available"
+   ],
+   "liv": [
+    "Decision per item",
+    "Backlog of adaptations",
+    "List of selected Fiori apps"
+   ],
+   "ex": "45 items analyzed. Business Partner and the Universal Journal are mandatory. LE-WM is no longer the target: its replacement by EWM is planned in a second project. 12 Fiori apps selected to replace transactions.",
+   "ai": [
+    "Explaining the items to the business",
+    "Matching the items against actual transaction usage"
+   ],
+   "aig": "Medium",
+   "own": "Functional consultants and process owners",
+   "r": [
+    [
+     "New features added en masse: the project becomes a hidden greenfield",
+     "Limit the conversion to what is mandatory, the rest after go-live"
+    ],
+    [
+     "Mandatory item underestimated, like Business Partner",
+     "Treat the item as a separate workstream, with its own owner"
+    ]
+   ]
+  },
+  "s6": {
+   "p": 2,
+   "n": "06",
+   "t": "Data preparation in ECC",
+   "s": "Business Partner, finance, archiving",
+   "obj": "Prepare the data in ECC so that the conversion goes through without blockers.",
+   "act": [
+    "Converting customers and suppliers into Business Partners (CVI)",
+    "Finance consistency checks",
+    "Archiving and deleting unnecessary data",
+    "Fixing inconsistent data"
+   ],
+   "pre": [
+    "Data owners named",
+    "Finance experts available",
+    "Archiving rules validated by the business and legal"
+   ],
+   "liv": [
+    "Synchronized Business Partners",
+    "Consistent finance",
+    "Reduced database volume"
+   ],
+   "ex": "45,000 customers and suppliers to convert: 3,200 in error at the first synchronization, because of incomplete addresses and duplicates. The finance checks reveal old gaps between general and cost accounting, fixed before the conversion.",
+   "ai": [
+    "Detecting duplicates and incomplete addresses",
+    "Analyzing finance gaps"
+   ],
+   "aig": "High",
+   "own": "Data owners and finance experts",
+   "r": [
+    [
+     "Business Partner handled too late: conversion blocked",
+     "Start it in Explore, it is often the critical path"
+    ],
+    [
+     "Finance gaps discovered during the conversion",
+     "Consistency checks launched early and repeated"
+    ]
+   ]
+  },
+  "s7": {
+   "p": 2,
+   "n": "07",
+   "t": "Custom code analysis",
+   "s": "Delete, fix, replace",
+   "obj": "Know precisely which custom code to keep, fix or delete.",
+   "act": [
+    "Measuring actual code usage",
+    "Automatic checks (ATC) with the S/4HANA rules",
+    "Classification: delete, fix, replace with standard",
+    "Estimating the remediation"
+   ],
+   "pre": [
+    "Code inventory",
+    "Usage statistics over at least a year",
+    "Developers available"
+   ],
+   "liv": [
+    "Estimated remediation plan",
+    "Validated list of code to delete"
+   ],
+   "ex": "Of 1,500 objects, 600 unused are deleted. The remaining 900 yield 2,300 findings, 70% of them automatically fixable.",
+   "ai": [
+    "Assisted code analysis and correction",
+    "Spotting code that can be replaced by the standard"
+   ],
+   "aig": "High",
+   "own": "Development team",
+   "r": [
+    [
+     "Usage measured over too short a period: a yearly program deleted by mistake",
+     "Statistics over at least twelve months, business validation"
+    ],
+    [
+     "Remediation underestimated: Realize overloaded",
+     "Estimate from the ATC results, not from an overall guess"
+    ]
+   ]
+  },
+  "q2": {
+   "p": 2,
+   "gate": 1,
+   "t": "Quality gate 2 · End of Explore",
+   "s": "",
+   "obj": "Authorize Realize: changes decided, remediation estimated, data in preparation.",
+   "act": [
+    "Review of decisions per item",
+    "Review of the remediation plan and Business Partner progress"
+   ],
+   "pre": [
+    "Signed decisions",
+    "Estimated remediation plan",
+    "Data preparation launched"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Remediation plan estimated, Business Partner conversion under way with 3% errors remaining. Go-ahead granted.",
+   "ai": [
+    "Consolidating progress"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Data still not prepared: mock conversions fail",
+     "Business Partner error threshold as a gate criterion"
+    ]
+   ]
+  },
+  "s8": {
+   "p": 3,
+   "n": "08",
+   "t": "First mock conversion",
+   "s": "Learn on a copy of production",
+   "obj": "Run a first technical conversion on a copy of production, in order to learn.",
+   "act": [
+    "Copying production into a sandbox",
+    "Conversion with SUM and DMO",
+    "Logging errors and durations",
+    "First fixes"
+   ],
+   "pre": [
+    "Production copy available",
+    "Target infrastructure sized",
+    "SAP Notes applied"
+   ],
+   "liv": [
+    "Conversion log",
+    "Measured downtime",
+    "List of errors"
+   ],
+   "ex": "First conversion: 96 hours, double the target, and 37 blocking errors. This is normal: the first conversion is there to learn.",
+   "ai": [
+    "Analyzing the conversion logs and grouping the errors"
+   ],
+   "aig": "Medium",
+   "own": "Basis and conversion lead",
+   "r": [
+    [
+     "First conversion too late: no time left to learn",
+     "Run it at the start of Realize"
+    ],
+    [
+     "Copy too old or incomplete: misleading results",
+     "Recent, complete copy of production"
+    ]
+   ]
+  },
+  "s9": {
+   "p": 3,
+   "n": "09",
+   "t": "Remediation and adaptations",
+   "s": "Fix the code, adapt the processes",
+   "obj": "Fix the code and make the decided functional adaptations.",
+   "act": [
+    "Fixing the custom code",
+    "Adapting finance to the Universal Journal",
+    "Configuring the Fiori apps",
+    "Adapted authorizations"
+   ],
+   "pre": [
+    "Remediation plan",
+    "Converted development system"
+   ],
+   "liv": [
+    "Code fixed and unit-tested",
+    "Adaptations delivered"
+   ],
+   "ex": "The 900 objects are fixed in three months. The chart of accounts and cost accounting are adapted to the Universal Journal. The 12 Fiori apps are configured.",
+   "ai": [
+    "Assisted code correction",
+    "Unit test generation"
+   ],
+   "aig": "High",
+   "own": "Developers and functional consultants",
+   "r": [
+    [
+     "Double maintenance: ECC keeps evolving during the project",
+     "Freeze changes on ECC, or an organized retrofit process"
+    ],
+    [
+     "Authorizations forgotten: users blocked at acceptance",
+     "Roles adapted from Realize"
+    ]
+   ]
+  },
+  "s10": {
+   "p": 3,
+   "n": "10",
+   "t": "Successive conversions",
+   "s": "Shorten and make the downtime reliable",
+   "obj": "Make the conversion reliable and bring it within the cutover window.",
+   "act": [
+    "Conversions of the development and quality systems",
+    "Repeated mock conversions on production copies",
+    "Duration optimization: parallelism, archiving",
+    "Adjusting the runbook"
+   ],
+   "pre": [
+    "Errors from the first conversion fixed",
+    "Archiving well advanced"
+   ],
+   "liv": [
+    "Downtime within the target",
+    "Stable conversion procedure"
+   ],
+   "ex": "Conversion 2: 70 hours. Conversion 3: 52 hours, thanks to archiving and parallelism. Conversion 4, in production conditions: 46 hours, within the 48-hour target.",
+   "ai": [
+    "Analyzing durations by step to spot bottlenecks"
+   ],
+   "aig": "Medium",
+   "own": "Basis and conversion lead",
+   "r": [
+    [
+     "Duration never reaches the target: the date slips",
+     "Alert threshold at each conversion, options prepared (more hardware, longer downtime)"
+    ]
+   ]
+  },
+  "s11": {
+   "p": 3,
+   "n": "11",
+   "t": "Regression testing and acceptance",
+   "s": "Everything works as before, and so do the changes",
+   "obj": "Prove that everything works as before, and that the changes work.",
+   "act": [
+    "Regression tests on existing processes",
+    "Integration tests with the interfaces",
+    "Acceptance focused on the changes",
+    "Performance tests"
+   ],
+   "pre": [
+    "Converted quality system",
+    "Up-to-date regression test set",
+    "Key users available"
+   ],
+   "liv": [
+    "Test reports",
+    "Signed acceptance report"
+   ],
+   "ex": "2,000 regression tests, 60% of them automated. Defects come mostly from custom code and financial reports. Acceptance focuses on Business Partner, Fiori and the closing.",
+   "ai": [
+    "Generating and automating regression tests",
+    "Defect triage"
+   ],
+   "aig": "High",
+   "own": "Test manager and key users",
+   "r": [
+    [
+     "Insufficient regression: 'nothing has changed' is never true",
+     "Cover all critical processes, automate"
+    ],
+    [
+     "Performance not tested: slow programs in production",
+     "Performance tests on heavy processing"
+    ]
+   ]
+  },
+  "s12": {
+   "p": 3,
+   "n": "12",
+   "t": "Targeted training",
+   "s": "Only what changes",
+   "obj": "Train users only on what changes.",
+   "act": [
+    "List of visible changes by role",
+    "Short trainings: Business Partner, Fiori",
+    "Heavier training for finance"
+   ],
+   "pre": [
+    "Stabilized changes",
+    "List of users by role"
+   ],
+   "liv": [
+    "Trained users",
+    "Materials"
+   ],
+   "ex": "No new process: two hours of training for 900 users on Business Partner and Fiori apps, one day for the 60 accountants on the Universal Journal.",
+   "ai": [
+    "Materials and short videos generated by role"
+   ],
+   "aig": "High",
+   "own": "Change management and key users",
+   "r": [
+    [
+     "Training judged unnecessary 'because it is the same system': confusion at go-live",
+     "Train at least on the visible changes"
+    ]
+   ]
+  },
+  "q3": {
+   "p": 3,
+   "gate": 1,
+   "t": "Quality gate 3 · End of Realize",
+   "s": "",
+   "obj": "Authorize the final preparation: the conversion is under control and tested.",
+   "act": [
+    "Review of the last mock conversion",
+    "Review of defects"
+   ],
+   "pre": [
+    "Last conversion within the duration target",
+    "Zero blocking defects",
+    "Signed acceptance"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Last conversion in 46 hours, zero blocking defects. Go-ahead granted.",
+   "ai": [
+    "Consolidating indicators"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Go-ahead with a conversion over time: downtime exceeded on D-day",
+     "Duration within the target as a blocking criterion"
+    ]
+   ]
+  },
+  "s13": {
+   "p": 4,
+   "n": "13",
+   "t": "Cutover preparation",
+   "s": "Technical runbook, fallback",
+   "obj": "Prepare the production conversion minute by minute.",
+   "act": [
+    "Runbook: transport freeze, interface shutdown, backup, conversion, checks",
+    "Dress rehearsal",
+    "Fallback plan: restoring ECC",
+    "Communication to users and partners"
+   ],
+   "pre": [
+    "Stable conversion procedure",
+    "Downtime window validated by the business"
+   ],
+   "liv": [
+    "Validated runbook",
+    "Tested fallback plan"
+   ],
+   "ex": "Runbook of 420 tasks, mostly technical. Point of no return: Saturday 8 pm. Fallback: restoring the ECC backup.",
+   "ai": [
+    "Runbook consistency check"
+   ],
+   "aig": "Low to medium",
+   "own": "Cutover manager and Basis",
+   "r": [
+    [
+     "Fallback never tested: unusable",
+     "Restore tested during the rehearsal"
+    ],
+    [
+     "Partners not told about the interface shutdown",
+     "Communication plan inside the runbook"
+    ]
+   ]
+  },
+  "s14": {
+   "p": 4,
+   "n": "14",
+   "t": "Go / no-go",
+   "s": "Decide on facts",
+   "gate": 1,
+   "obj": "Decide, on written criteria, whether to convert production.",
+   "act": [
+    "Review of criteria",
+    "Formal decision"
+   ],
+   "pre": [
+    "Criteria signed in advance"
+   ],
+   "liv": [
+    "Signed decision"
+   ],
+   "ex": "18 criteria green, 1 amber: a financial report still being corrected, with a manual workaround. Go.",
+   "ai": [
+    "Criteria dashboard"
+   ],
+   "aig": "Low: the decision stays human",
+   "own": "Client steering committee",
+   "r": [
+    [
+     "Go despite a conversion over time",
+     "Duration criterion non-negotiable"
+    ]
+   ]
+  },
+  "s15": {
+   "p": 4,
+   "n": "15",
+   "t": "Production conversion",
+   "s": "The cutover weekend",
+   "obj": "Convert production and reopen the system.",
+   "act": [
+    "Shutting down ECC and the interfaces",
+    "Backup",
+    "Conversion",
+    "Before / after reconciliation checks",
+    "Opening"
+   ],
+   "pre": [
+    "Go validated",
+    "Teams in place, SAP support notified"
+   ],
+   "liv": [
+    "S/4HANA in production",
+    "Signed reconciliations"
+   ],
+   "ex": "ECC shut down Thursday at 8 pm. Conversion in 44 hours. Accounting balances and stock identical before and after. Opening Monday at 6 am.",
+   "ai": [
+    "Automatic before / after comparison"
+   ],
+   "aig": "Medium",
+   "own": "Cutover manager, Basis and business",
+   "r": [
+    [
+     "Reconciliation rushed: gaps discovered at closing",
+     "Before / after checks mandatory and signed"
+    ],
+    [
+     "Fallback decision too late",
+     "Point of no return set and respected"
+    ]
+   ]
+  },
+  "s16": {
+   "p": 5,
+   "n": "16",
+   "t": "Hypercare",
+   "s": "Performance, authorizations, first closing",
+   "obj": "Stabilize the converted system.",
+   "act": [
+    "Reinforced support",
+    "Performance monitoring",
+    "Fixing authorizations",
+    "Supported first closing"
+   ],
+   "pre": [
+    "Hypercare team",
+    "Exit criteria"
+   ],
+   "liv": [
+    "Incidents resolved",
+    "First closing completed"
+   ],
+   "ex": "Six weeks of hypercare. Incidents mostly concern the performance of a few custom programs and Fiori authorizations. First closing completed on time.",
+   "ai": [
+    "Ticket triage",
+    "Analyzing slow programs"
+   ],
+   "aig": "High",
+   "own": "Project and support team",
+   "r": [
+    [
+     "Slow programs not anticipated: business blocked",
+     "Performance monitoring from day one"
+    ]
+   ]
+  },
+  "q4": {
+   "p": 5,
+   "gate": 1,
+   "t": "Quality gate 4 · Hypercare exit",
+   "s": "",
+   "obj": "Close the conversion project.",
+   "act": [
+    "Review of stability",
+    "Review of the handover to run"
+   ],
+   "pre": [
+    "Indicators below thresholds",
+    "No blocking incident"
+   ],
+   "liv": [
+    "Formal closure"
+   ],
+   "ex": "Exit declared six weeks after go-live.",
+   "ai": [
+    "Calculating indicators"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Closure with open incidents",
+     "Formal takeover by run"
+    ]
+   ]
+  },
+  "s17": {
+   "p": 5,
+   "n": "17",
+   "t": "After the conversion",
+   "s": "Start the real transformation",
+   "obj": "Take advantage of S/4HANA: the conversion is only a starting point.",
+   "act": [
+    "Innovation roadmap",
+    "New Fiori apps and embedded analytics",
+    "Gradually reducing custom code towards Clean Core",
+    "Postponed projects, such as EWM"
+   ],
+   "pre": [
+    "Stable system",
+    "Budget for what comes next"
+   ],
+   "liv": [
+    "Post-conversion roadmap"
+   ],
+   "ex": "Ternova launches the move to EWM, the adoption of new Fiori apps and the gradual cleanup of custom code.",
+   "ai": [
+    "Usage analysis to prioritize improvements",
+    "Joule assistant for users"
+   ],
+   "aig": "Medium",
+   "own": "IT and business",
+   "r": [
+    [
+     "Nothing after the conversion: paid for S/4HANA to keep running ECC",
+     "Roadmap and budget decided before go-live"
+    ]
+   ]
+  },
+  "transverse": {
+   "p": 0,
+   "t": "Ongoing, from start to finish",
+   "s": "",
+   "obj": "Run the conversion project: keep the technical side under control without losing the business.",
+   "act": [
+    "Steering committee and quality gates",
+    "Design authority: arbitration of code and changes",
+    "Freeze or control of changes on ECC",
+    "Risk register with alert thresholds"
+   ],
+   "pre": [
+    "Roles and bodies defined from Prepare"
+   ],
+   "liv": [
+    "Traced decisions",
+    "Up-to-date risk register"
+   ],
+   "ex": "Monthly committee, then weekly for the last two months. The main risk tracked throughout: the downtime duration.",
+   "ai": [
+    "Tracking decisions and risks",
+    "Caution: client data only in a tool approved by the client"
+   ],
+   "aig": "Medium",
+   "own": "Program management",
+   "r": [
+    [
+     "Continuous changes on ECC during the project: unmanageable double maintenance",
+     "Change freeze or retrofit process"
+    ],
+    [
+     "Watermelon effect on remediation progress",
+     "Factual indicators: objects fixed, errors remaining"
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,1116 @@
+{
+ "titreOnglet": "SAP greenfield approach",
+ "surtitre": "New S/4HANA implementation · SAP Activate",
+ "titre": "A greenfield migration to S/4HANA, from A to Z",
+ "intro": "The six SAP Activate phases on a timeline. Click a bar, a quality gate or the go-live to open the details.",
+ "exemple": {
+  "entreprise": "Calvane",
+  "description": "Calvane (fictional), pump manufacturer, 3 plants, in-house ERP replaced by S/4HANA"
+ },
+ "chronologieAria": "Greenfield project timeline: SAP Activate phases, steps and quality gates from M-15 to M+2",
+ "enContinu": "governance, Clean Core, risks, change management",
+ "causesTitre": "The 5 most common causes of failure",
+ "causes": [
+  "Fit-to-standard that copies the old system",
+  "Key users unavailable",
+  "Data cleaned too late",
+  "Compressed testing",
+  "Process change neglected"
+ ],
+ "note": "Typical approach and indicative durations for a medium scope, to be adapted to each program. Discover takes place before the project starts.",
+ "chronologie": {
+  "largeur": 1320,
+  "x1": 1290,
+  "mois": [
+   "M-15",
+   "M-14",
+   "M-13",
+   "M-12",
+   "M-11",
+   "M-10",
+   "M-9",
+   "M-8",
+   "M-7",
+   "M-6",
+   "M-5",
+   "M-4",
+   "M-3",
+   "M-2",
+   "M-1",
+   "Go-live",
+   "M+1",
+   "M+2"
+  ],
+  "golive": {
+   "mois": 15,
+   "etape": "s15"
+  }
+ },
+ "phases": [
+  {
+   "id": 0,
+   "name": "Discover",
+   "eq": ""
+  },
+  {
+   "id": 1,
+   "name": "Prepare",
+   "eq": ""
+  },
+  {
+   "id": 2,
+   "name": "Explore",
+   "eq": ""
+  },
+  {
+   "id": 3,
+   "name": "Realize",
+   "eq": ""
+  },
+  {
+   "id": 4,
+   "name": "Deploy",
+   "eq": ""
+  },
+  {
+   "id": 5,
+   "name": "Run",
+   "eq": ""
+  }
+ ],
+ "etenduePhases": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   6,
+   13
+  ],
+  [
+   13,
+   15.1
+  ],
+  [
+   15.1,
+   17
+  ]
+ ],
+ "ordre": {
+  "0": [
+   "s1"
+  ],
+  "1": [
+   "s2",
+   "s3",
+   "s4",
+   "q1"
+  ],
+  "2": [
+   "s5",
+   "s6",
+   "s7",
+   "q2"
+  ],
+  "3": [
+   "s8",
+   "s9",
+   "s10",
+   "s11",
+   "s12",
+   "q3"
+  ],
+  "4": [
+   "s13",
+   "s14",
+   "s15"
+  ],
+  "5": [
+   "s16",
+   "q4",
+   "s17"
+  ]
+ },
+ "positions": {
+  "s1": [
+   0,
+   1,
+   "Business case"
+  ],
+  "s2": [
+   1,
+   1.7,
+   "Launch"
+  ],
+  "s3": [
+   1.3,
+   2.5,
+   "Reference system"
+  ],
+  "s4": [
+   1.6,
+   3,
+   "Strategies"
+  ],
+  "s5": [
+   3,
+   5,
+   "Fit-to-standard"
+  ],
+  "s6": [
+   4,
+   6,
+   "Gap design"
+  ],
+  "s7": [
+   4.3,
+   6,
+   "Data and interfaces"
+  ],
+  "s8": [
+   6,
+   10.5,
+   "Sprint-based configuration"
+  ],
+  "s9": [
+   6.5,
+   11,
+   "Extensions and interfaces"
+  ],
+  "s10": [
+   5.5,
+   13,
+   "Data migration"
+  ],
+  "s11": [
+   10.5,
+   13,
+   "SIT and acceptance"
+  ],
+  "s12": [
+   11,
+   14.6,
+   "Training and change"
+  ],
+  "s13": [
+   12.5,
+   14.6,
+   "Cutover prep"
+  ],
+  "s14": [
+   14.7,
+   14.7,
+   "Go / no-go"
+  ],
+  "s15": [
+   14.8,
+   15.1,
+   "Cutover"
+  ],
+  "s16": [
+   15.1,
+   16.6,
+   "Hypercare"
+  ],
+  "s17": [
+   16,
+   17,
+   "Run and innovation"
+  ]
+ },
+ "gates": {
+  "q1": [
+   3,
+   "Q1"
+  ],
+  "q2": [
+   6,
+   "Q2"
+  ],
+  "q3": [
+   13,
+   "Q3"
+  ],
+  "q4": [
+   16.6,
+   "Q4"
+  ]
+ },
+ "icones": {
+  "s1": "M4 20V10 M10 20V4 M16 20v-7 M3 20h18",
+  "s2": "M5 21V4 M5 4h12l-2 4 2 4H5",
+  "s3": "M3 5h18v11H3z M8 21h8 M12 16v5",
+  "s4": "M12 3l9 5-9 5-9-5z M3 13l9 5 9-5",
+  "s5": "M9 11a3 3 0 1 0 0-6a3 3 0 1 0 0 6 M17 11a3 3 0 1 0 0-6a3 3 0 1 0 0 6 M3 20v-1a5 5 0 0 1 10 0v1 M13 19a5 5 0 0 1 8 0v1",
+  "s6": "M4 20l4-1 11-11-3-3L5 16z M14 7l3 3",
+  "s7": "M4 6c0-2.7 16-2.7 16 0s-16 2.7-16 0z M4 6v12c0 2.7 16 2.7 16 0V6 M4 12c0 2.7 16 2.7 16 0",
+  "s8": "M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M12 2v3 M12 19v3 M2 12h3 M19 12h3 M4.9 4.9l2.1 2.1 M17 17l2.1 2.1 M19.1 4.9L17 7 M7 17l-2.1 2.1",
+  "s9": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
+  "s10": "M12 3v12 M7 10l5 5 5-5 M4 19h16",
+  "s11": "M9 3h6 M10 3v6l-5 10a1 1 0 0 0 1 1.5h12a1 1 0 0 0 1-1.5L14 9V3 M7.5 14h9",
+  "s12": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
+  "s13": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
+  "s14": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
+  "s15": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
+  "s16": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
+  "s17": "M20 12a8 8 0 1 1-2.3-5.7 M20 4v4h-4"
+ },
+ "etapes": {
+  "s1": {
+   "p": 0,
+   "n": "01",
+   "t": "Business case and strategy",
+   "s": "Why S/4HANA, with which approach",
+   "obj": "Decide why to move to S/4HANA, with which approach and which deployment model.",
+   "act": [
+    "Value analysis: processes to improve, cost of the current landscape",
+    "Choosing the approach: greenfield, brownfield or bluefield",
+    "Choosing the deployment: public cloud, private cloud (RISE) or on-premise",
+    "Budget and high-level schedule",
+    "Discovering the solution: trial system, demonstrations"
+   ],
+   "pre": [
+    "Executive sponsor",
+    "Vision of the target processes",
+    "Inventory of the current landscape: systems, custom code, data"
+   ],
+   "liv": [
+    "Validated business case",
+    "Approach and deployment decision",
+    "High-level roadmap"
+   ],
+   "ex": "Calvane runs on a 20-year-old in-house ERP, with hundreds of custom objects nobody masters any more. Carrying the existing system over makes no sense: greenfield. S/4HANA Cloud Private Edition via RISE is chosen. Budget of €9M, go-live targeted for April 1, as a big bang across the three plants.",
+   "ai": [
+    "Analyze the current landscape (custom code, actual transaction usage) to measure complexity",
+    "Process mining to measure the current processes",
+    "Comparative summary of the options"
+   ],
+   "aig": "Medium",
+   "own": "Executive management and client IT",
+   "r": [
+    [
+     "Vague business case, 'we have to migrate': no criteria to arbitrate afterwards",
+     "Quantified objectives: lead times, costs, quality"
+    ],
+    [
+     "Approach chosen on license cost alone: the transformation is underestimated",
+     "Compare the full cost, change management included"
+    ],
+    [
+     "Big bang chosen without risk analysis: cutover too heavy",
+     "Compare big bang and phased deployment before deciding"
+    ]
+   ]
+  },
+  "s2": {
+   "p": 1,
+   "n": "02",
+   "t": "Launch and governance",
+   "s": "Team, roles, committees, plan",
+   "obj": "Get the project up and running.",
+   "act": [
+    "Project charter, organization and roles",
+    "Governance: steering committee, design authority, change board",
+    "Project plan",
+    "Choosing the integrator and contracts",
+    "Official kick-off"
+   ],
+   "pre": [
+    "Validated business case",
+    "Allocated budget",
+    "Sponsor named"
+   ],
+   "liv": [
+    "Project charter",
+    "Project plan",
+    "Organization and governance",
+    "Signed RACI"
+   ],
+   "ex": "Calvane chooses an integrator on a fixed price per phase. Monthly steering committee, weekly design authority. Six process owners named (purchasing, production, sales, finance, logistics, maintenance), each with two part-time key users.",
+   "ai": [
+    "Charter and plan from templates",
+    "Pre-filling the RACI"
+   ],
+   "aig": "Low to medium",
+   "own": "Client program management and integrator",
+   "r": [
+    [
+     "Key users 'in their spare time': workshops with no decision-makers",
+     "Their time reserved in writing, backfill in their job"
+    ],
+    [
+     "Unclear client and integrator roles: gray areas",
+     "RACI signed by both parties"
+    ],
+    [
+     "Fixed price signed on a still-unknown scope: disputes",
+     "Fixed price per phase, Explore scoped separately"
+    ]
+   ]
+  },
+  "s3": {
+   "p": 1,
+   "n": "03",
+   "t": "Reference system",
+   "s": "An S/4HANA ready for the workshops",
+   "obj": "Have an S/4HANA system with standard content to show the processes to the business.",
+   "act": [
+    "Providing the reference system (starter) and the DEV / QAS / PRD landscape",
+    "Activating SAP Best Practices",
+    "Project tools: SAP Cloud ALM"
+   ],
+   "pre": [
+    "SAP or RISE contract signed",
+    "Deployment model decided",
+    "Technical team or hosting provider"
+   ],
+   "liv": [
+    "Reference system with standard processes and sample data",
+    "Planned landscape",
+    "Cloud ALM configured"
+   ],
+   "ex": "The reference system is delivered in six weeks, with standard processes pre-activated and demo data. It will serve for all the Explore workshops.",
+   "ai": [
+    "Generating realistic sample data",
+    "Assisted configuration of the tools"
+   ],
+   "aig": "Low",
+   "own": "Technical team, hosting provider or SAP (RISE)",
+   "r": [
+    [
+     "System delivered late: workshops on PowerPoint",
+     "Order it as soon as the contract is signed"
+    ],
+    [
+     "Empty system, no content or data: abstract workshops",
+     "Activate the best practices and load sample data"
+    ]
+   ]
+  },
+  "s4": {
+   "p": 1,
+   "n": "04",
+   "t": "Cross-cutting strategies",
+   "s": "Data, integration, testing, extensions, change",
+   "obj": "Set the ground rules early for data, interfaces, testing, extensions and change management.",
+   "act": [
+    "Migration strategy: which data to carry over, and which to leave behind",
+    "Integration strategy: middleware, interfaces",
+    "Test strategy",
+    "Extension strategy: Clean Core rules",
+    "Change management and training strategy"
+   ],
+   "pre": [
+    "Map of the current landscape: systems, interfaces, volumes",
+    "Governance in place"
+   ],
+   "liv": [
+    "Strategy documents validated by the design authority"
+   ],
+   "ex": "Calvane carries over only master data and open items: open orders, stock, open accounting items. History stays accessible in an archive. 42 interfaces to rebuild. Clean Core rule: no modification of the standard.",
+   "ai": [
+    "Mapping interfaces and volumes from the logs",
+    "First drafts of the strategies"
+   ],
+   "aig": "Medium",
+   "own": "Architects and the lead of each stream",
+   "r": [
+    [
+     "Data strategy postponed: cleansing started too late",
+     "Decide in Prepare what is carried over"
+    ],
+    [
+     "Clean Core rule not written down: standard modified in Realize",
+     "Formalize it and have the design authority validate it"
+    ]
+   ]
+  },
+  "q1": {
+   "p": 1,
+   "gate": 1,
+   "t": "Quality gate 1 · End of Prepare",
+   "s": "",
+   "obj": "Authorize the start of Explore: team, system and ground rules in place.",
+   "act": [
+    "Review of the organization, governance and strategies",
+    "Checking key user availability"
+   ],
+   "pre": [
+    "Team and key users named",
+    "Reference system available",
+    "Validated strategies"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Gate passed with one condition: the maintenance key user is only 20% available. The plant director commits to freeing them up before the first workshop.",
+   "ai": [
+    "Consolidating the status of the criteria"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Explore started without key users available: empty workshops",
+     "Make this criterion blocking at the gate"
+    ]
+   ]
+  },
+  "s5": {
+   "p": 2,
+   "n": "05",
+   "t": "Fit-to-standard workshops",
+   "s": "Show the standard, decide process by process",
+   "obj": "Show the SAP standard to the business and decide, process by process, whether to adopt it.",
+   "act": [
+    "Demonstrating standard processes on the reference system",
+    "Identifying gaps",
+    "Prioritizing and building the gap backlog",
+    "Key configuration values"
+   ],
+   "pre": [
+    "Reference system with best practices",
+    "Process owners and key users present and empowered to decide",
+    "List of in-scope processes"
+   ],
+   "liv": [
+    "Signed decisions per process",
+    "Prioritized gap backlog"
+   ],
+   "ex": "85 workshops over twelve weeks. The standard covers 82% of needs. 140 gaps raised, 60 dropped after discussion: 'we've done it this way for 20 years' is not enough to justify a gap.",
+   "ai": [
+    "Compare actual processes (process mining) to the standard",
+    "Workshop minutes and backlog generated automatically"
+   ],
+   "aig": "High",
+   "own": "Functional consultants and process owners",
+   "r": [
+    [
+     "Workshops turned into collecting the old system's requirements: massive custom code",
+     "Start from the standard, justify every gap"
+    ],
+    [
+     "Decision-makers absent: decisions challenged later",
+     "The process owner signs each process"
+    ],
+    [
+     "Explore drags on: Realize squeezed",
+     "Time-boxed workshops, standard by default if no decision"
+    ]
+   ]
+  },
+  "s6": {
+   "p": 2,
+   "n": "06",
+   "t": "Gap design",
+   "s": "How to deliver each gap, Clean Core",
+   "obj": "Describe how each retained gap will be delivered, in line with Clean Core.",
+   "act": [
+    "RICEFW classification",
+    "Choosing the technique: configuration, key user extension, BTP extension, ABAP Cloud",
+    "Functional specifications and estimates",
+    "Validation by the design authority"
+   ],
+   "pre": [
+    "Prioritized gap backlog",
+    "Written extension rules",
+    "Architects available"
+   ],
+   "liv": [
+    "Functional specifications",
+    "Estimated RICEFW register",
+    "Design authority decisions"
+   ],
+   "ex": "80 gaps retained: 35 in configuration, 20 in key user extensions, 15 developments on BTP, 10 forms. No modification of the standard.",
+   "ai": [
+    "Draft specifications",
+    "Suggesting the Clean Core-compatible extension technique",
+    "Detecting duplicates in the backlog"
+   ],
+   "aig": "Medium to high",
+   "own": "Consultants, architects and design authority",
+   "r": [
+    [
+     "Vague specifications: a build that fumbles",
+     "Standard format with acceptance criteria"
+    ],
+    [
+     "Extensions outside Clean Core: costly upgrades",
+     "Blocking design authority"
+    ],
+    [
+     "Optimistic estimates: Realize undersized",
+     "Estimate by benchmarks, with a margin"
+    ]
+   ]
+  },
+  "s7": {
+   "p": 2,
+   "n": "07",
+   "t": "Data and interface design",
+   "s": "What to migrate, how each flow works",
+   "obj": "Define which data to migrate, with which rules, and how each interface works.",
+   "act": [
+    "List of data objects: materials, suppliers, customers, bills of materials",
+    "Mapping rules between the old and the new",
+    "Launching the cleansing in the legacy system",
+    "Interface design"
+   ],
+   "pre": [
+    "Validated data and integration strategies",
+    "Data owners named",
+    "Access to source data"
+   ],
+   "liv": [
+    "Migration plan per object",
+    "Validated mapping rules",
+    "Interface specifications",
+    "Cleansing plan"
+   ],
+   "ex": "38 objects to migrate. Of 25,000 materials, 9,000 have been inactive for five years and will not be carried over. Suppliers and customers become Business Partners.",
+   "ai": [
+    "Data profiling: duplicates, inactive records, inconsistent fields",
+    "Proposing mapping rules"
+   ],
+   "aig": "High",
+   "own": "Data owners, migration team, integration architect",
+   "r": [
+    [
+     "Cleansing left to Realize: too late",
+     "Start it in Explore"
+    ],
+    [
+     "Rules written by IT alone: wrong business rules",
+     "The data owner validates every rule"
+    ]
+   ]
+  },
+  "q2": {
+   "p": 2,
+   "gate": 1,
+   "t": "Quality gate 2 · End of Explore",
+   "s": "",
+   "obj": "Authorize the build: scope decided, designed and estimated.",
+   "act": [
+    "Review of the signed backlog",
+    "Review of the designs and the Realize estimate"
+   ],
+   "pre": [
+    "Signed decisions per process",
+    "Designs approved by the design authority",
+    "Estimated Realize plan"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Eight gaps remain open. They are listed with a deadline: without a decision by sprint 2, the standard applies.",
+   "ai": [
+    "Consolidating the status of the backlog"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Realize launched with open gaps: scope drifts",
+     "List of open gaps, deadline and default decision"
+    ]
+   ]
+  },
+  "s8": {
+   "p": 3,
+   "n": "08",
+   "t": "Sprint-based configuration",
+   "s": "Build iteratively, show the business",
+   "obj": "Build the solution in short iterations, shown to the business at the end of each sprint.",
+   "act": [
+    "Configuration by sprint",
+    "Demonstration to key users at the end of the sprint",
+    "Unit tests",
+    "Transports to quality"
+   ],
+   "pre": [
+    "Prioritized backlog",
+    "Development environment",
+    "Key users available for the demonstrations"
+   ],
+   "liv": [
+    "Configured solution",
+    "Validated demonstrations",
+    "Documented unit tests"
+   ],
+   "ex": "Eight three-week sprints. At each demonstration, about 15% of the topics are adjusted: that many defects avoided at acceptance.",
+   "ai": [
+    "Automatic documentation of the configuration",
+    "Configuration assistance (Joule)"
+   ],
+   "aig": "Medium",
+   "own": "Functional consultants",
+   "r": [
+    [
+     "Demonstrations skipped: surprises at acceptance",
+     "Demonstration mandatory at every sprint"
+    ],
+    [
+     "Untracked changes in requirements: drift",
+     "Everything goes through the change board"
+    ]
+   ]
+  },
+  "s9": {
+   "p": 3,
+   "n": "09",
+   "t": "Extensions and interfaces",
+   "s": "Develop the gaps, rebuild the flows",
+   "obj": "Develop the retained gaps and rebuild the interfaces.",
+   "act": [
+    "Developments on BTP and in ABAP Cloud",
+    "Forms",
+    "Interfaces in the middleware",
+    "Unit tests and code review"
+   ],
+   "pre": [
+    "Validated specifications",
+    "BTP and Integration Suite environments",
+    "Third-party systems available for testing"
+   ],
+   "liv": [
+    "Developments delivered",
+    "Interfaces unit-tested"
+   ],
+   "ex": "42 interfaces rebuilt. The carrier and the bank provide their test environments a month late: the risk is tracked in committee from the first week.",
+   "ai": [
+    "Code generation and review",
+    "Unit test generation"
+   ],
+   "aig": "Medium to high",
+   "own": "Developers and integration team",
+   "r": [
+    [
+     "Dependence on third parties: interfaces impossible to test",
+     "Third-party schedules written into their contracts"
+    ],
+    [
+     "Code outside Clean Core rules: technical debt",
+     "Automatic code checks (ATC)"
+    ]
+   ]
+  },
+  "s10": {
+   "p": 3,
+   "n": "10",
+   "t": "Data migration",
+   "s": "Successive mock loads",
+   "obj": "Load correct and complete data within the planned time.",
+   "act": [
+    "Three to four mock loads with the Migration Cockpit",
+    "Checks by the data owners",
+    "Measuring rejects and durations"
+   ],
+   "pre": [
+    "Validated mapping rules",
+    "Cleansing well advanced",
+    "Quality environment"
+   ],
+   "liv": [
+    "Report for each load",
+    "Validated data",
+    "Durations carried into the runbook"
+   ],
+   "ex": "Load 1: 18% rejects. Load 2: 6%. Load 3: 1%. The full load takes 30 hours, for a 72-hour cutover window.",
+   "ai": [
+    "Automatic checks after loading",
+    "Reconciliation between source and target",
+    "Anomaly detection"
+   ],
+   "aig": "High",
+   "own": "Migration team and data owners",
+   "r": [
+    [
+     "First load too late: late discoveries",
+     "First load at the start of Realize"
+    ],
+    [
+     "Token business validation: errors in production",
+     "Data owner sign-off per object"
+    ]
+   ]
+  },
+  "s11": {
+   "p": 3,
+   "n": "11",
+   "t": "Integration testing and acceptance",
+   "s": "End to end, with real data",
+   "obj": "Prove that the solution works end to end, with real data and the real roles.",
+   "act": [
+    "Integration testing (SIT) in two cycles",
+    "User acceptance testing (UAT)",
+    "Performance testing",
+    "Authorization testing"
+   ],
+   "pre": [
+    "Configuration and developments finished",
+    "Data from a mock load",
+    "Written scenarios, defined exit criteria"
+   ],
+   "liv": [
+    "Test reports",
+    "Signed acceptance report"
+   ],
+   "ex": "450 scenarios. 600 defects found over two SIT cycles. Six weeks of acceptance, signed off with 12 minor defects open.",
+   "ai": [
+    "Scenario generation",
+    "Test automation (e.g. Tricentis)",
+    "Defect triage and deduplication"
+   ],
+   "aig": "High",
+   "own": "Test manager and key users",
+   "r": [
+    [
+     "Testing compressed to hit the date: defects in production",
+     "Testing duration protected in the schedule"
+    ],
+    [
+     "Authorizations tested last: users blocked at go-live",
+     "Test with the real roles from SIT"
+    ]
+   ]
+  },
+  "s12": {
+   "p": 3,
+   "n": "12",
+   "t": "Training and change management",
+   "s": "New processes, new reflexes",
+   "obj": "Prepare every user for the new system and, above all, for the new processes.",
+   "act": [
+    "Impact analysis by job",
+    "Materials and work instructions",
+    "Training key users, then users",
+    "Communication and ambassador network"
+   ],
+   "pre": [
+    "Stabilized solution",
+    "List of users by role",
+    "Training environment"
+   ],
+   "liv": [
+    "Trained users",
+    "Materials",
+    "Communication plan"
+   ],
+   "ex": "1,200 users, 180 roles. 40 key users train their colleagues over six weeks. The heaviest changes: production planning and time entry.",
+   "ai": [
+    "Materials and work instructions by role",
+    "Translation",
+    "Q&A assistant for users"
+   ],
+   "aig": "High",
+   "own": "Change management and key users",
+   "r": [
+    [
+     "Training on the tool only, not on the processes: rejection",
+     "Train by business scenario"
+    ],
+    [
+     "Training too early: forgotten by go-live",
+     "Train two to four weeks before"
+    ]
+   ]
+  },
+  "q3": {
+   "p": 3,
+   "gate": 1,
+   "t": "Quality gate 3 · End of Realize",
+   "s": "",
+   "obj": "Authorize the final preparation: the solution is tested and the data is ready.",
+   "act": [
+    "Review of remaining defects",
+    "Review of mock loads",
+    "Review of the training plan"
+   ],
+   "pre": [
+    "Zero blocking defects",
+    "Signed acceptance",
+    "Loads within quality and duration thresholds"
+   ],
+   "liv": [
+    "Traced go-ahead decision"
+   ],
+   "ex": "Zero blocking defects, 1% rejects on the last load. Move into Deploy authorized.",
+   "ai": [
+    "Consolidating test and migration indicators"
+   ],
+   "aig": "Low",
+   "own": "Steering committee",
+   "r": [
+    [
+     "Defects downgraded to minor to pass the gate",
+     "Severity arbitrated by the business"
+    ]
+   ]
+  },
+  "s13": {
+   "p": 4,
+   "n": "13",
+   "t": "Cutover preparation",
+   "s": "Runbook and rehearsals",
+   "obj": "Prepare the cutover minute by minute, then rehearse it.",
+   "act": [
+    "Runbook: task, owner, duration, dependency",
+    "Closing and shutting down the old system",
+    "One or two dress rehearsals",
+    "Fallback plan",
+    "Support organization"
+   ],
+   "pre": [
+    "Load durations measured",
+    "Cutover window validated",
+    "Cutover team named"
+   ],
+   "liv": [
+    "Validated runbook",
+    "Rehearsal reports"
+   ],
+   "ex": "Runbook of 640 tasks. First rehearsal: 81 hours, too long. Second rehearsal: 64 hours after optimization, within the 72-hour window.",
+   "ai": [
+    "Runbook consistency check: dependencies, durations, omissions"
+   ],
+   "aig": "Low to medium",
+   "own": "Cutover manager",
+   "r": [
+    [
+     "No full rehearsal: the cutover overruns the window",
+     "At least one timed rehearsal"
+    ],
+    [
+     "Poorly prepared closing of the old system: wrong opening balance",
+     "Finance in the runbook, with its controls"
+    ]
+   ]
+  },
+  "s14": {
+   "p": 4,
+   "n": "14",
+   "t": "Go / no-go",
+   "s": "Decide on facts",
+   "gate": 1,
+   "obj": "Decide, on criteria written in advance, whether to cut over.",
+   "act": [
+    "Review of criteria: testing, data, training, support, runbook",
+    "Formal, traced decision"
+   ],
+   "pre": [
+    "Criteria defined and signed in advance",
+    "Up-to-date status of each criterion"
+   ],
+   "liv": [
+    "Signed decision, with its reservations"
+   ],
+   "ex": "22 criteria: 20 green, 2 amber (30 night-team users not yet trained, a customs interface under correction). Go with reservations, each with an owner.",
+   "ai": [
+    "Criteria dashboard"
+   ],
+   "aig": "Low: the decision stays human",
+   "own": "Client steering committee",
+   "r": [
+    [
+     "Pressure of the date: go despite red criteria",
+     "Criteria set in advance, not renegotiable in the meeting"
+    ],
+    [
+     "Reservations not followed: incidents from day one",
+     "Each reservation has an owner and a date"
+    ]
+   ]
+  },
+  "s15": {
+   "p": 4,
+   "n": "15",
+   "t": "Cutover and go-live",
+   "s": "Execute the runbook, open",
+   "obj": "Cut over and start operations on S/4HANA.",
+   "act": [
+    "Executing the runbook",
+    "Final data load",
+    "Reconciling stock and accounting balances",
+    "Opening to users"
+   ],
+   "pre": [
+    "Go validated",
+    "Cutover and support teams in place",
+    "SAP support notified"
+   ],
+   "liv": [
+    "System in production",
+    "Reconciliations signed by the business"
+   ],
+   "ex": "Old ERP shut down Thursday evening. Load, reconciliation of stock and accounting balances. Opening Monday, April 1 at 6 am.",
+   "ai": [
+    "Real-time monitoring of flows and gaps"
+   ],
+   "aig": "Medium",
+   "own": "Cutover manager and business",
+   "r": [
+    [
+     "Reconciliation skipped to save time: invisible gaps",
+     "Reconciliation mandatory before opening"
+    ],
+    [
+     "Fallback decided too late",
+     "Fallback criteria set before the point of no return"
+    ]
+   ]
+  },
+  "s16": {
+   "p": 5,
+   "n": "16",
+   "t": "Hypercare",
+   "s": "Stabilize, get through the first closing",
+   "obj": "Stabilize the system and support the first month-end closing.",
+   "act": [
+    "Reinforced on-site support",
+    "Daily incident triage",
+    "Tracking indicators",
+    "Supported first month-end closing"
+   ],
+   "pre": [
+    "Hypercare team sized",
+    "Incident process and escalation",
+    "Exit criteria defined"
+   ],
+   "liv": [
+    "Incidents resolved",
+    "First closing completed",
+    "Stabilization report"
+   ],
+   "ex": "Eight weeks of hypercare. Peak of 400 tickets in the first week. First closing takes 7 days instead of 5; the target is met at the second.",
+   "ai": [
+    "Ticket triage and classification",
+    "Suggesting solutions from resolved incidents"
+   ],
+   "aig": "High",
+   "own": "Project and support team",
+   "r": [
+    [
+     "Experts released too early: incidents unanswered",
+     "Team locked until exit"
+    ],
+    [
+     "First closing not prepared: financial delay",
+     "Closing rehearsal before go-live"
+    ]
+   ]
+  },
+  "q4": {
+   "p": 5,
+   "gate": 1,
+   "t": "Quality gate 4 · Hypercare exit",
+   "s": "",
+   "obj": "Close the project and confirm that run can take over alone.",
+   "act": [
+    "Review of stability indicators",
+    "Review of the handover to run"
+   ],
+   "pre": [
+    "Indicators below thresholds",
+    "No blocking incident open",
+    "Run trained and documented"
+   ],
+   "liv": [
+    "Formal project closure"
+   ],
+   "ex": "Exit declared ten weeks after go-live. 15 minor tickets formally taken over by run.",
+   "ai": [
+    "Calculating stability indicators"
+   ],
+   "aig": "Low",
+   "own": "Steering committee and run manager",
+   "r": [
+    [
+     "Closure with open incidents: run inherits a debt",
+     "List of incidents formally taken over"
+    ]
+   ]
+  },
+  "s17": {
+   "p": 5,
+   "n": "17",
+   "t": "Operations and continuous innovation",
+   "s": "Keep the solution alive",
+   "obj": "Keep the solution alive and benefit from new SAP capabilities.",
+   "act": [
+    "Operations by the run team (AMS)",
+    "Regular upgrades",
+    "Adopting new functions",
+    "Continuous improvement"
+   ],
+   "pre": [
+    "Run contract",
+    "Clean Core respected"
+   ],
+   "liv": [
+    "Upgrade plan",
+    "Improvement backlog"
+   ],
+   "ex": "First upgrade ten months after go-live, done in three weeks thanks to Clean Core.",
+   "ai": [
+    "Joule assistant for users",
+    "Analyzing actual usage to prioritize improvements"
+   ],
+   "aig": "Medium",
+   "own": "Run and IT",
+   "r": [
+    [
+     "Custom code accumulating after go-live: difficult upgrades",
+     "Keep the design authority going after the project"
+    ]
+   ]
+  },
+  "transverse": {
+   "p": 0,
+   "t": "Ongoing, from start to finish",
+   "s": "",
+   "obj": "Run the program end to end: decide fast, arbitrate cleanly, bring the business along.",
+   "act": [
+    "Steering committee: arbitration, quality gates, go / no-go",
+    "Design authority: Clean Core and solution consistency",
+    "Change board: every change to scope, schedule or budget",
+    "Risk register with alert thresholds",
+    "Change management and communication"
+   ],
+   "pre": [
+    "Roles and bodies defined from Prepare",
+    "Active sponsor"
+   ],
+   "liv": [
+    "Traced decisions",
+    "Up-to-date risk register"
+   ],
+   "ex": "Monthly steering committee, then weekly for the last three months. 25 risks tracked; three turned red: key user availability, third-party environments, cutover duration.",
+   "ai": [
+    "Minutes and decision tracking",
+    "Early risk detection from indicators",
+    "Caution: client data only in a tool approved by the client"
+   ],
+   "aig": "Medium",
+   "own": "Program management",
+   "r": [
+    [
+     "Committees that observe without deciding",
+     "Every committee ends with traced decisions"
+    ],
+    [
+     "Indicators green, reality red: the watermelon effect",
+     "Quantified alert thresholds and checks on the ground"
+    ]
+   ]
+  }
+ }
+}
