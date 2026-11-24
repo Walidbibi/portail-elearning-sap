@@ -802,6 +802,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
+- 2026-11-24 · session principale · règles lues sur https://www.sap.com/about/legal/trademark.html (date d'effet : 12 janvier 2026), sections « Partner and other third-party use », « Proper use of trademarks », « Trademark attribution », « Other dos and don'ts ». À retenir : (1) pas de « SAP » dans un nom, un slogan, un nom de domaine ou un logo, ce qui touche la signature validée « Piloter un programme SAP » ; (2) phrase d'attribution obligatoire : « <marques> is/are the trademark(s) or registered trademark(s) of SAP SE or its affiliates in Germany and in other countries » ; (3) symbole ® à la première mention dans le titre et le texte, avec un nom commun (« SAP® software ») ; (4) aucune mention ne doit laisser croire à un parrainage ou une affiliation. Décisions demandées à Walid avant publication.
 
 ### Bloc C · Identité
 
