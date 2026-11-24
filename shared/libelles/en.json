@@ -53,7 +53,8 @@
     "doc": "Doc",
     "frise": "Timeline",
     "act": "Certification",
-    "prat": "Practice"
+    "prat": "Practice",
+    "schema": "Diagram"
   },
   "categories": {
     "meth": "Method & governance",

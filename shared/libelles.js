@@ -13,8 +13,11 @@ const LANGUES=['fr','en'],CLE='sap-langue';
 const lire=()=>{try{return localStorage.getItem(CLE);}catch(e){return null;}};
 const ecrire=l=>{try{localStorage.setItem(CLE,l);}catch(e){}};
 const param=new URLSearchParams(location.search).get('lang');
+// une page écrite dans une seule langue (data-langue-fixe) impose sa langue
+const fixe=document.documentElement.dataset.langueFixe;
 let langue;
-if(LANGUES.includes(param)){langue=param;ecrire(param);}
+if(LANGUES.includes(fixe)){langue=fixe;ecrire(fixe);}
+else if(LANGUES.includes(param)){langue=param;ecrire(param);}
 else if(LANGUES.includes(lire()))langue=lire();
 else langue=/^fr\b/i.test(navigator.language||'')?'fr':'en';
 document.documentElement.lang=langue;
@@ -31,6 +34,9 @@ const charger=l=>fetch(new URL('libelles/'+l+'.json',me.src),{cache:'no-cache'})
 // Sélecteur FR / EN : choisir une langue la mémorise et recharge la même page.
 function changer(l){
   ecrire(l);
+  // page à une seule langue : on va vers sa version dans l'autre langue (<link rel="alternate" hreflang>)
+  const alt=document.querySelector(`link[rel="alternate"][hreflang="${l}"]`);
+  if(alt){location.href=alt.href;return;}
   const u=new URL(location.href);
   if(u.searchParams.has('lang'))u.searchParams.set('lang',l);
   location.replace(u.href);

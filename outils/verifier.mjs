@@ -172,7 +172,7 @@ for (const [cle, d] of Object.entries(docs)) {
 // 4 quater. Scripts et style versionnés (outils/version.mjs) : même numéro partout
 {
   const versions = new Map();
-  for (const p of ['index.html', 'lecteur.html', ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.html')).map(f => `frises/${f}`)]) {
+  for (const p of ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`))]) {
     const t = readFileSync(join(RACINE, p), 'utf8');
     for (const m of t.matchAll(/(?:src|href)="(?:\.\.\/)?(shared\/(?!pdfjs\/)[\w.-]+\.(?:js|css))(\?v=([\w.-]+))?"/g)) {
       if (!m[3]) erreur(p, ligneDe(t, m[1]), `« ${m[1]} » n'a pas de numéro de version : lancer node outils/version.mjs avant de publier`);
@@ -183,7 +183,7 @@ for (const [cle, d] of Object.entries(docs)) {
 }
 
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json
-const sources = ['index.html', 'lecteur.html', ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.html')).map(f => `frises/${f}`),
+const sources = ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`)),
   ...readdirSync(join(RACINE, 'shared')).filter(f => f.endsWith('.js')).map(f => `shared/${f}`)];
 for (const f of sources) {
   const t = readFileSync(join(RACINE, f), 'utf8');

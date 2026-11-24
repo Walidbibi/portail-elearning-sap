@@ -53,7 +53,8 @@
     "doc": "Doc",
     "frise": "Frise",
     "act": "Certification",
-    "prat": "Pratique"
+    "prat": "Pratique",
+    "schema": "Schéma"
   },
   "categories": {
     "meth": "Méthode et gouvernance",

@@ -37,6 +37,7 @@ frises/greenfield.html     frise greenfield (SAP Activate), contenu dans frises/
 shared/frise.js, frise.css gabarit commun des frises (dessin de la chronologie, popups)
 frises/brownfield.html     frise brownfield (SAP Activate), contenu dans frises/brownfield.json
 frises/bluefield.html      frise bluefield (SAP Activate), contenu dans frises/bluefield.json
+schemas/                   schémas interactifs (rôles d'un programme SAP), une page par langue (data-langue-fixe, lien rel=alternate vers l'autre langue)
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
 apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, réduit à 720 px de haut ; frises : Chrome headless 1080 × 673 sur `?lang=fr`, réduit à 720 de large), à refaire si le support change
 apercus/<clé>.en.jpg       aperçu anglais d'une frise (même capture sur `?lang=en`)

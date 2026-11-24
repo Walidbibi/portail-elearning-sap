@@ -58,7 +58,7 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 .card .sub{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .card .sub a{font-size:12.5px;text-decoration:none;background:var(--soft);border-radius:6px;padding:2px 8px}
 .card .sub a:hover{text-decoration:underline}
-.k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
+.k-schema{--kc:var(--k-doc)}.k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
 .foot{margin-top:40px;font-size:13px;color:var(--muted)}
 /* en-tête : surtitre à gauche, sélecteur de langue à droite */
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
@@ -98,9 +98,9 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611241504"></script>
-<script src="shared/documents.js?v=202611241504"></script>
-<script src="shared/glossaire.js?v=202611241504"></script>
+<script src="shared/libelles.js?v=202611241510"></script>
+<script src="shared/documents.js?v=202611241510"></script>
+<script src="shared/glossaire.js?v=202611241510"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(([T,M])=>{
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";

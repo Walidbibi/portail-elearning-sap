@@ -4,6 +4,7 @@
     "parcours": [
       "synth",
       "mig",
+      "roles",
       "fiche"
     ],
     "certification": [
@@ -22,6 +23,8 @@
       "migEN",
       "actEN",
       "act2EN",
+      "rolesEN",
+      "ficheEN",
       "script"
     ]
   },
@@ -48,10 +51,15 @@
       "description": "L'essentiel sur une page, à relire avant un entretien.",
       "fichier": "documents/fiche-de-revision.pdf",
       "langue": "fr",
-      "en": {
-        "titre": "Review sheet",
-        "description": "The essentials on one page, to reread before an interview."
-      }
+      "versionEn": "ficheEN"
+    },
+    "roles": {
+      "type": "schema",
+      "titre": "Les rôles d'un programme SAP",
+      "description": "Qui fait quoi côté client et côté intégrateur, rôle par rôle, avec l'exemple de la vanne.",
+      "fichier": "schemas/roles-programme-sap.html",
+      "langue": "fr",
+      "versionEn": "rolesEN"
     },
     "simu": {
       "type": "prat",
@@ -144,6 +152,28 @@
       "en": {
         "titre": "ACT200 · Revision book",
         "description": "SAP Activate Agile: the complete revision book."
+      }
+    },
+    "rolesEN": {
+      "type": "schema",
+      "titre": "Roles in an SAP program (EN)",
+      "description": "Version anglaise du schéma des rôles.",
+      "fichier": "schemas/sap-program-roles.html",
+      "langue": "en",
+      "en": {
+        "titre": "Roles in an SAP program",
+        "description": "Who does what on the client and integrator sides, role by role, with the valve example."
+      }
+    },
+    "ficheEN": {
+      "type": "doc",
+      "titre": "Revision sheet (EN)",
+      "description": "Version anglaise de la fiche de révision.",
+      "fichier": "documents/revision-sheet-en.pdf",
+      "langue": "en",
+      "en": {
+        "titre": "Revision sheet",
+        "description": "The essentials on one page, to reread before an interview."
       }
     },
     "synthEN": {

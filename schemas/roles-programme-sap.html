@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr" data-langue-fixe="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="en" href="sap-program-roles.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<title>Les rôles d'un programme SAP</title>
+<style>
+:root{
+  --bg:#F7F6F2;--card:#FFFFFF;--text:#14213D;--muted:#5F5E5A;--line:#D3D1C7;--arrow:#888780;
+  --gray-f:#F1EFE8;--gray-s:#888780;--gray-t:#444441;--gray-st:#5F5E5A;
+  --pur-f:#EEEDFE;--pur-s:#534AB7;--pur-t:#3C3489;--pur-st:#534AB7;
+  --tea-f:#E1F5EE;--tea-s:#0F6E56;--tea-t:#085041;--tea-st:#0F6E56;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1C1C1A;--card:#262624;--text:#F1EFE8;--muted:#B4B2A9;--line:#444441;--arrow:#B4B2A9;
+    --gray-f:#444441;--gray-s:#B4B2A9;--gray-t:#F1EFE8;--gray-st:#D3D1C7;
+    --pur-f:#3C3489;--pur-s:#AFA9EC;--pur-t:#EEEDFE;--pur-st:#CECBF6;
+    --tea-f:#085041;--tea-s:#5DCAA5;--tea-t:#E1F5EE;--tea-st:#9FE1CB;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
+main{max-width:760px;margin:0 auto;padding:32px 16px 48px}
+h1{font-size:26px;font-weight:600;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px;font-size:15px}
+svg{width:100%;height:auto;display:block}
+.t{font-size:14px;font-weight:600}
+.s{font-size:12px}
+.g rect{fill:var(--gray-f);stroke:var(--gray-s)} .g .t{fill:var(--gray-t)} .g .s{fill:var(--gray-st)}
+.p rect{fill:var(--pur-f);stroke:var(--pur-s)} .p .t{fill:var(--pur-t)} .p .s{fill:var(--pur-st)}
+.c rect{fill:var(--tea-f);stroke:var(--tea-s)} .c .t{fill:var(--tea-t)} .c .s{fill:var(--tea-st)}
+.n{cursor:pointer} .n:hover{opacity:.85} .n:focus{outline:none} .n:focus rect{stroke-width:2.5}
+.sel rect{stroke-width:2.5}
+.lbl{fill:var(--text);font-size:14px;font-weight:600}
+.arr{stroke:var(--arrow);stroke-width:1.2;fill:none}
+.box{fill:none;stroke:var(--line);stroke-dasharray:4 4}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:16px}
+.panel h2{font-size:18px;margin:0 0 8px}
+.row{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+.row:first-of-type{border-top:none}
+.lab{color:var(--muted);font-size:13px}
+.hint{color:var(--muted);margin:0}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:2px}}
+/* ligne du haut du portail : retour à gauche, sélecteur de langue à droite */
+[hidden]{display:none!important}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.back{display:inline-flex;align-items:center;min-height:40px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--text)}
+.back:focus-visible{outline:3px solid #E07A2F;outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><a class="back" href="../index.html" data-t="lecteur.retour"></a><div data-langue></div></div>
+<h1>Les rôles d'un programme SAP</h1>
+<p class="sub">Cliquez sur un rôle pour voir ce qu'il fait. Fil rouge : la réception d'une vanne de carburant.</p>
+<svg viewBox="0 0 680 510" role="img" aria-labelledby="st sd">
+<title id="st">Les rôles d'un programme SAP</title>
+<desc id="sd">Gouvernance en haut, rôles côté client à gauche et côté intégrateur à droite, avec les binômes qui se parlent.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g class="n g" data-k="cp" tabindex="0"><rect x="40" y="20" width="186" height="56" rx="8" stroke-width="0.8"/><text class="t" x="133" y="40" text-anchor="middle" dominant-baseline="central">Comité de pilotage</text><text class="s" x="133" y="58" text-anchor="middle" dominant-baseline="central">Budget, go/no-go</text></g>
+<g class="n g" data-k="da" tabindex="0"><rect x="247" y="20" width="186" height="56" rx="8" stroke-width="0.8"/><text class="t" x="340" y="40" text-anchor="middle" dominant-baseline="central">Design authority</text><text class="s" x="340" y="58" text-anchor="middle" dominant-baseline="central">Tranche la solution</text></g>
+<g class="n g" data-k="ccb" tabindex="0"><rect x="454" y="20" width="186" height="56" rx="8" stroke-width="0.8"/><text class="t" x="547" y="40" text-anchor="middle" dominant-baseline="central">Comité des changements</text><text class="s" x="547" y="58" text-anchor="middle" dominant-baseline="central">Valide tout ajout</text></g>
+<line x1="133" y1="76" x2="133" y2="106" class="arr" marker-end="url(#a)"/>
+<line x1="340" y1="76" x2="340" y2="106" class="arr" marker-end="url(#a)"/>
+<line x1="547" y1="76" x2="547" y2="106" class="arr" marker-end="url(#a)"/>
+<rect class="box" x="40" y="110" width="220" height="376" rx="16"/>
+<text class="lbl" x="150" y="132" text-anchor="middle" dominant-baseline="central">Côté client</text>
+<rect class="box" x="280" y="110" width="360" height="376" rx="16"/>
+<text class="lbl" x="460" y="132" text-anchor="middle" dominant-baseline="central">Côté intégrateur</text>
+<g class="n p" data-k="sp" tabindex="0"><rect x="55" y="150" width="190" height="52" rx="8" stroke-width="0.8"/><text class="t" x="150" y="168" text-anchor="middle" dominant-baseline="central">Sponsor</text><text class="s" x="150" y="186" text-anchor="middle" dominant-baseline="central">Porte et arbitre</text></g>
+<g class="n p" data-k="po" tabindex="0"><rect x="55" y="216" width="190" height="52" rx="8" stroke-width="0.8"/><text class="t" x="150" y="234" text-anchor="middle" dominant-baseline="central">Process owner</text><text class="s" x="150" y="252" text-anchor="middle" dominant-baseline="central">Décide du processus</text></g>
+<g class="n p" data-k="ku" tabindex="0"><rect x="55" y="282" width="190" height="52" rx="8" stroke-width="0.8"/><text class="t" x="150" y="300" text-anchor="middle" dominant-baseline="central">Key users</text><text class="s" x="150" y="318" text-anchor="middle" dominant-baseline="central">Recette et formation</text></g>
+<g class="n p" data-k="do" tabindex="0"><rect x="55" y="348" width="190" height="52" rx="8" stroke-width="0.8"/><text class="t" x="150" y="366" text-anchor="middle" dominant-baseline="central">Data owner</text><text class="s" x="150" y="384" text-anchor="middle" dominant-baseline="central">Qualité des données</text></g>
+<g class="n c" data-k="dp" tabindex="0"><rect x="295" y="150" width="330" height="52" rx="8" stroke-width="0.8"/><text class="t" x="460" y="168" text-anchor="middle" dominant-baseline="central">Directeur de programme</text><text class="s" x="460" y="186" text-anchor="middle" dominant-baseline="central">Pilote, arbitre, s'engage</text></g>
+<g class="n c" data-k="ar" tabindex="0"><rect x="295" y="216" width="330" height="52" rx="8" stroke-width="0.8"/><text class="t" x="460" y="234" text-anchor="middle" dominant-baseline="central">Architecte solution</text><text class="s" x="460" y="252" text-anchor="middle" dominant-baseline="central">Cohérence entre modules</text></g>
+<g class="n c" data-k="fo" tabindex="0"><rect x="295" y="282" width="155" height="52" rx="8" stroke-width="0.8"/><text class="t" x="372" y="300" text-anchor="middle" dominant-baseline="central">Fonctionnels</text><text class="s" x="372" y="318" text-anchor="middle" dominant-baseline="central">Traduisent le besoin</text></g>
+<g class="n c" data-k="de" tabindex="0"><rect x="470" y="282" width="155" height="52" rx="8" stroke-width="0.8"/><text class="t" x="547" y="300" text-anchor="middle" dominant-baseline="central">Développeurs</text><text class="s" x="547" y="318" text-anchor="middle" dominant-baseline="central">Objets RICEFW</text></g>
+<g class="n c" data-k="dt" tabindex="0"><rect x="295" y="348" width="155" height="52" rx="8" stroke-width="0.8"/><text class="t" x="372" y="366" text-anchor="middle" dominant-baseline="central">Data</text><text class="s" x="372" y="384" text-anchor="middle" dominant-baseline="central">Reprise des données</text></g>
+<g class="n c" data-k="te" tabindex="0"><rect x="470" y="348" width="155" height="52" rx="8" stroke-width="0.8"/><text class="t" x="547" y="366" text-anchor="middle" dominant-baseline="central">Test</text><text class="s" x="547" y="384" text-anchor="middle" dominant-baseline="central">SIT, non-régression</text></g>
+<g class="n c" data-k="ch" tabindex="0"><rect x="295" y="414" width="155" height="52" rx="8" stroke-width="0.8"/><text class="t" x="372" y="432" text-anchor="middle" dominant-baseline="central">Changement</text><text class="s" x="372" y="450" text-anchor="middle" dominant-baseline="central">Formation, adoption</text></g>
+<g class="n c" data-k="ba" tabindex="0"><rect x="470" y="414" width="155" height="52" rx="8" stroke-width="0.8"/><text class="t" x="547" y="432" text-anchor="middle" dominant-baseline="central">Basis et run</text><text class="s" x="547" y="450" text-anchor="middle" dominant-baseline="central">Technique, support</text></g>
+<line x1="249" y1="176" x2="291" y2="176" class="arr" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="249" y1="242" x2="291" y2="242" class="arr" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="249" y1="308" x2="291" y2="308" class="arr" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="249" y1="374" x2="291" y2="374" class="arr" marker-start="url(#a)" marker-end="url(#a)"/>
+</svg>
+<div class="panel" id="panel" aria-live="polite"><p class="hint">Cliquez sur une case pour voir ce que fait ce rôle.</p></div>
+</main>
+<script>
+const R={
+cp:["Comité de pilotage","Sponsor, process owners, directeurs de programme client et intégrateur. Mensuel.","Décide du budget, du périmètre, du planning, des go/no-go et des escalades.","Accepter par écrit l'option « standard par défaut » quand le métier n'est pas disponible.","On y vient avec des décisions à prendre, des options et une recommandation, pas pour du reporting."],
+da:["Design authority","Présidée par l'architecte solution, avec les leads fonctionnels et l'architecte client. Hebdomadaire.","Garantit la cohérence de la solution, décide si un écart se développe ou non, garde le Clean Core.","Décider que le contrôle du certificat se fait dans S/4 et non sur BTP.","C'est elle qui empêche le spécifique de proliférer. Sans elle, chaque module optimise son coin."],
+ccb:["Comité des changements","Directeur de programme, PMO, process owner concerné, architecte. Hebdomadaire.","Examine tout changement après la fin de l'Explore : coût, délai, risque. Accepte, refuse ou reporte.","L'écran de traçabilité demandé en Realize : chiffré, puis validé ou refusé.","Aucun « petit » changement hors comité : c'est comme ça qu'on évite la dérive de périmètre."],
+sp:["Sponsor","Le dirigeant côté client qui porte le programme.","Arbitre budget et périmètre, débloque les ressources du métier, tranche les conflits entre directions.","Libérer les key users de la logistique pour les ateliers.","Ne jamais le laisser découvrir un problème seul : on l'informe tôt, avec des options."],
+po:["Process owner","Le responsable d'un processus métier, par exemple le responsable logistique.","Décide comment son processus doit fonctionner, arbitre les écarts, signe la conception.","Décider que la réception des vannes passe par un contrôle qualité systématique.","Sa disponibilité conditionne tout l'Explore. Ne pas le confondre avec le key user, qui propose mais ne décide pas."],
+ku:["Key users","Les utilisateurs les plus expérimentés, détachés sur le projet. 3 ou 4 sur 80 magasiniers.","Participent aux ateliers, valident les démos, écrivent et jouent l'UAT, forment leurs collègues, premier support après le go-live.","Le chef d'équipe magasin qui joue sa vraie journée de réceptions en recette.","Choisir des personnes crédibles, pas les disponibles, avec un remplacement financé sur leur poste."],
+do:["Data owner","Le responsable de la qualité des données d'un domaine.","Fixe les règles de qualité, fait nettoyer par des data stewards, signe que ses données sont prêtes.","Garantir que chaque vanne a un numéro de certificat avant le chargement.","Souvent confondu avec le business owner. Question clé : au go/no-go, qui signe que les données sont prêtes ?"],
+dp:["Directeur de programme","Le responsable du résultat de bout en bout, côté intégrateur.","Pilote planning, budget et risques, arbitre, compose l'équipe, porte la relation avec le sponsor.","Présenter trois scénarios chiffrés pour mener l'hypercare sans arrêter le build.","Décider avec des chiffres, escalader au bon niveau, et toujours dire « je fais quoi, avec qui, d'ici quand »."],
+ar:["Architecte solution","Le garant de la cohérence de l'ensemble.","Assure la cohérence entre modules, choisit les intégrations et le niveau d'extension, préside la design authority.","Trancher entre une extension dans S/4 et une application sur BTP.","Un seul architecte, avec une vraie autorité : deux architectes, c'est deux visions."],
+fo:["Consultants fonctionnels","Un par module : MM, EWM, QM, FI… avec un lead par domaine.","Animent les ateliers, écrivent les spécifications, paramètrent, testent, corrigent, forment les key users.","Paramétrer la réception EWM et décrire au développeur le blocage « certificat manquant ».","Surveiller celui qui dit oui à tout (source de spécifique) et celui qui reste enfermé dans son module."],
+de:["Développeurs","Profils ABAP, ABAP Cloud ou BTP.","Construisent les objets RICEFW à partir des spécifications, font leurs tests unitaires.","Coder le blocage du certificat sur un point d'entrée publié par SAP.","Leur nombre se déduit du RICEFW. Pas de code sans spécification validée, et toujours via les objets publiés par SAP."],
+dt:["Équipe data","Responsable data et analystes.","Extraient, nettoient, transforment, chargent et réconcilient les données, à chaque chargement à blanc.","Vérifier que 1 240 vannes dans l'ancien système = 1 240 vannes dans EWM.","Doit démarrer dès l'Explore. Indicateur clé : le taux de rejet aux chargements à blanc."],
+te:["Équipe de test","Responsable test et testeurs.","Écrit la stratégie et les cas de test, pilote la SIT de bout en bout, automatise la non-régression, anime le triage des anomalies.","Un cas SIT qui vérifie l'écriture comptable de la réception, pas seulement qu'elle passe.","Souvent sous-dimensionnée. Les fonctionnels qui se testent eux-mêmes ne voient pas ce qu'ils n'ont pas imaginé."],
+ch:["Conduite du changement","Responsable changement et formateurs.","Analyse l'impact par métier, construit le plan de formation et la communication, anime le réseau de key users.","Former 80 magasiniers à EWM sur trois sites avant le go-live.","Démarre dès l'Explore. Formé ne veut pas dire prêt : test pratique et habilitations à vérifier."],
+ba:["Basis et run","L'équipe technique SAP, et l'équipe qui maintient le système après le go-live.","Gère systèmes, environnements, transports, performance, conversion et bascule technique, puis incidents et correctifs.","Faire tenir la conversion dans la fenêtre d'arrêt du week-end.","Si le Basis est partagé avec le run, réserver une capacité au projet : l'incident de production passe toujours en premier."]
+};
+const L=["Qui","Ce qu'il fait","Exemple vanne","À surveiller"];
+let cur=null;
+function show(g){
+  const r=R[g.dataset.k];if(!r)return;
+  if(cur)cur.classList.remove('sel');cur=g;g.classList.add('sel');
+  const p=document.getElementById('panel');p.textContent='';
+  const h=document.createElement('h2');h.textContent=r[0];p.appendChild(h);
+  for(let i=0;i<4;i++){const d=document.createElement('div');d.className='row';
+    const a=document.createElement('span');a.className='lab';a.textContent=L[i];
+    const b=document.createElement('span');b.textContent=r[i+1];d.append(a,b);p.appendChild(d);}
+}
+document.querySelectorAll('.n').forEach(g=>{
+  g.addEventListener('click',()=>show(g));
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g);}});
+});
+</script>
+<script src="../shared/libelles.js?v=202611241510"></script>
+<script src="../shared/documents.js?v=202611241510"></script>
+<script src="../shared/glossaire.js?v=202611241510"></script>
+</body>
+</html>

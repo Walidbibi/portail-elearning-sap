@@ -12,7 +12,7 @@ const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const d = new Date(), z = n => String(n).padStart(2, '0');
 const version = process.argv[2] || `${d.getFullYear()}${z(d.getMonth() + 1)}${z(d.getDate())}${z(d.getHours())}${z(d.getMinutes())}`;
 
-const pages = ['index.html', 'lecteur.html', ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.html')).map(f => `frises/${f}`)];
+const pages = ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`))];
 // shared/<fichier>.js ou .css, avec ou sans ?v=… ; PDF.js est exclu (version fixe, jamais modifié)
 const motif = /((?:src|href)="(?:\.\.\/)?shared\/(?!pdfjs\/)[\w.-]+\.(?:js|css))(?:\?v=[\w.-]*)?"/g;
 let total = 0;
