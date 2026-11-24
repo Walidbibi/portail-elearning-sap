@@ -1,6 +1,13 @@
 /* Jalon : toutes les couleurs du portail, thème clair puis thème sombre (US-024).
    Une couleur se change ici et nulle part ailleurs ; outils/verifier.mjs refuse les couleurs écrites en dur ailleurs.
    Chargé par toutes les pages, avant leur propre style. */
+/* Polices IBM Plex hébergées sur le site (US-025), version 1.1.0 du paquet officiel IBM ; licence SIL OFL 1.1 dans polices/LICENSE.txt */
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("polices/IBMPlexSans-Regular.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("polices/IBMPlexSans-Medium.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("polices/IBMPlexSans-SemiBold.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:700;font-display:swap;src:url("polices/IBMPlexSans-Bold.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("polices/IBMPlexMono-Medium.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:700;font-display:swap;src:url("polices/IBMPlexMono-Bold.woff2") format("woff2")}
 :root{
   /* fonds et texte */
   --bg:#F3F5F8;--surface:#FFFFFF;--soft:#EBEFF5;--line:#D5DBE4;

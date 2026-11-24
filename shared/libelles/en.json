@@ -3,7 +3,7 @@
     "nom": "SAP Program Director's Portal"
   },
   "accueil": {
-    "surtitre": "SAP training · Program Director",
+    "surtitre": "SAP® training · Program Director",
     "titre": "SAP Program Director's Portal",
     "intro": "All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.",
     "parcoursTitre": "Recommended path",
@@ -13,7 +13,8 @@
     "frisesTitre": "Timelines, from A to Z",
     "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, how AI helps, and the main failure risks.",
     "autresTitre": "Other resources",
-    "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them."
+    "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them.",
+    "marque": "Independent site. SAP, SAP S/4HANA, SAP Activate and the other SAP products mentioned are the trademarks or registered trademarks of SAP SE or its affiliates in Germany and in other countries. This site is not affiliated with, sponsored by or endorsed by SAP SE."
   },
   "glossaire": {
     "titre": "Glossary",

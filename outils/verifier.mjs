@@ -190,6 +190,16 @@ for (const f of ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(
     erreur(f, ligneDe(t, m[0]), `couleur ${m[0]} écrite en dur : la déclarer dans shared/theme.css et utiliser sa variable`);
 }
 
+// 4 sexies. Polices hébergées sur le site : aucun appel à Google Fonts
+for (const f of ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(x => x.endsWith('.html')).map(x => `${d}/${x}`)),
+  ...readdirSync(join(RACINE, 'shared')).filter(x => /\.(js|css)$/.test(x)).map(x => `shared/${x}`)]) {
+  const t = readFileSync(join(RACINE, f), 'utf8');
+  const m = t.match(/fonts\.(googleapis|gstatic)\.com/);
+  if (m) erreur(f, ligneDe(t, m[0]), `appel à ${m[0]} : les polices IBM Plex sont hébergées dans shared/polices/`);
+}
+for (const m of readFileSync(join(RACINE, 'shared', 'theme.css'), 'utf8').matchAll(/url\("(polices\/[^"]+)"\)/g))
+  if (!existsSync(join(RACINE, 'shared', m[1]))) erreur('shared/theme.css', 1, `la police « ${m[1]} » n'existe pas`);
+
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json
 const sources = ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`)),
   ...readdirSync(join(RACINE, 'shared')).filter(f => f.endsWith('.js')).map(f => `shared/${f}`)];

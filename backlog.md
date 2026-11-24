@@ -732,7 +732,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `shared/theme.css` (palette validée, marque `#16213A` / `#0D1526`, jalon `#B45309` / `#F2B05E`, échelle de 8 tailles et 4 rayons, teintes du schéma préfixées `--sch-`) chargé par toutes les pages ; ensembles de couleurs de l'accueil, du lecteur, de `frise.css`, du glossaire et des schémas supprimés ; ombre de la popup renommée `--shadow-fort`. `verifier.mjs` refuse toute couleur en dur hors `theme.css` (0 trouvée). Captures : seul le lecteur change (fond commun) ; l'accueil anglais montre un écart de rendu d'image de 14 000 pixels, invisible à l'œil (zone de l'aperçu « Interview simulation »), stable. Au passage, défaut corrigé : le bandeau de langue du lecteur, vide, restait visible en français (bande grise sous la barre, depuis US-013).
 
 ### US-025 · Polices IBM Plex hébergées sur le site
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (aucun changement visible attendu)
@@ -754,6 +754,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : IBM Plex Sans 400, 500, 600, 700 et IBM Plex Mono 500, 700 (paquet officiel IBM, version 1.1.0 de 2024, la 2.0.0 n'ayant que six jours) dans `shared/polices/` avec la licence SIL OFL, déclarées dans `theme.css` avec `font-display: swap` ; plus aucun appel à Google Fonts sur les 8 pages (contrôlé dans le navigateur et par `verifier.mjs`). Captures : même police, seule la flèche « ← » change légèrement de dessin (version IBM). `node outils/verifier.mjs` sans erreur.
 
 ### US-026 · Favicon et aperçu de partage
 - Statut : Validée
@@ -781,7 +782,7 @@ Journal
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3 et 14) ; statut « Validée »
 
 ### US-027 · Mention de marque SAP en pied de page
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 1, encadré « Risque de marque », écrans 3 et 4, pied de page)
@@ -803,6 +804,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
 - 2026-11-24 · session principale · règles lues sur https://www.sap.com/about/legal/trademark.html (date d'effet : 12 janvier 2026), sections « Partner and other third-party use », « Proper use of trademarks », « Trademark attribution », « Other dos and don'ts ». À retenir : (1) pas de « SAP » dans un nom, un slogan, un nom de domaine ou un logo, ce qui touche la signature validée « Piloter un programme SAP » ; (2) phrase d'attribution obligatoire : « <marques> is/are the trademark(s) or registered trademark(s) of SAP SE or its affiliates in Germany and in other countries » ; (3) symbole ® à la première mention dans le titre et le texte, avec un nom commun (« SAP® software ») ; (4) aucune mention ne doit laisser croire à un parrainage ou une affiliation. Décisions demandées à Walid avant publication.
+- 2026-11-24 · session principale · livrée : mention en pied d'accueil, FR et EN, construite sur la phrase d'attribution officielle de SAP (marques de SAP SE ou de ses sociétés affiliées en Allemagne et dans d'autres pays ; site ni affilié, ni parrainé, ni approuvé), sous la phrase sur les exemples fictifs ; symbole ® à la première mention de « SAP » sur l'accueil (surtitre). Sans débordement à 390 px. La signature garde « SAP » par décision de Walid. `node outils/verifier.mjs` sans erreur.
 
 ### Bloc C · Identité
 
@@ -1109,3 +1111,5 @@ Journal
 - 2026-11-24 · Walid · Q9 à Q11 du lot 3 : recommandations du PO retenues (« Oui, démarre ») : US-038 retouches de la frise bureau après US-030 ; pas de balayage dans le lecteur ; story de finition des tailles et rayons en fin de lot.
 - 2026-11-24 · session principale · Bloc accessibilité livré : US-019 à US-023 en « À tester ». Non publié.
 - 2026-11-24 · Walid · bloc accessibilité (US-019 à US-023) publié (« Oui, publie et enchaîne »).
+- 2026-11-24 · Walid · décisions après lecture des règles de marque SAP : (1) signature gardée avec « SAP » (« Piloter un programme SAP »), en connaissance du risque (les règles SAP interdisent la marque dans un slogan) ; (2) symbole ® à la première mention sur l'accueil et phrase d'attribution en pied de page, PDF inchangés ; (3) adresse du site inchangée pour l'instant (dépôt `portail-elearning-sap`) ; (4) polices IBM Plex téléchargées depuis le paquet officiel IBM (npm, via jsDelivr) pour US-025.
+- 2026-11-24 · session principale · Bloc socle livré : US-024, US-025, US-027 en « À tester ». Non publié. Suite : bloc identité (US-028 nom Jalon).

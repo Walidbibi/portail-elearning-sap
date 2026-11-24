@@ -3,7 +3,7 @@
     "nom": "Portail SAP du DP"
   },
   "accueil": {
-    "surtitre": "Formation SAP · Directeur de programme",
+    "surtitre": "Formation SAP® · Directeur de programme",
     "titre": "Portail SAP du DP",
     "intro": "Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.",
     "parcoursTitre": "Parcours conseillé",
@@ -13,7 +13,8 @@
     "frisesTitre": "Les frises de A à Z",
     "frisesSousTitre": "Chaque démarche sur une chronologie illustrée, avec un exemple fil rouge, l'apport de l'IA et les risques d'échec.",
     "autresTitre": "Supports annexes",
-    "pied": "Contenu générique, sans information propre à un client. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger."
+    "pied": "Contenu générique, sans information propre à un client. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger.",
+    "marque": "Site indépendant. SAP, SAP S/4HANA, SAP Activate et les autres produits SAP cités sont des marques ou des marques déposées de SAP SE ou de ses sociétés affiliées en Allemagne et dans d'autres pays. Ce site n'est ni affilié à SAP SE, ni parrainé ou approuvé par elle."
   },
   "glossaire": {
     "titre": "Glossaire",
