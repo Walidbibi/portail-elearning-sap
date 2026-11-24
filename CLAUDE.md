@@ -66,6 +66,19 @@ Ces documents existent comme artefacts privés sur claude.ai. Claude Code ne peu
 
 Hors site, volontairement : un schéma de paysage logistique propre au client (confidentiel). Un schéma des rôles d'un programme SAP existe aussi ; il faut le relire et retirer toute information propre au client avant de l'ajouter.
 
+## Agents et circuit de travail
+
+Trois agents dans `.claude/agents/`. Ils ne se parlent pas directement : ils échangent par les fichiers. `besoins.md` porte ce que veulent les utilisateurs ; `backlog.md` porte le statut de chaque story et un journal où chaque agent laisse une ligne pour le suivant.
+
+- `persona-pm` : joue l'utilisateur cible (chef de projet senior, débutant en SAP). Mode « besoins » : il exprime ses besoins dans `besoins.md`. Mode « test » : il relit ce qui est livré et rend un rapport dans `rapports/`. Ses besoins sont des hypothèses ; ceux de Walid priment.
+- `po` : tire des besoins les stories et leurs critères d'acceptation dans `backlog.md`.
+- `ux-ui` : fait une maquette HTML statique dans `maquettes/` avant tout changement visible.
+- La session principale joue le chef d'orchestre et le développeur : elle lance l'agent qui correspond au statut de la story, puis développe une story « Validée ».
+
+Walid valide deux fois : la maquette avant le développement, puis la publication. Aucun agent ne passe une story en « Validée » ou ne publie.
+
+Quand Walid dit « fais avancer US-XXX », la session principale lit le statut et enchaîne les étapes jusqu'à la prochaine validation de Walid.
+
 ## Ce qui est prévu
 
 1. **Hébergement** : décidé le 23/11/2026, dépôt public `Walidbibi/portail-elearning-sap` sur le compte personnel, publié avec GitHub Pages. Pour un accès restreint plus tard : Cloudflare Pages + Cloudflare Access (gratuit jusqu'à 50 utilisateurs).
