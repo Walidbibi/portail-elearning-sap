@@ -57,5 +57,32 @@
     "test": "Tests et bascule",
     "run": "Run et support",
     "agile": "Agile et pilotage"
+  },
+  "frise": {
+    "retour": "← Portail",
+    "exempleFilRouge": "Exemple fil rouge :",
+    "suivreExemple": "Suivre l'exemple pas à pas →",
+    "legendeEtape": "Étape",
+    "legendeGate": "Quality gate",
+    "legendeGolive": "Go-live",
+    "enContinu": "En continu :",
+    "fermer": "Fermer",
+    "goliveAria": "Go-live : bascule",
+    "transverse": "Transverse",
+    "surtitreGate": "Quality gate · {phase}",
+    "surtitreEtape": "Étape {n} · {phase}",
+    "quiPorte": "Qui porte : {qui}",
+    "activites": "Activités",
+    "prerequis": "Prérequis",
+    "livrables": "Livrables",
+    "apportIA": "Apport de l'IA",
+    "gain": "Gain : {gain}",
+    "risques": "Risques d'échec",
+    "risque": "Risque · ",
+    "parade": "Parade · ",
+    "dansExemple": "Dans l'exemple · {entreprise}",
+    "precedent": "← Précédent",
+    "suivant": "Suivant →",
+    "erreur": "Cette frise n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur."
   }
 }

@@ -1,0 +1,1116 @@
+{
+ "titreOnglet": "Démarche greenfield SAP",
+ "surtitre": "Nouvelle implémentation S/4HANA · SAP Activate",
+ "titre": "Une migration greenfield vers S/4HANA, de A à Z",
+ "intro": "Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
+ "exemple": {
+  "entreprise": "Calvane",
+  "description": "Calvane (fictif), fabricant de pompes, 3 usines, ERP maison remplacé par S/4HANA"
+ },
+ "chronologieAria": "Chronologie d'un projet greenfield : phases SAP Activate, étapes et quality gates de M-15 à M+2",
+ "enContinu": "gouvernance, Clean Core, risques, conduite du changement",
+ "causesTitre": "Les 5 causes d'échec les plus fréquentes",
+ "causes": [
+  "Fit-to-standard qui recopie l'ancien système",
+  "Key users indisponibles",
+  "Données nettoyées trop tard",
+  "Tests compressés",
+  "Changement de processus négligé"
+ ],
+ "note": "Démarche typique et durées indicatives pour un périmètre moyen, à adapter à chaque programme. Discover se déroule avant le lancement du projet.",
+ "chronologie": {
+  "largeur": 1320,
+  "x1": 1290,
+  "mois": [
+   "M-15",
+   "M-14",
+   "M-13",
+   "M-12",
+   "M-11",
+   "M-10",
+   "M-9",
+   "M-8",
+   "M-7",
+   "M-6",
+   "M-5",
+   "M-4",
+   "M-3",
+   "M-2",
+   "M-1",
+   "Go-live",
+   "M+1",
+   "M+2"
+  ],
+  "golive": {
+   "mois": 15,
+   "etape": "s15"
+  }
+ },
+ "phases": [
+  {
+   "id": 0,
+   "name": "Discover",
+   "eq": ""
+  },
+  {
+   "id": 1,
+   "name": "Prepare",
+   "eq": ""
+  },
+  {
+   "id": 2,
+   "name": "Explore",
+   "eq": ""
+  },
+  {
+   "id": 3,
+   "name": "Realize",
+   "eq": ""
+  },
+  {
+   "id": 4,
+   "name": "Deploy",
+   "eq": ""
+  },
+  {
+   "id": 5,
+   "name": "Run",
+   "eq": ""
+  }
+ ],
+ "etenduePhases": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   6,
+   13
+  ],
+  [
+   13,
+   15.1
+  ],
+  [
+   15.1,
+   17
+  ]
+ ],
+ "ordre": {
+  "0": [
+   "s1"
+  ],
+  "1": [
+   "s2",
+   "s3",
+   "s4",
+   "q1"
+  ],
+  "2": [
+   "s5",
+   "s6",
+   "s7",
+   "q2"
+  ],
+  "3": [
+   "s8",
+   "s9",
+   "s10",
+   "s11",
+   "s12",
+   "q3"
+  ],
+  "4": [
+   "s13",
+   "s14",
+   "s15"
+  ],
+  "5": [
+   "s16",
+   "q4",
+   "s17"
+  ]
+ },
+ "positions": {
+  "s1": [
+   0,
+   1,
+   "Business case"
+  ],
+  "s2": [
+   1,
+   1.7,
+   "Lancement"
+  ],
+  "s3": [
+   1.3,
+   2.5,
+   "Système de référence"
+  ],
+  "s4": [
+   1.6,
+   3,
+   "Stratégies"
+  ],
+  "s5": [
+   3,
+   5,
+   "Fit-to-standard"
+  ],
+  "s6": [
+   4,
+   6,
+   "Conception des écarts"
+  ],
+  "s7": [
+   4.3,
+   6,
+   "Données et interfaces"
+  ],
+  "s8": [
+   6,
+   10.5,
+   "Paramétrage en sprints"
+  ],
+  "s9": [
+   6.5,
+   11,
+   "Extensions et interfaces"
+  ],
+  "s10": [
+   5.5,
+   13,
+   "Migration de données"
+  ],
+  "s11": [
+   10.5,
+   13,
+   "SIT et recette"
+  ],
+  "s12": [
+   11,
+   14.6,
+   "Formation et changement"
+  ],
+  "s13": [
+   12.5,
+   14.6,
+   "Préparation bascule"
+  ],
+  "s14": [
+   14.7,
+   14.7,
+   "Go / no-go"
+  ],
+  "s15": [
+   14.8,
+   15.1,
+   "Bascule"
+  ],
+  "s16": [
+   15.1,
+   16.6,
+   "Hypercare"
+  ],
+  "s17": [
+   16,
+   17,
+   "Run et innovation"
+  ]
+ },
+ "gates": {
+  "q1": [
+   3,
+   "Q1"
+  ],
+  "q2": [
+   6,
+   "Q2"
+  ],
+  "q3": [
+   13,
+   "Q3"
+  ],
+  "q4": [
+   16.6,
+   "Q4"
+  ]
+ },
+ "icones": {
+  "s1": "M4 20V10 M10 20V4 M16 20v-7 M3 20h18",
+  "s2": "M5 21V4 M5 4h12l-2 4 2 4H5",
+  "s3": "M3 5h18v11H3z M8 21h8 M12 16v5",
+  "s4": "M12 3l9 5-9 5-9-5z M3 13l9 5 9-5",
+  "s5": "M9 11a3 3 0 1 0 0-6a3 3 0 1 0 0 6 M17 11a3 3 0 1 0 0-6a3 3 0 1 0 0 6 M3 20v-1a5 5 0 0 1 10 0v1 M13 19a5 5 0 0 1 8 0v1",
+  "s6": "M4 20l4-1 11-11-3-3L5 16z M14 7l3 3",
+  "s7": "M4 6c0-2.7 16-2.7 16 0s-16 2.7-16 0z M4 6v12c0 2.7 16 2.7 16 0V6 M4 12c0 2.7 16 2.7 16 0",
+  "s8": "M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M12 2v3 M12 19v3 M2 12h3 M19 12h3 M4.9 4.9l2.1 2.1 M17 17l2.1 2.1 M19.1 4.9L17 7 M7 17l-2.1 2.1",
+  "s9": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
+  "s10": "M12 3v12 M7 10l5 5 5-5 M4 19h16",
+  "s11": "M9 3h6 M10 3v6l-5 10a1 1 0 0 0 1 1.5h12a1 1 0 0 0 1-1.5L14 9V3 M7.5 14h9",
+  "s12": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
+  "s13": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
+  "s14": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
+  "s15": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
+  "s16": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
+  "s17": "M20 12a8 8 0 1 1-2.3-5.7 M20 4v4h-4"
+ },
+ "etapes": {
+  "s1": {
+   "p": 0,
+   "n": "01",
+   "t": "Business case et stratégie",
+   "s": "Pourquoi S/4HANA, avec quelle approche",
+   "obj": "Décider pourquoi passer à S/4HANA, avec quelle approche et quel modèle de déploiement.",
+   "act": [
+    "Analyse de valeur : processus à améliorer, coût de l'existant",
+    "Choix de l'approche : greenfield, brownfield ou bluefield",
+    "Choix du déploiement : cloud public, cloud privé (RISE) ou on-premise",
+    "Budget et planning macro",
+    "Découverte de la solution : système d'essai, démonstrations"
+   ],
+   "pre": [
+    "Sponsor de direction",
+    "Vision des processus cibles",
+    "État des lieux de l'existant : systèmes, spécifiques, données"
+   ],
+   "liv": [
+    "Business case validé",
+    "Décision d'approche et de déploiement",
+    "Feuille de route macro"
+   ],
+   "ex": "Calvane tourne sur un ERP maison de 20 ans, avec des centaines de spécifiques que plus personne ne maîtrise. Reprendre l'existant n'a pas de sens : greenfield. Choix de S/4HANA Cloud Private Edition via RISE. Budget de 9 M€, go-live visé le 1er avril, en big bang sur les trois usines.",
+   "ai": [
+    "Analyser l'existant (spécifiques, usage réel des transactions) pour mesurer la complexité",
+    "Process mining pour mesurer les processus actuels",
+    "Synthèse comparée des options"
+   ],
+   "aig": "Moyen",
+   "own": "Direction générale et DSI côté client",
+   "r": [
+    [
+     "Business case flou, « on doit migrer » : aucun critère pour arbitrer ensuite",
+     "Objectifs chiffrés : délais, coûts, qualité"
+    ],
+    [
+     "Approche choisie sur le seul coût de licence : la transformation est sous-estimée",
+     "Comparer le coût complet, conduite du changement comprise"
+    ],
+    [
+     "Big bang choisi sans analyse de risque : bascule trop lourde",
+     "Comparer big bang et déploiement par vagues avant de trancher"
+    ]
+   ]
+  },
+  "s2": {
+   "p": 1,
+   "n": "02",
+   "t": "Lancement et gouvernance",
+   "s": "Équipe, rôles, comités, plan",
+   "obj": "Mettre le projet en ordre de marche.",
+   "act": [
+    "Charte projet, organisation et rôles",
+    "Gouvernance : comité de pilotage, design authority, change board",
+    "Plan projet",
+    "Choix de l'intégrateur et contrats",
+    "Lancement officiel (kick-off)"
+   ],
+   "pre": [
+    "Business case validé",
+    "Budget alloué",
+    "Sponsor nommé"
+   ],
+   "liv": [
+    "Charte projet",
+    "Plan projet",
+    "Organisation et gouvernance",
+    "RACI signé"
+   ],
+   "ex": "Calvane choisit un intégrateur avec un forfait par phase. Comité de pilotage mensuel, design authority hebdomadaire. Six process owners nommés (achats, production, ventes, finance, logistique, maintenance), chacun avec deux key users à mi-temps.",
+   "ai": [
+    "Charte et plan à partir de modèles",
+    "Pré-remplissage du RACI"
+   ],
+   "aig": "Faible à moyen",
+   "own": "Direction du programme côté client et intégrateur",
+   "r": [
+    [
+     "Key users « à temps perdu » : ateliers sans décideurs",
+     "Leur temps réservé par écrit, remplacement dans leur poste"
+    ],
+    [
+     "Rôles client et intégrateur flous : zones grises",
+     "RACI signé par les deux parties"
+    ],
+    [
+     "Forfait signé sur un périmètre encore inconnu : litiges",
+     "Forfait par phase, Explore cadré à part"
+    ]
+   ]
+  },
+  "s3": {
+   "p": 1,
+   "n": "03",
+   "t": "Système de référence",
+   "s": "Un S/4HANA prêt pour les ateliers",
+   "obj": "Disposer d'un système S/4HANA avec le contenu standard pour montrer les processus au métier.",
+   "act": [
+    "Mise à disposition du système de référence (starter) et du paysage DEV / QAS / PRD",
+    "Activation des SAP Best Practices",
+    "Outils du projet : SAP Cloud ALM"
+   ],
+   "pre": [
+    "Contrat SAP ou RISE signé",
+    "Modèle de déploiement décidé",
+    "Équipe technique ou hébergeur"
+   ],
+   "liv": [
+    "Système de référence avec processus standard et données d'exemple",
+    "Paysage planifié",
+    "Cloud ALM configuré"
+   ],
+   "ex": "Le système de référence est livré en six semaines, avec les processus standard préactivés et des données de démonstration. Il servira à tous les ateliers d'Explore.",
+   "ai": [
+    "Génération de données d'exemple réalistes",
+    "Configuration assistée des outils"
+   ],
+   "aig": "Faible",
+   "own": "Équipe technique, hébergeur ou SAP (RISE)",
+   "r": [
+    [
+     "Système livré en retard : ateliers sur PowerPoint",
+     "Le commander dès la signature du contrat"
+    ],
+    [
+     "Système vide, sans contenu ni données : ateliers abstraits",
+     "Activer les best practices et charger des données d'exemple"
+    ]
+   ]
+  },
+  "s4": {
+   "p": 1,
+   "n": "04",
+   "t": "Stratégies transverses",
+   "s": "Données, intégration, tests, extensions, changement",
+   "obj": "Fixer tôt les règles du jeu pour les données, les interfaces, les tests, les extensions et la conduite du changement.",
+   "act": [
+    "Stratégie de migration : quelles données reprendre, et lesquelles laisser",
+    "Stratégie d'intégration : middleware, interfaces",
+    "Stratégie de test",
+    "Stratégie d'extension : règles Clean Core",
+    "Stratégie de conduite du changement et de formation"
+   ],
+   "pre": [
+    "Cartographie de l'existant : systèmes, interfaces, volumes",
+    "Gouvernance en place"
+   ],
+   "liv": [
+    "Documents de stratégie validés en design authority"
+   ],
+   "ex": "Calvane ne reprend que les données de base et les données ouvertes : commandes en cours, stocks, postes comptables ouverts. L'historique reste consultable dans un archivage. 42 interfaces à reconstruire. Règle Clean Core : aucune modification du standard.",
+   "ai": [
+    "Cartographie des interfaces et des volumes à partir des journaux",
+    "Premiers jets des stratégies"
+   ],
+   "aig": "Moyen",
+   "own": "Architectes et responsables de chaque volet",
+   "r": [
+    [
+     "Stratégie de données repoussée : nettoyage commencé trop tard",
+     "Décider dès Prepare ce qu'on reprend"
+    ],
+    [
+     "Règle Clean Core non écrite : modifications du standard en Realize",
+     "La formaliser et la faire valider en design authority"
+    ]
+   ]
+  },
+  "q1": {
+   "p": 1,
+   "gate": 1,
+   "t": "Quality gate 1 · Fin de Prepare",
+   "s": "",
+   "obj": "Autoriser le démarrage d'Explore : équipe, système et règles du jeu en place.",
+   "act": [
+    "Revue de l'organisation, de la gouvernance et des stratégies",
+    "Vérification de la disponibilité des key users"
+   ],
+   "pre": [
+    "Équipe et key users nommés",
+    "Système de référence disponible",
+    "Stratégies validées"
+   ],
+   "liv": [
+    "Décision de passage tracée"
+   ],
+   "ex": "Gate passée avec une condition : le key user maintenance n'est disponible qu'à 20 %. Le directeur d'usine s'engage à le libérer avant le premier atelier.",
+   "ai": [
+    "Consolidation de l'état des critères"
+   ],
+   "aig": "Faible",
+   "own": "Comité de pilotage",
+   "r": [
+    [
+     "Explore démarré sans key users disponibles : ateliers vides",
+     "Gate bloquante sur ce critère"
+    ]
+   ]
+  },
+  "s5": {
+   "p": 2,
+   "n": "05",
+   "t": "Ateliers fit-to-standard",
+   "s": "Montrer le standard, décider processus par processus",
+   "obj": "Montrer le standard SAP au métier et décider, processus par processus, si on l'adopte.",
+   "act": [
+    "Démonstration des processus standard sur le système de référence",
+    "Identification des écarts",
+    "Priorisation et backlog des écarts",
+    "Valeurs de paramétrage clés"
+   ],
+   "pre": [
+    "Système de référence avec best practices",
+    "Process owners et key users présents et décisionnaires",
+    "Liste des processus du périmètre"
+   ],
+   "liv": [
+    "Décisions par processus signées",
+    "Backlog des écarts priorisé"
+   ],
+   "ex": "85 ateliers en douze semaines. Le standard couvre 82 % des besoins. 140 écarts relevés, dont 60 abandonnés après discussion : « on fait comme ça depuis 20 ans » ne suffit pas à justifier un écart.",
+   "ai": [
+    "Comparer les processus réels (process mining) au standard",
+    "Comptes rendus d'ateliers et backlog générés automatiquement"
+   ],
+   "aig": "Fort",
+   "own": "Consultants fonctionnels et process owners",
+   "r": [
+    [
+     "Ateliers transformés en recueil des besoins de l'ancien système : spécifique massif",
+     "Partir du standard, justifier chaque écart"
+    ],
+    [
+     "Décideurs absents : décisions remises en cause plus tard",
+     "Le process owner signe chaque processus"
+    ],
+    [
+     "Explore qui s'allonge : Realize compressé",
+     "Ateliers en temps limité, standard par défaut si pas de décision"
+    ]
+   ]
+  },
+  "s6": {
+   "p": 2,
+   "n": "06",
+   "t": "Conception des écarts",
+   "s": "Comment réaliser chaque écart, Clean Core",
+   "obj": "Décrire comment chaque écart retenu sera réalisé, dans le respect du Clean Core.",
+   "act": [
+    "Classement RICEFW",
+    "Choix de la technique : paramétrage, extension key user, extension BTP, ABAP Cloud",
+    "Spécifications fonctionnelles et chiffrage",
+    "Validation en design authority"
+   ],
+   "pre": [
+    "Backlog des écarts priorisé",
+    "Règles d'extension écrites",
+    "Architectes disponibles"
+   ],
+   "liv": [
+    "Spécifications fonctionnelles",
+    "Registre RICEFW chiffré",
+    "Décisions de la design authority"
+   ],
+   "ex": "80 écarts retenus : 35 en paramétrage, 20 en extensions key user, 15 développements sur BTP, 10 formulaires. Aucune modification du standard.",
+   "ai": [
+    "Brouillons de spécifications",
+    "Suggestion de la technique d'extension compatible Clean Core",
+    "Détection de doublons dans le backlog"
+   ],
+   "aig": "Moyen à fort",
+   "own": "Consultants, architectes et design authority",
+   "r": [
+    [
+     "Spécifications vagues : un build qui tâtonne",
+     "Format standard avec critères d'acceptation"
+    ],
+    [
+     "Extensions hors Clean Core : montées de version coûteuses",
+     "Design authority bloquante"
+    ],
+    [
+     "Chiffrage optimiste : Realize sous-dimensionné",
+     "Chiffrage par abaques, avec une marge"
+    ]
+   ]
+  },
+  "s7": {
+   "p": 2,
+   "n": "07",
+   "t": "Conception données et interfaces",
+   "s": "Quoi migrer, comment chaque flux fonctionne",
+   "obj": "Définir quelles données migrer, avec quelles règles, et comment chaque interface fonctionne.",
+   "act": [
+    "Liste des objets de données : articles, fournisseurs, clients, nomenclatures",
+    "Règles de correspondance entre l'ancien et le nouveau",
+    "Lancement du nettoyage dans l'ancien système",
+    "Conception des interfaces"
+   ],
+   "pre": [
+    "Stratégies de données et d'intégration validées",
+    "Data owners nommés",
+    "Accès aux données sources"
+   ],
+   "liv": [
+    "Plan de migration par objet",
+    "Règles de correspondance validées",
+    "Spécifications d'interfaces",
+    "Plan de nettoyage"
+   ],
+   "ex": "38 objets à migrer. Sur 25 000 articles, 9 000 sont inactifs depuis cinq ans et ne seront pas repris. Fournisseurs et clients deviennent des Business Partners.",
+   "ai": [
+    "Profilage des données : doublons, inactifs, champs incohérents",
+    "Propositions de règles de correspondance"
+   ],
+   "aig": "Fort",
+   "own": "Data owners, équipe migration, architecte intégration",
+   "r": [
+    [
+     "Nettoyage laissé à Realize : trop tard",
+     "Le démarrer en Explore"
+    ],
+    [
+     "Règles écrites par l'IT seule : règles métier fausses",
+     "Le data owner valide chaque règle"
+    ]
+   ]
+  },
+  "q2": {
+   "p": 2,
+   "gate": 1,
+   "t": "Quality gate 2 · Fin d'Explore",
+   "s": "",
+   "obj": "Autoriser le build : le périmètre est décidé, conçu et chiffré.",
+   "act": [
+    "Revue du backlog signé",
+    "Revue des conceptions et du chiffrage de Realize"
+   ],
+   "pre": [
+    "Décisions par processus signées",
+    "Conceptions approuvées en design authority",
+    "Plan de Realize chiffré"
+   ],
+   "liv": [
+    "Décision de passage tracée"
+   ],
+   "ex": "Huit écarts restent ouverts. Ils sont listés avec une date limite : sans décision au sprint 2, on applique le standard.",
+   "ai": [
+    "Consolidation de l'état du backlog"
+   ],
+   "aig": "Faible",
+   "own": "Comité de pilotage",
+   "r": [
+    [
+     "Realize lancé avec des écarts ouverts : périmètre qui dérive",
+     "Liste des écarts ouverts, date limite et décision par défaut"
+    ]
+   ]
+  },
+  "s8": {
+   "p": 3,
+   "n": "08",
+   "t": "Paramétrage en sprints",
+   "s": "Construire par itérations, montrer au métier",
+   "obj": "Construire la solution par itérations courtes, montrées au métier à chaque fin de sprint.",
+   "act": [
+    "Paramétrage par sprints",
+    "Démonstration aux key users en fin de sprint",
+    "Tests unitaires",
+    "Transports vers la qualification"
+   ],
+   "pre": [
+    "Backlog priorisé",
+    "Environnement de développement",
+    "Key users disponibles pour les démonstrations"
+   ],
+   "liv": [
+    "Solution paramétrée",
+    "Démonstrations validées",
+    "Tests unitaires documentés"
+   ],
+   "ex": "Huit sprints de trois semaines. À chaque démonstration, environ 15 % des sujets sont ajustés : autant de défauts évités en recette.",
+   "ai": [
+    "Documentation automatique du paramétrage",
+    "Aide à la configuration (Joule)"
+   ],
+   "aig": "Moyen",
+   "own": "Consultants fonctionnels",
+   "r": [
+    [
+     "Démonstrations sautées : surprises en recette",
+     "Démonstration obligatoire à chaque sprint"
+    ],
+    [
+     "Changements de besoin non tracés : dérive",
+     "Tout passe par le change board"
+    ]
+   ]
+  },
+  "s9": {
+   "p": 3,
+   "n": "09",
+   "t": "Extensions et interfaces",
+   "s": "Développer les écarts, reconstruire les flux",
+   "obj": "Développer les écarts retenus et reconstruire les interfaces.",
+   "act": [
+    "Développements sur BTP et en ABAP Cloud",
+    "Formulaires",
+    "Interfaces dans le middleware",
+    "Tests unitaires et revue de code"
+   ],
+   "pre": [
+    "Spécifications validées",
+    "Environnements BTP et Integration Suite",
+    "Systèmes tiers disponibles pour les tests"
+   ],
+   "liv": [
+    "Développements livrés",
+    "Interfaces testées unitairement"
+   ],
+   "ex": "42 interfaces reconstruites. Le transporteur et la banque fournissent leurs environnements de test avec un mois de retard : le risque est suivi en comité dès la première semaine.",
+   "ai": [
+    "Génération et revue de code",
+    "Génération de tests unitaires"
+   ],
+   "aig": "Moyen à fort",
+   "own": "Développeurs et équipe intégration",
+   "r": [
+    [
+     "Dépendance à des tiers : interfaces impossibles à tester",
+     "Planning des tiers inscrit dans leurs contrats"
+    ],
+    [
+     "Code hors règles Clean Core : dette technique",
+     "Contrôles automatiques du code (ATC)"
+    ]
+   ]
+  },
+  "s10": {
+   "p": 3,
+   "n": "10",
+   "t": "Migration de données",
+   "s": "Chargements à blanc successifs",
+   "obj": "Charger des données justes et complètes, dans le temps prévu.",
+   "act": [
+    "Trois à quatre chargements à blanc avec le Migration Cockpit",
+    "Contrôle par les data owners",
+    "Mesure des rejets et des durées"
+   ],
+   "pre": [
+    "Règles de correspondance validées",
+    "Nettoyage avancé",
+    "Environnement de qualification"
+   ],
+   "liv": [
+    "Rapport de chaque chargement",
+    "Données validées",
+    "Durées reprises dans le runbook"
+   ],
+   "ex": "Chargement 1 : 18 % de rejets. Chargement 2 : 6 %. Chargement 3 : 1 %. Le chargement complet dure 30 heures, pour une fenêtre de bascule de 72 heures.",
+   "ai": [
+    "Contrôles automatiques après chargement",
+    "Rapprochement entre la source et la cible",
+    "Détection d'anomalies"
+   ],
+   "aig": "Fort",
+   "own": "Équipe migration et data owners",
+   "r": [
+    [
+     "Premier chargement trop tard : découvertes tardives",
+     "Premier chargement dès le début de Realize"
+    ],
+    [
+     "Validation symbolique par le métier : erreurs en production",
+     "Signature du data owner par objet"
+    ]
+   ]
+  },
+  "s11": {
+   "p": 3,
+   "n": "11",
+   "t": "Tests d'intégration et recette",
+   "s": "Bout en bout, avec les vraies données",
+   "obj": "Prouver que la solution fonctionne de bout en bout, avec des données réelles et les vrais rôles.",
+   "act": [
+    "Tests d'intégration (SIT) en deux cycles",
+    "Recette utilisateurs (UAT)",
+    "Tests de performance",
+    "Tests des autorisations"
+   ],
+   "pre": [
+    "Paramétrage et développements terminés",
+    "Données d'un chargement à blanc",
+    "Scénarios écrits, critères de sortie définis"
+   ],
+   "liv": [
+    "Rapports de tests",
+    "Procès-verbal de recette signé"
+   ],
+   "ex": "450 scénarios. 600 défauts trouvés sur deux cycles de SIT. Six semaines de recette, signée avec 12 défauts mineurs ouverts.",
+   "ai": [
+    "Génération de scénarios",
+    "Automatisation des tests (ex. Tricentis)",
+    "Tri et dédoublonnage des défauts"
+   ],
+   "aig": "Fort",
+   "own": "Test manager et key users",
+   "r": [
+    [
+     "Tests compressés pour tenir la date : défauts en production",
+     "Durée des tests protégée dans le planning"
+    ],
+    [
+     "Autorisations testées en dernier : utilisateurs bloqués au go-live",
+     "Tester avec les vrais rôles dès la SIT"
+    ]
+   ]
+  },
+  "s12": {
+   "p": 3,
+   "n": "12",
+   "t": "Formation et conduite du changement",
+   "s": "Nouveaux processus, nouveaux réflexes",
+   "obj": "Préparer chaque utilisateur au nouveau système et, surtout, aux nouveaux processus.",
+   "act": [
+    "Analyse d'impact par poste",
+    "Supports et modes opératoires",
+    "Formation des key users, puis des utilisateurs",
+    "Communication et réseau d'ambassadeurs"
+   ],
+   "pre": [
+    "Solution stabilisée",
+    "Liste des utilisateurs par rôle",
+    "Environnement de formation"
+   ],
+   "liv": [
+    "Utilisateurs formés",
+    "Supports",
+    "Plan de communication"
+   ],
+   "ex": "1 200 utilisateurs, 180 rôles. 40 key users forment leurs collègues en six semaines. Les changements les plus lourds : la planification de production et la saisie des temps.",
+   "ai": [
+    "Supports et modes opératoires par rôle",
+    "Traduction",
+    "Assistant de questions-réponses pour les utilisateurs"
+   ],
+   "aig": "Fort",
+   "own": "Conduite du changement et key users",
+   "r": [
+    [
+     "Formation à l'outil seulement, pas aux processus : rejet",
+     "Former par scénario métier"
+    ],
+    [
+     "Formation trop tôt : oubliée au go-live",
+     "Former deux à quatre semaines avant"
+    ]
+   ]
+  },
+  "q3": {
+   "p": 3,
+   "gate": 1,
+   "t": "Quality gate 3 · Fin de Realize",
+   "s": "",
+   "obj": "Autoriser la préparation finale : la solution est testée et les données sont prêtes.",
+   "act": [
+    "Revue des défauts restants",
+    "Revue des chargements à blanc",
+    "Revue du plan de formation"
+   ],
+   "pre": [
+    "Zéro défaut bloquant",
+    "Recette signée",
+    "Chargements dans les seuils de qualité et de durée"
+   ],
+   "liv": [
+    "Décision de passage tracée"
+   ],
+   "ex": "Zéro défaut bloquant, 1 % de rejets au dernier chargement. Passage en Deploy autorisé.",
+   "ai": [
+    "Consolidation des indicateurs de test et de migration"
+   ],
+   "aig": "Faible",
+   "own": "Comité de pilotage",
+   "r": [
+    [
+     "Défauts reclassés en mineurs pour passer la gate",
+     "Sévérité arbitrée par le métier"
+    ]
+   ]
+  },
+  "s13": {
+   "p": 4,
+   "n": "13",
+   "t": "Préparation de la bascule",
+   "s": "Runbook et répétitions",
+   "obj": "Préparer la bascule minute par minute, puis la répéter.",
+   "act": [
+    "Runbook : tâche, responsable, durée, dépendance",
+    "Clôture et arrêt de l'ancien système",
+    "Une ou deux répétitions générales",
+    "Plan de retour arrière",
+    "Organisation du support"
+   ],
+   "pre": [
+    "Durées de chargement mesurées",
+    "Fenêtre de bascule validée",
+    "Équipe de bascule nommée"
+   ],
+   "liv": [
+    "Runbook validé",
+    "Rapports de répétition"
+   ],
+   "ex": "Runbook de 640 tâches. Première répétition : 81 heures, trop long. Seconde répétition : 64 heures après optimisation, dans la fenêtre de 72 heures.",
+   "ai": [
+    "Contrôle de cohérence du runbook : dépendances, durées, oublis"
+   ],
+   "aig": "Faible à moyen",
+   "own": "Cutover manager",
+   "r": [
+    [
+     "Pas de répétition complète : la bascule dépasse la fenêtre",
+     "Au moins une répétition chronométrée"
+    ],
+    [
+     "Clôture de l'ancien système mal préparée : bilan d'ouverture faux",
+     "La finance dans le runbook, avec ses contrôles"
+    ]
+   ]
+  },
+  "s14": {
+   "p": 4,
+   "n": "14",
+   "t": "Go / no-go",
+   "s": "Décider sur des faits",
+   "gate": 1,
+   "obj": "Décider, sur des critères écrits à l'avance, si on bascule.",
+   "act": [
+    "Revue des critères : tests, données, formation, support, runbook",
+    "Décision formelle et tracée"
+   ],
+   "pre": [
+    "Critères définis et signés à l'avance",
+    "État à jour de chaque critère"
+   ],
+   "liv": [
+    "Décision signée, avec ses réserves"
+   ],
+   "ex": "22 critères : 20 verts, 2 orange (30 utilisateurs de l'équipe de nuit pas encore formés, une interface douane en correction). Go avec réserves, chacune avec un responsable.",
+   "ai": [
+    "Tableau de bord des critères"
+   ],
+   "aig": "Faible : la décision reste humaine",
+   "own": "Comité de pilotage côté client",
+   "r": [
+    [
+     "Pression de la date : go malgré des critères rouges",
+     "Critères fixés à l'avance, non renégociables en séance"
+    ],
+    [
+     "Réserves non suivies : incidents dès le premier jour",
+     "Chaque réserve a un responsable et une date"
+    ]
+   ]
+  },
+  "s15": {
+   "p": 4,
+   "n": "15",
+   "t": "Bascule et go-live",
+   "s": "Exécuter le runbook, ouvrir",
+   "obj": "Basculer et démarrer l'activité sur S/4HANA.",
+   "act": [
+    "Exécution du runbook",
+    "Chargement final des données",
+    "Réconciliation des stocks et des soldes comptables",
+    "Ouverture aux utilisateurs"
+   ],
+   "pre": [
+    "Go validé",
+    "Équipes de bascule et de support en place",
+    "Support SAP prévenu"
+   ],
+   "liv": [
+    "Système en production",
+    "Réconciliations signées par le métier"
+   ],
+   "ex": "Arrêt de l'ancien ERP le jeudi soir. Chargement, réconciliation des stocks et des soldes comptables. Ouverture le lundi 1er avril à 6 h.",
+   "ai": [
+    "Surveillance des flux et des écarts en temps réel"
+   ],
+   "aig": "Moyen",
+   "own": "Cutover manager et métier",
+   "r": [
+    [
+     "Réconciliation sautée pour gagner du temps : écarts invisibles",
+     "Réconciliation obligatoire avant l'ouverture"
+    ],
+    [
+     "Retour arrière décidé trop tard",
+     "Critères de retour arrière fixés avant le point de non-retour"
+    ]
+   ]
+  },
+  "s16": {
+   "p": 5,
+   "n": "16",
+   "t": "Hypercare",
+   "s": "Stabiliser, réussir la première clôture",
+   "obj": "Stabiliser le système et accompagner la première clôture mensuelle.",
+   "act": [
+    "Support renforcé sur place",
+    "Triage quotidien des incidents",
+    "Suivi des indicateurs",
+    "Première clôture mensuelle accompagnée"
+   ],
+   "pre": [
+    "Équipe d'hypercare dimensionnée",
+    "Processus d'incident et escalade",
+    "Critères de sortie définis"
+   ],
+   "liv": [
+    "Incidents résolus",
+    "Première clôture réussie",
+    "Bilan de stabilisation"
+   ],
+   "ex": "Huit semaines d'hypercare. Pic de 400 tickets la première semaine. Première clôture en 7 jours au lieu de 5 ; l'objectif est atteint à la deuxième.",
+   "ai": [
+    "Tri et classement des tickets",
+    "Suggestions de solutions à partir des incidents résolus"
+   ],
+   "aig": "Fort",
+   "own": "Équipe projet et support",
+   "r": [
+    [
+     "Experts libérés trop tôt : incidents sans réponse",
+     "Équipe verrouillée jusqu'à la sortie"
+    ],
+    [
+     "Première clôture non préparée : retard financier",
+     "Répétition de clôture avant le go-live"
+    ]
+   ]
+  },
+  "q4": {
+   "p": 5,
+   "gate": 1,
+   "t": "Quality gate 4 · Sortie d'hypercare",
+   "s": "",
+   "obj": "Clore le projet et confirmer que le run peut assumer seul.",
+   "act": [
+    "Revue des indicateurs de stabilité",
+    "Revue du transfert au run"
+   ],
+   "pre": [
+    "Indicateurs sous les seuils",
+    "Aucun incident bloquant ouvert",
+    "Run formé et documenté"
+   ],
+   "liv": [
+    "Clôture formelle du projet"
+   ],
+   "ex": "Sortie prononcée dix semaines après le go-live. 15 tickets mineurs repris formellement par le run.",
+   "ai": [
+    "Calcul des indicateurs de stabilité"
+   ],
+   "aig": "Faible",
+   "own": "Comité de pilotage et responsable du run",
+   "r": [
+    [
+     "Clôture avec des incidents ouverts : le run hérite d'une dette",
+     "Liste des incidents reprise formellement"
+    ]
+   ]
+  },
+  "s17": {
+   "p": 5,
+   "n": "17",
+   "t": "Exploitation et innovation continue",
+   "s": "Faire vivre la solution",
+   "obj": "Faire vivre la solution et profiter des nouveautés de SAP.",
+   "act": [
+    "Exploitation par l'équipe de run (AMS)",
+    "Montées de version régulières",
+    "Adoption de nouvelles fonctions",
+    "Amélioration continue"
+   ],
+   "pre": [
+    "Contrat de run",
+    "Clean Core respecté"
+   ],
+   "liv": [
+    "Plan des montées de version",
+    "Backlog d'améliorations"
+   ],
+   "ex": "Première montée de version dix mois après le go-live, faite en trois semaines grâce au Clean Core.",
+   "ai": [
+    "Assistant Joule pour les utilisateurs",
+    "Analyse de l'usage réel pour prioriser les améliorations"
+   ],
+   "aig": "Moyen",
+   "own": "Run et DSI",
+   "r": [
+    [
+     "Spécifique accumulé après le go-live : montées de version difficiles",
+     "Design authority maintenue après le projet"
+    ]
+   ]
+  },
+  "transverse": {
+   "p": 0,
+   "t": "En continu, du début à la fin",
+   "s": "",
+   "obj": "Tenir le programme d'un bout à l'autre : décider vite, arbitrer proprement, embarquer le métier.",
+   "act": [
+    "Comité de pilotage : arbitrages, quality gates, go / no-go",
+    "Design authority : Clean Core et cohérence de la solution",
+    "Change board : toute modification de périmètre, planning ou budget",
+    "Registre des risques avec seuils d'alerte",
+    "Conduite du changement et communication"
+   ],
+   "pre": [
+    "Rôles et instances définis dès Prepare",
+    "Sponsor actif"
+   ],
+   "liv": [
+    "Décisions tracées",
+    "Registre des risques à jour"
+   ],
+   "ex": "Comité de pilotage mensuel, puis hebdomadaire les trois derniers mois. 25 risques suivis ; trois sont passés au rouge : disponibilité des key users, environnements des tiers, durée de la bascule.",
+   "ai": [
+    "Comptes rendus et suivi des décisions",
+    "Détection précoce des risques à partir des indicateurs",
+    "Attention : données client uniquement dans un outil validé par le client"
+   ],
+   "aig": "Moyen",
+   "own": "Direction du programme",
+   "r": [
+    [
+     "Comités qui constatent sans décider",
+     "Chaque comité se termine par des décisions tracées"
+    ],
+    [
+     "Indicateurs au vert, réalité au rouge : l'effet pastèque",
+     "Seuils d'alerte chiffrés et vérification sur le terrain"
+    ]
+   ]
+  }
+ }
+}

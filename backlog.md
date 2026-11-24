@@ -160,7 +160,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `glossaire.json` (136 termes, champs nommés, un terme par ligne), chargé par `fetch` dans `shared/glossaire.js` ; libellés des 7 catégories et message d'erreur dans `fr.json` ; `glossaire-data.js` supprimé et retiré des 6 pages. Recherche identique avant / après : « cutover » 2 termes (Cutover, Deploy) ; « donnees » 18 termes (Archivage … SRA) ; « RICEFW » 2 termes (RICEFW, Service Interface) ; « fit-to-standard » 2 termes (Explore, Fit-to-standard). Fichier absent : message « Le glossaire n'a pas pu se charger… », l'accueil reste utilisable. Captures : 44 sur 44 identiques. Outil de capture renforcé : attente de la fin de construction de la page (sinon faux écart sur les aperçus), écarts de 5 pixels ou moins classés en bruit, zone de l'écart affichée. CLAUDE.md et l'agent persona-pm mis à jour. Suite : US-005.
 
 ### US-005 · Gabarit de frise unique, appliqué au greenfield
-- Statut : Validée
+- Statut : Prête à publier
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non
@@ -170,17 +170,18 @@ Journal
 En tant que Walid, je veux un seul code d'affichage pour les frises et un fichier JSON par frise afin de corriger ou traduire une frise sans dupliquer le code.
 
 Critères d'acceptation
-- [ ] Un script et une feuille de style partagés dessinent la frise et ouvrent les popups.
-- [ ] Le contenu du greenfield est dans un fichier JSON : en-tête de page (surtitre, titre, introduction, exemple fil rouge, bandeau « En continu », causes d'échec, note), phases, étapes et gates, ordre, positions, mois, icônes.
-- [ ] Le nom de l'entreprise fil rouge (« Calvane ») vient du JSON, plus du code.
-- [ ] Les textes communs à toutes les frises (Activités, Prérequis, Livrables, Apport de l'IA, Gain, Risques d'échec, Dans l'exemple, Qui porte, Étape, Quality gate, Transverse, Précédent, Suivant, Fermer, « ← Portail », légende, textes pour lecteurs d'écran) viennent du fichier de libellés.
-- [ ] L'adresse `frises/greenfield.html` reste valide.
-- [ ] Navigation Précédent / Suivant, bouton « Suivre l'exemple pas à pas », clavier (Entrée, Espace, Échap) : comportement identique.
-- [ ] Rendu identique aux captures de US-001, popup comprise.
+- [x] Un script et une feuille de style partagés dessinent la frise et ouvrent les popups.
+- [x] Le contenu du greenfield est dans un fichier JSON : en-tête de page (surtitre, titre, introduction, exemple fil rouge, bandeau « En continu », causes d'échec, note), phases, étapes et gates, ordre, positions, mois, icônes.
+- [x] Le nom de l'entreprise fil rouge (« Calvane ») vient du JSON, plus du code.
+- [x] Les textes communs à toutes les frises (Activités, Prérequis, Livrables, Apport de l'IA, Gain, Risques d'échec, Dans l'exemple, Qui porte, Étape, Quality gate, Transverse, Précédent, Suivant, Fermer, « ← Portail », légende, textes pour lecteurs d'écran) viennent du fichier de libellés.
+- [x] L'adresse `frises/greenfield.html` reste valide.
+- [x] Navigation Précédent / Suivant, bouton « Suivre l'exemple pas à pas », clavier (Entrée, Espace, Échap) : comportement identique.
+- [x] Rendu identique aux captures de US-001, popup comprise.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `shared/frise.js` et `shared/frise.css` (gabarit commun), `frises/greenfield.json` (contenu extrait par script, sans recopie), 25 textes communs dans `fr.json` sous `frise` ; `frises/greenfield.html` réduit à une page courte, même adresse. « Risque · » et « Parade · » sortis du CSS. Le gabarit gère déjà largeur, mois et position du go-live : brownfield et bluefield n'ont plus qu'à fournir leur JSON. Captures : 44 sur 44 identiques (un premier écart de 115 pixels, lettres décalées d'une fraction de pixel sur « Exemple fil rouge », corrigé). Comparaison ancienne / nouvelle page dans le navigateur : 22 popups parcourues par Suivant, Précédent, Échap, Entrée, Espace sur le go-live, bandeau « En continu », titre d'onglet, textes pour lecteurs d'écran et textes de la chronologie : aucune différence. Aucune erreur en console. Suite : US-006.
 
 ### US-006 · Frises brownfield et bluefield sur le gabarit
 - Statut : Validée
@@ -478,3 +479,4 @@ Journal
 - 2026-11-24 · session principale · US-002 livrée, en « Prête à publier ». Suite : US-003 (manifeste des documents).
 - 2026-11-24 · session principale · US-003 livrée, en « Prête à publier ». Suite : US-004 (glossaire en JSON).
 - 2026-11-24 · session principale · US-004 livrée, en « Prête à publier ». Suite : US-005 (gabarit de frise, greenfield).
+- 2026-11-24 · session principale · US-005 livrée, en « Prête à publier ». Suite : US-006 (brownfield et bluefield sur le gabarit).
