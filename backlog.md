@@ -705,7 +705,7 @@ Journal
 ### Bloc B · Socle
 
 ### US-024 · Un seul fichier de couleurs partagé
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 2, palette)
@@ -729,6 +729,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 4 et 14) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : `shared/theme.css` (palette validée, marque `#16213A` / `#0D1526`, jalon `#B45309` / `#F2B05E`, échelle de 8 tailles et 4 rayons, teintes du schéma préfixées `--sch-`) chargé par toutes les pages ; ensembles de couleurs de l'accueil, du lecteur, de `frise.css`, du glossaire et des schémas supprimés ; ombre de la popup renommée `--shadow-fort`. `verifier.mjs` refuse toute couleur en dur hors `theme.css` (0 trouvée). Captures : seul le lecteur change (fond commun) ; l'accueil anglais montre un écart de rendu d'image de 14 000 pixels, invisible à l'œil (zone de l'aperçu « Interview simulation »), stable. Au passage, défaut corrigé : le bandeau de langue du lecteur, vide, restait visible en français (bande grise sous la barre, depuis US-013).
 
 ### US-025 · Polices IBM Plex hébergées sur le site
 - Statut : Validée

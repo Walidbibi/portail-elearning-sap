@@ -182,6 +182,14 @@ for (const [cle, d] of Object.entries(docs)) {
   if (versions.size > 1) erreur('index.html', 1, `numéros de version différents selon les pages (${[...versions.keys()].join(', ')}) : lancer node outils/version.mjs`);
 }
 
+// 4 quinquies. Couleurs : seulement dans shared/theme.css (les JSON de données ne sont pas concernés)
+for (const f of ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(x => x.endsWith('.html')).map(x => `${d}/${x}`)),
+  ...readdirSync(join(RACINE, 'shared')).filter(x => /\.(js|css)$/.test(x) && x !== 'theme.css').map(x => `shared/${x}`)]) {
+  const t = readFileSync(join(RACINE, f), 'utf8');
+  for (const m of t.matchAll(/(?<![\w&"'(=])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g))
+    erreur(f, ligneDe(t, m[0]), `couleur ${m[0]} écrite en dur : la déclarer dans shared/theme.css et utiliser sa variable`);
+}
+
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json
 const sources = ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`)),
   ...readdirSync(join(RACINE, 'shared')).filter(f => f.endsWith('.js')).map(f => `shared/${f}`)];

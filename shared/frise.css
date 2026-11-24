@@ -2,25 +2,6 @@
    Le contenu de chaque frise est dans frises/<nom>.json, le code dans shared/frise.js. */
 html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}.back{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px}.back:hover{color:var(--ink)}.back:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
 /* Layout: a left-to-right flow of five phase lanes; each step is a card that opens a detail popup. */
-:root{
-  --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;
-  --c0:#56657D;--c1:#3460A8;--c2:#1B7287;--c3:#8F5C0C;--c4:#AF4234;--c5:#2B7549;
-  --t0:#E9EDF3;--t1:#E3EAF7;--t2:#E0F0F3;--t3:#F7EEDC;--t4:#F7E3E0;--t5:#E1F0E6;
-  --gate:#17202E;--gate-ink:#FFFFFF;--aibg:#ECE9F7;--aiink:#4E3F99;--risk:#AF4234;--focus:#C25E12;--ph-ink:#FFFFFF;
-  --shadow:0 18px 50px rgba(17,26,40,.28);
-  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
-  --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
-  --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
-  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);--focus:#F0A35E;--ph-ink:#12161D;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
-  --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
-  --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
-  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);--focus:#F0A35E;--ph-ink:#12161D;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
 .wrap{max-width:1280px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -46,7 +27,7 @@ h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:7
 /* popup */
 .ov{position:fixed;inset:0;background:rgba(10,15,25,.5);z-index:20;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:center}
 .ov[hidden]{display:none}
-.dlg{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:100%;max-width:820px;max-height:100%;overflow:auto;position:relative;border-top:6px solid var(--col)}
+.dlg{background:var(--surface);border-radius:14px;box-shadow:var(--shadow-fort);width:100%;max-width:820px;max-height:100%;overflow:auto;position:relative;border-top:6px solid var(--col)}
 .dlg-h{padding:20px 56px 12px 24px}
 .dlg-h .eyebrow{color:var(--col)}
 .dlg-h h2{margin:4px 0 6px;font-size:22px;line-height:1.25;text-wrap:balance}

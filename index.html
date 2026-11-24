@@ -6,25 +6,11 @@
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title data-t="portail.nom"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="shared/theme.css?v=202611241559">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: content column on the left, glossary pinned on the right (drawer on narrow screens). */
-:root{
-  --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;--soft:#EBEFF5;
-  --accent:#1B7287;--accent-soft:#E0F0F3;--mark:#FCE9B8;--focus:#C25E12;
-  --k-deck:#3460A8;--k-doc:#2B7549;--k-frise:#8F5C0C;--k-act:#6A4FA3;--k-prat:#AF4234;
-  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --shadow:0 12px 40px rgba(17,26,40,.22);
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;--soft:#222936;
-  --accent:#5FC0D4;--accent-soft:#16303A;--mark:#5A4710;--k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
-  --shadow:0 12px 40px rgba(0,0,0,.55);--focus:#F0A35E;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;--soft:#222936;
-  --accent:#5FC0D4;--accent-soft:#16303A;--mark:#5A4710;--k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
-  --shadow:0 12px 40px rgba(0,0,0,.55);--focus:#F0A35E;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
 a{color:inherit}
@@ -98,9 +84,9 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611241554"></script>
-<script src="shared/documents.js?v=202611241554"></script>
-<script src="shared/glossaire.js?v=202611241554"></script>
+<script src="shared/libelles.js?v=202611241559"></script>
+<script src="shared/documents.js?v=202611241559"></script>
+<script src="shared/glossaire.js?v=202611241559"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(([T,M])=>{
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
