@@ -1113,3 +1113,4 @@ Journal
 - 2026-11-24 · Walid · bloc accessibilité (US-019 à US-023) publié (« Oui, publie et enchaîne »).
 - 2026-11-24 · Walid · décisions après lecture des règles de marque SAP : (1) signature gardée avec « SAP » (« Piloter un programme SAP »), en connaissance du risque (les règles SAP interdisent la marque dans un slogan) ; (2) symbole ® à la première mention sur l'accueil et phrase d'attribution en pied de page, PDF inchangés ; (3) adresse du site inchangée pour l'instant (dépôt `portail-elearning-sap`) ; (4) polices IBM Plex téléchargées depuis le paquet officiel IBM (npm, via jsDelivr) pour US-025.
 - 2026-11-24 · session principale · Bloc socle livré : US-024, US-025, US-027 en « À tester ». Non publié. Suite : bloc identité (US-028 nom Jalon).
+- 2026-11-24 · Walid · bloc socle (US-024, US-025, US-027) publié (« Oui, publie et enchaîne »).
