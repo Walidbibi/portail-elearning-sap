@@ -53,7 +53,7 @@ schemas/                   schémas interactifs (rôles d'un programme SAP), une
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
 apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, réduit à 720 px de haut ; frises et schéma des rôles : Chrome headless 1080 × 673 sur `?lang=fr`, avec `--blink-settings=preferredColorScheme=1` pour forcer le thème clair, réduit à 720 de large), à refaire si le support change
 apercus/<clé>.en.jpg       aperçu anglais d'une frise (même capture sur `?lang=en`)
-documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
+documents/                 les supports en PDF, anonymisés (le plan de formation et le script de narration ont été retirés du site)
 ```
 
 Le site ne demande aucune compilation, mais il doit être servi par un serveur, même local (`python3 -m http.server 8080`) : les textes et le manifeste sont chargés par `fetch`. PDF.js est copié dans `shared/pdfjs/` (version 3.11.174), aucun CDN. `SAP_HREF` dans `shared/documents.js` envoie tout PDF local vers le lecteur.
@@ -149,7 +149,6 @@ Ces documents existent comme artefacts privés sur claude.ai. Claude Code ne peu
 | act | ACT100 · Livre de révision (SAP Activate) | Doc |
 | act2 | ACT200 · Livre de révision (SAP Activate Agile) | Doc |
 | simu | Simulation d'entretien (questions et bonnes réponses) | Doc |
-| script | Script de narration eLearning | Doc |
 
 Hors site, volontairement : un schéma de paysage logistique propre au client (confidentiel). Un schéma des rôles d'un programme SAP existe aussi ; il faut le relire et retirer toute information propre au client avant de l'ajouter.
 

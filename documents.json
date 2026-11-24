@@ -18,8 +18,7 @@
       "blue"
     ],
     "autres": [
-      "simu",
-      "script"
+      "simu"
     ]
   },
   "documents": {
@@ -190,17 +189,6 @@
       "en": {
         "titre": "ECC to S/4HANA Migration",
         "description": "What changes between ECC and S/4HANA, and the paths to get there."
-      }
-    },
-    "script": {
-      "type": "doc",
-      "titre": "Script de narration",
-      "description": "Le texte à lire pour transformer les decks en eLearning.",
-      "fichier": "documents/script-de-narration.pdf",
-      "langue": "fr",
-      "en": {
-        "titre": "Narration script",
-        "description": "The text to read aloud to turn the decks into eLearning."
       }
     }
   }

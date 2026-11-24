@@ -1128,3 +1128,4 @@ Journal
 - 2026-11-24 · session principale · Bloc identité livré : US-026, US-028 à US-031 en « À tester ». Non publié. Ouvert : conversion du mot « Jalon » en tracés (outil à installer, accord de Walid).
 - 2026-11-24 · session principale · Bloc écrans livré : US-032 à US-037 en « À tester ». Non publié, comme le bloc identité. Restent à écrire par le PO : US-038 (retouches de la frise bureau, Q9) et la story de finition des tailles et rayons (Q11).
 - 2026-11-24 · Walid · blocs identité (US-026, US-028 à US-031) et écrans (US-032 à US-037) publiés (« Oui, publie »).
+- 2026-11-24 · Walid · script de narration retiré du site (« il sert à rien ») : manifeste, accueil, PDF et aperçu ; sous-titre des supports annexes adapté. Récupérable dans l'historique git.
