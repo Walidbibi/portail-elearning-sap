@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
-<title>Portail SAP du DP</title>
+<title data-t="portail.nom"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
@@ -66,25 +66,26 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 
 
 <main><div class="inner">
-  <div class="eyebrow">Formation SAP · Directeur de programme</div>
-  <h1>Portail SAP du DP</h1>
-  <p class="lede">Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.</p>
+  <div class="eyebrow" data-t="accueil.surtitre"></div>
+  <h1 data-t="accueil.titre"></h1>
+  <p class="lede" data-t="accueil.intro"></p>
 
-  <h2>Parcours conseillé</h2>
-  <p class="sec-sub">Du plus général au plus opérationnel.</p>
+  <h2 data-t="accueil.parcoursTitre"></h2>
+  <p class="sec-sub" data-t="accueil.parcoursSousTitre"></p>
   <ol class="path" id="path"></ol>
 
-  <h2>Les frises de A à Z</h2>
-  <p class="sec-sub">Chaque démarche sur une chronologie illustrée, avec un exemple fil rouge, l'apport de l'IA et les risques d'échec.</p>
+  <h2 data-t="accueil.frisesTitre"></h2>
+  <p class="sec-sub" data-t="accueil.frisesSousTitre"></p>
   <div class="cards" id="frises"></div>
 
-  <h2>Versions anglaises et supports annexes</h2>
+  <h2 data-t="accueil.autresTitre"></h2>
   <div class="cards" id="other"></div>
 
-  <p class="foot">Contenu générique, sans information propre à un client. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger.</p>
+  <p class="foot" data-t="accueil.pied"></p>
 </div></main>
 
 
+<script src="shared/libelles.js"></script>
 <script src="shared/glossaire-data.js"></script>
 <script src="shared/glossaire.js"></script>
 <script>

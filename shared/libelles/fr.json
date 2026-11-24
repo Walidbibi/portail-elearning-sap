@@ -1,0 +1,44 @@
+{
+  "portail": {
+    "nom": "Portail SAP du DP"
+  },
+  "accueil": {
+    "surtitre": "Formation SAP · Directeur de programme",
+    "titre": "Portail SAP du DP",
+    "intro": "Tous les supports construits pour comprendre et piloter un programme SAP, dans l'ordre où les parcourir. Le glossaire reste ouvert à droite sur toutes les pages, frises comprises : tapez « / » pour chercher un terme.",
+    "parcoursTitre": "Parcours conseillé",
+    "parcoursSousTitre": "Du plus général au plus opérationnel.",
+    "frisesTitre": "Les frises de A à Z",
+    "frisesSousTitre": "Chaque démarche sur une chronologie illustrée, avec un exemple fil rouge, l'apport de l'IA et les risques d'échec.",
+    "autresTitre": "Versions anglaises et supports annexes",
+    "pied": "Contenu générique, sans information propre à un client. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger."
+  },
+  "glossaire": {
+    "titre": "Glossaire",
+    "masquer": "Masquer ✕",
+    "ouvrir": "Glossaire",
+    "recherche": "Chercher : EWM, cutover, RICEFW…",
+    "rechercheAria": "Chercher dans le glossaire",
+    "tout": "Tout",
+    "aucun": "Aucun terme ne correspond à « {q} ».",
+    "pourLeDP": "Pour le DP · "
+  },
+  "lecteur": {
+    "titreOnglet": "Lecteur · {portail}",
+    "titreDocument": "{doc} · {portail}",
+    "retour": "← Portail",
+    "document": "Document",
+    "chargement": "Chargement…",
+    "introuvable": "Document introuvable",
+    "telecharger": "Télécharger",
+    "pagePrecedente": "Page précédente",
+    "pageSuivante": "Page suivante",
+    "numeroPage": "Numéro de page",
+    "pageDuDocument": "Page du document",
+    "pageSur": "Page {n} sur {total}",
+    "aide": "Flèches ← → du clavier pour tourner les pages · « / » pour le glossaire",
+    "erreurInconnu": "Ce document n'existe pas. <a href=\"index.html\">Retour au portail</a>.",
+    "erreurPdfjs": "Le lecteur n'a pas pu se charger (fichiers PDF.js introuvables). <a href=\"{src}\" download>Télécharger le PDF</a>.",
+    "erreurOuverture": "Impossible d'ouvrir ce PDF. <a href=\"{src}\" download>Le télécharger</a>."
+  }
+}

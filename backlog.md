@@ -86,7 +86,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `outils/captures/captures.mjs` (44 captures), `comparer.mjs` (comparaison pixel par pixel), `LISEZMOI.md` (une commande par page). Images dans `outils/captures/reference/`, exclues de git donc non publiées. Stabilité vérifiée : deux passages identiques au pixel. Pas de test persona-pm : aucun changement visible. Suite : Walid valide la publication ; US-002 peut démarrer.
 
 ### US-002 · Fichier de libellés : accueil, glossaire, lecteur
-- Statut : Validée
+- Statut : Prête à publier
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non
@@ -96,17 +96,18 @@ Journal
 En tant que Walid, je veux que tous les textes d'interface et de l'accueil soient dans un seul fichier de libellés afin de pouvoir les traduire sans toucher aux pages.
 
 Critères d'acceptation
-- [ ] Un fichier de libellés français existe (par exemple `shared/libelles/fr.json`), avec une clé par texte.
-- [ ] L'accueil lit dans ce fichier : surtitre, titre, introduction, titres et sous-titres de section, pied de page, titre de l'onglet.
-- [ ] Le glossaire lit dans ce fichier : titre, bouton « Masquer », bouton flottant, texte d'aide de la recherche, compteur, libellé « Pour le DP » (aujourd'hui écrit dans le CSS), textes pour lecteurs d'écran.
-- [ ] Le lecteur lit dans ce fichier : « ← Portail », « Télécharger », « Chargement… », aide clavier, les trois messages d'erreur, textes pour lecteurs d'écran, titre de l'onglet.
-- [ ] Une recherche des mots français de l'interface dans `index.html`, `lecteur.html` et `shared/glossaire.js` ne trouve plus de texte en dur (hors commentaires).
-- [ ] Si une clé manque, la page affiche la clé elle-même et non un vide, pour repérer l'oubli.
-- [ ] Rendu identique aux captures de US-001 pour l'accueil, le glossaire et le lecteur.
+- [x] Un fichier de libellés français existe (par exemple `shared/libelles/fr.json`), avec une clé par texte.
+- [x] L'accueil lit dans ce fichier : surtitre, titre, introduction, titres et sous-titres de section, pied de page, titre de l'onglet.
+- [x] Le glossaire lit dans ce fichier : titre, bouton « Masquer », bouton flottant, texte d'aide de la recherche, compteur, libellé « Pour le DP » (aujourd'hui écrit dans le CSS), textes pour lecteurs d'écran.
+- [x] Le lecteur lit dans ce fichier : « ← Portail », « Télécharger », « Chargement… », aide clavier, les trois messages d'erreur, textes pour lecteurs d'écran, titre de l'onglet.
+- [x] Une recherche des mots français de l'interface dans `index.html`, `lecteur.html` et `shared/glossaire.js` ne trouve plus de texte en dur (hors commentaires).
+- [x] Si une clé manque, la page affiche la clé elle-même et non un vide, pour repérer l'oubli.
+- [x] Rendu identique aux captures de US-001 pour l'accueil, le glossaire et le lecteur.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `shared/libelles/fr.json` (34 clés) et `shared/libelles.js` (chargeur, attributs `data-t`, `data-t-aria`, `data-t-placeholder`, fonction `SAP_T`). « Pour le DP » sort du CSS vers une balise. Les frises chargent aussi `libelles.js`, pour leur glossaire. Captures : 44 sur 44 identiques à la référence. Vérifié dans le navigateur : titres d'onglet, textes pour lecteurs d'écran, message « document introuvable », recherche sans résultat, clé absente affichée telle quelle, aucune erreur en console. Suite : US-003.
 
 ### US-003 · Manifeste des documents
 - Statut : Validée
@@ -472,3 +473,4 @@ Journal
 - 2026-11-24 · session principale · Q5 tranchée par Walid : « SAP Program Director's Portal » et « For the Program Director ». Critère de US-010 mis à jour. Restent Q1 à Q4 et Q6 à Q8.
 - 2026-11-24 · session principale · Walid retient les options recommandées pour Q1 à Q4 et Q6 à Q8 (Q5 déjà tranchée). Besoin B-001 inscrit dans `besoins.md`. Statuts inchangés (« À affiner ») : restent l'accord de Walid sur les stories et les priorités. Suite : lot 1 sans maquette, US-001 passe en « Validée » dès l'accord de Walid.
 - 2026-11-24 · session principale · US-001 à US-008 passées en « Validée » sur accord de Walid. US-001 livrée, en « Prête à publier ». Suite : US-002 (fichier de libellés).
+- 2026-11-24 · session principale · US-002 livrée, en « Prête à publier ». Suite : US-003 (manifeste des documents).

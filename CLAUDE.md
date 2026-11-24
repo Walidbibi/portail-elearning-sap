@@ -22,6 +22,9 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 index.html                 accueil : parcours conseillé, frises, autres supports
 shared/glossaire-data.js   données : documents (SAP_DOCS), catégories, 136 termes (SAP_GLOSSAIRE)
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
+shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
+shared/libelles/fr.json    textes d'interface de l'accueil, du glossaire et du lecteur
+outils/captures/           captures avant / après et comparaison pixel par pixel (voir LISEZMOI.md)
 frises/rollout.html        frise roll-out (Diagnose, Adjust, Deploy)
 frises/greenfield.html     frise greenfield (SAP Activate)
 frises/brownfield.html     frise brownfield (SAP Activate)

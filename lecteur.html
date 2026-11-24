@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lecteur · Portail SAP du DP</title>
+<title></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
@@ -63,42 +63,45 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
 <body>
 
 <header class="bar">
-  <a class="back" href="index.html">← Portail</a>
-  <div class="title"><span class="kind" id="kind">Document</span><b id="doc-title">Chargement…</b></div>
+  <a class="back" href="index.html" data-t="lecteur.retour"></a>
+  <div class="title"><span class="kind" id="kind" data-t="lecteur.document"></span><b id="doc-title" data-t="lecteur.chargement"></b></div>
   <div class="nav">
-    <button class="ib" id="prev" type="button" aria-label="Page précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <span class="count"><input id="pg" type="text" inputmode="numeric" value="1" aria-label="Numéro de page"> / <span id="total">…</span></span>
-    <button class="ib" id="next" type="button" aria-label="Page suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    <button class="ib" id="prev" type="button" data-t-aria="lecteur.pagePrecedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <span class="count"><input id="pg" type="text" inputmode="numeric" value="1" data-t-aria="lecteur.numeroPage"> / <span id="total">…</span></span>
+    <button class="ib" id="next" type="button" data-t-aria="lecteur.pageSuivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
-  <a class="btn" id="dl" href="#" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="lbl">Télécharger</span></a>
+  <a class="btn" id="dl" href="#" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="lbl" data-t="lecteur.telecharger"></span></a>
 </header>
 
 <main class="stage" id="stage">
-  <button class="side prev" id="sprev" type="button" aria-label="Page précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-  <canvas id="cv" aria-label="Page du document"></canvas>
+  <button class="side prev" id="sprev" type="button" data-t-aria="lecteur.pagePrecedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <canvas id="cv" data-t-aria="lecteur.pageDuDocument"></canvas>
   <p class="msg" id="msg" hidden></p>
-  <button class="side next" id="snext" type="button" aria-label="Page suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button class="side next" id="snext" type="button" data-t-aria="lecteur.pageSuivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
 </main>
-<p class="hint">Flèches ← → du clavier pour tourner les pages · « / » pour le glossaire</p>
+<p class="hint" data-t="lecteur.aide"></p>
 
+<script src="shared/libelles.js"></script>
 <script src="shared/glossaire-data.js"></script>
 <script src="shared/pdfjs/pdf.min.js"></script>
 <script>
-(function(){
+SAP_LIBELLES.then(function(T){
+const portail=T('portail.nom');
+document.title=T('lecteur.titreOnglet',{portail});
 const $=id=>document.getElementById(id);
 const cv=$('cv'),ctx=cv.getContext('2d'),msg=$('msg');
-const fail=t=>{cv.hidden=true;msg.hidden=false;msg.innerHTML=t;$('doc-title').textContent='Document introuvable';};
+const fail=t=>{cv.hidden=true;msg.hidden=false;msg.innerHTML=t;$('doc-title').textContent=T('lecteur.introuvable');};
 
 /* Seuls les PDF déclarés dans SAP_DOCS sont ouverts. */
 const src=new URLSearchParams(location.search).get('doc')||'';
 const entry=Object.values(window.SAP_DOCS||{}).find(d=>d.u===src);
-if(!entry||!/^documents\/[\w.-]+\.pdf$/.test(src)){fail('Ce document n\'existe pas. <a href="index.html">Retour au portail</a>.');return;}
-document.title=entry.t+' · Portail SAP du DP';
+if(!entry||!/^documents\/[\w.-]+\.pdf$/.test(src)){fail(T('lecteur.erreurInconnu'));return;}
+document.title=T('lecteur.titreDocument',{doc:entry.t,portail});
 $('doc-title').textContent=entry.t;
-$('kind').textContent=(window.SAP_KL||{})[entry.k]||'Document';
+$('kind').textContent=(window.SAP_KL||{})[entry.k]||T('lecteur.document');
 $('dl').href=src;$('dl').setAttribute('download',src.split('/').pop());
 
-if(!window.pdfjsLib){fail('Le lecteur n\'a pas pu se charger (fichiers PDF.js introuvables). <a href="'+src+'" download>Télécharger le PDF</a>.');return;}
+if(!window.pdfjsLib){fail(T('lecteur.erreurPdfjs',{src}));return;}
 pdfjsLib.GlobalWorkerOptions.workerSrc='shared/pdfjs/pdf.worker.min.js';
 
 const KEY='sap-page:'+src;let pdf=null,page=1,busy=false,queued=null;
@@ -121,7 +124,7 @@ async function render(n){
   cv.width=Math.floor(vp.width);cv.height=Math.floor(vp.height);
   cv.style.width=Math.floor(vp.width/dpr)+'px';cv.style.height=Math.floor(vp.height/dpr)+'px';
   await p.render({canvasContext:ctx,viewport:vp}).promise;
-  $('pg').value=n;cv.setAttribute('aria-label','Page '+n+' sur '+pdf.numPages);
+  $('pg').value=n;cv.setAttribute('aria-label',T('lecteur.pageSur',{n,total:pdf.numPages}));
   for(const id of ['prev','sprev'])$(id).disabled=n<=1;
   for(const id of ['next','snext'])$(id).disabled=n>=pdf.numPages;
   store.set(n);busy=false;
@@ -147,8 +150,8 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>
 
 pdfjsLib.getDocument({url:src,isEvalSupported:false}).promise.then(d=>{
   pdf=d;$('total').textContent=d.numPages;render(Math.min(store.get(),d.numPages));
-}).catch(()=>fail('Impossible d\'ouvrir ce PDF. <a href="'+src+'" download>Le télécharger</a>.'));
-})();
+}).catch(()=>fail(T('lecteur.erreurOuverture',{src})));
+});
 </script>
 <script src="shared/glossaire.js"></script>
 </body>

@@ -1,7 +1,8 @@
 /* Glossaire partagé : panneau fixé à droite sur grand écran, tiroir sur petit écran.
-   Inclus sur toutes les pages du portail. Raccourci : « / ». */
+   Inclus sur toutes les pages du portail, après shared/libelles.js. Raccourci : « / ». */
 (function(){
 const me=document.currentScript;const BASE=new URL('..',me.src);
+(window.SAP_LIBELLES||Promise.resolve(k=>k)).then(function(T){
 const D=window.SAP_DOCS||{},KL=window.SAP_KL||{},CAT=window.SAP_CAT||{},G=window.SAP_GLOSSAIRE||[];
 const abs=u=>u.startsWith('http')?u:new URL(u,BASE).href;
 const tgt=u=>u.startsWith('http')?' target="_blank" rel="noopener"':'';
@@ -30,7 +31,7 @@ body.gl-pinned{padding-right:var(--gl-w)}
 .gl-body{padding:0 8px 12px;font-size:14px}
 .gl-body p{margin:0 0 6px}
 .gl-dp{background:var(--gl-accent-soft);border-radius:8px;padding:7px 10px;font-size:13.5px}
-.gl-dp::before{content:"Pour le DP · ";font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--gl-accent)}
+.gl-dp-l{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--gl-accent)}
 .gl-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .gl-link{font-size:12.5px;text-decoration:none;color:var(--gl-ink);border:1px solid var(--gl-line);border-radius:6px;padding:2px 8px}
 .gl-link:hover{border-color:var(--gl-accent)}
@@ -43,33 +44,33 @@ body:not(.gl-pinned) #gl{box-shadow:var(--gl-shadow);transform:translateX(105%);
 body:not(.gl-pinned) #gl.open{transform:none}
 @media (prefers-reduced-motion:reduce){#gl{transition:none!important}}
 `;
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
-const aside=document.createElement('aside');aside.id='gl';aside.setAttribute('aria-label','Glossaire');
-aside.innerHTML=`<div class="gl-head"><div class="gl-title"><span>Glossaire<span class="gl-count" id="gl-count"></span></span><button class="gl-hide" id="gl-hide" type="button">Masquer ✕</button></div>
-<input id="gl-q" type="search" placeholder="Chercher : EWM, cutover, RICEFW…" autocomplete="off" aria-label="Chercher dans le glossaire">
+const aside=document.createElement('aside');aside.id='gl';aside.setAttribute('aria-label',T('glossaire.titre'));
+aside.innerHTML=`<div class="gl-head"><div class="gl-title"><span>${esc(T('glossaire.titre'))}<span class="gl-count" id="gl-count"></span></span><button class="gl-hide" id="gl-hide" type="button">${esc(T('glossaire.masquer'))}</button></div>
+<input id="gl-q" type="search" placeholder="${esc(T('glossaire.recherche'))}" autocomplete="off" aria-label="${esc(T('glossaire.rechercheAria'))}">
 <div class="gl-chips" id="gl-chips"></div></div><div class="gl-list" id="gl-list" aria-live="polite"></div>`;
-const openBtn=document.createElement('button');openBtn.id='gl-open';openBtn.type='button';openBtn.textContent='Glossaire';
+const openBtn=document.createElement('button');openBtn.id='gl-open';openBtn.type='button';openBtn.textContent=T('glossaire.ouvrir');
 document.body.append(aside,openBtn);
 const list=aside.querySelector('#gl-list'),q=aside.querySelector('#gl-q'),chips=aside.querySelector('#gl-chips'),count=aside.querySelector('#gl-count');
 let cat='all';const opened=new Set();
 const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const hl=(t,qq)=>{if(!qq)return esc(t);const i=norm(t).indexOf(qq);return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+qq.length))+'</mark>'+esc(t.slice(i+qq.length));};
-chips.innerHTML=[['all','Tout'],...Object.entries(CAT)].map(([k,v])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
+chips.innerHTML=[['all',T('glossaire.tout')],...Object.entries(CAT)].map(([k,v])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
 chips.addEventListener('click',e=>{const b=e.target.closest('.gl-chip');if(!b)return;cat=b.dataset.c;chips.querySelectorAll('.gl-chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();});
 const items=G.map((g,i)=>({i,t:g[0],f:g[1],c:g[2],d:g[3],dp:g[4],l:g[5]||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
 function render(){
   const qq=norm(q.value.trim());
   const its=items.filter(g=>(cat==='all'||g.c===cat)&&(!qq||norm(g.t+' '+g.f+' '+g.d+' '+g.dp).includes(qq)));
   count.textContent=its.length+' / '+G.length;
-  if(!its.length){list.innerHTML=`<p class="gl-empty">Aucun terme ne correspond à « ${esc(q.value)} ».</p>`;return;}
+  if(!its.length){list.innerHTML=`<p class="gl-empty">${esc(T('glossaire.aucun',{q:q.value}))}</p>`;return;}
   const auto=qq&&its.length<=3;let h='',L='';
   for(const g of its){
     const c=norm(g.t)[0].toUpperCase(),letter=/[A-Z]/.test(c)?c:'#';
     if(letter!==L){L=letter;h+=`<div class="gl-letter">${letter}</div>`;}
     const o=opened.has(g.i)||auto;
     h+=`<div><button type="button" class="gl-term-btn" data-i="${g.i}" aria-expanded="${o}"><b>${hl(g.t,qq)}</b>${g.f?`<span class="gl-f">${hl(g.f,qq)}</span>`:''}</button>`;
-    if(o){h+=`<div class="gl-body"><p>${hl(g.d,qq)}</p>${g.dp?`<p class="gl-dp">${esc(g.dp)}</p>`:''}${g.l.filter(k=>D[k]).length?`<div class="gl-links">${g.l.filter(k=>D[k]).map(k=>{const u=abs((window.SAP_HREF||(x=>x))(D[k].u));return `<a class="gl-link" href="${u}"${tgt(D[k].u)}>${KL[D[k].k]||''} · ${esc(D[k].t)}</a>`;}).join('')}</div>`:''}</div>`;}
+    if(o){h+=`<div class="gl-body"><p>${hl(g.d,qq)}</p>${g.dp?`<p class="gl-dp"><span class="gl-dp-l">${esc(T('glossaire.pourLeDP'))}</span>${esc(g.dp)}</p>`:''}${g.l.filter(k=>D[k]).length?`<div class="gl-links">${g.l.filter(k=>D[k]).map(k=>{const u=abs((window.SAP_HREF||(x=>x))(D[k].u));return `<a class="gl-link" href="${u}"${tgt(D[k].u)}>${KL[D[k].k]||''} · ${esc(D[k].t)}</a>`;}).join('')}</div>`:''}</div>`;}
     h+='</div>';
   }
   list.innerHTML=h;
@@ -91,4 +92,5 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='Escape'&&aside.classList.contains('open')){aside.classList.remove('open');}
 });
 layout();render();
+});
 })();
