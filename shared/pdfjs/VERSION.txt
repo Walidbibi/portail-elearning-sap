@@ -1,0 +1,3 @@
+PDF.js 3.11.174 (Mozilla, licence Apache 2.0, voir LICENSE).
+Source : paquet npm pdfjs-dist@3.11.174, dossier build/.
+Copié ici pour que le lecteur fonctionne sans CDN.
