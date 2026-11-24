@@ -24,16 +24,16 @@ const css=`.jl-hb{display:flex;align-items:center;gap:14px;min-height:60px;paddi
 .jl-logo:focus-visible,.jl-ariane a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .jl-lecteur{display:inline-flex;align-items:center;gap:8px;min-width:0;flex:none}
 .jl-lecteur .jl-ariane{font-size:14px}
-@media (max-width:600px){.jl-mot,.jl-sig{display:none}.jl-hb{gap:10px}}`;
+@media (max-width:600px){.jl-sig{display:none}.jl-hb{gap:10px}.jl-mot{font-size:18px}}`;
 const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
 
 const logo=(avecMot)=>`<a class="jl-logo" href="${accueil}" data-t-aria="entete.accueil">${MARQUE}${avecMot?'<span class="jl-mot">Jalon</span>':''}</a>`;
 const zones=[...document.querySelectorAll('[data-entete]')];
 zones.forEach(z=>{
   const type=z.dataset.entete;
-  if(type==='lecteur'){z.className='jl-lecteur';z.innerHTML=logo(false)+'<nav class="jl-ariane" data-t-aria="entete.ariane"></nav>';return;}
+  if(type==='lecteur'){z.className='jl-lecteur';z.innerHTML=logo(true)+'<nav class="jl-ariane" data-t-aria="entete.ariane"></nav>';return;}
   z.classList.add('jl-hb');
-  z.innerHTML=logo(true)+(type==='accueil'?'<span class="jl-sig" data-t="portail.signature"></span>':'<nav class="jl-ariane" data-t-aria="entete.ariane"></nav>')+'<span class="jl-sp"></span><div data-langue></div>';
+  z.innerHTML=logo(true)+(type==='accueil'?'<span class="jl-sig" data-t="entete.signature"></span>':'<nav class="jl-ariane" data-t-aria="entete.ariane"></nav>')+'<span class="jl-sp"></span><div data-langue></div>';
 });
 
 // section de l'accueil qui contient un document (ou dont un document a cette version anglaise)

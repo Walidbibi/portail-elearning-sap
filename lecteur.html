@@ -20,7 +20,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <title></title>
-<link rel="stylesheet" href="shared/theme.css?v=202611242116">
+<link rel="stylesheet" href="shared/theme.css?v=202611242130">
 <style>
 /* Lecteur PDF : une page à la fois, flèches pour naviguer, bouton de téléchargement. */
 *{box-sizing:border-box}
@@ -115,9 +115,9 @@ canvas{display:block;background:var(--page-blanc);box-shadow:var(--page-shadow);
 </main>
 <p class="hint" data-t="lecteur.aide"></p>
 
-<script src="shared/libelles.js?v=202611242116"></script>
-<script src="shared/documents.js?v=202611242116"></script>
-<script src="shared/entete.js?v=202611242116"></script>
+<script src="shared/libelles.js?v=202611242130"></script>
+<script src="shared/documents.js?v=202611242130"></script>
+<script src="shared/entete.js?v=202611242130"></script>
 <script src="shared/pdfjs/pdf.min.js"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(function([T,M]){
@@ -197,6 +197,6 @@ pdfjsLib.getDocument({url:src,isEvalSupported:false}).promise.then(d=>{
 }).catch(()=>fail(T('lecteur.erreurOuverture',{src})));
 });
 </script>
-<script src="shared/glossaire.js?v=202611242116"></script>
+<script src="shared/glossaire.js?v=202611242130"></script>
 </body>
 </html>

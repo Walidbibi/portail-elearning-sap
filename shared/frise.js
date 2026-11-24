@@ -99,7 +99,7 @@ function open(k,src){
   <div class="grid"><section><h3>${esc(T('frise.activites'))}</h3>${list(d.act)}</section><section><h3>${esc(T('frise.prerequis'))}</h3>${list(d.pre)}</section><section><h3>${esc(T('frise.livrables'))}</h3>${list(d.liv)}</section></div>
   ${d.ai?`<div class="ai"><h3>${esc(T('frise.apportIA'))} <span class="gain">${esc(T('frise.gain',{gain:d.aig}))}</span></h3>${list(d.ai)}</div>`:''}
   <div class="risks"><h3>${esc(T('frise.risques'))}</h3>${d.r.map(r=>`<div class="risk"><div><span class="risk-l">${esc(T('frise.risque'))}</span>${esc(r[0])}</div><div><span class="risk-l">${esc(T('frise.parade'))}</span>${esc(r[1])}</div></div>`).join('')}</div>
-  ${d.ex?`<div class="ex"><h3>${esc(T('frise.dansExemple',{entreprise:F.exemple.entreprise}))}</h3><p>${esc(d.ex)}</p></div>`:''}`;
+  ${d.ex?`<div class="ex"><h3>${esc(T('frise.dansExemple',{entreprise:(([nom,...reste])=>T('frise.fictif',{nom})+(reste.length?', '+reste.join(', '):''))(F.exemple.entreprise.split(', '))}))}</h3><p>${esc(d.ex)}</p></div>`:''}`;
   const i=SEQ.indexOf(k);
   if(i>=0){body.insertAdjacentHTML('beforeend',`<div class="nav"><button type="button" class="nb" ${i===0?'disabled':''} data-go="${SEQ[i-1]||''}">${esc(T('frise.precedent'))}</button><span>${i+1} / ${SEQ.length}</span><button type="button" class="nb" ${i===SEQ.length-1?'disabled':''} data-go="${SEQ[i+1]||''}">${esc(T('frise.suivant'))}</button></div>`);}
   ov.hidden=false;dlg.scrollTop=0;X.focus();

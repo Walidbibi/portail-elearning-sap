@@ -11,18 +11,18 @@
     "parcoursSousTitre": "Du plus général au plus opérationnel.",
     "certificationTitre": "Certification SAP Activate",
     "certificationSousTitre": "Les livres de révision des certifications ACT100 et ACT200.",
-    "frisesTitre": "Les frises de A à Z",
-    "frisesSousTitre": "Chaque démarche sur une chronologie, avec un exemple fil rouge, l'apport de l'IA et les risques d'échec.",
+    "frisesTitre": "Les scénarios de mise en œuvre",
+    "frisesSousTitre": "Les quatre façons de mener un projet SAP, chacune sur une chronologie, avec un exemple fil rouge, l'apport de l'IA et les risques d'échec.",
     "autresTitre": "Supports annexes",
-    "pied": "Contenu générique, sans information propre à un client. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger.",
+    "pied": "Contenu générique, sans information propre à un client. Nordval, Calvane, Ternova et Alvéa sont des entreprises fictives, comme les chiffres de leurs exemples. Tout s'ouvre dans le portail : les documents dans un lecteur page par page, avec un bouton pour les télécharger.",
     "marque": "Site indépendant. SAP, SAP S/4HANA, SAP Activate et les autres produits SAP cités sont des marques ou des marques déposées de SAP SE ou de ses sociétés affiliées en Allemagne et dans d'autres pays. Ce site n'est ni affilié à SAP SE, ni parrainé ou approuvé par elle.",
     "titreOnglet": "Jalon · Piloter un programme SAP",
     "introCourte": "Les supports dans l'ordre où les lire. Un glossaire de {n} termes sur chaque page.",
     "commencer": "Commencer le parcours →",
     "chercher": "Chercher un terme",
-    "stats": "{supports} supports · {frises} frises · {termes} termes · FR / EN",
+    "stats": "{supports} supports · {frises} scénarios · {termes} termes · FR / EN",
     "compteEtapes": "{n} étapes",
-    "compteDemarches": "{n} démarches",
+    "compteDemarches": "{n} scénarios",
     "autresSousTitre": "Pour s'entraîner avant un entretien.",
     "exemple": "Exemple : {texte}"
   },
@@ -35,7 +35,7 @@
     "rechercheAria": "Chercher dans le glossaire",
     "tout": "Tout",
     "aucun": "Aucun terme ne correspond à « {q} ».",
-    "pourLeDP": "Pour le DP · ",
+    "pourLeDP": "Pour le directeur de programme · ",
     "erreur": "Le glossaire n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur.",
     "marqueFr": "FR"
   },
@@ -65,7 +65,7 @@
   "types": {
     "deck": "Deck",
     "doc": "Doc",
-    "frise": "Frise",
+    "frise": "Scénario",
     "act": "Certification",
     "prat": "Pratique",
     "schema": "Schéma"
@@ -104,9 +104,10 @@
     "dansExemple": "Dans l'exemple · {entreprise}",
     "precedent": "← Précédent",
     "suivant": "Suivant →",
-    "erreur": "Cette frise n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur.",
-    "glisser": "Faites glisser la frise",
-    "titreOnglet": "{page} · {portail}"
+    "erreur": "Ce scénario n'a pas pu se charger. Rechargez la page.",
+    "glisser": "Faites glisser la chronologie",
+    "titreOnglet": "{page} · {portail}",
+    "fictif": "{nom} (fictif)"
   },
   "langue": {
     "groupe": "Langue",
@@ -121,8 +122,9 @@
     "ariane": "Fil d'Ariane",
     "parcours": "Parcours",
     "certification": "Certification",
-    "frises": "Frises",
-    "autres": "Annexes"
+    "frises": "Scénarios",
+    "autres": "Annexes",
+    "signature": "Piloter un programme SAP®"
   },
   "categoriesCourtes": {
     "meth": "Méthode",

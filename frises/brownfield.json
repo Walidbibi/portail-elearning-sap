@@ -2,7 +2,7 @@
  "titreOnglet": "Démarche brownfield SAP",
  "surtitre": "Conversion de système ECC vers S/4HANA · SAP Activate",
  "titre": "Une migration brownfield vers S/4HANA, de A à Z",
- "intro": "Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
+ "intro": "Les six phases SAP Activate sur une chronologie. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
  "exemple": {
   "entreprise": "Ternova",
   "description": "Ternova (fictif), distributeur de pièces, ECC depuis 2009 converti en S/4HANA"

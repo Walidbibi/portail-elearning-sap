@@ -11,6 +11,7 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 
 ## Le nom et l'identité
 
+- Les pages greenfield, brownfield, bluefield et roll-out s'appellent « scénarios de mise en œuvre » (« implementation scenarios ») depuis le 24/11/2026 ; leurs fichiers gardent le nom `frises/`.
 - Le portail s'appelle **Jalon**, en français et en anglais. Signature : « Piloter un programme SAP » / « Running SAP programs ».
 - « SAP » ne forme jamais le nom ni le logotype. Les règles de marque de SAP (https://www.sap.com/about/legal/trademark.html, lues le 24/11/2026) interdisent aussi la marque dans un slogan : Walid a choisi de garder la signature avec « SAP », en connaissance du risque.
 - Mention de marque obligatoire en pied d'accueil (phrase d'attribution officielle de SAP, site ni affilié ni approuvé), et symbole ® à la première mention de « SAP » sur l'accueil.
@@ -150,7 +151,7 @@ Ces documents existent comme artefacts privés sur claude.ai. Claude Code ne peu
 | act2 | ACT200 · Livre de révision (SAP Activate Agile) | Doc |
 | simu | Simulation d'entretien (questions et bonnes réponses) | Doc |
 
-Hors site, volontairement : un schéma de paysage logistique propre au client (confidentiel). Un schéma des rôles d'un programme SAP existe aussi ; il faut le relire et retirer toute information propre au client avant de l'ajouter.
+Hors site, volontairement : un schéma de paysage logistique propre au client (confidentiel). Le schéma des rôles d'un programme SAP est intégré (`schemas/`, FR et EN), après contrôle : aucune information client.
 
 ## Agents et circuit de travail
 
@@ -177,4 +178,3 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 ## Points ouverts
 
 - Les PDF sont des copies anonymisées des supports claude.ai (les originaux citent le client, l'employeur et des sites réels). Si un original change, il faut refaire l'export puis l'anonymisation avant de remplacer le PDF.
-- Intégration éventuelle du schéma des rôles, après nettoyage.

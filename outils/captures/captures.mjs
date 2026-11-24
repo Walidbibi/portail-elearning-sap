@@ -2,7 +2,7 @@
 // Aucune dépendance : Node 22+ (WebSocket intégré) et Google Chrome.
 //
 // Usage : node outils/captures/captures.mjs [page] [--out <dossier>]
-//   page    : accueil | glossaire | greenfield | brownfield | bluefield | rollout | lecteur (toutes si absent)
+//   page    : accueil | glossaire | greenfield | brownfield | bluefield | rollout | lecteur | schema (toutes si absent)
 //   --out   : dossier de sortie, relatif à outils/captures/ (défaut : reference)
 //   --langue : fr (défaut) ou en ; la langue est forcée par ?lang= dans l'adresse
 
@@ -42,6 +42,8 @@ const PAGES = {
     })()`,
   },
   lecteur: { url: 'lecteur.html?doc=documents/formation-sap-synthese.pdf', plein: false, attente: `!!document.querySelector('canvas')` },
+  // schéma des rôles : une page par langue (la version anglaise est un autre fichier)
+  schema: { url: LANGUE === 'en' ? 'schemas/sap-program-roles.html' : 'schemas/roles-programme-sap.html', plein: true },
 };
 for (const f of FRISES) {
   PAGES[f] = { url: `frises/${f}.html`, plein: true };

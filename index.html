@@ -6,11 +6,11 @@
 <link rel="icon" href="shared/marque/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="shared/marque/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="shared/marque/apple-touch-icon.png">
-<meta name="description" content="Frises, glossaire et supports pour piloter un programme SAP : directeurs de programme et chefs de projet. En français et en anglais.">
+<meta name="description" content="Scénarios de mise en œuvre, glossaire et supports pour piloter un programme SAP : directeurs de programme et chefs de projet. En français et en anglais.">
 <meta property="og:site_name" content="Jalon">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jalon · Piloter un programme SAP">
-<meta property="og:description" content="Frises, glossaire et supports pour piloter un programme SAP : directeurs de programme et chefs de projet. En français et en anglais.">
+<meta property="og:description" content="Scénarios de mise en œuvre, glossaire et supports pour piloter un programme SAP : directeurs de programme et chefs de projet. En français et en anglais.">
 <meta property="og:url" content="https://walidbibi.github.io/portail-elearning-sap/index.html">
 <meta property="og:image" content="https://walidbibi.github.io/portail-elearning-sap/shared/marque/partage.png">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title data-t="accueil.titreOnglet"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="shared/theme.css?v=202611242116">
+<link rel="stylesheet" href="shared/theme.css?v=202611242130">
 <style>
 /* Accueil de Jalon : bandeau d'entrée, grilles à 4 colonnes, lignes ; téléphone compact (US-032 à US-034). Couleurs : shared/theme.css. */
 *{box-sizing:border-box}
@@ -76,8 +76,6 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 .fthumb{display:flex;flex-direction:column;justify-content:center;gap:8px;aspect-ratio:16/10;background:var(--mat);padding:14px;border-bottom:1px solid var(--line)}
 .fthumb .ph{display:flex;gap:2px}
 .fthumb .ph i{display:grid;place-items:center;height:20px;border-radius:3px;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ph-ink);overflow:hidden;white-space:nowrap;min-width:0}
-.fthumb .bars{display:flex;flex-direction:column;gap:4px}
-.fthumb .bars s{display:block;height:6px;border-radius:3px;background:var(--line)}
 .card .exemple{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:var(--t-13);color:var(--muted);line-height:1.4}
 /* lignes : certification et annexes */
 .rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);overflow:hidden}
@@ -172,10 +170,10 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611242116"></script>
-<script src="shared/documents.js?v=202611242116"></script>
-<script src="shared/entete.js?v=202611242116"></script>
-<script src="shared/glossaire.js?v=202611242116"></script>
+<script src="shared/libelles.js?v=202611242130"></script>
+<script src="shared/documents.js?v=202611242130"></script>
+<script src="shared/entete.js?v=202611242130"></script>
+<script src="shared/glossaire.js?v=202611242130"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(async([T,M])=>{
 const en=window.SAP_LANGUE==='en';
@@ -202,10 +200,9 @@ document.getElementById('frises').innerHTML=frises.map((k,i)=>{const d=M.doc(k),
     const total=F.etenduePhases.reduce((s,[a,b])=>s+(b-a),0);
     // seul un segment assez large (30 % de la frise) porte son nom : pas de nom tronqué
     const ph=F.phases.map((p,j)=>{const [a,b]=F.etenduePhases[j];return `<i style="flex:${Math.max(b-a,.6).toFixed(2)};background:var(--c${C[j]})">${(b-a)/total>=.3?esc(p.name):''}</i>`;}).join('');
-    const bars=[.15,.4,.7].map(x=>`<s style="width:${Math.round(40+x*55)}%;margin-left:${Math.round(x*35)}%"></s>`).join('');
     // l'exemple fil rouge dit comme tel (« Exemple : Calvane (fictif), fabricant de pompes »)
     const ex=T('accueil.exemple',{texte:F.exemple.description.split(', ').slice(0,2).join(', ')});
-    vig=`<span class="fthumb" aria-hidden="true"><span class="ph">${ph}</span><span class="bars">${bars}</span></span>`;
+    vig=`<span class="fthumb" aria-hidden="true"><span class="ph">${ph}</span></span>`;
     exemple=`<span class="exemple">${esc(ex)}</span>`;}
   return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}">${vig}<span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span>${exemple}</span></a>`;}).join('');
 // certification et annexes : lignes sans aperçu

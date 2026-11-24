@@ -2,7 +2,7 @@
  "titreOnglet": "Démarche bluefield SAP",
  "surtitre": "Transition sélective vers S/4HANA · SAP Activate",
  "titre": "Une migration bluefield vers S/4HANA, de A à Z",
- "intro": "Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
+ "intro": "Les six phases SAP Activate sur une chronologie. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
  "exemple": {
   "entreprise": "Alvéa",
   "description": "Alvéa (fictif), groupe agroalimentaire, deux ECC fusionnés dans un seul S/4HANA"

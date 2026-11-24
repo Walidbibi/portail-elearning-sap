@@ -2,7 +2,7 @@
  "titreOnglet": "Démarche greenfield SAP",
  "surtitre": "Nouvelle implémentation S/4HANA · SAP Activate",
  "titre": "Une migration greenfield vers S/4HANA, de A à Z",
- "intro": "Les six phases SAP Activate sur une frise. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
+ "intro": "Les six phases SAP Activate sur une chronologie. Cliquez sur une barre, une quality gate ou le go-live pour ouvrir le détail.",
  "exemple": {
   "entreprise": "Calvane",
   "description": "Calvane (fictif), fabricant de pompes, 3 usines, ERP maison remplacé par S/4HANA"

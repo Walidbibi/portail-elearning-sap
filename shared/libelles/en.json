@@ -11,18 +11,18 @@
     "parcoursSousTitre": "From the big picture to day-to-day delivery.",
     "certificationTitre": "SAP Activate Certification",
     "certificationSousTitre": "Revision books for the ACT100 and ACT200 certifications.",
-    "frisesTitre": "Timelines, from A to Z",
-    "frisesSousTitre": "Each approach on a timeline, with a running example, how AI helps, and the main failure risks.",
+    "frisesTitre": "Implementation scenarios",
+    "frisesSousTitre": "The four ways to run an SAP project, each on a timeline, with a running example, how AI helps, and the main failure risks.",
     "autresTitre": "Other resources",
-    "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them.",
+    "pied": "Generic content, with no client-specific information. Nordval, Calvane, Ternova and Alvéa are fictional companies, as are the figures in their examples. Everything opens in the portal: documents in a page-by-page reader, with a button to download them.",
     "marque": "Independent site. SAP, SAP S/4HANA, SAP Activate and the other SAP products mentioned are the trademarks or registered trademarks of SAP SE or its affiliates in Germany and in other countries. This site is not affiliated with, sponsored by or endorsed by SAP SE.",
     "titreOnglet": "Jalon · Running SAP programs",
     "introCourte": "The materials in the order to read them. A {n}-term glossary on every page.",
     "commencer": "Start the path →",
     "chercher": "Look up a term",
-    "stats": "{supports} resources · {frises} timelines · {termes} terms · FR / EN",
+    "stats": "{supports} resources · {frises} scenarios · {termes} terms · FR / EN",
     "compteEtapes": "{n} steps",
-    "compteDemarches": "{n} approaches",
+    "compteDemarches": "{n} scenarios",
     "autresSousTitre": "To practice before an interview.",
     "exemple": "Example: {texte}"
   },
@@ -65,7 +65,7 @@
   "types": {
     "deck": "Deck",
     "doc": "Doc",
-    "frise": "Timeline",
+    "frise": "Scenario",
     "act": "Certification",
     "prat": "Practice",
     "schema": "Diagram"
@@ -104,9 +104,10 @@
     "dansExemple": "In the example · {entreprise}",
     "precedent": "← Previous",
     "suivant": "Next →",
-    "erreur": "This timeline could not be loaded. Reload the page.",
+    "erreur": "This scenario could not be loaded. Reload the page.",
     "glisser": "Swipe the timeline",
-    "titreOnglet": "{page} · {portail}"
+    "titreOnglet": "{page} · {portail}",
+    "fictif": "{nom} (fictional)"
   },
   "langue": {
     "groupe": "Language",
@@ -121,8 +122,9 @@
     "ariane": "Breadcrumb",
     "parcours": "Path",
     "certification": "Certification",
-    "frises": "Timelines",
-    "autres": "Resources"
+    "frises": "Scenarios",
+    "autres": "Resources",
+    "signature": "Running SAP® programs"
   },
   "categoriesCourtes": {
     "meth": "Method",

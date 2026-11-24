@@ -18,7 +18,7 @@
   --marque-texte:#FFFFFF;--marque-doux:#B8C2D6;--marque-trait:#2A3754;--jalon-clair:#F2B05E;
   --mat:#E3E8EF;--filtre-apercu:none;
   /* types de documents (étiquettes des cartes) */
-  --k-deck:#3460A8;--k-doc:#2B7549;--k-frise:#8F5C0C;--k-act:#6A4FA3;--k-prat:#AF4234;
+  --k-deck:#3460A8;--k-doc:#2B7549;--k-frise:#8F5C0C;--k-act:#6A4FA3;--k-prat:#56657D;
   /* frises : couleurs des phases, teintes de fond, gates, IA, risques */
   --c0:#56657D;--c1:#3460A8;--c2:#1B7287;--c3:#8F5C0C;--c4:#AF4234;--c5:#2B7549;
   --t0:#E9EDF3;--t1:#E3EAF7;--t2:#E0F0F3;--t3:#F7EEDC;--t4:#F7E3E0;--t5:#E1F0E6;
@@ -46,7 +46,7 @@
   --mark:#5A4710;--focus:#F0A35E;
   --marque-texte:#FFFFFF;--marque-doux:#A9B4C8;--marque-trait:#26314A;--jalon-clair:#F2B05E;
   --mat:#151A22;--filtre-apercu:brightness(.82) contrast(1.05);
-  --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
+  --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#9AA8BE;
   --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
   --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
   --gate:#E9EDF3;--gate-ink:#12161D;--ph-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;
@@ -63,7 +63,7 @@
   --mark:#5A4710;--focus:#F0A35E;
   --marque-texte:#FFFFFF;--marque-doux:#A9B4C8;--marque-trait:#26314A;--jalon-clair:#F2B05E;
   --mat:#151A22;--filtre-apercu:brightness(.82) contrast(1.05);
-  --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
+  --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#9AA8BE;
   --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
   --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
   --gate:#E9EDF3;--gate-ink:#12161D;--ph-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;

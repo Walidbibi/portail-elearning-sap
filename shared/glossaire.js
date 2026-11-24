@@ -53,6 +53,9 @@ body.gl-pinned{padding-right:var(--gl-w)}
 #gl-open{all:unset;cursor:pointer;position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:14;background:var(--ink);color:var(--surface);font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-weight:600;font-size:15px;padding:11px 16px;border-radius:24px;box-shadow:var(--shadow)}
 #gl :focus-visible,#gl-open:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 body.gl-pinned #gl-open{display:none}
+#gl-open{display:inline-flex;align-items:center;gap:8px}
+#gl-open svg{flex:none}
+@media (max-width:600px){#gl-open{width:48px;height:48px;padding:0;justify-content:center;border-radius:50%}#gl-open .gl-open-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 body:not(.gl-pinned) #gl{box-shadow:var(--shadow);transform:translateX(105%);transition:transform .2s;width:min(var(--gl-w),100%);z-index:30}
 body:not(.gl-pinned) #gl.open{transform:none}
 /* tiroir : pleine largeur sur téléphone, voile derrière, marge basse pour le bouton flottant */
@@ -68,7 +71,9 @@ const aside=document.createElement('aside');aside.id='gl';aside.setAttribute('ar
 aside.innerHTML=`<div class="gl-head"><div class="gl-title"><span>${esc(T('glossaire.titre'))}<span class="gl-count" id="gl-count"></span></span><button class="gl-hide" id="gl-hide" type="button">${esc(T('glossaire.masquer'))}</button></div>
 <input id="gl-q" type="search" placeholder="${esc(T('glossaire.recherche'))}" autocomplete="off" aria-label="${esc(T('glossaire.rechercheAria'))}">
 <div class="gl-chips" id="gl-chips"></div></div><div class="gl-list" id="gl-list" aria-live="polite"></div>`;
-const openBtn=document.createElement('button');openBtn.id='gl-open';openBtn.type='button';openBtn.textContent=T('glossaire.ouvrir');
+const openBtn=document.createElement('button');openBtn.id='gl-open';openBtn.type='button';
+// icône de livre + libellé ; sur téléphone, l'icône seule (le libellé reste lu par les lecteurs d'écran)
+openBtn.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/><path d="M8 7h8M8 11h6"/></svg><span class="gl-open-t">'+esc(T('glossaire.ouvrir'))+'</span>';
 const voile=document.createElement('div');voile.id='gl-voile';voile.hidden=true;voile.setAttribute('aria-hidden','true');
 document.body.append(voile,aside,openBtn);
 const list=aside.querySelector('#gl-list'),q=aside.querySelector('#gl-q'),chips=aside.querySelector('#gl-chips'),count=aside.querySelector('#gl-count');

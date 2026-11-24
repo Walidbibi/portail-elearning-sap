@@ -6,7 +6,7 @@ Il faut Node 22 ou plus récent et Google Chrome. Aucun paquet n'est à installe
 
 ## Ce qui est capturé
 
-44 images : chaque page à deux largeurs (bureau 1440 px, téléphone 390 px) et dans deux thèmes (clair, sombre).
+48 images : chaque page à deux largeurs (bureau 1440 px, téléphone 390 px) et dans deux thèmes (clair, sombre).
 
 - Accueil, frises et lecteur : la page entière (le lecteur : l'écran visible, avec la synthèse ouverte).
 - Glossaire : recherche « cutover » et un terme déplié.
@@ -50,6 +50,10 @@ node outils/captures/captures.mjs bluefield
 
 ```bash
 node outils/captures/captures.mjs rollout
+```
+
+```bash
+node outils/captures/captures.mjs schema
 ```
 
 Une frise inclut sa popup. La langue est le français par défaut ; ajouter `--langue en` pour l'anglais (référence anglaise : `--out reference-en`). Pour capturer après une modification, ajouter `--out apres` (ou `--out apres-en --langue en`), puis comparer :

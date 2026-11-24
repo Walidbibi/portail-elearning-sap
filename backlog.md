@@ -599,6 +599,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : Realize `#8F5C0C` en clair, texte et pictogrammes de phase `#12161D` en sombre, étiquette « Frise » `#8F5C0C`. Ratios mesurés, clair texte blanc : Discover / Cadrage 5,91 ; Prepare 6,20 ; Explore / Diagnose 5,52 ; Realize / Adjust 5,67 ; Deploy 5,75 ; Run 5,61. Sombre texte `#12161D` : 7,53 ; 7,68 ; 8,61 ; 9,02 ; 7,33 ; 8,65 (pictogrammes idem). Étiquette « Frise » : 5,67 en clair, 8,04 en sombre. Couleurs constatées dans le navigateur (roll-out compris). Aperçus FR et EN des quatre frises refaits. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : bandes de phase lisibles en clair et en sombre, rien de contraire aux critères. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-020 · Couleur du contour de focus
 - Statut : À tester
@@ -623,6 +624,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : focus `#C25E12` en clair (3,92 sur `#F3F5F8`, 4,28 sur blanc), `#F0A35E` en sombre (8,73 sur `#12161D`) sur l'accueil, les frises, le lecteur, le glossaire, le sélecteur et le schéma des rôles ; `.n:focus{outline:none}` du schéma remplacé par un contour visible au clavier. Constaté dans le navigateur dans les deux thèmes. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : pas de navigation clavier possible sans navigateur, je m'en remets au journal. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-021 · Cibles tactiles de 40 px : glossaire et lecteur
 - Statut : À tester
@@ -649,6 +651,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : mesures dans le navigateur : « Masquer » 40 px, lien de document du glossaire 40 px, boutons de page du lecteur 40 × 40 px, lien de retour du lecteur 40 px. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : boutons confortables, rien de contraire aux critères. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-022 · Tiroir du glossaire sur téléphone
 - Statut : À tester
@@ -675,6 +678,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : à 390 px, tiroir 390 px (pleine largeur), voile visible, fermeture par le voile et par Échap, focus rendu au bouton « Glossaire », libellé « Fermer ✕ » / « Close ✕ » en mode tiroir, marge basse de 72 px ; glossaire épinglé inchangé au-delà de 1100 px. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : tiroir plein écran et « Fermer » nets. Détail : « Pour le DP », sigle non expliqué. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-023 · Indice de glissement de la frise sur téléphone
 - Statut : À tester
@@ -701,6 +705,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 10, variante A) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : sur téléphone, frise de 760 px, indice « Faites glisser la frise · M-15 → M+2 » (« Swipe the timeline » en anglais), dégradé au bord droit (opacité 1) qui disparaît au bout (opacité 0) ; indice caché sur bureau ; page sans débordement à 390 px. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : indice clair. Gênant : en cours de défilement, le bouton « Glossaire » couvre la chronologie là où l'on fait glisser (point 3). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### Bloc B · Socle
 
@@ -730,6 +735,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 4 et 14) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : `shared/theme.css` (palette validée, marque `#16213A` / `#0D1526`, jalon `#B45309` / `#F2B05E`, échelle de 8 tailles et 4 rayons, teintes du schéma préfixées `--sch-`) chargé par toutes les pages ; ensembles de couleurs de l'accueil, du lecteur, de `frise.css`, du glossaire et des schémas supprimés ; ombre de la popup renommée `--shadow-fort`. `verifier.mjs` refuse toute couleur en dur hors `theme.css` (0 trouvée). Captures : seul le lecteur change (fond commun) ; l'accueil anglais montre un écart de rendu d'image de 14 000 pixels, invisible à l'œil (zone de l'aperçu « Interview simulation »), stable. Au passage, défaut corrigé : le bandeau de langue du lecteur, vide, restait visible en français (bande grise sous la barre, depuis US-013).
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : couleurs cohérentes d'une page à l'autre, rien de contraire aux critères. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-025 · Polices IBM Plex hébergées sur le site
 - Statut : À tester
@@ -755,6 +761,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : IBM Plex Sans 400, 500, 600, 700 et IBM Plex Mono 500, 700 (paquet officiel IBM, version 1.1.0 de 2024, la 2.0.0 n'ayant que six jours) dans `shared/polices/` avec la licence SIL OFL, déclarées dans `theme.css` avec `font-display: swap` ; plus aucun appel à Google Fonts sur les 8 pages (contrôlé dans le navigateur et par `verifier.mjs`). Captures : même police, seule la flèche « ← » change légèrement de dessin (version IBM). `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : rien de visible à redire. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-026 · Favicon et aperçu de partage
 - Statut : À tester
@@ -781,6 +788,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3 et 14) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : favicon SVG, favicon 32 px et apple-touch-icon 180 px tirés du monogramme sur fond bleu nuit ; image de partage `shared/marque/partage.png` 1200 × 630 (nom, logotype, signature FR et EN, sans logo ni bleu SAP), générée depuis `outils/partage.html` ; balises Open Graph et carte de réseau social sur les 8 pages, adresses absolues vers GitHub Pages. Reste : vérifier l'aperçu avec un outil de prévisualisation en ligne, possible seulement après publication. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée (lot 3, « Prêt avec réserves ») : image de partage réussie. Critère non rempli : vérification de l'aperçu en ligne, désormais possible puisque c'est publié (point 6). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-027 · Mention de marque SAP en pied de page
 - Statut : À tester
@@ -806,6 +814,7 @@ Journal
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
 - 2026-11-24 · session principale · règles lues sur https://www.sap.com/about/legal/trademark.html (date d'effet : 12 janvier 2026), sections « Partner and other third-party use », « Proper use of trademarks », « Trademark attribution », « Other dos and don'ts ». À retenir : (1) pas de « SAP » dans un nom, un slogan, un nom de domaine ou un logo, ce qui touche la signature validée « Piloter un programme SAP » ; (2) phrase d'attribution obligatoire : « <marques> is/are the trademark(s) or registered trademark(s) of SAP SE or its affiliates in Germany and in other countries » ; (3) symbole ® à la première mention dans le titre et le texte, avec un nom commun (« SAP® software ») ; (4) aucune mention ne doit laisser croire à un parrainage ou une affiliation. Décisions demandées à Walid avant publication.
 - 2026-11-24 · session principale · livrée : mention en pied d'accueil, FR et EN, construite sur la phrase d'attribution officielle de SAP (marques de SAP SE ou de ses sociétés affiliées en Allemagne et dans d'autres pays ; site ni affilié, ni parrainé, ni approuvé), sous la phrase sur les exemples fictifs ; symbole ® à la première mention de « SAP » sur l'accueil (surtitre). Sans débordement à 390 px. La signature garde « SAP » par décision de Walid. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : mention lisible en FR et EN. Détail : sur bureau, la signature de l'en-tête est la vraie première mention de « SAP », sans ®. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### Bloc C · Identité
 
@@ -836,6 +845,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 1 et 2) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : nom « Jalon », signature « Piloter un programme SAP » / « Running SAP programs » (`portail.nom`, `portail.signature`) ; onglets « Jalon · Piloter un programme SAP » sur l'accueil, « <page> · Jalon » ailleurs (frises, lecteur, schémas). Recherche de « Portail SAP du DP » et « SAP Program Director's Portal » dans les pages, scripts, JSON et schémas : 0 résultat. Le titre de l'accueil dit « Jalon » en attendant le bandeau d'entrée (US-032). `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : nom et signature clairs sur bureau, FR et EN. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-029 · Logotype Jalon
 - Statut : À tester
@@ -861,6 +871,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : `shared/marque/logotype.svg` (losange ambre sur la ligne, puis « Jalon »), `monogramme.svg`, versions claire et sombre, texte alternatif « Jalon », ni bleu ni forme SAP. Écart : le mot « Jalon » est écrit avec IBM Plex Sans Bold (hébergée sur le site), pas encore converti en tracés : aucun outil de conversion de police n'est installé sur le Mac ; l'installer (fontTools) demande l'accord de Walid. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : logotype sobre et reconnaissable ; tracés hors champ (décision de Walid). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-030 · En-tête commun sur toutes les pages
 - Statut : À tester
@@ -890,6 +901,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 7) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : `shared/entete.js` dessine l'en-tête des 8 pages : logotype (lien vers l'accueil, « Jalon, accueil »), signature sur l'accueil, fil d'Ariane ailleurs (« Frises / Greenfield », « Parcours / Les rôles… », « Annexes » dans le lecteur), lien de section vers l'ancre de l'accueil, sélecteur FR / EN à droite ; liens « ← Portail » supprimés ; sur téléphone, monogramme seul. Tous les liens et boutons font 40 px ; aucun débordement à 375 px en FR et EN. Le logo du schéma des rôles mesurait 91 px (règle `svg{width:100%}` du schéma) : corrigé. Aperçus des frises et du schéma refaits (thème clair forcé). Écart : dans le lecteur, les commandes de page restent dans la barre existante, avec le monogramme et la section à la place du retour ; le fil d'Ariane ne répète pas le titre, déjà affiché. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : fil d'Ariane et retour à la bonne section clairs. Gênant : sur téléphone, et dans le lecteur sur bureau, le nom « Jalon » n'apparaît nulle part (losange seul), alors que la maquette validée (écran 4) le montre (point 1). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-031 · CLAUDE.md et README au nom de Jalon
 - Statut : À tester
@@ -915,6 +927,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité ; statut « Validée »
 - 2026-11-24 · session principale · livrée : CLAUDE.md au nom de Jalon (section « Le nom et l'identité » : signature, règles de marque SAP et choix de Walid, logotype, ambre réservé au jalon, rappel INPI / EUIPO), règle de design mise à jour (theme.css, polices hébergées, échelle, 40 px, AA), structure de fichiers à jour ; README au nom de Jalon avec la mention de marque. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · relue (lot 3, « Prêt avec réserves ») : détail, `CLAUDE.md` décrit encore le schéma des rôles comme à intégrer (« Les autres supports », « Points ouverts »). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### Bloc D · Écrans
 
@@ -944,6 +957,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 8) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : bandeau bleu nuit (surtitre « Pour les directeurs de programme et chefs de projet », titre « Piloter un programme SAP®, jalon par jalon. » / « Running an SAP® program, one milestone at a time. », introduction, « Commencer le parcours → » vers le parcours, « Chercher un terme / » qui ouvre le glossaire curseur dans la recherche), chiffres calculés (8 supports · 4 frises · 136 termes · FR / EN), motif de losanges décoratif avec un seul ambre. Contrastes sur `#16213A` / `#0D1526` : texte 16,0 / 18,2 ; texte secondaire 8,9 / 8,7 ; surtitre ambre 8,5 / 9,7. Téléphone : titre, phrase courte calculée, un bouton pleine largeur. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : en dix secondes je sais quoi et pour qui. Manque une ligne sur l'auteur du site (point 5). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-033 · Accueil bureau : grilles à 4 colonnes, vignettes de frise, lignes
 - Statut : À tester
@@ -972,6 +986,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 8) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : grilles à 4 colonnes, 2 sous 820 px de contenu (requête de conteneur), jamais 3 ; numéro d'étape dans le corps de la carte ; compteurs « 4 étapes » / « 4 démarches » calculés ; vignettes de frise tirées du JSON de chaque frise (bandes de phases proportionnelles, nom seulement pour la phase la plus longue pour éviter les noms tronqués, exemple « (fictif) ») ; certification et annexes en lignes côte à côte ; sous-titre des annexes ; aperçus sur fond mat et atténués en sombre ; titres de section 24 px. Vérifié à 1100 px (2 colonnes) et 1440 px (4 colonnes), FR et EN. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves »), avec la ligne « Exemple : Calvane (fictif), fabricant de pompes » : exemples fictifs enfin compris. Gênant : les lignes grises des vignettes ressemblent à un chargement (point 2) ; « fictif » absent de la popup et du pied de page (point 4). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-034 · Accueil téléphone compact
 - Statut : À tester
@@ -998,6 +1013,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 9) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : parcours en lignes (numéro, vignette 72 px, type, titre), frises en 2 × 2, certification et annexes en lignes, lignes de 56 px. Hauteur à 390 px : 1 848 px en français, 1 829 px en anglais (4 638 px avant ; plafond 2 400). Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : accueil court et facile au pouce. Gênant : le bouton « Glossaire » couvre une carte de frise en cours de défilement (point 3). Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-035 · Glossaire : filtres sur une seule ligne
 - Statut : À tester
@@ -1023,6 +1039,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 11, variante A) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : pastilles de 40 px sur une ligne qui défile (« Tout, Méthode, Processus, Technique, Données, Tests, Run, Agile » / « All, Method, Processes, Technical, Data, Testing, Run, Agile »), nom complet en infobulle et pour les lecteurs d'écran, pastille active annoncée (`aria-pressed`) et marquée d'un ✓. Haut du glossaire jusqu'au premier terme : 260 px avant, 176 px après. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : filtres sur une ligne, pastille active visible, rien de contraire aux critères. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-036 · Lecteur sur téléphone
 - Statut : À tester
@@ -1051,6 +1068,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 12) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : sur téléphone, barre du bas (précédent, numéro, suivant, « PDF ») collée en bas avec la zone sûre, boutons 40 × 40 px ; en haut « ← Parcours » (section d'origine) et FR / EN ; type et titre dessous ; phrase « Glissez vers la gauche… Tournez le téléphone pour lire plus grand. » ; bandeau de langue toujours dans le flux ; bouton « Glossaire » au-dessus de la barre. Barre de bureau inchangée (comparée à la capture). Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur captures (lot 3, « Prêt avec réserves ») : critères remplis, lecture agréable. Détail : la phrase d'aide pourrait disparaître après la première page. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### US-037 · Schéma des rôles harmonisé
 - Statut : À tester
@@ -1078,6 +1096,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 13) ; statut « Validée »
 - 2026-11-24 · session principale · livrée : teintes du schéma alignées sur le site dans `theme.css` (fond, surface, encre du site ; client violet `#6A4FA3`, intégrateur sarcelle `#1B7287`, instances gris). Contrastes titre / sous-titre, clair : instances 14,2 / 5,1 ; client 7,0 / 6,4 ; intégrateur 7,3 / 5,4 ; sombre : 12,4 / 6,4 ; 11,9 / 9,0 ; 11,8 / 9,1. Titre 32 px (24 px sur téléphone). Sous 620 px, liste en une colonne groupée par famille, construite à partir du dessin (`shared/schema.js`), qui ouvre le même panneau. Textes des rôles inchangés. Aperçus FR et EN refaits. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testée sur l'aperçu seulement (lot 3, « Prêt avec réserves ») : même allure que le reste du site. Non vérifiable : le schéma n'est pas dans les captures de référence (téléphone, sombre) ; à y ajouter. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
 ### Questions du lot 3 (à trancher par Walid)
 
@@ -1130,3 +1149,4 @@ Journal
 - 2026-11-24 · Walid · blocs identité (US-026, US-028 à US-031) et écrans (US-032 à US-037) publiés (« Oui, publie »).
 - 2026-11-24 · Walid · script de narration retiré du site (« il sert à rien ») : manifeste, accueil, PDF et aperçu ; sous-titre des supports annexes adapté. Récupérable dans l'historique git.
 - 2026-11-24 · Walid · cartes de frise de l'accueil : le nom seul de l'entreprise (« Nordval (fictif) ») ne disait pas qu'il s'agit d'un exemple ; remplacé par une ligne « Exemple : Calvane (fictif), fabricant de pompes » sous la description, tirée du JSON de chaque frise ; pas de durée, à la demande de Walid. Non publié.
+- 2026-11-24 · session principale · Suite du rapport persona-pm du lot 3 (rapports/2026-11-24-lot-3-identite-jalon.md), sur accord de Walid : « Frises » renommées « Scénarios de mise en œuvre » / « Implementation scenarios » (choix d'expert SAP demandé par Walid) ; mot « Jalon » visible sur téléphone et dans le lecteur ; vignettes sans lignes grises ; bouton « Glossaire » en icône sur téléphone ; « (fictif) » dans les popups et entreprises fictives nommées en pied d'accueil ; « Pour le directeur de programme » ; ® sur la signature de l'en-tête ; étiquette « Pratique » en gris ardoise ; CLAUDE.md à jour ; schéma des rôles ajouté aux captures (48 par langue) ; image de partage refaite. Pas d'« À propos » pour l'instant (Walid). Non publié.
