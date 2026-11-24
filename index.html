@@ -22,7 +22,7 @@
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title data-t="accueil.titreOnglet"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="shared/theme.css?v=202611242144">
+<link rel="stylesheet" href="shared/theme.css?v=202611242150">
 <style>
 /* Accueil de Jalon : bandeau d'entrée, grilles à 4 colonnes, lignes ; téléphone compact (US-032 à US-034). Couleurs : shared/theme.css. */
 *{box-sizing:border-box}
@@ -135,7 +135,6 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
     <p class="court" id="intro-courte"></p>
     <div class="cta">
       <a class="btn p" href="#path" data-t="accueil.commencer"></a>
-      <button class="btn s" type="button" id="chercher"><span data-t="accueil.chercher"></span><kbd>/</kbd></button>
     </div>
     <div class="stats" id="stats"></div>
   </div>
@@ -170,10 +169,10 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611242144"></script>
-<script src="shared/documents.js?v=202611242144"></script>
-<script src="shared/entete.js?v=202611242144"></script>
-<script src="shared/glossaire.js?v=202611242144"></script>
+<script src="shared/libelles.js?v=202611242150"></script>
+<script src="shared/documents.js?v=202611242150"></script>
+<script src="shared/entete.js?v=202611242150"></script>
+<script src="shared/glossaire.js?v=202611242150"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(async([T,M])=>{
 const en=window.SAP_LANGUE==='en';
@@ -215,8 +214,6 @@ const G=await lire('glossaire.json');const termes=G&&G.termes?G.termes.length:0;
 const supports=['parcours','certification','autres'].reduce((n,s)=>n+M.section(s).length,0);
 document.getElementById('stats').textContent=T('accueil.stats',{supports,frises:frises.length,termes});
 document.getElementById('intro-courte').textContent=T('accueil.introCourte',{n:termes});
-// « Chercher un terme » : ouvre le glossaire, curseur dans la recherche (raccourci « / » du glossaire)
-document.getElementById('chercher').addEventListener('click',()=>document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'})));
 });
 </script>
 

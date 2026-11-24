@@ -60,7 +60,8 @@
     "versionAnglaise": "Ouvrir la version anglaise →",
     "bandeauFrSansVersion": "Ce document est en français. Pas encore de version anglaise.",
     "pdf": "PDF",
-    "astuce": "Glissez vers la gauche pour la page suivante. Tournez le téléphone pour lire plus grand."
+    "astuce": "Glissez vers la gauche pour la page suivante. Tournez le téléphone pour lire plus grand.",
+    "fermer": "Fermer le document"
   },
   "types": {
     "deck": "Deck",

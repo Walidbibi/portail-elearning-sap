@@ -20,7 +20,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <title></title>
-<link rel="stylesheet" href="shared/theme.css?v=202611242144">
+<link rel="stylesheet" href="shared/theme.css?v=202611242150">
 <style>
 /* Lecteur PDF : une page à la fois, flèches pour naviguer, bouton de téléchargement. */
 *{box-sizing:border-box}
@@ -67,6 +67,7 @@ canvas{display:block;background:var(--page-blanc);box-shadow:var(--page-shadow);
   .bar .lang{order:1;margin-left:auto}
   .title{order:2;flex-basis:100%}
   .sep{display:none}
+  .bar .fermer{order:1}
   .commandes{display:flex;align-items:center;justify-content:space-between;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:12;
     padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));
     background:var(--surface);border-top:1px solid var(--line)}
@@ -103,6 +104,7 @@ canvas{display:block;background:var(--page-blanc);box-shadow:var(--page-shadow);
   </div>
   <span class="sep" aria-hidden="true"></span>
   <div data-langue></div>
+  <a class="ib fermer" id="fermer" href="index.html" data-t-aria="lecteur.fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 </header>
 <p class="langnote" id="langnote" lang="en" hidden></p>
 
@@ -115,9 +117,9 @@ canvas{display:block;background:var(--page-blanc);box-shadow:var(--page-shadow);
 </main>
 <p class="hint" data-t="lecteur.aide"></p>
 
-<script src="shared/libelles.js?v=202611242144"></script>
-<script src="shared/documents.js?v=202611242144"></script>
-<script src="shared/entete.js?v=202611242144"></script>
+<script src="shared/libelles.js?v=202611242150"></script>
+<script src="shared/documents.js?v=202611242150"></script>
+<script src="shared/entete.js?v=202611242150"></script>
 <script src="shared/pdfjs/pdf.min.js"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(function([T,M]){
@@ -143,7 +145,12 @@ if(en&&(brut.langue||'fr').split(' ').indexOf('en')<0){
   const n=$('langnote');n.hidden=false;
   n.innerHTML=`<span class="fr">FR</span><span>${T(v?'lecteur.bandeauFr':'lecteur.bandeauFrSansVersion')}</span>`+(v?` <a href="lecteur.html?doc=${encodeURIComponent(v.fichier)}">${T('lecteur.versionAnglaise')}</a>`:'');
 }
-$('dl').href=src;$('dl').setAttribute('download',src.split('/').pop());
+$('dl').href=src;
+// croix : retour à la section de l'accueil d'où vient le document (ou page précédente du site)
+{const A={parcours:'path',certification:'certification',frises:'frises',autres:'other'};
+ const s=Object.keys(A).find(x=>(M.accueil[x]||[]).some(k=>k===cle||(M.documents[k]||{}).versionEn===cle));
+ $('fermer').href='index.html'+(s?'#'+A[s]:'');
+ $('fermer').addEventListener('click',e=>{if(document.referrer.startsWith(location.origin)&&history.length>1){e.preventDefault();history.back();}});}$('dl').setAttribute('download',src.split('/').pop());
 
 if(!window.pdfjsLib){fail(T('lecteur.erreurPdfjs',{src}));return;}
 pdfjsLib.GlobalWorkerOptions.workerSrc='shared/pdfjs/pdf.worker.min.js';
@@ -197,6 +204,6 @@ pdfjsLib.getDocument({url:src,isEvalSupported:false}).promise.then(d=>{
 }).catch(()=>fail(T('lecteur.erreurOuverture',{src})));
 });
 </script>
-<script src="shared/glossaire.js?v=202611242144"></script>
+<script src="shared/glossaire.js?v=202611242150"></script>
 </body>
 </html>

@@ -1131,6 +1131,7 @@ Journal
 - 2026-11-24 · po · story créée depuis l'écran 5 de la maquette d'identité (Q9)
 - 2026-11-24 · po · validée par Walid le 2026-11-24 (Q9 / Q11) ; statut « Validée ». Les deux critères d'encadré ambre attendent Q12.
 - 2026-11-24 · session principale · livrée : libellés d'étape toujours hors des barres (à droite ; à gauche si la barre commence après le go-live, si le libellé traverserait le go-live ou sortirait du dessin), vérifiés par calcul sur les 132 libellés des 8 fichiers FR et EN : aucun hors du dessin ; 8 libellés longs de barres courtes après le go-live passent forcément devant la ligne, interrompue derrière eux par un halo couleur de fond. Encadré « Exemple fil rouge · Calvane (fictif) » à filet ambre sur `--soft` ; bandeau d'exemple au-dessus de la frise avec le même filet. Titre en ambre de texte `--jalon-texte` (`#9A4708` en clair : 5,55:1 ; `#F2B05E` en sombre : 7,75:1), l'ambre de base n'atteignant que 4,35:1. Popup centrée dans la colonne de contenu quand le glossaire est épinglé (mesuré : centre 530 / 530). « Qui porte » en étiquette rectangulaire, libellé séparé (`frise.quiPorteLabel`). « Précédent » désactivé en pointillés, opacité 1 (5,89:1 et 7,14:1). Croix de fermeture 40 px (Q14). Aperçus FR et EN refaits. `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testé sur captures : Prêt avec réserves. Encadré fil rouge de la popup absent des captures, ligne du go-live coupée par « Run et innovation ». Rapport : [rapports/2026-11-24-us-038-039.md](rapports/2026-11-24-us-038-039.md)
 
 ### US-039 · Finition : échelle de tailles et rayons
 - Statut : À tester
@@ -1158,6 +1159,7 @@ Journal
 - 2026-11-24 · po · story créée (Q11 : story de finition en fin de lot)
 - 2026-11-24 · po · validée par Walid le 2026-11-24 (Q9 / Q11) ; statut « Validée ». Les écarts de plus de 1 px attendent Q13.
 - 2026-11-24 · session principale · livrée : 83 tailles et rayons remplacés par les variables de l'échelle dans `frise.css` (49), `lecteur.html` (13) et `glossaire.js` (21). Q13 appliquée : titre de scénario 30 → 32 px, titre de popup 22 → 24 px, rayons 8 → 6 et 12 → 10 px, 16 → 17 px. Restent en dur : rayons de 2 à 4 px, lettres de 10 et 10,5 px (gates, étiquettes). Captures : accueil et schéma ne changent que de 88 pixels (coins du champ de recherche du glossaire, 8 → 6 px). `node outils/verifier.mjs` sans erreur.
+- 2026-11-24 · persona-pm · testé sur captures : aucun changement d'aspect gênant vu. Rapport commun avec US-038 : [rapports/2026-11-24-us-038-039.md](rapports/2026-11-24-us-038-039.md)
 
 ### Questions du lot 3 (à trancher par Walid)
 
@@ -1219,3 +1221,4 @@ Journal
 - 2026-11-24 · Walid · Q12 à Q14 : recommandations du PO retenues (« ok j'accepte ») : ambre réservé au jalon et au repère fil rouge (CLAUDE.md corrigé) ; valeurs à plus de 1 px alignées sur la maquette (titres 32 et 24 px, rayons 6 et 10 px) ; croix de fermeture des popups portée à 40 px dans US-038. « Parade » est déjà verte partout (décision antérieure), rien à faire.
 - 2026-11-24 · session principale · US-038 et US-039 livrées, en « À tester ». Non publiées, avec les corrections du test du lot 3.
 - 2026-11-24 · Walid · publication accordée (« Oui, publie ») : corrections du test du lot 3 (scénarios de mise en œuvre, Jalon sur téléphone, fictif, détails) et US-038, US-039.
+- 2026-11-24 · Walid · remarques directes : bouton « Chercher un terme » retiré du bandeau (le glossaire est déjà ouvert par défaut) ; croix de fermeture (40 px, « Fermer le document ») ajoutée à droite de la barre du lecteur : retour à la page précédente du site, sinon à la section d'origine de l'accueil. Non publié.
