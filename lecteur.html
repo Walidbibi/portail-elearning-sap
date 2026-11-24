@@ -145,7 +145,7 @@ $('stage').addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:
 $('stage').addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)go(page+(dx<0?1:-1));});
 let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>pdf&&render(page),150);});
 
-pdfjsLib.getDocument(src).promise.then(d=>{
+pdfjsLib.getDocument({url:src,isEvalSupported:false}).promise.then(d=>{
   pdf=d;$('total').textContent=d.numPages;render(Math.min(store.get(),d.numPages));
 }).catch(()=>fail('Impossible d\'ouvrir ce PDF. <a href="'+src+'" download>Le télécharger</a>.'));
 })();
