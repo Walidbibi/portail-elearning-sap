@@ -62,7 +62,7 @@ Les priorités indiquées sont des propositions. Walid décide.
 Règle commune au lot : aucun changement visible. Chaque story se termine par une comparaison avec les captures de référence de US-001.
 
 ### US-001 · Captures de référence avant refonte
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -84,9 +84,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `outils/captures/captures.mjs` (44 captures), `comparer.mjs` (comparaison pixel par pixel), `LISEZMOI.md` (une commande par page). Images dans `outils/captures/reference/`, exclues de git donc non publiées. Stabilité vérifiée : deux passages identiques au pixel. Pas de test persona-pm : aucun changement visible. Suite : Walid valide la publication ; US-002 peut démarrer.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critères remplis. Détail : nommer dans `LISEZMOI.md` le commit d'où vient la référence. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-002 · Fichier de libellés : accueil, glossaire, lecteur
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non
@@ -108,9 +110,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `shared/libelles/fr.json` (34 clés) et `shared/libelles.js` (chargeur, attributs `data-t`, `data-t-aria`, `data-t-placeholder`, fonction `SAP_T`). « Pour le DP » sort du CSS vers une balise. Les frises chargent aussi `libelles.js`, pour leur glossaire. Captures : 44 sur 44 identiques à la référence. Vérifié dans le navigateur : titres d'onglet, textes pour lecteurs d'écran, message « document introuvable », recherche sans résultat, clé absente affichée telle quelle, aucune erreur en console. Suite : US-003.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Ouvert par double-clic, la page n'affiche que des clés et aucune explication (le message d'aide est lui-même dans `fr.json`). Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-003 · Manifeste des documents
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -133,9 +137,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `documents.json` (13 documents, ordre des trois sections de l'accueil), `shared/documents.js` (chargeur et `SAP_HREF`), libellés de type dans `fr.json` sous `types`. `SAP_DOCS`, `SAP_KL` et `SAP_U` (inutilisé) retirés de `glossaire-data.js`. Captures : 44 sur 44 identiques (un écart de 1 à 2 pixels au premier passage a disparu à la relance). Vérifié : les 129 liens du glossaire (8 documents) répondent, le lecteur refuse un fichier hors manifeste, aucune erreur en console. CLAUDE.md décrit le manifeste et l'ajout d'un document. Suite : US-004.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critères remplis. Gênant : `documents.json` cassé donne un accueil vide sans message ; marche à suivre sans mention des virgules, de la règle des clés ni du contrôle. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-004 · Glossaire en JSON
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -158,9 +164,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `glossaire.json` (136 termes, champs nommés, un terme par ligne), chargé par `fetch` dans `shared/glossaire.js` ; libellés des 7 catégories et message d'erreur dans `fr.json` ; `glossaire-data.js` supprimé et retiré des 6 pages. Recherche identique avant / après : « cutover » 2 termes (Cutover, Deploy) ; « donnees » 18 termes (Archivage … SRA) ; « RICEFW » 2 termes (RICEFW, Service Interface) ; « fit-to-standard » 2 termes (Explore, Fit-to-standard). Fichier absent : message « Le glossaire n'a pas pu se charger… », l'accueil reste utilisable. Captures : 44 sur 44 identiques. Outil de capture renforcé : attente de la fin de construction de la page (sinon faux écart sur les aperçus), écarts de 5 pixels ou moins classés en bruit, zone de l'écart affichée. CLAUDE.md et l'agent persona-pm mis à jour. Suite : US-005.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critère « message clair » rempli sauf en double-clic (la clé `glossaire.erreur` s'affiche) ; le message vise le serveur alors qu'en ligne la cause probable est un JSON cassé. Tri alphabétique automatique non dit dans CLAUDE.md. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-005 · Gabarit de frise unique, appliqué au greenfield
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non
@@ -182,9 +190,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `shared/frise.js` et `shared/frise.css` (gabarit commun), `frises/greenfield.json` (contenu extrait par script, sans recopie), 25 textes communs dans `fr.json` sous `frise` ; `frises/greenfield.html` réduit à une page courte, même adresse. « Risque · » et « Parade · » sortis du CSS. Le gabarit gère déjà largeur, mois et position du go-live : brownfield et bluefield n'ont plus qu'à fournir leur JSON. Captures : 44 sur 44 identiques (un premier écart de 115 pixels, lettres décalées d'une fraction de pixel sur « Exemple fil rouge », corrigé). Comparaison ancienne / nouvelle page dans le navigateur : 22 popups parcourues par Suivant, Précédent, Échap, Entrée, Espace sur le go-live, bandeau « En continu », titre d'onglet, textes pour lecteurs d'écran et textes de la chronologie : aucune différence. Aucune erreur en console. Suite : US-006.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critères remplis. Gênant : champs abrégés (`obj`, `act`, `own`, `aig`…), `eq`, `id` et `x1` non expliqués ; `frise.erreur` vise la mauvaise cause. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-006 · Frises brownfield et bluefield sur le gabarit
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -203,9 +213,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `frises/brownfield.json` (Ternova) et `frises/bluefield.json` (Alvéa), extraits par script ; les deux pages sont la page courte du greenfield avec leur fichier de contenu. Aucun changement du gabarit nécessaire. Captures : 44 sur 44 identiques. Comparaison ancienne / nouvelle page pour chaque frise : 22 popups, navigation, clavier, bandeau, titres, textes et formes de la chronologie : aucune différence. Aucune erreur en console. Suite : US-007.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critères remplis. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-007 · Frise roll-out sur le gabarit
-- Statut : Prête à publier
+- Statut : Fait
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non
@@ -227,9 +239,11 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
 - 2026-11-24 · session principale · livrée : `frises/rollout.json` (Nordval, 5 phases, gates G1 à G3) ; le gabarit accepte trois réglages facultatifs : `nomGate` (« Gate de passage »), `couleurs` (couleur de chaque phase dans la palette), `couleurParade`. `rollout.html` est la page courte commune. Écart de l'original conservé : dans le roll-out, l'étiquette « Parade » est verte ; elle est rouge dans les trois autres frises. À trancher par Walid. Comparaison ancienne / nouvelle page : 19 étapes, navigation, clavier, bandeau, textes, formes et couleurs calculées de la chronologie et des popups : aucune différence. Comparaison finale des quatre frises et de toutes les pages : 44 captures sur 44 identiques. L'outil de capture attend désormais les cartes de l'accueil et répète le chargement des aperçus (faux écarts intermittents sur l'accueil, stable sur trois passages). CLAUDE.md décrit le format JSON d'une frise et l'ajout d'une frise. Suite : US-008.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critères remplis. Ajouter une frise reste un geste de développeur (icônes SVG obligatoires, `x1`, aperçu par Chrome headless) : à dire dans le mode d'emploi. Couleur de « Parade » à trancher : à inscrire dans les questions du lot. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### US-008 · Contrôle automatique des fichiers de données
-- Statut : Validée
+- Statut : Fait
 - Priorité : basse (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -239,15 +253,18 @@ Journal
 En tant que Walid, je veux qu'une vérification automatique signale un fichier manquant ou un JSON cassé afin de pouvoir mettre à jour le site sans code et sans risque.
 
 Critères d'acceptation
-- [ ] Une GitHub Action se lance à chaque envoi sur la branche principale.
-- [ ] Elle échoue si un fichier cité dans le manifeste n'existe pas.
-- [ ] Elle échoue si un JSON du site est mal formé.
-- [ ] Elle échoue si un terme du glossaire cite une clé de document absente du manifeste.
-- [ ] Le message d'échec nomme le fichier et la ligne en cause, en français.
+- [ ] Une GitHub Action se lance à chaque envoi sur la branche principale. (Écrite et testée en local ; à constater sur GitHub au premier envoi.)
+- [x] Elle échoue si un fichier cité dans le manifeste n'existe pas.
+- [x] Elle échoue si un JSON du site est mal formé.
+- [x] Elle échoue si un terme du glossaire cite une clé de document absente du manifeste.
+- [x] Le message d'échec nomme le fichier et la ligne en cause, en français.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `outils/verifier.mjs` (Node, sans dépendance) et `.github/workflows/verifier.yml` (à chaque envoi et pull request sur main). Contrôles : 7 JSON bien formés (ligne et colonne de l'erreur) ; fichiers du manifeste présents, PDF rangés sous `documents/` ; sections de l'accueil ; types et catégories connus ; clés de documents du glossaire ; termes en double ; cohérence de chaque frise (ordre, positions, gates, go-live, icônes, phases, étape transverse) ; textes d'interface utilisés présents dans `fr.json`. Aperçu manquant : simple avertissement. Messages en français, avec annotation GitHub sur le fichier et la ligne. Testé sur une copie du site avec 5 erreurs injectées (JSON cassé, PDF absent, clé de document inconnue, étape inconnue dans une frise, texte supprimé) : toutes trouvées à la bonne ligne, code de sortie 1 ; site réel : aucune erreur. Non vérifié : l'exécution sur GitHub, qui demande un envoi (push). Suite : lot 1 terminé ; Walid valide la publication, puis maquette ux-ui de US-009.
+- 2026-11-24 · persona-pm · testé avec le lot 1 : prêt avec réserves. Critère « l'Action se lance à chaque envoi » coché sans preuve (journal : non vérifié). Le contrôle passe après la publication : « sans risque » devient « avec alerte ». Messages clairs ; ajouter « regardez aussi la fin de la ligne précédente » pour un JSON mal formé. Rapport : [rapports/2026-11-24-lot-1-separation-texte.md](rapports/2026-11-24-lot-1-separation-texte.md)
+- 2026-11-24 · session principale · publiée sur accord de Walid (« Oui, publie »)
 
 ### Questions du lot 1 (tranchées par Walid)
 
@@ -484,3 +501,7 @@ Journal
 - 2026-11-24 · session principale · US-005 livrée, en « Prête à publier ». Suite : US-006 (brownfield et bluefield sur le gabarit).
 - 2026-11-24 · session principale · US-006 livrée, en « Prête à publier ». Suite : US-007 (roll-out sur le gabarit).
 - 2026-11-24 · session principale · US-007 livrée, en « Prête à publier ». Les quatre frises partagent le gabarit. Suite : US-008 (contrôle automatique des fichiers de données).
+- 2026-11-24 · session principale · US-008 livrée, en « Prête à publier ». Lot 1 terminé (US-001 à US-008), aucun changement visible. Suite : Walid valide la publication (push) ; lot 2 : US-009 passe en « Prête pour maquette » sur accord de Walid.
+- 2026-11-24 · session principale · US-001 à US-008 repassées de « Prête à publier » à « À tester » à la demande de Walid : le test persona-pm avait été sauté à tort (le lot change la façon d'ouvrir le site et de mettre à jour les données). Suite : persona-pm en mode test sur le lot 1.
+- 2026-11-24 · session principale · Rapport persona-pm du lot 1 (« Prêt avec réserves ») examiné avec Walid. Réserves écartées : Walid ne modifie pas les fichiers lui-même dans GitHub, il passe par Claude, qui lance `node outils/verifier.mjs` avant chaque envoi ; le seul geste direct prévu (remplacer un PDF du même nom) ne touche aucun JSON. Le double-clic en local ne concerne pas le site en ligne. Points 7 et 8 (noms de champs des frises) à revoir avec la décision sur le rangement de l'anglais, au début du lot 2. Suite : publication du lot 1 sur accord de Walid.
+- 2026-11-24 · session principale · Lot 1 publié (US-001 à US-008 en « Fait »). Suite : lot 2, décision sur le rangement de l'anglais, puis maquette ux-ui de US-009.

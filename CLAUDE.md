@@ -27,6 +27,8 @@ shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface de l'accueil, du glossaire et du lecteur
 outils/captures/           captures avant / après et comparaison pixel par pixel (voir LISEZMOI.md)
+outils/verifier.mjs        contrôle des données : JSON bien formés, fichiers présents, clés cohérentes, textes existants
+.github/workflows/verifier.yml   lance outils/verifier.mjs à chaque envoi sur main
 frises/rollout.html        frise roll-out (Diagnose, Adjust, Deploy), contenu dans frises/rollout.json
 frises/greenfield.html     frise greenfield (SAP Activate), contenu dans frises/greenfield.json
 shared/frise.js, frise.css gabarit commun des frises (dessin de la chronologie, popups)
@@ -138,7 +140,7 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 
 1. **Hébergement** : décidé le 23/11/2026, dépôt public `Walidbibi/portail-elearning-sap` sur le compte personnel, publié avec GitHub Pages. Pour un accès restreint plus tard : Cloudflare Pages + Cloudflare Access (gratuit jusqu'à 50 utilisateurs).
 2. **Mise à jour sans code** : Walid remplace un PDF en déposant un fichier du même nom dans `documents/` via l'interface GitHub ; le site se met à jour seul.
-3. **Manifeste des documents** : fait le 24/11/2026 (`documents.json`, US-003). Reste en option une GitHub Action qui vérifie que chaque fichier du manifeste existe (US-008).
+3. **Manifeste des documents** : fait le 24/11/2026 (`documents.json`, US-003). Contrôle automatique fait (US-008) : avant de publier une modification des données, lancer `node outils/verifier.mjs` ; GitHub le relance à chaque envoi et signale le fichier et la ligne en cause.
 4. **Glossaire en JSON** : fait le 24/11/2026 (`glossaire.json`, US-004).
 5. **Frises industrialisées** : un seul gabarit + un fichier JSON par frise. Fait pour les quatre frises (US-005 à US-007).
 6. **eLearning** : quiz par module, suivi de progression, accès par compte.

@@ -1,0 +1,23 @@
+# Contrôle des fichiers de données à chaque envoi : manifeste, glossaire, frises, libellés.
+# En cas d'échec, l'onglet Actions de GitHub nomme le fichier et la ligne en cause.
+name: Vérifier les données
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    name: Fichiers et JSON du portail
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node outils/verifier.mjs
