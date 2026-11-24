@@ -279,7 +279,7 @@ Règles communes au lot :
 - Aucune page ne présente de défilement horizontal en anglais, sur téléphone comme sur bureau.
 
 ### US-009 · Sélecteur de langue FR / EN et choix mémorisé
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui
@@ -305,9 +305,10 @@ Journal
 - 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 - 2026-11-24 · session principale · livrée : sélecteur FR / EN sur l'accueil, les frises et le lecteur (`shared/libelles.js`, `<div data-langue>`), choix mémorisé, `?lang=`, langue du navigateur à la première visite, `lang` de la page et titre d'onglet suivis, texte anglais manquant affiché en français, même page après changement. Vérifié dans le navigateur (clic, mémoire, retour au français dans le lecteur sur le même document), sans débordement sur téléphone en français ni en anglais.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Sélecteur conforme à la maquette sur les captures ; clavier, mémoire et `?lang=` non vérifiables sans navigateur. Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-010 · Interface et accueil en anglais
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : oui (la même que US-009 : l'accueil et une frise en anglais)
@@ -322,7 +323,7 @@ Critères d'acceptation
 - [ ] Les titres et descriptions des 13 documents existent en anglais dans le manifeste.
 - [ ] Les libellés des 7 catégories du glossaire existent en anglais.
 - [ ] Aucun bouton ni étiquette ne déborde ou ne passe à la ligne de façon imprévue, sur téléphone et sur bureau.
-- [ ] Walid a relu les textes de l'accueil et le nom du portail.
+- [x] Walid a relu les textes de l'accueil et le nom du portail.
 
 Journal
 - 2026-11-24 · po · story créée
@@ -331,9 +332,10 @@ Journal
 - 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 - 2026-11-24 · session principale · livrée : `shared/libelles/en.json` (toutes les clés de fr.json, textes de la maquette validée et des traductions de Walid), titres et descriptions anglais des documents dans `documents.json` (bloc `en`), catégories anglaises. Reste : relecture de l'accueil par Walid (Q8).
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Critère « Walid a relu » non rempli. Gênant : « warning thresholds » face à « Alert threshold » ; « Fix » face à « Countermeasure ». Reformulations proposées pour en.json et documents.json. Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-011 · Glossaire en anglais
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul, dans le glossaire existant)
@@ -356,9 +358,10 @@ Journal
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 - 2026-11-24 · session principale · livrée : `glossaire.en.json` branché ; terme sans traduction affiché en français ; recherche anglaise qui trouve aussi le nom français (« bascule » donne Cutover) ; repère FR quand le nom français n'est pas déjà affiché ; liens vers les documents selon la règle de US-012. Reste : relecture de 15 termes par Walid.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Gênant : le nom français s'affiche comme un nom complet, sans repère FR (« Cutover Bascule », « Batch Lot »), non conforme à l'écran 3 de la maquette ; doublon TMA sur AMS. Relecture des 15 termes non faite. Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-012 · Règle pour les documents sans version anglaise
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui
@@ -389,9 +392,10 @@ Journal
 - 2026-11-24 · session principale · règle branchée : langue et `versionEn` dans `documents.json`, cartes Synthèse et Migration vers leur version anglaise, plus de doublon, étiquette « In French », mêmes règles pour les liens du glossaire. Reste avant « À tester » : exporter ACT100 et ACT200 en anglais (artefacts de Walid), les contrôler (aucune info client) et les ajouter au manifeste.
 - 2026-11-24 · session principale · ACT100 et ACT200 anglais exportés des artefacts de Walid (`documents/act100-study-guide-en.pdf`, 46 pages ; `documents/act200-study-guide-en.pdf`, 17 pages), texte extrait et contrôlé : aucun nom client (seul l'auteur, comme en français). Ajoutés au manifeste (`actEN`, `act2EN`, `versionEn` sur `act` et `act2`) avec leurs aperçus. En anglais, seuls la fiche de révision, la simulation d'entretien et le script de narration portent « In French ». Point ouvert : ces deux PDF sont en orthographe britannique (environ 40 et 23 occurrences : programme, organised, centre…), alors que Q6 retient l'anglais américain.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Critères remplis d'après les captures. Gênant : cartes « Study guide », couverture « Revision Book » ; en français, ACT100 / ACT200 anglais sans « (EN) » ni description française. Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-013 · Lecteur PDF : signaler la langue du document
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : oui
@@ -414,9 +418,10 @@ Journal
 - 2026-11-24 · Walid · maquette validée (« Ok je valide »), les 10 recommandations retenues ; story en « Validée »
 - 2026-11-24 · session principale · livrée : bandeau « This document is in French. » sous la barre du lecteur, lien « Open the English version → » quand une version anglaise existe ; aucun bandeau sur un document anglais ; lecteur toujours limité au manifeste.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Bandeau conforme, tient sur téléphone. Gênant : sans version anglaise, rien ne dit pourquoi le document est en français (proposer « No English version yet. »). Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-014 · Frise greenfield en anglais
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul ; mise en page couverte par la maquette de US-009)
@@ -431,7 +436,7 @@ Critères d'acceptation
 - [ ] Les libellés des barres de la chronologie tiennent sans chevaucher leurs voisins.
 - [ ] Les chiffres de l'exemple fil rouge restent identiques et présentés comme fictifs.
 - [ ] Les montants et dates suivent le format décidé (Q6).
-- [ ] Walid a relu l'en-tête de page et deux popups.
+- [x] Walid a relu l'en-tête de page et deux popups.
 
 Journal
 - 2026-11-24 · po · story créée
@@ -439,9 +444,10 @@ Journal
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 - 2026-11-24 · session principale · livrée : la frise greenfield charge `frises/<nom>.en.json` en anglais (le français si le fichier manque) ; libellés des barres sans chevauchement constaté sur les captures anglaises.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Formats Q6 respectés, chiffres fictifs signalés. Relecture de Walid non faite. Gênant : « Fix » (Parade) à remplacer par « Mitigation ». Détail : titre « migration » face à « new implementation ». Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-015 · Frise brownfield en anglais
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul)
@@ -460,9 +466,10 @@ Journal
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 - 2026-11-24 · session principale · livrée : la frise brownfield charge `frises/<nom>.en.json` en anglais (le français si le fichier manque) ; libellés des barres sans chevauchement constaté sur les captures anglaises.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Relecture de Walid non faite ; « Fix » à aligner (« Mitigation »). Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-016 · Frise bluefield en anglais
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul)
@@ -480,9 +487,10 @@ Journal
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 - 2026-11-24 · session principale · livrée : la frise bluefield charge `frises/<nom>.en.json` en anglais (le français si le fichier manque) ; libellés des barres sans chevauchement constaté sur les captures anglaises.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Relecture de Walid non faite ; « Fix » à aligner (« Mitigation »). Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-017 · Frise roll-out en anglais
-- Statut : À tester
+- Statut : Fait
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (contenu seul)
@@ -501,9 +509,10 @@ Journal
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« Oui, démarre ») : contenu seul, sans maquette ; fichiers anglais préparés tout de suite, branchés après US-009
 - 2026-11-24 · session principale · livrée : la frise roll-out charge `frises/<nom>.en.json` en anglais (le français si le fichier manque) ; libellés des barres sans chevauchement constaté sur les captures anglaises.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt avec réserves. Phases et gates G1 à G3 cohérentes avec le français. Libellés serrés : « Acceptance » touche G2, « Training » mord sur sa barre, « Handover to run » touche son icône (même chose en français). Relecture de Walid non faite. Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### US-018 · Aperçus anglais des cartes
-- Statut : À tester
+- Statut : Fait
 - Priorité : basse (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -522,6 +531,7 @@ Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur demande de Walid (« Corrige ça »), puis livrée : aperçus anglais des quatre frises `apercus/<clé>.en.jpg` (Chrome sans fenêtre, 1080 × 673 réduit à 720, comme les français), affichés en anglais avec repli sur l'aperçu français ; aperçus français refaits pour montrer le sélecteur ; synthèse, migration, ACT100 et ACT200 montrent déjà l'aperçu de leur version anglaise. Le contrôle signale une frise sans aperçu anglais.
 - 2026-11-24 · persona-pm · testé avec le lot 2 : prêt. Critères remplis d'après les captures ; cas « aperçu manquant » non vérifiable sans navigateur. Rapport : [rapports/2026-11-24-lot-2-version-anglaise.md](rapports/2026-11-24-lot-2-version-anglaise.md)
+- 2026-11-24 · Walid · relecture validée et publication accordée (« ok je valide ») ; publiée
 
 ### Questions du lot 2 (tranchées par Walid)
 
@@ -555,3 +565,4 @@ Journal
 - 2026-11-24 · session principale · US-012 en « À tester » : ACT100 et ACT200 anglais ajoutés. Toutes les stories du lot 2 sauf US-018 sont « À tester ». Ouvert : orthographe britannique des deux livres ACT en anglais.
 - 2026-11-24 · session principale · Walid garde l'orthographe britannique des livres ACT100 et ACT200 anglais (option 2 : différence de style, pas d'erreur). US-018 livrée. Tout le lot 2 est « À tester ». Suite : test persona-pm, relecture de Walid, publication.
 - 2026-11-24 · session principale · Rapport persona-pm du lot 2 (« Prêt avec réserves », rapports/2026-11-24-lot-2-version-anglaise.md) traité : 1-2) glossaire anglais : le nom français sort du nom complet vers un champ `nomFr`, affiché avec le repère FR comme dans la maquette (40 termes, dont Cutover → FR Bascule, AMS → FR TMA) ; 3, 6) livres ACT anglais nommés « Revision book » comme leur couverture, avec « (EN) » et une description française côté français ; 4) « Fix » devient « Mitigation » dans les popups et le glossaire ; 5) « alert thresholds » ; 7) bandeau du lecteur : « No English version yet. » quand aucune version anglaise n'existe ; détails : « PD » remplacé par « program director », accueil « how AI helps ». Non retenus : titre « migration » du greenfield et intro qui cite le glossaire « à droite » (identiques en français) ; libellés serrés du roll-out (identiques en français). Captures de référence FR et EN refaites. Reste : relectures de Walid (accueil, frise greenfield, 15 termes), puis publication.
+- 2026-11-24 · Walid · relectures validées et publication accordée (« ok je valide »). Lot 2 publié : US-009 à US-018 en « Fait ». Le portail existe en français et en anglais.
