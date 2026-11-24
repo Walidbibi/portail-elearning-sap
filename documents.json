@@ -1,5 +1,5 @@
 {
-  "_aide": "Liste des supports du portail. Ajouter un document : déposer le fichier dans documents/, puis ajouter une entrée ici. Voir CLAUDE.md.",
+  "_aide": "Liste des supports du portail. Champs : type, titre, description, fichier ; langue (fr, en, ou « fr en » pour une page bilingue) ; versionEn (clé du document anglais équivalent) ; en (titre et description affichés en anglais). Voir CLAUDE.md.",
   "accueil": {
     "parcours": [
       "synth",
@@ -26,79 +26,138 @@
       "type": "deck",
       "titre": "Formation SAP · Synthèse",
       "description": "Le deck complet : modules, processus, gouvernance, tests, bascule, run, roll-out.",
-      "fichier": "documents/formation-sap-synthese.pdf"
+      "fichier": "documents/formation-sap-synthese.pdf",
+      "langue": "fr",
+      "versionEn": "synthEN"
     },
     "mig": {
       "type": "deck",
       "titre": "Migration ECC vers S/4HANA",
       "description": "Ce qui change entre ECC et S/4HANA, et les chemins pour y aller.",
-      "fichier": "documents/migration-ecc-s4hana.pdf"
+      "fichier": "documents/migration-ecc-s4hana.pdf",
+      "langue": "fr",
+      "versionEn": "migEN"
     },
     "fiche": {
       "type": "doc",
       "titre": "Fiche de révision",
       "description": "L'essentiel sur une page, à relire avant un entretien.",
-      "fichier": "documents/fiche-de-revision.pdf"
+      "fichier": "documents/fiche-de-revision.pdf",
+      "langue": "fr",
+      "en": {
+        "titre": "Review sheet",
+        "description": "The essentials on one page, to reread before an interview."
+      }
     },
     "simu": {
       "type": "prat",
       "titre": "Simulation d'entretien",
       "description": "Les questions types et les bonnes réponses, dont les seuils d'alerte.",
-      "fichier": "documents/simulation-entretien.pdf"
+      "fichier": "documents/simulation-entretien.pdf",
+      "langue": "fr",
+      "en": {
+        "titre": "Interview simulation",
+        "description": "Typical questions and good answers, including warning thresholds."
+      }
     },
     "rollout": {
       "type": "frise",
       "titre": "Roll-out",
       "description": "Déployer un core model site par site : Diagnose, Adjust, Deploy.",
-      "fichier": "frises/rollout.html"
+      "fichier": "frises/rollout.html",
+      "langue": "fr en",
+      "en": {
+        "titre": "Roll-out",
+        "description": "Deploy a core model site by site: Diagnose, Adjust, Deploy."
+      }
     },
     "green": {
       "type": "frise",
       "titre": "Greenfield",
       "description": "Nouvelle implémentation à partir du standard.",
-      "fichier": "frises/greenfield.html"
+      "fichier": "frises/greenfield.html",
+      "langue": "fr en",
+      "en": {
+        "titre": "Greenfield",
+        "description": "New implementation, starting from the standard."
+      }
     },
     "brown": {
       "type": "frise",
       "titre": "Brownfield",
       "description": "Conversion du système ECC existant.",
-      "fichier": "frises/brownfield.html"
+      "fichier": "frises/brownfield.html",
+      "langue": "fr en",
+      "en": {
+        "titre": "Brownfield",
+        "description": "Conversion of the existing ECC system."
+      }
     },
     "blue": {
       "type": "frise",
       "titre": "Bluefield",
       "description": "Transition sélective : garder une partie, reconcevoir le reste.",
-      "fichier": "frises/bluefield.html"
+      "fichier": "frises/bluefield.html",
+      "langue": "fr en",
+      "en": {
+        "titre": "Bluefield",
+        "description": "Selective transition: keep part, redesign the rest."
+      }
     },
     "act": {
       "type": "act",
       "titre": "ACT100 · Livre de révision",
       "description": "SAP Activate : les 7 chapitres en un seul document, à imprimer.",
-      "fichier": "documents/act100-livre-de-revision.pdf"
+      "fichier": "documents/act100-livre-de-revision.pdf",
+      "langue": "fr",
+      "en": {
+        "titre": "ACT100 · Study guide",
+        "description": "SAP Activate: all 7 chapters in one document, ready to print."
+      }
     },
     "act2": {
       "type": "act",
       "titre": "ACT200 · Livre de révision",
       "description": "SAP Activate Agile : le livre de révision complet.",
-      "fichier": "documents/act200-livre-de-revision.pdf"
+      "fichier": "documents/act200-livre-de-revision.pdf",
+      "langue": "fr",
+      "en": {
+        "titre": "ACT200 · Study guide",
+        "description": "SAP Activate Agile: the complete study guide."
+      }
     },
     "synthEN": {
       "type": "deck",
       "titre": "SAP Training · Summary (EN)",
       "description": "Version anglaise du deck de synthèse.",
-      "fichier": "documents/sap-training-summary-en.pdf"
+      "fichier": "documents/sap-training-summary-en.pdf",
+      "langue": "en",
+      "en": {
+        "titre": "SAP Training · Summary",
+        "description": "The full deck: modules, processes, governance, testing, cutover, run, roll-out."
+      }
     },
     "migEN": {
       "type": "deck",
       "titre": "ECC to S/4HANA Migration (EN)",
       "description": "Version anglaise du deck de migration.",
-      "fichier": "documents/ecc-s4hana-migration-en.pdf"
+      "fichier": "documents/ecc-s4hana-migration-en.pdf",
+      "langue": "en",
+      "en": {
+        "titre": "ECC to S/4HANA Migration",
+        "description": "What changes between ECC and S/4HANA, and the paths to get there."
+      }
     },
     "script": {
       "type": "doc",
       "titre": "Script de narration",
       "description": "Le texte à lire pour transformer les decks en eLearning.",
-      "fichier": "documents/script-de-narration.pdf"
+      "fichier": "documents/script-de-narration.pdf",
+      "langue": "fr",
+      "en": {
+        "titre": "Narration script",
+        "description": "The text to read aloud to turn the decks into eLearning."
+      }
     }
   }
 }

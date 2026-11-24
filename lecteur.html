@@ -48,6 +48,11 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
 .msg{color:var(--muted);text-align:center;max-width:44ch}
 .msg a{color:var(--accent)}
 .hint{font-size:12.5px;color:var(--muted);text-align:center;padding:0 16px 10px}
+.sep{width:1px;align-self:stretch;background:var(--line);margin:4px 2px}
+/* bandeau « This document is in French » : dans le flux, sous la barre, sans recouvrir la page */
+.langnote{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;margin:0;padding:6px 16px;background:var(--soft);border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.4;min-width:0}
+.langnote .fr{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;border:1px solid var(--accent);color:var(--accent);border-radius:3px;padding:0 5px;line-height:16px}
+.langnote a{color:var(--accent);font-weight:600;text-underline-offset:2px;display:inline-flex;align-items:center;min-height:32px}
 @media (max-width:700px){
   .bar{flex-wrap:wrap;row-gap:8px}
   .title{order:-1;flex-basis:calc(100% - 90px)}
@@ -57,6 +62,10 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
   canvas{max-height:none}
   .side{display:none}
   .hint{display:none}
+  .sep{display:none}
+  .bar .lang{order:1}
+  a.btn{order:2}
+  .langnote{padding:6px 12px}
 }
 </style>
 </head>
@@ -71,7 +80,10 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
     <button class="ib" id="next" type="button" data-t-aria="lecteur.pageSuivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
   <a class="btn" id="dl" href="#" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="lbl" data-t="lecteur.telecharger"></span></a>
+  <span class="sep" aria-hidden="true"></span>
+  <div data-langue></div>
 </header>
+<p class="langnote" id="langnote" lang="en" hidden></p>
 
 <main class="stage" id="stage">
   <button class="side prev" id="sprev" type="button" data-t-aria="lecteur.pagePrecedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -94,11 +106,20 @@ const fail=t=>{cv.hidden=true;msg.hidden=false;msg.innerHTML=t;$('doc-title').te
 
 /* Seuls les PDF déclarés dans documents.json, sous documents/, sont ouverts. */
 const src=new URLSearchParams(location.search).get('doc')||'';
-const entry=Object.values(M.documents).find(d=>d.fichier===src);
-if(!entry||!/^documents\/[\w.-]+\.pdf$/.test(src)){fail(T('lecteur.erreurInconnu'));return;}
+const cle=Object.keys(M.documents).find(k=>M.documents[k].fichier===src);
+if(!cle||!/^documents\/[\w.-]+\.pdf$/.test(src)){fail(T('lecteur.erreurInconnu'));return;}
+// le document tel qu'il est, sans passer à sa version anglaise : le changement de langue garde la page ouverte
+const brut=M.documents[cle],en=window.SAP_LANGUE==='en';
+const entry={type:brut.type,titre:(en&&brut.en&&brut.en.titre)||brut.titre};
 document.title=T('lecteur.titreDocument',{doc:entry.titre,portail});
 $('doc-title').textContent=entry.titre;
 $('kind').textContent=entry.type?T('types.'+entry.type):T('lecteur.document');
+// en anglais, un document en français est annoncé, avec un lien vers sa version anglaise si elle existe
+if(en&&(brut.langue||'fr').split(' ').indexOf('en')<0){
+  const v=brut.versionEn&&M.documents[brut.versionEn];
+  const n=$('langnote');n.hidden=false;
+  n.innerHTML=`<span class="fr">FR</span><span>${T('lecteur.bandeauFr')}</span>`+(v?` <a href="lecteur.html?doc=${encodeURIComponent(v.fichier)}">${T('lecteur.versionAnglaise')}</a>`:'');
+}
 $('dl').href=src;$('dl').setAttribute('download',src.split('/').pop());
 
 if(!window.pdfjsLib){fail(T('lecteur.erreurPdfjs',{src}));return;}

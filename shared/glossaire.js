@@ -3,10 +3,17 @@
    Les termes viennent de glossaire.json, à la racine du site. Raccourci : « / ». */
 (function(){
 const me=document.currentScript;const BASE=new URL('..',me.src);
-const URL_GLOSSAIRE=new URL('glossaire.json',BASE);
-const chargerTermes=fetch(URL_GLOSSAIRE).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(j=>j.termes).catch(e=>{console.warn('Glossaire introuvable ('+URL_GLOSSAIRE+').',e);return null;});
+const lireTermes=nom=>{const u=new URL(nom,BASE);return fetch(u).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(j=>j.termes).catch(e=>{console.warn('Glossaire introuvable ('+u+').',e);return null;});};
+// En anglais : glossaire.en.json, relié au français par termeFr ; un terme sans traduction reste en français.
+const EN=window.SAP_LANGUE==='en';
+const chargerTermes=EN?Promise.all([lireTermes('glossaire.json'),lireTermes('glossaire.en.json')]).then(([fr,en])=>{
+  if(!fr)return en;if(!en)return fr;
+  const parFr=new Map(en.map(e=>[e.termeFr,e]));
+  return fr.map(f=>{const e=parFr.get(f.terme);return e&&e.definition?{...e,documents:f.documents,termeFr:f.terme}:f;});
+}):lireTermes('glossaire.json');
 Promise.all([window.SAP_LIBELLES||Promise.resolve(k=>k),window.SAP_DOCUMENTS||Promise.resolve({documents:{}}),chargerTermes]).then(function([T,M,termes]){
-const D=M.documents,G=termes||[];
+const G=termes||[];
+const doc=k=>M.doc?M.doc(k):null;
 const CAT=Object.fromEntries(['meth','proc','tech','data','test','run','agile'].map(c=>[c,T('categories.'+c)]));
 const abs=u=>u.startsWith('http')?u:new URL(u,BASE).href;
 const tgt=u=>u.startsWith('http')?' target="_blank" rel="noopener"':'';
@@ -32,6 +39,9 @@ body.gl-pinned{padding-right:var(--gl-w)}
 .gl-term-btn:hover{background:var(--gl-soft);border-radius:8px}
 .gl-term-btn b{font-weight:600}
 .gl-f{color:var(--gl-muted);font-size:13px;margin-left:6px}
+.gl-fr{display:inline-flex;align-items:baseline;gap:5px;color:var(--gl-muted);font-size:13px;margin-left:6px}
+.gl-fr i{font-style:normal;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.05em;border:1px solid var(--gl-line);border-radius:3px;padding:0 4px;line-height:15px}
+.gl-link .infr{margin-left:6px;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gl-muted);border:1px solid var(--gl-line);border-radius:4px;padding:0 5px;line-height:16px;white-space:nowrap}
 .gl-body{padding:0 8px 12px;font-size:14px}
 .gl-body p{margin:0 0 6px}
 .gl-dp{background:var(--gl-accent-soft);border-radius:8px;padding:7px 10px;font-size:13.5px}
@@ -62,11 +72,11 @@ const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const hl=(t,qq)=>{if(!qq)return esc(t);const i=norm(t).indexOf(qq);return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+qq.length))+'</mark>'+esc(t.slice(i+qq.length));};
 chips.innerHTML=[['all',T('glossaire.tout')],...Object.entries(CAT)].map(([k,v])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
 chips.addEventListener('click',e=>{const b=e.target.closest('.gl-chip');if(!b)return;cat=b.dataset.c;chips.querySelectorAll('.gl-chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();});
-const items=G.map((g,i)=>({i,t:g.terme,f:g.nomComplet||'',c:g.categorie,d:g.definition,dp:g.pourLeDP||'',l:g.documents||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
+const items=G.map((g,i)=>({i,t:g.terme,f:g.nomComplet||'',fr:g.termeFr&&g.termeFr!==g.terme&&!norm(g.nomComplet||'').includes(norm(g.termeFr))?g.termeFr:'',c:g.categorie,d:g.definition,dp:g.pourLeDP||'',l:g.documents||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
 function render(){
   if(!termes){count.textContent='';list.innerHTML=`<p class="gl-empty">${esc(T('glossaire.erreur'))}</p>`;return;}
   const qq=norm(q.value.trim());
-  const its=items.filter(g=>(cat==='all'||g.c===cat)&&(!qq||norm(g.t+' '+g.f+' '+g.d+' '+g.dp).includes(qq)));
+  const its=items.filter(g=>(cat==='all'||g.c===cat)&&(!qq||norm(g.t+' '+g.f+' '+g.fr+' '+g.d+' '+g.dp).includes(qq)));
   count.textContent=its.length+' / '+G.length;
   if(!its.length){list.innerHTML=`<p class="gl-empty">${esc(T('glossaire.aucun',{q:q.value}))}</p>`;return;}
   const auto=qq&&its.length<=3;let h='',L='';
@@ -74,8 +84,8 @@ function render(){
     const c=norm(g.t)[0].toUpperCase(),letter=/[A-Z]/.test(c)?c:'#';
     if(letter!==L){L=letter;h+=`<div class="gl-letter">${letter}</div>`;}
     const o=opened.has(g.i)||auto;
-    h+=`<div><button type="button" class="gl-term-btn" data-i="${g.i}" aria-expanded="${o}"><b>${hl(g.t,qq)}</b>${g.f?`<span class="gl-f">${hl(g.f,qq)}</span>`:''}</button>`;
-    if(o){h+=`<div class="gl-body"><p>${hl(g.d,qq)}</p>${g.dp?`<p class="gl-dp"><span class="gl-dp-l">${esc(T('glossaire.pourLeDP'))}</span>${esc(g.dp)}</p>`:''}${g.l.filter(k=>D[k]).length?`<div class="gl-links">${g.l.filter(k=>D[k]).map(k=>{const u=abs((window.SAP_HREF||(x=>x))(D[k].fichier));return `<a class="gl-link" href="${u}"${tgt(D[k].fichier)}>${T('types.'+D[k].type)} · ${esc(D[k].titre)}</a>`;}).join('')}</div>`:''}</div>`;}
+    h+=`<div><button type="button" class="gl-term-btn" data-i="${g.i}" aria-expanded="${o}"><b>${hl(g.t,qq)}</b>${g.f?`<span class="gl-f">${hl(g.f,qq)}</span>`:''}${g.fr?`<span class="gl-fr" lang="fr"><i>${esc(T('glossaire.marqueFr'))}</i>${hl(g.fr,qq)}</span>`:''}</button>`;
+    if(o){h+=`<div class="gl-body"><p>${hl(g.d,qq)}</p>${g.dp?`<p class="gl-dp"><span class="gl-dp-l">${esc(T('glossaire.pourLeDP'))}</span>${esc(g.dp)}</p>`:''}${g.l.map(doc).filter(Boolean).length?`<div class="gl-links">${g.l.map(doc).filter(Boolean).map(d=>{const u=abs((window.SAP_HREF||(x=>x))(d.fichier));return `<a class="gl-link" href="${u}"${tgt(d.fichier)}>${T('types.'+d.type)} · ${esc(d.titre)}${d.enFrancais?`<span class="infr" lang="en">${esc(T('documents.enFrancais'))}</span>`:''}</a>`;}).join('')}</div>`:''}</div>`;}
     h+='</div>';
   }
   list.innerHTML=h;

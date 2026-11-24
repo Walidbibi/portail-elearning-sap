@@ -154,6 +154,20 @@ if (GE && G) {
   });
 }
 
+// 4 ter. Libellés anglais : mêmes clés que le français ; langues et versions anglaises du manifeste
+const LEN = J['shared/libelles/en.json'];
+if (LEN && LIB_OK) {
+  const cles = {}; (function a(o, p) { for (const [k, v] of Object.entries(o || {})) { const c = p ? `${p}.${k}` : k; if (v && typeof v === 'object') a(v, c); else cles[c] = v; } })(LEN.data, '');
+  for (const c of Object.keys(LIB)) if (cles[c] === undefined) attention('shared/libelles/en.json', 1, `le texte « ${c} » n'existe pas en anglais : le français s'affichera`);
+  for (const c of Object.keys(cles)) if (LIB[c] === undefined) erreur('shared/libelles/en.json', ligneDe(LEN.texte, `"${c.split('.').pop()}"`), `le texte « ${c} » n'existe pas en français`);
+}
+for (const [cle, d] of Object.entries(docs)) {
+  const l = M ? ligneDe(M.texte, `"${cle}": {`) : 1;
+  if (d.langue && !/^(fr|en|fr en)$/.test(d.langue)) erreur('documents.json', l, `langue « ${d.langue} » du document « ${cle} » : attendu fr, en ou « fr en »`);
+  if (d.versionEn && !docs[d.versionEn]) erreur('documents.json', l, `le document « ${cle} » renvoie vers la version anglaise « ${d.versionEn} », absente du manifeste`);
+  if (d.versionEn && docs[d.versionEn] && docs[d.versionEn].langue !== 'en') erreur('documents.json', l, `la version anglaise « ${d.versionEn} » du document « ${cle} » n'a pas la langue « en »`);
+}
+
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json
 const sources = ['index.html', 'lecteur.html', ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.html')).map(f => `frises/${f}`),
   ...readdirSync(join(RACINE, 'shared')).filter(f => f.endsWith('.js')).map(f => `shared/${f}`)];

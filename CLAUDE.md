@@ -25,7 +25,9 @@ shared/documents.js        chargeur du manifeste (SAP_DOCUMENTS) et SAP_HREF
 glossaire.json             les 136 termes du glossaire, un terme par ligne
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
-shared/libelles/fr.json    textes d'interface de l'accueil, du glossaire et du lecteur
+shared/libelles/fr.json    textes d'interface (accueil, glossaire, lecteur, frises) ; en.json pour l'anglais
+glossaire.en.json          glossaire anglais, relié au français par termeFr
+frises/<nom>.en.json       contenu anglais de chaque frise, même structure que <nom>.json
 outils/captures/           captures avant / après et comparaison pixel par pixel (voir LISEZMOI.md)
 outils/verifier.mjs        contrôle des données : JSON bien formés, fichiers présents, clés cohérentes, textes existants
 .github/workflows/verifier.yml   lance outils/verifier.mjs à chaque envoi sur main
@@ -40,6 +42,13 @@ documents/                 les 9 supports en PDF, anonymisés (le plan de format
 ```
 
 Le site ne demande aucune compilation, mais il doit être servi par un serveur, même local (`python3 -m http.server 8080`) : les textes et le manifeste sont chargés par `fetch`. PDF.js est copié dans `shared/pdfjs/` (version 3.11.174), aucun CDN. `SAP_HREF` dans `shared/documents.js` envoie tout PDF local vers le lecteur.
+
+### La langue (français et anglais)
+
+- Le sélecteur FR / EN est sur chaque page (`<div data-langue></div>`), rempli par `shared/libelles.js`. Langue : `?lang=fr|en` dans l'adresse, sinon le choix mémorisé dans le navigateur, sinon la langue du navigateur (français donne FR, toute autre langue donne EN). Changer de langue recharge la même page.
+- Les textes anglais viennent de `shared/libelles/en.json`, `glossaire.en.json` et `frises/<nom>.en.json`. Un texte ou un terme absent en anglais s'affiche en français ; une frise sans fichier anglais s'affiche en français.
+- Documents : en anglais, un document qui a une version anglaise (`versionEn`) est remplacé par elle, et cette version n'apparaît pas une seconde fois sur l'accueil. Un document resté en français porte l'étiquette « In French », et le lecteur l'annonce par un bandeau.
+- Le contrôle (`node outils/verifier.mjs`) vérifie que chaque fichier anglais reste aligné sur le français.
 
 ### Le manifeste des documents
 

@@ -13,7 +13,10 @@
 
 <!-- Page de frise : le contenu vient de greenfield.json, l'affichage de shared/frise.js. -->
 <div class="wrap">
-  <button type="button" class="back" onclick="history.length>1?history.back():(location.href='../')" data-t="frise.retour"></button>
+  <div class="fz-top">
+    <button type="button" class="back" onclick="history.length>1?history.back():(location.href='../')" data-t="frise.retour"></button>
+    <div data-langue></div>
+  </div>
   <div class="eyebrow" id="f-surtitre"></div>
   <h1 id="f-titre"></h1>
   <p class="lede" id="f-intro"></p>

@@ -4,6 +4,7 @@
 // Usage : node outils/captures/captures.mjs [page] [--out <dossier>]
 //   page    : accueil | glossaire | greenfield | brownfield | bluefield | rollout | lecteur (toutes si absent)
 //   --out   : dossier de sortie, relatif à outils/captures/ (défaut : reference)
+//   --langue : fr (défaut) ou en ; la langue est forcée par ?lang= dans l'adresse
 
 import { spawn } from 'node:child_process';
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs';
@@ -19,7 +20,9 @@ const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/M
 const args = process.argv.slice(2);
 const iOut = args.indexOf('--out');
 const SORTIE = resolve(ICI, iOut >= 0 ? args[iOut + 1] : 'reference');
-const filtre = args.find((a, i) => !a.startsWith('--') && (iOut < 0 || i !== iOut + 1));
+const iLangue = args.indexOf('--langue');
+const LANGUE = iLangue >= 0 ? args[iLangue + 1] : 'fr';
+const filtre = args.find((a, i) => !a.startsWith('--') && (iOut < 0 || i !== iOut + 1) && (iLangue < 0 || i !== iLangue + 1));
 
 const LARGEURS = { bureau: [1440, 900, false], telephone: [390, 844, true] };
 const THEMES = ['clair', 'sombre'];
@@ -104,7 +107,7 @@ try {
           { name: 'prefers-reduced-motion', value: 'reduce' },
         ] });
         const charge = new Promise(r => { const f = d => { if (d.method === 'Page.loadEventFired') { ecouteurs.splice(ecouteurs.indexOf(f), 1); r(); } }; ecouteurs.push(f); });
-        await cdp('Page.navigate', { url: `http://127.0.0.1:${PORT}/${p.url}` });
+        await cdp('Page.navigate', { url: `http://127.0.0.1:${PORT}/${p.url}${p.url.includes('?') ? '&' : '?'}lang=${LANGUE}` });
         await charge;
         await evaluer(`(()=>{try{localStorage.clear()}catch(e){};const s=document.createElement('style');s.textContent=${JSON.stringify(SANS_ANIM)};document.head.appendChild(s)})()`);
         await evaluer('document.fonts.ready.then(()=>true)');

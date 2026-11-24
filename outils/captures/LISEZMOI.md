@@ -52,7 +52,7 @@ node outils/captures/captures.mjs bluefield
 node outils/captures/captures.mjs rollout
 ```
 
-Une frise inclut sa popup. Pour capturer après une refonte, ajouter `--out apres` à la commande, puis comparer :
+Une frise inclut sa popup. La langue est le français par défaut ; ajouter `--langue en` pour l'anglais (référence anglaise : `--out reference-en`). Pour capturer après une modification, ajouter `--out apres` (ou `--out apres-en --langue en`), puis comparer :
 
 ```bash
 node outils/captures/comparer.mjs reference apres

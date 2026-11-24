@@ -1,0 +1,99 @@
+{
+  "portail": {
+    "nom": "SAP Program Director's Portal"
+  },
+  "accueil": {
+    "surtitre": "SAP training · Program Director",
+    "titre": "SAP Program Director's Portal",
+    "intro": "All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.",
+    "parcoursTitre": "Recommended path",
+    "parcoursSousTitre": "From the big picture to day-to-day delivery.",
+    "frisesTitre": "Timelines, from A to Z",
+    "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, what AI brings, and the main failure risks.",
+    "autresTitre": "Other resources",
+    "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them."
+  },
+  "glossaire": {
+    "titre": "Glossary",
+    "masquer": "Hide ✕",
+    "ouvrir": "Glossary",
+    "recherche": "Search: EWM, cutover, RICEFW…",
+    "rechercheAria": "Search the glossary",
+    "tout": "All",
+    "aucun": "No term matches “{q}”.",
+    "pourLeDP": "For the Program Director · ",
+    "erreur": "The glossary could not be loaded. Reload the page.",
+    "marqueFr": "FR"
+  },
+  "lecteur": {
+    "titreOnglet": "Reader · {portail}",
+    "titreDocument": "{doc} · {portail}",
+    "retour": "← Portal",
+    "document": "Document",
+    "chargement": "Loading…",
+    "introuvable": "Document not found",
+    "telecharger": "Download",
+    "pagePrecedente": "Previous page",
+    "pageSuivante": "Next page",
+    "numeroPage": "Page number",
+    "pageDuDocument": "Document page",
+    "pageSur": "Page {n} of {total}",
+    "aide": "Use the ← → keys to turn pages · “/” for the glossary",
+    "erreurInconnu": "This document does not exist. <a href=\"index.html\">Back to the portal</a>.",
+    "erreurPdfjs": "The reader could not be loaded. <a href=\"{src}\" download>Download the PDF</a>.",
+    "erreurOuverture": "This PDF could not be opened. <a href=\"{src}\" download>Download it</a>.",
+    "bandeauFr": "This document is in French.",
+    "versionAnglaise": "Open the English version →"
+  },
+  "types": {
+    "deck": "Deck",
+    "doc": "Doc",
+    "frise": "Timeline",
+    "act": "Certification",
+    "prat": "Practice"
+  },
+  "categories": {
+    "meth": "Method & governance",
+    "proc": "Modules & processes",
+    "tech": "Technical & integration",
+    "data": "Data & migration",
+    "test": "Testing & cutover",
+    "run": "Run & support",
+    "agile": "Agile & delivery"
+  },
+  "frise": {
+    "retour": "← Portal",
+    "exempleFilRouge": "Running example:",
+    "suivreExemple": "Follow the example step by step →",
+    "legendeEtape": "Step",
+    "legendeGate": "Quality gate",
+    "legendeGolive": "Go-live",
+    "enContinu": "Ongoing:",
+    "fermer": "Close",
+    "goliveAria": "Go-live: cutover",
+    "transverse": "Cross-cutting",
+    "surtitreGate": "{gate} · {phase}",
+    "surtitreEtape": "Step {n} · {phase}",
+    "quiPorte": "Owner: {qui}",
+    "activites": "Activities",
+    "prerequis": "Prerequisites",
+    "livrables": "Deliverables",
+    "apportIA": "How AI helps",
+    "gain": "Gain: {gain}",
+    "risques": "Failure risks",
+    "risque": "Risk · ",
+    "parade": "Fix · ",
+    "dansExemple": "In the example · {entreprise}",
+    "precedent": "← Previous",
+    "suivant": "Next →",
+    "erreur": "This timeline could not be loaded. Reload the page."
+  },
+  "langue": {
+    "groupe": "Language",
+    "fr": "Français",
+    "en": "English"
+  },
+  "documents": {
+    "enFrancais": "In French"
+  }
+}

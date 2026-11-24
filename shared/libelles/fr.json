@@ -22,7 +22,8 @@
     "tout": "Tout",
     "aucun": "Aucun terme ne correspond à « {q} ».",
     "pourLeDP": "Pour le DP · ",
-    "erreur": "Le glossaire n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur."
+    "erreur": "Le glossaire n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur.",
+    "marqueFr": "FR"
   },
   "lecteur": {
     "titreOnglet": "Lecteur · {portail}",
@@ -40,7 +41,9 @@
     "aide": "Flèches ← → du clavier pour tourner les pages · « / » pour le glossaire",
     "erreurInconnu": "Ce document n'existe pas. <a href=\"index.html\">Retour au portail</a>.",
     "erreurPdfjs": "Le lecteur n'a pas pu se charger (fichiers PDF.js introuvables). <a href=\"{src}\" download>Télécharger le PDF</a>.",
-    "erreurOuverture": "Impossible d'ouvrir ce PDF. <a href=\"{src}\" download>Le télécharger</a>."
+    "erreurOuverture": "Impossible d'ouvrir ce PDF. <a href=\"{src}\" download>Le télécharger</a>.",
+    "bandeauFr": "Ce document est en français.",
+    "versionAnglaise": "Ouvrir la version anglaise →"
   },
   "types": {
     "deck": "Deck",
@@ -84,5 +87,13 @@
     "precedent": "← Précédent",
     "suivant": "Suivant →",
     "erreur": "Cette frise n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur."
+  },
+  "langue": {
+    "groupe": "Langue",
+    "fr": "Français",
+    "en": "English"
+  },
+  "documents": {
+    "enFrancais": "In French"
   }
 }

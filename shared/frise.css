@@ -106,4 +106,7 @@ h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:7
 .fail h3{flex-basis:100%;margin:0 0 4px;font-size:16px}
 .fail span{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:13.5px}
 .fail span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--risk);margin-right:8px;vertical-align:1px}
+/* ligne du haut : « ← Portail » à gauche, sélecteur de langue à droite */
+.fz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.fz-top .back{margin-bottom:0;min-height:40px}
 .story{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:0 0 14px}
