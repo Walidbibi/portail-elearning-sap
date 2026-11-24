@@ -18,6 +18,7 @@
   "glossaire": {
     "titre": "Glossary",
     "masquer": "Hide ✕",
+    "fermer": "Close ✕",
     "ouvrir": "Glossary",
     "recherche": "Search: EWM, cutover, RICEFW…",
     "rechercheAria": "Search the glossary",
@@ -90,7 +91,8 @@
     "dansExemple": "In the example · {entreprise}",
     "precedent": "← Previous",
     "suivant": "Next →",
-    "erreur": "This timeline could not be loaded. Reload the page."
+    "erreur": "This timeline could not be loaded. Reload the page.",
+    "glisser": "Swipe the timeline"
   },
   "langue": {
     "groupe": "Language",

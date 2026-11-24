@@ -46,7 +46,7 @@ const css=`.lang{display:inline-flex;flex:none;border:1px solid var(--line,#D5DB
 .lang button+button{border-left:1px solid var(--line,#D5DBE4)}
 .lang button[aria-pressed="true"]{background:var(--ink,#17202E);color:var(--surface,#fff);cursor:default}
 .lang button:hover:not([aria-pressed="true"]){background:var(--soft,var(--bg,#EBEFF5));color:var(--ink,#17202E)}
-.lang button:focus-visible{outline:3px solid var(--focus,#E07A2F);outline-offset:-3px}
+.lang button:focus-visible{outline:3px solid var(--focus,#C25E12);outline-offset:-3px}
 .lang .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}`;
 function selecteurs(){
   const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);

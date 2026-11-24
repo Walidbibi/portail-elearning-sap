@@ -78,6 +78,14 @@ rows.forEach((k,i)=>{const [a,b,lab]=TL[k];const d=S[k];const p=d.p;const y=TOP+
   const t=el('text',{x:tx,y:y+4.5,'text-anchor':anchor,class:'bl'},g);t.textContent=lab;
 });
 
+// frise plus large que l'écran (téléphone) : indice « faites glisser » et dégradé au bord droit
+const wrap=svg.parentNode,box=document.createElement('div');box.className='tl-box';wrap.before(box);box.append(wrap);
+const indice=document.createElement('p');indice.className='tl-hint';indice.hidden=true;
+indice.textContent=T('frise.glisser')+' · '+ML[0]+' → '+ML[ML.length-1];box.before(indice);
+const majDebord=()=>{const d=wrap.scrollWidth>wrap.clientWidth+2;box.classList.toggle('deborde',d);indice.hidden=!d;
+  box.classList.toggle('fin',wrap.scrollLeft+wrap.clientWidth>=wrap.scrollWidth-2);};
+wrap.addEventListener('scroll',majDebord,{passive:true});window.addEventListener('resize',majDebord);majDebord();
+
 // popups
 const ov=$('ov'),dlg=$('dlg'),body=$('dlg-body'),X=$('x');
 let last=null;

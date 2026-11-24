@@ -13,6 +13,7 @@
   --gray-f:#F1EFE8;--gray-s:#888780;--gray-t:#444441;--gray-st:#5F5E5A;
   --pur-f:#EEEDFE;--pur-s:#534AB7;--pur-t:#3C3489;--pur-st:#534AB7;
   --tea-f:#E1F5EE;--tea-s:#0F6E56;--tea-t:#085041;--tea-st:#0F6E56;
+  --focus:#C25E12;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -20,6 +21,7 @@
     --gray-f:#444441;--gray-s:#B4B2A9;--gray-t:#F1EFE8;--gray-st:#D3D1C7;
     --pur-f:#3C3489;--pur-s:#AFA9EC;--pur-t:#EEEDFE;--pur-st:#CECBF6;
     --tea-f:#085041;--tea-s:#5DCAA5;--tea-t:#E1F5EE;--tea-st:#9FE1CB;
+    --focus:#F0A35E;
   }
 }
 *{box-sizing:border-box}
@@ -33,7 +35,7 @@ svg{width:100%;height:auto;display:block}
 .g rect{fill:var(--gray-f);stroke:var(--gray-s)} .g .t{fill:var(--gray-t)} .g .s{fill:var(--gray-st)}
 .p rect{fill:var(--pur-f);stroke:var(--pur-s)} .p .t{fill:var(--pur-t)} .p .s{fill:var(--pur-st)}
 .c rect{fill:var(--tea-f);stroke:var(--tea-s)} .c .t{fill:var(--tea-t)} .c .s{fill:var(--tea-st)}
-.n{cursor:pointer} .n:hover{opacity:.85} .n:focus{outline:none} .n:focus rect{stroke-width:2.5}
+.n{cursor:pointer} .n:hover{opacity:.85} .n:focus{outline:none} .n:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px} .n:focus-visible rect{stroke-width:2.5}
 .sel rect{stroke-width:2.5}
 .lbl{fill:var(--text);font-size:14px;font-weight:600}
 .arr{stroke:var(--arrow);stroke-width:1.2;fill:none}
@@ -50,7 +52,7 @@ svg{width:100%;height:auto;display:block}
 .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
 .back{display:inline-flex;align-items:center;min-height:40px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}
 .back:hover{color:var(--text)}
-.back:focus-visible{outline:3px solid #E07A2F;outline-offset:2px;border-radius:4px}
+.back:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
@@ -125,8 +127,8 @@ document.querySelectorAll('.n').forEach(g=>{
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g);}});
 });
 </script>
-<script src="../shared/libelles.js?v=202611241515"></script>
-<script src="../shared/documents.js?v=202611241515"></script>
-<script src="../shared/glossaire.js?v=202611241515"></script>
+<script src="../shared/libelles.js?v=202611241548"></script>
+<script src="../shared/documents.js?v=202611241548"></script>
+<script src="../shared/glossaire.js?v=202611241548"></script>
 </body>
 </html>

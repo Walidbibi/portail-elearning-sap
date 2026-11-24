@@ -4,9 +4,9 @@ html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}.back{all:
 /* Layout: a left-to-right flow of five phase lanes; each step is a card that opens a detail popup. */
 :root{
   --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;
-  --c0:#56657D;--c1:#3460A8;--c2:#1B7287;--c3:#A86E12;--c4:#AF4234;--c5:#2B7549;
+  --c0:#56657D;--c1:#3460A8;--c2:#1B7287;--c3:#8F5C0C;--c4:#AF4234;--c5:#2B7549;
   --t0:#E9EDF3;--t1:#E3EAF7;--t2:#E0F0F3;--t3:#F7EEDC;--t4:#F7E3E0;--t5:#E1F0E6;
-  --gate:#17202E;--gate-ink:#FFFFFF;--aibg:#ECE9F7;--aiink:#4E3F99;--risk:#AF4234;--focus:#E07A2F;
+  --gate:#17202E;--gate-ink:#FFFFFF;--aibg:#ECE9F7;--aiink:#4E3F99;--risk:#AF4234;--focus:#C25E12;--ph-ink:#FFFFFF;
   --shadow:0 18px 50px rgba(17,26,40,.28);
   --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -15,12 +15,12 @@ html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}.back{all:
   --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
   --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
   --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
-  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);color-scheme:dark}}
+  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);--focus:#F0A35E;--ph-ink:#12161D;color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
   --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
   --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
-  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);color-scheme:dark}
+  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);--focus:#F0A35E;--ph-ink:#12161D;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
 .wrap{max-width:1280px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -80,8 +80,15 @@ h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:7
 @media (prefers-reduced-motion:reduce){.step{transition:none}.step:hover{transform:none}}
 .tl-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
 #tl{display:block;width:100%;min-width:980px;height:auto}
+@media (max-width:620px){#tl{min-width:760px}}
+/* frise plus large que l'écran : indice au-dessus, dégradé au bord droit tant qu'il reste à voir */
+.tl-hint{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 6px}
+.tl-box{position:relative}
+.tl-box::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:56px;border-radius:0 11px 11px 0;background:linear-gradient(to right,rgba(0,0,0,0),var(--surface));pointer-events:none;opacity:0;transition:opacity .2s}
+.tl-box.deborde:not(.fin)::after{opacity:1}
+@media (prefers-reduced-motion:reduce){.tl-box::after{transition:none}}
 #tl text{font-family:var(--sans)}
-#tl .ph{fill:#fff;font-size:14px;font-weight:600}
+#tl .ph{fill:var(--ph-ink);font-size:14px;font-weight:600}
 #tl .mo{fill:var(--muted);font-size:12px;font-family:var(--mono)}
 #tl .grid{stroke:var(--line);stroke-width:1}
 #tl .golive{stroke:var(--c4);stroke-width:3}
@@ -91,7 +98,7 @@ h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:7
 #tl .gl-t{fill:var(--gate-ink);font-size:10px;font-weight:700}
 #tl .b{fill:var(--tint);stroke:var(--col);stroke-width:1.5}
 #tl .ic-bg{fill:var(--col)}
-#tl .ic{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tl .ic{fill:none;stroke:var(--ph-ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #tl .bl{fill:var(--ink);font-size:13.5px;font-weight:600}
 #tl .hot{cursor:pointer;outline:none}
 #tl .hot:hover .b,#tl .hot:focus-visible .b{stroke-width:3}

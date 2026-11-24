@@ -575,7 +575,7 @@ Ordre de développement proposé : US-019 à US-023 (accessibilité, livrables t
 ### Bloc A · Correctifs d'accessibilité
 
 ### US-019 · Contrastes des phases de frise et de l'étiquette « Frise »
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 2, palette, et écran 5, frise greenfield)
@@ -598,9 +598,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : Realize `#8F5C0C` en clair, texte et pictogrammes de phase `#12161D` en sombre, étiquette « Frise » `#8F5C0C`. Ratios mesurés, clair texte blanc : Discover / Cadrage 5,91 ; Prepare 6,20 ; Explore / Diagnose 5,52 ; Realize / Adjust 5,67 ; Deploy 5,75 ; Run 5,61. Sombre texte `#12161D` : 7,53 ; 7,68 ; 8,61 ; 9,02 ; 7,33 ; 8,65 (pictogrammes idem). Étiquette « Frise » : 5,67 en clair, 8,04 en sombre. Couleurs constatées dans le navigateur (roll-out compris). Aperçus FR et EN des quatre frises refaits. `node outils/verifier.mjs` sans erreur.
 
 ### US-020 · Couleur du contour de focus
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 2, palette, nuancier « Focus »)
@@ -621,9 +622,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : focus `#C25E12` en clair (3,92 sur `#F3F5F8`, 4,28 sur blanc), `#F0A35E` en sombre (8,73 sur `#12161D`) sur l'accueil, les frises, le lecteur, le glossaire, le sélecteur et le schéma des rôles ; `.n:focus{outline:none}` du schéma remplacé par un contour visible au clavier. Constaté dans le navigateur dans les deux thèmes. `node outils/verifier.mjs` sans erreur.
 
 ### US-021 · Cibles tactiles de 40 px : glossaire et lecteur
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 7, lecteur, et écran 8, glossaire)
@@ -646,9 +648,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : mesures dans le navigateur : « Masquer » 40 px, lien de document du glossaire 40 px, boutons de page du lecteur 40 × 40 px, lien de retour du lecteur 40 px. `node outils/verifier.mjs` sans erreur.
 
 ### US-022 · Tiroir du glossaire sur téléphone
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 8, note « Sur téléphone »)
@@ -671,9 +674,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : à 390 px, tiroir 390 px (pleine largeur), voile visible, fermeture par le voile et par Échap, focus rendu au bouton « Glossaire », libellé « Fermer ✕ » / « Close ✕ » en mode tiroir, marge basse de 72 px ; glossaire épinglé inchangé au-delà de 1100 px. `node outils/verifier.mjs` sans erreur.
 
 ### US-023 · Indice de glissement de la frise sur téléphone
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 6, variante A)
@@ -696,6 +700,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 10, variante A) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : sur téléphone, frise de 760 px, indice « Faites glisser la frise · M-15 → M+2 » (« Swipe the timeline » en anglais), dégradé au bord droit (opacité 1) qui disparaît au bout (opacité 0) ; indice caché sur bureau ; page sans débordement à 390 px. `node outils/verifier.mjs` sans erreur.
 
 ### Bloc B · Socle
 
@@ -1099,3 +1104,5 @@ Journal
 - 2026-11-24 · ux-ui · Demande de Walid (audit, identité, nom) : audit dans `rapports/2026-11-24-audit-ux-ui.md`, maquette dans [`maquettes/identite-portail.html`](maquettes/identite-portail.html) (nom proposé « Jalon », logotype en losange, palette, accueil, frise, lecteur, glossaire, schéma des rôles, bureau et téléphone). 14 choix à trancher par Walid en fin de maquette. Aucune story créée : à faire par le po après les choix de Walid ; les correctifs d'accessibilité peuvent former un lot à part.
 - 2026-11-24 · Walid · audit UX/UI (rapports/2026-11-24-audit-ux-ui.md) et maquette d'identité (maquettes/identite-portail.html) validés, les 14 recommandations retenues (« Oui, toutes ») : nom « Jalon » (vérification INPI / EUIPO avant diffusion large), signature « Piloter un programme SAP » / « Running SAP programs », logotype A (losange ambre sur une ligne de temps), accent A (sarcelle + bleu nuit de marque, ambre réservé au jalon), IBM Plex Sans seule, correctifs d'accessibilité en premier et en lot séparé, en-tête commun, accueil refondu (bandeau, 4 colonnes), accueil téléphone compact, frise téléphone A (glisser avec indice), filtres du glossaire A, lecteur téléphone (boutons en bas, libellé PDF), schéma des rôles harmonisé, socle (couleurs partagées, polices IBM Plex hébergées, favicon, Open Graph, mention de marque SAP). Suite : le PO découpe le lot 3.
 - 2026-11-24 · po · Lot 3 « Identité Jalon et confort de visite » écrit : 19 stories (US-019 à US-037), toutes en « Validée » sur la décision de Walid du 2026-11-24 (maquette d'identité et 14 choix), sans nouvelle maquette. Bloc A accessibilité US-019 à US-023 (sans dépendance, livrables tout de suite) ; bloc B socle US-024 à US-027 ; bloc C identité US-028 à US-031 ; bloc D écrans US-032 à US-037. US-026 (favicon, partage) attend le nom et le logotype : elle se développe après US-029. Besoin B-002 proposé dans la note du lot, à inscrire dans `besoins.md`. Questions ouvertes Q9 (retouches de la frise sur bureau, hors des 14 choix), Q10 (balayage dans le lecteur), Q11 (échelle de tailles sur les frises, le lecteur et le glossaire). Suite : session principale, US-019.
+- 2026-11-24 · Walid · Q9 à Q11 du lot 3 : recommandations du PO retenues (« Oui, démarre ») : US-038 retouches de la frise bureau après US-030 ; pas de balayage dans le lecteur ; story de finition des tailles et rayons en fin de lot.
+- 2026-11-24 · session principale · Bloc accessibilité livré : US-019 à US-023 en « À tester ». Non publié.

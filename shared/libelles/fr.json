@@ -18,6 +18,7 @@
   "glossaire": {
     "titre": "Glossaire",
     "masquer": "Masquer ✕",
+    "fermer": "Fermer ✕",
     "ouvrir": "Glossaire",
     "recherche": "Chercher : EWM, cutover, RICEFW…",
     "rechercheAria": "Chercher dans le glossaire",
@@ -90,7 +91,8 @@
     "dansExemple": "Dans l'exemple · {entreprise}",
     "precedent": "← Précédent",
     "suivant": "Suivant →",
-    "erreur": "Cette frise n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur."
+    "erreur": "Cette frise n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur.",
+    "glisser": "Faites glisser la frise"
   },
   "langue": {
     "groupe": "Langue",
