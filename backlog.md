@@ -253,7 +253,7 @@ Journal
 En tant que Walid, je veux qu'une vérification automatique signale un fichier manquant ou un JSON cassé afin de pouvoir mettre à jour le site sans code et sans risque.
 
 Critères d'acceptation
-- [ ] Une GitHub Action se lance à chaque envoi sur la branche principale. (Écrite et testée en local ; à constater sur GitHub au premier envoi.)
+- [x] Une GitHub Action se lance à chaque envoi sur la branche principale. (Constaté le 2026-11-24 sur GitHub : exécution réussie au premier envoi.)
 - [x] Elle échoue si un fichier cité dans le manifeste n'existe pas.
 - [x] Elle échoue si un JSON du site est mal formé.
 - [x] Elle échoue si un terme du glossaire cite une clé de document absente du manifeste.
