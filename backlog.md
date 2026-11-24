@@ -554,7 +554,7 @@ Le lot 3 vient d'une demande directe de Walid, le 2026-11-24 : audit UX/UI, iden
 ### B-002 · Un portail qui inspire confiance et se lit partout
 - Source : Walid
 - Importance : important (à confirmer par Walid)
-- Couvert par : US-019 à US-037
+- Couvert par : US-019 à US-039
 
 Situation : le portail est public. Walid peut l'envoyer à un recruteur ou à une équipe, qui l'ouvre souvent sur téléphone.
 Ce qui bloque : pas de nom ni de logo, un nom qui ressemble à un produit SAP, des textes illisibles en thème sombre, des boutons trop petits, un accueil très long sur téléphone.
@@ -1098,11 +1098,74 @@ Journal
 - 2026-11-24 · session principale · livrée : teintes du schéma alignées sur le site dans `theme.css` (fond, surface, encre du site ; client violet `#6A4FA3`, intégrateur sarcelle `#1B7287`, instances gris). Contrastes titre / sous-titre, clair : instances 14,2 / 5,1 ; client 7,0 / 6,4 ; intégrateur 7,3 / 5,4 ; sombre : 12,4 / 6,4 ; 11,9 / 9,0 ; 11,8 / 9,1. Titre 32 px (24 px sur téléphone). Sous 620 px, liste en une colonne groupée par famille, construite à partir du dessin (`shared/schema.js`), qui ouvre le même panneau. Textes des rôles inchangés. Aperçus FR et EN refaits. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 - 2026-11-24 · persona-pm · testée sur l'aperçu seulement (lot 3, « Prêt avec réserves ») : même allure que le reste du site. Non vérifiable : le schéma n'est pas dans les captures de référence (téléphone, sombre) ; à y ajouter. Rapport : [rapports/2026-11-24-lot-3-identite-jalon.md](rapports/2026-11-24-lot-3-identite-jalon.md)
 
+### Bloc E · Finitions
+
+### US-038 · Retouches de la frise sur bureau
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 5, frise greenfield, bureau)
+- Dépend de : US-023, US-024, US-030
+- Sert : B-002
+
+En tant que visiteur sur bureau, je veux une frise de scénario où chaque libellé se lit sans obstacle et une popup qui ne se cache pas sous le glossaire afin de suivre les étapes sans effort.
+
+Ces retouches figurent dans l'écran 5 de la maquette mais pas dans les 14 choix. Elles s'appliquent aux quatre scénarios de mise en œuvre (greenfield, brownfield, bluefield, roll-out), tous sur le gabarit `frises/`.
+
+Critères d'acceptation
+- [ ] Libellés d'étape : chaque libellé est hors de sa barre, à droite. Pour une barre qui commence après le go-live, le libellé est à gauche de la barre (comme « Préparation bascule » et « Hypercare » dans la maquette).
+- [ ] Aucun libellé d'étape n'est traversé par la ligne du go-live ni posé sur une autre barre, sur les quatre scénarios, en FR et en EN, à 1440 px.
+- [ ] Sur téléphone (frise de 760 px, US-023), aucun libellé ne chevauche un voisin de plus qu'avant cette story.
+- [ ] Exemple fil rouge dans la popup : encadré avec filet gauche de 4 px et titre « Exemple fil rouge · fictif » dans la couleur du jalon (`--jalon`), fond `--soft`, au lieu de la couleur de la phase. Sous réserve de Q12.
+- [ ] Le bandeau d'exemple au-dessus de la frise prend le même repère : filet gauche de 4 px et étiquette en `--jalon`. Sous réserve de Q12.
+- [ ] Le titre de l'encadré atteint au moins 4,5:1 sur son fond, en clair et en sombre ; ratios notés au journal.
+- [ ] Au-delà de 1100 px, glossaire épinglé ouvert : la popup est centrée dans la colonne de contenu et ne recouvre pas le glossaire. Glossaire masqué : elle est centrée dans la fenêtre. Sous 1100 px : comportement inchangé.
+- [ ] « Qui porte » : étiquette rectangulaire (rayon 6 px, filet `--line`, fond `--surface`), mot « Qui porte » / « Owner » en IBM Plex Mono, en capitales, couleur `--muted`, suivi du porteur. Le libellé est séparé du porteur dans `fr.json` et `en.json` (aujourd'hui une seule chaîne « Qui porte : {qui} »). Plus de gélule.
+- [ ] Bouton « Précédent » désactivé (première étape) : contour en pointillés, texte `--muted`, sans opacité réduite. Le texte atteint au moins 4,5:1. Il reste annoncé comme désactivé aux lecteurs d'écran.
+- [ ] Tout nouveau texte d'interface est dans `fr.json` et `en.json`.
+- [ ] Captures de référence FR et EN refaites ; aperçus FR et EN des quatre scénarios refaits.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée depuis l'écran 5 de la maquette d'identité (Q9)
+- 2026-11-24 · po · validée par Walid le 2026-11-24 (Q9 / Q11) ; statut « Validée ». Les deux critères d'encadré ambre attendent Q12.
+
+### US-039 · Finition : échelle de tailles et rayons
+- Statut : Validée
+- Priorité : basse (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : échelle déclarée par US-024)
+- Dépend de : US-024, US-035, US-036, US-038
+- Sert : B-002
+
+En tant que Walid, je veux que les frises, le lecteur et le glossaire utilisent la même échelle de tailles et de rayons que le reste du site afin qu'une retouche s'applique partout sans dérive.
+
+`shared/theme.css` déclare 8 tailles (`--t-12` à `--t-32`) et les rayons `--r-6`, `--r-10`, `--r-14`, `--r-pastille`. L'accueil, l'en-tête et le schéma les appliquent déjà. Cette story ne change pas l'aspect des pages.
+
+Critères d'acceptation
+- [ ] Dans `shared/frise.css`, `lecteur.html` et `shared/glossaire.js`, chaque taille de texte et chaque rayon écrit en dur est remplacé par la variable la plus proche, quand l'écart est de 1 px au plus (par exemple 11 → 12, 12,5 → 12 ou 13, 13,5 → 13 ou 14, 14,5 → 14 ou 15, 25 → 24).
+- [ ] Les rayons de pastille (20 px, 24 px sur une gélule) passent à `--r-pastille` sans changement visible.
+- [ ] Restent en dur, sans être des écarts : les rayons de 4 px et moins, les cercles (50 %), les lettres des quality gates et des repères SVG sous 12 px.
+- [ ] Les valeurs à plus de 1 px de l'échelle (titre 30 px, titre de popup 22 px, rayons 8 px et 12 px, 16 px, 10,5 px) sont traitées selon Q13. Sans réponse, elles restent en dur et sont listées au journal.
+- [ ] Captures de référence FR et EN avant et après : aucune différence au-delà d'arrondis de 1 px. Toute autre différence est expliquée au journal.
+- [ ] Les quatre scénarios, le lecteur et le glossaire sont vérifiés ; les aperçus ne sont refaits que si une frise change à l'œil.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée (Q11 : story de finition en fin de lot)
+- 2026-11-24 · po · validée par Walid le 2026-11-24 (Q9 / Q11) ; statut « Validée ». Les écarts de plus de 1 px attendent Q13.
+
 ### Questions du lot 3 (à trancher par Walid)
 
 - Q9 · Frise sur bureau. L'écran 5 de la maquette montre des retouches qui ne figurent pas dans les 14 choix : libellés d'étape toujours à droite de la barre (à gauche après le go-live), exemple fil rouge en encadré ambre, popup centrée dans la colonne de contenu (plus sous le glossaire), « Qui porte » en étiquette rectangulaire, bouton « Précédent » désactivé en pointillés au lieu d'un pavé délavé. Option recommandée : une story de plus (US-038, taille M), après US-030. Autre option : les laisser de côté pour l'instant. La couleur de « Parade » (verte dans le roll-out, rouge ailleurs) pourrait être tranchée dans la même story.
 - Q10 · Lecteur sur téléphone : geste de balayage pour tourner les pages. La maquette le note « option de développement, à confirmer ». Option recommandée : non dans US-036 (boutons en bas seulement), à ajouter plus tard si le besoin se confirme. Autre option : l'inclure, ce qui fait passer US-036 en taille L.
 - Q11 · Échelle de tailles (8 valeurs) et rayons (3 valeurs). US-024 les déclare ; l'accueil, l'en-tête et le schéma les appliquent. Les frises, le lecteur et le glossaire gardent leurs tailles actuelles. Option recommandée : les appliquer à ces pages dans une story de finition à la fin du lot. Autre option : les appliquer au fil des stories qui touchent ces pages.
+- Q9 à Q11 tranchées par Walid le 2026-11-24 : options recommandées. Q9 devient US-038, Q11 devient US-039.
+- Q12 · Ambre de l'exemple fil rouge (US-038). CLAUDE.md réserve l'ambre (`--jalon`) au jalon : « ne pas l'utiliser ailleurs ». La maquette validée l'utilise pour l'encadré et le bandeau d'exemple, et sa palette le décrit comme « Losange, repère fil rouge. Rare, jamais en fond ». L'accueil l'utilise déjà hors du losange (sur-titre du bandeau, focus des boutons). Option recommandée : suivre la maquette (filet et titre en ambre, jamais en fond) et corriger la phrase de CLAUDE.md en « réservé au jalon et au repère fil rouge ». Autre option : garder la couleur de la phase pour l'encadré et retirer ces deux critères de US-038.
+- Q13 · Valeurs à plus de 1 px de l'échelle (US-039) : titre de frise 30 px, titre de popup 22 px, rayons 8 px (boutons, étapes) et 12 px (couloirs, chronologie), 16 px, 10,5 px. La règle « pas de changement au-delà de 1 px » les exclut. Option recommandée : les aligner sur la maquette d'identité validée (32 px, 24 px, rayons 6 px et 10 px), soit 2 px d'écart visible, noté au journal. Autre option : les laisser en dur.
+- Q14 · Deux écarts de la maquette, hors du périmètre demandé pour US-038. La croix de fermeture de la popup mesure 36 px (40 px dans la maquette et la règle de US-021). La couleur de « Parade » varie (verte dans le roll-out, rouge ailleurs), point ouvert depuis le lot 2. Option recommandée : passer la croix à 40 px dans US-038 (accessibilité, effort faible) ; laisser « Parade » telle quelle. Autre option : les traiter plus tard.
 
 ## Journal du backlog
 
@@ -1150,3 +1213,4 @@ Journal
 - 2026-11-24 · Walid · script de narration retiré du site (« il sert à rien ») : manifeste, accueil, PDF et aperçu ; sous-titre des supports annexes adapté. Récupérable dans l'historique git.
 - 2026-11-24 · Walid · cartes de frise de l'accueil : le nom seul de l'entreprise (« Nordval (fictif) ») ne disait pas qu'il s'agit d'un exemple ; remplacé par une ligne « Exemple : Calvane (fictif), fabricant de pompes » sous la description, tirée du JSON de chaque frise ; pas de durée, à la demande de Walid. Non publié.
 - 2026-11-24 · session principale · Suite du rapport persona-pm du lot 3 (rapports/2026-11-24-lot-3-identite-jalon.md), sur accord de Walid : « Frises » renommées « Scénarios de mise en œuvre » / « Implementation scenarios » (choix d'expert SAP demandé par Walid) ; mot « Jalon » visible sur téléphone et dans le lecteur ; vignettes sans lignes grises ; bouton « Glossaire » en icône sur téléphone ; « (fictif) » dans les popups et entreprises fictives nommées en pied d'accueil ; « Pour le directeur de programme » ; ® sur la signature de l'en-tête ; étiquette « Pratique » en gris ardoise ; CLAUDE.md à jour ; schéma des rôles ajouté aux captures (48 par langue) ; image de partage refaite. Pas d'« À propos » pour l'instant (Walid). Non publié.
+- 2026-11-24 · po · Bloc E « Finitions » écrit, après US-037 : US-038 retouches de la frise sur bureau (M, écran 5 de la maquette, Q9) et US-039 échelle de tailles et rayons sur les frises, le lecteur et le glossaire (S, Q11), en « Validée » sur la décision de Walid (Q9 / Q11). B-002 couvert par US-019 à US-039. Questions ouvertes : Q12 (ambre de l'exemple fil rouge contre la règle de CLAUDE.md), Q13 (valeurs à plus de 1 px de l'échelle), Q14 (croix de popup à 40 px, couleur de « Parade »). Suite : Walid tranche Q12 avant les critères d'encadré de US-038 ; US-039 se développe après US-038.
