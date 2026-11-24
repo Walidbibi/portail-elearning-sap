@@ -83,6 +83,10 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
   <p class="sec-sub" data-t="accueil.parcoursSousTitre"></p>
   <ol class="path" id="path"></ol>
 
+  <h2 data-t="accueil.certificationTitre"></h2>
+  <p class="sec-sub" data-t="accueil.certificationSousTitre"></p>
+  <div class="cards" id="certification"></div>
+
   <h2 data-t="accueil.frisesTitre"></h2>
   <p class="sec-sub" data-t="accueil.frisesSousTitre"></p>
   <div class="cards" id="frises"></div>
@@ -110,6 +114,7 @@ const card=key=>{const d=M.doc(key);if(!d)return '';
   const ligne=d.enFrancais?`<span class="kline">${kind}<span class="infr" lang="en">${T('documents.enFrancais')}</span></span>`:kind;
   return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="thumb">${apercu(d)}</span><span class="cbody">${ligne}<b>${d.titre}</b><span class="d">${d.description}</span></span></a>`;};
 document.getElementById('path').innerHTML=M.section('parcours').map(k=>`<li>${card(k)}</li>`).join('');
+document.getElementById('certification').innerHTML=M.section('certification').map(card).join('');
 document.getElementById('frises').innerHTML=M.section('frises').map(card).join('');
 document.getElementById('other').innerHTML=M.section('autres').map(card).join('');
 });

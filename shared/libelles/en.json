@@ -8,6 +8,8 @@
     "intro": "All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.",
     "parcoursTitre": "Recommended path",
     "parcoursSousTitre": "From the big picture to day-to-day delivery.",
+    "certificationTitre": "SAP Activate Certification",
+    "certificationSousTitre": "Revision books for the ACT100 and ACT200 certifications.",
     "frisesTitre": "Timelines, from A to Z",
     "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, how AI helps, and the main failure risks.",
     "autresTitre": "Other resources",

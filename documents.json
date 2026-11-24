@@ -4,9 +4,11 @@
     "parcours": [
       "synth",
       "mig",
-      "act",
-      "act2",
       "fiche"
+    ],
+    "certification": [
+      "act",
+      "act2"
     ],
     "frises": [
       "rollout",
