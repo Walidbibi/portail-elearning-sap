@@ -22,7 +22,7 @@
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title data-t="accueil.titreOnglet"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="shared/theme.css?v=202611242114">
+<link rel="stylesheet" href="shared/theme.css?v=202611242116">
 <style>
 /* Accueil de Jalon : bandeau d'entrée, grilles à 4 colonnes, lignes ; téléphone compact (US-032 à US-034). Couleurs : shared/theme.css. */
 *{box-sizing:border-box}
@@ -78,7 +78,7 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 .fthumb .ph i{display:grid;place-items:center;height:20px;border-radius:3px;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ph-ink);overflow:hidden;white-space:nowrap;min-width:0}
 .fthumb .bars{display:flex;flex-direction:column;gap:4px}
 .fthumb .bars s{display:block;height:6px;border-radius:3px;background:var(--line)}
-.fthumb .ex{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.card .exemple{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:var(--t-13);color:var(--muted);line-height:1.4}
 /* lignes : certification et annexes */
 .rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);overflow:hidden}
 .rows li+li{border-top:1px solid var(--line)}
@@ -172,10 +172,10 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611242114"></script>
-<script src="shared/documents.js?v=202611242114"></script>
-<script src="shared/entete.js?v=202611242114"></script>
-<script src="shared/glossaire.js?v=202611242114"></script>
+<script src="shared/libelles.js?v=202611242116"></script>
+<script src="shared/documents.js?v=202611242116"></script>
+<script src="shared/entete.js?v=202611242116"></script>
+<script src="shared/glossaire.js?v=202611242116"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(async([T,M])=>{
 const en=window.SAP_LANGUE==='en';
@@ -197,14 +197,17 @@ const frises=M.section('frises');
 document.getElementById('ct-frises').textContent=T('accueil.compteDemarches',{n:frises.length});
 const contenus=await Promise.all(frises.map(k=>{const f=M.doc(k).fichier.replace(/\.html$/,'');return (en?lire(f+'.en.json'):Promise.resolve(null)).then(j=>j||lire(f+'.json'));}));
 document.getElementById('frises').innerHTML=frises.map((k,i)=>{const d=M.doc(k),F=contenus[i];if(!d)return '';
-  let vig='';
+  let vig='',exemple='';
   if(F){const C=F.couleurs||F.phases.map((_,p)=>p);
     const total=F.etenduePhases.reduce((s,[a,b])=>s+(b-a),0);
     // seul un segment assez large (30 % de la frise) porte son nom : pas de nom tronqué
     const ph=F.phases.map((p,j)=>{const [a,b]=F.etenduePhases[j];return `<i style="flex:${Math.max(b-a,.6).toFixed(2)};background:var(--c${C[j]})">${(b-a)/total>=.3?esc(p.name):''}</i>`;}).join('');
     const bars=[.15,.4,.7].map(x=>`<s style="width:${Math.round(40+x*55)}%;margin-left:${Math.round(x*35)}%"></s>`).join('');
-    vig=`<span class="fthumb" aria-hidden="true"><span class="ph">${ph}</span><span class="bars">${bars}</span><span class="ex">${esc(T('accueil.fictif',{nom:F.exemple.entreprise.split(',')[0]}))}</span></span>`;}
-  return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}">${vig}<span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a>`;}).join('');
+    // l'exemple fil rouge dit comme tel (« Exemple : Calvane (fictif), fabricant de pompes »)
+    const ex=T('accueil.exemple',{texte:F.exemple.description.split(', ').slice(0,2).join(', ')});
+    vig=`<span class="fthumb" aria-hidden="true"><span class="ph">${ph}</span><span class="bars">${bars}</span></span>`;
+    exemple=`<span class="exemple">${esc(ex)}</span>`;}
+  return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}">${vig}<span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span>${exemple}</span></a>`;}).join('');
 // certification et annexes : lignes sans aperçu
 const ligne=k=>{const d=M.doc(k);if(!d)return '';
   return `<li><a class="k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}>${kind(d)}<span class="t"><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span><span class="go" aria-hidden="true">→</span></a></li>`;};

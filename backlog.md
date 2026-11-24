@@ -1129,3 +1129,4 @@ Journal
 - 2026-11-24 · session principale · Bloc écrans livré : US-032 à US-037 en « À tester ». Non publié, comme le bloc identité. Restent à écrire par le PO : US-038 (retouches de la frise bureau, Q9) et la story de finition des tailles et rayons (Q11).
 - 2026-11-24 · Walid · blocs identité (US-026, US-028 à US-031) et écrans (US-032 à US-037) publiés (« Oui, publie »).
 - 2026-11-24 · Walid · script de narration retiré du site (« il sert à rien ») : manifeste, accueil, PDF et aperçu ; sous-titre des supports annexes adapté. Récupérable dans l'historique git.
+- 2026-11-24 · Walid · cartes de frise de l'accueil : le nom seul de l'entreprise (« Nordval (fictif) ») ne disait pas qu'il s'agit d'un exemple ; remplacé par une ligne « Exemple : Calvane (fictif), fabricant de pompes » sous la description, tirée du JSON de chaque frise ; pas de durée, à la demande de Walid. Non publié.

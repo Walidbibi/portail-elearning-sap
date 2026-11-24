@@ -23,8 +23,8 @@
     "stats": "{supports} supports · {frises} frises · {termes} termes · FR / EN",
     "compteEtapes": "{n} étapes",
     "compteDemarches": "{n} démarches",
-    "fictif": "{nom} (fictif)",
-    "autresSousTitre": "Pour s'entraîner avant un entretien."
+    "autresSousTitre": "Pour s'entraîner avant un entretien.",
+    "exemple": "Exemple : {texte}"
   },
   "glossaire": {
     "titre": "Glossaire",

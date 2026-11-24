@@ -23,8 +23,8 @@
     "stats": "{supports} resources · {frises} timelines · {termes} terms · FR / EN",
     "compteEtapes": "{n} steps",
     "compteDemarches": "{n} approaches",
-    "fictif": "{nom} (fictional)",
-    "autresSousTitre": "To practice before an interview."
+    "autresSousTitre": "To practice before an interview.",
+    "exemple": "Example: {texte}"
   },
   "glossaire": {
     "titre": "Glossary",
