@@ -1101,7 +1101,7 @@ Journal
 ### Bloc E · Finitions
 
 ### US-038 · Retouches de la frise sur bureau
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 5, frise greenfield, bureau)
@@ -1130,9 +1130,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée depuis l'écran 5 de la maquette d'identité (Q9)
 - 2026-11-24 · po · validée par Walid le 2026-11-24 (Q9 / Q11) ; statut « Validée ». Les deux critères d'encadré ambre attendent Q12.
+- 2026-11-24 · session principale · livrée : libellés d'étape toujours hors des barres (à droite ; à gauche si la barre commence après le go-live, si le libellé traverserait le go-live ou sortirait du dessin), vérifiés par calcul sur les 132 libellés des 8 fichiers FR et EN : aucun hors du dessin ; 8 libellés longs de barres courtes après le go-live passent forcément devant la ligne, interrompue derrière eux par un halo couleur de fond. Encadré « Exemple fil rouge · Calvane (fictif) » à filet ambre sur `--soft` ; bandeau d'exemple au-dessus de la frise avec le même filet. Titre en ambre de texte `--jalon-texte` (`#9A4708` en clair : 5,55:1 ; `#F2B05E` en sombre : 7,75:1), l'ambre de base n'atteignant que 4,35:1. Popup centrée dans la colonne de contenu quand le glossaire est épinglé (mesuré : centre 530 / 530). « Qui porte » en étiquette rectangulaire, libellé séparé (`frise.quiPorteLabel`). « Précédent » désactivé en pointillés, opacité 1 (5,89:1 et 7,14:1). Croix de fermeture 40 px (Q14). Aperçus FR et EN refaits. `node outils/verifier.mjs` sans erreur.
 
 ### US-039 · Finition : échelle de tailles et rayons
-- Statut : Validée
+- Statut : À tester
 - Priorité : basse (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : échelle déclarée par US-024)
@@ -1156,6 +1157,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée (Q11 : story de finition en fin de lot)
 - 2026-11-24 · po · validée par Walid le 2026-11-24 (Q9 / Q11) ; statut « Validée ». Les écarts de plus de 1 px attendent Q13.
+- 2026-11-24 · session principale · livrée : 83 tailles et rayons remplacés par les variables de l'échelle dans `frise.css` (49), `lecteur.html` (13) et `glossaire.js` (21). Q13 appliquée : titre de scénario 30 → 32 px, titre de popup 22 → 24 px, rayons 8 → 6 et 12 → 10 px, 16 → 17 px. Restent en dur : rayons de 2 à 4 px, lettres de 10 et 10,5 px (gates, étiquettes). Captures : accueil et schéma ne changent que de 88 pixels (coins du champ de recherche du glossaire, 8 → 6 px). `node outils/verifier.mjs` sans erreur.
 
 ### Questions du lot 3 (à trancher par Walid)
 
@@ -1215,3 +1217,4 @@ Journal
 - 2026-11-24 · session principale · Suite du rapport persona-pm du lot 3 (rapports/2026-11-24-lot-3-identite-jalon.md), sur accord de Walid : « Frises » renommées « Scénarios de mise en œuvre » / « Implementation scenarios » (choix d'expert SAP demandé par Walid) ; mot « Jalon » visible sur téléphone et dans le lecteur ; vignettes sans lignes grises ; bouton « Glossaire » en icône sur téléphone ; « (fictif) » dans les popups et entreprises fictives nommées en pied d'accueil ; « Pour le directeur de programme » ; ® sur la signature de l'en-tête ; étiquette « Pratique » en gris ardoise ; CLAUDE.md à jour ; schéma des rôles ajouté aux captures (48 par langue) ; image de partage refaite. Pas d'« À propos » pour l'instant (Walid). Non publié.
 - 2026-11-24 · po · Bloc E « Finitions » écrit, après US-037 : US-038 retouches de la frise sur bureau (M, écran 5 de la maquette, Q9) et US-039 échelle de tailles et rayons sur les frises, le lecteur et le glossaire (S, Q11), en « Validée » sur la décision de Walid (Q9 / Q11). B-002 couvert par US-019 à US-039. Questions ouvertes : Q12 (ambre de l'exemple fil rouge contre la règle de CLAUDE.md), Q13 (valeurs à plus de 1 px de l'échelle), Q14 (croix de popup à 40 px, couleur de « Parade »). Suite : Walid tranche Q12 avant les critères d'encadré de US-038 ; US-039 se développe après US-038.
 - 2026-11-24 · Walid · Q12 à Q14 : recommandations du PO retenues (« ok j'accepte ») : ambre réservé au jalon et au repère fil rouge (CLAUDE.md corrigé) ; valeurs à plus de 1 px alignées sur la maquette (titres 32 et 24 px, rayons 6 et 10 px) ; croix de fermeture des popups portée à 40 px dans US-038. « Parade » est déjà verte partout (décision antérieure), rien à faire.
+- 2026-11-24 · session principale · US-038 et US-039 livrées, en « À tester ». Non publiées, avec les corrections du test du lot 3.

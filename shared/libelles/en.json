@@ -101,13 +101,14 @@
     "risques": "Failure risks",
     "risque": "Risk · ",
     "parade": "Mitigation · ",
-    "dansExemple": "In the example · {entreprise}",
+    "dansExemple": "Running example · {entreprise}",
     "precedent": "← Previous",
     "suivant": "Next →",
     "erreur": "This scenario could not be loaded. Reload the page.",
     "glisser": "Swipe the timeline",
     "titreOnglet": "{page} · {portail}",
-    "fictif": "{nom} (fictional)"
+    "fictif": "{nom} (fictional)",
+    "quiPorteLabel": "Owner"
   },
   "langue": {
     "groupe": "Language",

@@ -13,7 +13,7 @@
   --bg:#F3F5F8;--surface:#FFFFFF;--soft:#EBEFF5;--line:#D5DBE4;
   --ink:#17202E;--muted:#5A6577;
   /* marque et accents (choix A) : sarcelle, bleu nuit de marque, ambre réservé au jalon */
-  --accent:#1B7287;--accent-soft:#E0F0F3;--marque:#16213A;--jalon:#B45309;
+  --accent:#1B7287;--accent-soft:#E0F0F3;--marque:#16213A;--jalon:#B45309;--jalon-texte:#9A4708;
   --mark:#FCE9B8;--focus:#C25E12;
   --marque-texte:#FFFFFF;--marque-doux:#B8C2D6;--marque-trait:#2A3754;--jalon-clair:#F2B05E;
   --mat:#E3E8EF;--filtre-apercu:none;
@@ -42,7 +42,7 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#12161D;--surface:#1B212B;--soft:#222936;--line:#323B49;
   --ink:#E9EDF3;--muted:#A3ADBD;
-  --accent:#5FC0D4;--accent-soft:#16303A;--marque:#0D1526;--jalon:#F2B05E;
+  --accent:#5FC0D4;--accent-soft:#16303A;--marque:#0D1526;--jalon:#F2B05E;--jalon-texte:#F2B05E;
   --mark:#5A4710;--focus:#F0A35E;
   --marque-texte:#FFFFFF;--marque-doux:#A9B4C8;--marque-trait:#26314A;--jalon-clair:#F2B05E;
   --mat:#151A22;--filtre-apercu:brightness(.82) contrast(1.05);
@@ -59,7 +59,7 @@
 :root[data-theme="dark"]{
   --bg:#12161D;--surface:#1B212B;--soft:#222936;--line:#323B49;
   --ink:#E9EDF3;--muted:#A3ADBD;
-  --accent:#5FC0D4;--accent-soft:#16303A;--marque:#0D1526;--jalon:#F2B05E;
+  --accent:#5FC0D4;--accent-soft:#16303A;--marque:#0D1526;--jalon:#F2B05E;--jalon-texte:#F2B05E;
   --mark:#5A4710;--focus:#F0A35E;
   --marque-texte:#FFFFFF;--marque-doux:#A9B4C8;--marque-trait:#26314A;--jalon-clair:#F2B05E;
   --mat:#151A22;--filtre-apercu:brightness(.82) contrast(1.05);

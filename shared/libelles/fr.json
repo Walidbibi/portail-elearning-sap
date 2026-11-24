@@ -101,13 +101,14 @@
     "risques": "Risques d'échec",
     "risque": "Risque · ",
     "parade": "Parade · ",
-    "dansExemple": "Dans l'exemple · {entreprise}",
+    "dansExemple": "Exemple fil rouge · {entreprise}",
     "precedent": "← Précédent",
     "suivant": "Suivant →",
     "erreur": "Ce scénario n'a pas pu se charger. Rechargez la page.",
     "glisser": "Faites glisser la chronologie",
     "titreOnglet": "{page} · {portail}",
-    "fictif": "{nom} (fictif)"
+    "fictif": "{nom} (fictif)",
+    "quiPorteLabel": "Qui porte"
   },
   "langue": {
     "groupe": "Langue",

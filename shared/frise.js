@@ -74,7 +74,10 @@ rows.forEach((k,i)=>{const [a,b,lab]=TL[k];const d=S[k];const p=d.p;const y=TOP+
   el('circle',{cx:xa,cy:y,r:16,class:'ic-bg'},g);
   el('path',{d:IC[k],transform:`translate(${xa-9} ${y-9}) scale(.75)`,class:'ic'},g);
   const est=lab.length*7.3;let tx,anchor='start';
-  if(xb-xa-26>est+8){tx=xa+24;}else if(xb+10+est<W-4){tx=Math.max(xb,xa+16)+10;}else{tx=xa-22;anchor='end';}
+  // libellé toujours hors de la barre : à droite, ou à gauche si la barre commence après le go-live,
+  // si le libellé traverserait la ligne du go-live, ou s'il sortirait du dessin
+  const xg=xm(G.mois),dr=Math.max(xb,xa+16)+10,coupe=dr<xg&&dr+est>xg-4,gauche=xa-22-est>2;
+  if((xa>=xg-2&&gauche)||dr+est>W-4||(coupe&&gauche)){tx=xa-22;anchor='end';}else{tx=dr;}
   const t=el('text',{x:tx,y:y+4.5,'text-anchor':anchor,class:'bl'},g);t.textContent=lab;
 });
 
@@ -95,7 +98,7 @@ function open(k,src){
   dlg.style.cssText=pcol(d.p);
   const ph=PH[d.p].name;
   const eb=k==='transverse'?T('frise.transverse'):(d.gate&&!d.n?T('frise.surtitreGate',{gate:nomGate,phase:ph}):T('frise.surtitreEtape',{n:d.n,phase:ph}));
-  body.innerHTML=`<div class="dlg-h"><div class="eyebrow">${esc(eb)}</div><h2 id="dlg-title">${esc(d.t)}</h2><p>${esc(d.obj)}</p><span class="owner">${esc(T('frise.quiPorte',{qui:d.own}))}</span></div>
+  body.innerHTML=`<div class="dlg-h"><div class="eyebrow">${esc(eb)}</div><h2 id="dlg-title">${esc(d.t)}</h2><p>${esc(d.obj)}</p><span class="owner"><span class="l">${esc(T('frise.quiPorteLabel'))}</span>${esc(d.own)}</span></div>
   <div class="grid"><section><h3>${esc(T('frise.activites'))}</h3>${list(d.act)}</section><section><h3>${esc(T('frise.prerequis'))}</h3>${list(d.pre)}</section><section><h3>${esc(T('frise.livrables'))}</h3>${list(d.liv)}</section></div>
   ${d.ai?`<div class="ai"><h3>${esc(T('frise.apportIA'))} <span class="gain">${esc(T('frise.gain',{gain:d.aig}))}</span></h3>${list(d.ai)}</div>`:''}
   <div class="risks"><h3>${esc(T('frise.risques'))}</h3>${d.r.map(r=>`<div class="risk"><div><span class="risk-l">${esc(T('frise.risque'))}</span>${esc(r[0])}</div><div><span class="risk-l">${esc(T('frise.parade'))}</span>${esc(r[1])}</div></div>`).join('')}</div>

@@ -19,38 +19,38 @@ const abs=u=>u.startsWith('http')?u:new URL(u,BASE).href;
 const tgt=u=>u.startsWith('http')?' target="_blank" rel="noopener"':'';
 const css=`
 :root{--gl-w:380px}
-#gl{position:fixed;top:0;right:0;bottom:0;width:var(--gl-w);background:var(--surface);color:var(--ink);border-left:1px solid var(--line);display:flex;flex-direction:column;z-index:15;font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.55}
+#gl{position:fixed;top:0;right:0;bottom:0;width:var(--gl-w);background:var(--surface);color:var(--ink);border-left:1px solid var(--line);display:flex;flex-direction:column;z-index:15;font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-size:var(--t-15);line-height:1.55}
 #gl *{box-sizing:border-box}
 body.gl-pinned{padding-right:var(--gl-w)}
 .gl-head{padding:18px 18px 10px;padding-top:max(18px,env(safe-area-inset-top,0px));padding-right:max(18px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line)}
-.gl-title{margin:0 0 10px;font-size:17px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.gl-count{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
-.gl-hide{all:unset;cursor:pointer;font-size:13px;color:var(--muted);padding:0 10px;min-height:40px;display:inline-flex;align-items:center;border-radius:6px}
+.gl-title{margin:0 0 10px;font-size:var(--t-17);font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.gl-count{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:var(--t-12);color:var(--muted);font-weight:500;margin-left:6px}
+.gl-hide{all:unset;cursor:pointer;font-size:var(--t-13);color:var(--muted);padding:0 10px;min-height:40px;display:inline-flex;align-items:center;border-radius:var(--r-6)}
 .gl-hide:hover{background:var(--soft);color:var(--ink)}
-#gl-q{width:100%;font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+#gl-q{width:100%;font:inherit;font-size:var(--t-15);padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-6);background:var(--bg);color:var(--ink)}
 .gl-chips{display:flex;flex-wrap:nowrap;gap:6px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
-.gl-chip{all:unset;box-sizing:border-box;cursor:pointer;flex:none;min-height:40px;display:inline-flex;align-items:center;font-size:13px;padding:0 12px;border-radius:var(--r-pastille);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.gl-chip{all:unset;box-sizing:border-box;cursor:pointer;flex:none;min-height:40px;display:inline-flex;align-items:center;font-size:var(--t-13);padding:0 12px;border-radius:var(--r-pastille);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
 .gl-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
 .gl-chip[aria-pressed="true"]::before{content:"✓";margin-right:6px}
 .gl-list{overflow-y:auto;flex:1;padding:6px 10px 24px;padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
-.gl-letter{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);padding:12px 8px 4px;position:sticky;top:0;background:var(--surface)}
+.gl-letter{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:var(--t-12);color:var(--muted);padding:12px 8px 4px;position:sticky;top:0;background:var(--surface)}
 .gl-term-btn{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:block;padding:8px}
-.gl-term-btn:hover{background:var(--soft);border-radius:8px}
+.gl-term-btn:hover{background:var(--soft);border-radius:var(--r-6)}
 .gl-term-btn b{font-weight:600}
-.gl-f{color:var(--muted);font-size:13px;margin-left:6px}
-.gl-fr{display:inline-flex;align-items:baseline;gap:5px;color:var(--muted);font-size:13px;margin-left:6px}
+.gl-f{color:var(--muted);font-size:var(--t-13);margin-left:6px}
+.gl-fr{display:inline-flex;align-items:baseline;gap:5px;color:var(--muted);font-size:var(--t-13);margin-left:6px}
 .gl-fr i{font-style:normal;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.05em;border:1px solid var(--line);border-radius:3px;padding:0 4px;line-height:15px}
 .gl-link .infr{margin-left:6px;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 5px;line-height:16px;white-space:nowrap}
-.gl-body{padding:0 8px 12px;font-size:14px}
+.gl-body{padding:0 8px 12px;font-size:var(--t-14)}
 .gl-body p{margin:0 0 6px}
-.gl-dp{background:var(--accent-soft);border-radius:8px;padding:7px 10px;font-size:13.5px}
-.gl-dp-l{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.gl-dp{background:var(--accent-soft);border-radius:var(--r-6);padding:7px 10px;font-size:var(--t-14)}
+.gl-dp-l{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:var(--t-12);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
 .gl-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.gl-link{font-size:12.5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-height:40px;display:inline-flex;align-items:center;box-sizing:border-box}
+.gl-link{font-size:var(--t-13);text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:var(--r-6);padding:0 10px;min-height:40px;display:inline-flex;align-items:center;box-sizing:border-box}
 .gl-link:hover{border-color:var(--accent)}
 #gl mark{background:var(--mark);color:inherit;border-radius:2px}
-.gl-empty{color:var(--muted);padding:16px 8px;font-size:14px}
-#gl-open{all:unset;cursor:pointer;position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:14;background:var(--ink);color:var(--surface);font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-weight:600;font-size:15px;padding:11px 16px;border-radius:24px;box-shadow:var(--shadow)}
+.gl-empty{color:var(--muted);padding:16px 8px;font-size:var(--t-14)}
+#gl-open{all:unset;cursor:pointer;position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:14;background:var(--ink);color:var(--surface);font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-weight:600;font-size:var(--t-15);padding:11px 16px;border-radius:var(--r-pastille);box-shadow:var(--shadow)}
 #gl :focus-visible,#gl-open:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 body.gl-pinned #gl-open{display:none}
 #gl-open{display:inline-flex;align-items:center;gap:8px}
