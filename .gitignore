@@ -1,3 +1,7 @@
 .claude/*
 !.claude/agents/
 .DS_Store
+
+# Captures de référence (outils/captures/LISEZMOI.md), locales uniquement
+outils/captures/reference/
+outils/captures/apres/
