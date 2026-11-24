@@ -109,6 +109,7 @@ Ce que je voudrais pouvoir faire : suivre un flux simple (de la commande d'achat
 
 Suivi
 - 2026-11-24 · persona-pm · besoin exprimé
+- 2026-11-24 · Walid · en cours de son côté : il prépare des schémas explicatifs des flux logistiques. Pas de story à créer avant leur livraison ; à intégrer comme le schéma des rôles (contrôle des informations client, version FR et EN).
 
 ### B-008 · Comparer les quatre scénarios côte à côte
 - Source : persona-pm
