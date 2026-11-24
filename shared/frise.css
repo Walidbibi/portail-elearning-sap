@@ -74,7 +74,7 @@ h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:7
 .risk{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding:9px 0;font-size:14px}
 .risk div:first-child{color:var(--risk);font-weight:500}
 .risk-l{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
-.risk div:last-child .risk-l{color:var(--c4)}
+.risk div:last-child .risk-l{color:var(--parade,var(--c4))}
 @media (max-width:1000px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.fail{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:620px){.flow,.fail{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.risk{grid-template-columns:1fr;gap:2px}h1{font-size:25px}}
 @media (prefers-reduced-motion:reduce){.step{transition:none}.step:hover{transform:none}}

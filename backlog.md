@@ -205,7 +205,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `frises/brownfield.json` (Ternova) et `frises/bluefield.json` (Alvéa), extraits par script ; les deux pages sont la page courte du greenfield avec leur fichier de contenu. Aucun changement du gabarit nécessaire. Captures : 44 sur 44 identiques. Comparaison ancienne / nouvelle page pour chaque frise : 22 popups, navigation, clavier, bandeau, titres, textes et formes de la chronologie : aucune différence. Aucune erreur en console. Suite : US-007.
 
 ### US-007 · Frise roll-out sur le gabarit
-- Statut : Validée
+- Statut : Prête à publier
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : non
@@ -215,17 +215,18 @@ Journal
 En tant que Walid, je veux que la frise roll-out utilise aussi le gabarit afin que les quatre frises partagent le même code.
 
 Critères d'acceptation
-- [ ] Le gabarit accepte un nombre de phases variable (cinq pour le roll-out, six pour SAP Activate).
-- [ ] Le gabarit accepte des gates nommées autrement que « Quality gate » (G1 à G3 pour le roll-out), avec leur libellé dans le JSON.
-- [ ] Le contenu du roll-out est dans son fichier JSON.
-- [ ] L'adresse `frises/rollout.html` reste valide.
-- [ ] Le `CLAUDE.md` décrit le format JSON d'une frise et la marche à suivre pour en ajouter une.
-- [ ] Rendu identique aux captures de US-001, popups comprises.
-- [ ] Les quatre frises sont de nouveau comparées aux captures en fin de story.
+- [x] Le gabarit accepte un nombre de phases variable (cinq pour le roll-out, six pour SAP Activate).
+- [x] Le gabarit accepte des gates nommées autrement que « Quality gate » (G1 à G3 pour le roll-out), avec leur libellé dans le JSON.
+- [x] Le contenu du roll-out est dans son fichier JSON.
+- [x] L'adresse `frises/rollout.html` reste valide.
+- [x] Le `CLAUDE.md` décrit le format JSON d'une frise et la marche à suivre pour en ajouter une.
+- [x] Rendu identique aux captures de US-001, popups comprises.
+- [x] Les quatre frises sont de nouveau comparées aux captures en fin de story.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `frises/rollout.json` (Nordval, 5 phases, gates G1 à G3) ; le gabarit accepte trois réglages facultatifs : `nomGate` (« Gate de passage »), `couleurs` (couleur de chaque phase dans la palette), `couleurParade`. `rollout.html` est la page courte commune. Écart de l'original conservé : dans le roll-out, l'étiquette « Parade » est verte ; elle est rouge dans les trois autres frises. À trancher par Walid. Comparaison ancienne / nouvelle page : 19 étapes, navigation, clavier, bandeau, textes, formes et couleurs calculées de la chronologie et des popups : aucune différence. Comparaison finale des quatre frises et de toutes les pages : 44 captures sur 44 identiques. L'outil de capture attend désormais les cartes de l'accueil et répète le chargement des aperçus (faux écarts intermittents sur l'accueil, stable sur trois passages). CLAUDE.md décrit le format JSON d'une frise et l'ajout d'une frise. Suite : US-008.
 
 ### US-008 · Contrôle automatique des fichiers de données
 - Statut : Validée
@@ -482,3 +483,4 @@ Journal
 - 2026-11-24 · session principale · US-004 livrée, en « Prête à publier ». Suite : US-005 (gabarit de frise, greenfield).
 - 2026-11-24 · session principale · US-005 livrée, en « Prête à publier ». Suite : US-006 (brownfield et bluefield sur le gabarit).
 - 2026-11-24 · session principale · US-006 livrée, en « Prête à publier ». Suite : US-007 (roll-out sur le gabarit).
+- 2026-11-24 · session principale · US-007 livrée, en « Prête à publier ». Les quatre frises partagent le gabarit. Suite : US-008 (contrôle automatique des fichiers de données).

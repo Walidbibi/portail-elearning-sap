@@ -3,387 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}.back{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px}.back:hover{color:var(--ink)}.back:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}</style>
-<title>Démarche roll-out SAP</title>
+<title></title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-<style>
-/* Layout: a left-to-right flow of five phase lanes; each step is a card that opens a detail popup. */
-:root{
-  --bg:#F3F5F8;--surface:#FFFFFF;--ink:#17202E;--muted:#5A6577;--line:#D5DBE4;
-  --c0:#56657D;--c1:#1B7287;--c2:#A86E12;--c3:#AF4234;--c4:#2B7549;
-  --t0:#E9EDF3;--t1:#E0F0F3;--t2:#F7EEDC;--t3:#F7E3E0;--t4:#E1F0E6;
-  --gate:#17202E;--gate-ink:#FFFFFF;--aibg:#ECE9F7;--aiink:#4E3F99;--risk:#AF4234;--focus:#E07A2F;
-  --shadow:0 18px 50px rgba(17,26,40,.28);
-  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
-  --c0:#9AA8BE;--c1:#5FC0D4;--c2:#E3AE52;--c3:#EC8A7C;--c4:#6CC58F;
-  --t0:#222936;--t1:#16303A;--t2:#33291A;--t3:#3A2220;--t4:#183224;
-  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#12161D;--surface:#1B212B;--ink:#E9EDF3;--muted:#A3ADBD;--line:#323B49;
-  --c0:#9AA8BE;--c1:#5FC0D4;--c2:#E3AE52;--c3:#EC8A7C;--c4:#6CC58F;
-  --t0:#222936;--t1:#16303A;--t2:#33291A;--t3:#3A2220;--t4:#183224;
-  --gate:#E9EDF3;--gate-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;--shadow:0 18px 50px rgba(0,0,0,.55);color-scheme:dark}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
-.wrap{max-width:1280px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1{font-size:30px;line-height:1.2;margin:0 0 8px;text-wrap:balance;font-weight:700}
-.lede{color:var(--muted);max-width:72ch;margin:0 0 20px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
-.lane{background:var(--tint);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.lane header{padding:2px 4px 6px;border-bottom:2px solid var(--col);margin-bottom:2px}
-.lane h2{font-size:17px;margin:0;color:var(--col)}
-.lane .eq{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.step{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;transition:transform .12s,border-color .12s}
-.step:hover{border-color:var(--col);transform:translateY(-1px)}
-.step:focus-visible,.gate:focus-visible,.band:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.num{font-family:var(--mono);font-size:13px;color:var(--col);font-weight:500;padding-top:1px}
-.step b{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
-.step small{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin-top:3px}
-.gate{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:8px;background:var(--gate);color:var(--gate-ink);border-radius:8px;padding:8px 10px;font-size:13px;font-weight:600}
-.gate::before{content:"";width:10px;height:10px;transform:rotate(45deg);background:var(--gate-ink);flex:none}
-.band{all:unset;box-sizing:border-box;cursor:pointer;display:inline-block;margin-top:14px;background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
-.band b{font-weight:600}.band span{color:var(--muted)}
-.note{margin-top:22px;font-size:13px;color:var(--muted);max-width:90ch}
-/* popup */
-.ov{position:fixed;inset:0;background:rgba(10,15,25,.5);z-index:20;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:center}
-.ov[hidden]{display:none}
-.dlg{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:100%;max-width:820px;max-height:100%;overflow:auto;position:relative;border-top:6px solid var(--col)}
-.dlg-h{padding:20px 56px 12px 24px}
-.dlg-h .eyebrow{color:var(--col)}
-.dlg-h h2{margin:4px 0 6px;font-size:22px;line-height:1.25;text-wrap:balance}
-.dlg-h p{margin:0;max-width:70ch}
-.owner{display:inline-block;margin-top:10px;font-size:12.5px;background:var(--tint);color:var(--ink);border-radius:20px;padding:3px 10px}
-.x{all:unset;cursor:pointer;position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-size:24px;color:var(--muted)}
-.x:hover,.x:focus-visible{background:var(--bg);color:var(--ink)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;padding:4px 24px 8px}
-.grid section{min-width:0}
-.grid h3,.risks h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px;font-weight:500}
-.grid ul{margin:0;padding-left:18px}.grid li{margin:0 0 4px}
-.ai{margin:8px 24px 4px;background:var(--aibg);border-radius:10px;padding:2px 16px 10px}
-.ai h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--aiink);margin:12px 0 6px;font-weight:500;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.ai ul{margin:0;padding-left:18px}.ai li{margin:0 0 4px}
-.gain{font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:12px;background:var(--surface);color:var(--ink);border-radius:20px;padding:1px 9px}
-.risks{padding:0 24px 16px}
-.ex{margin:0 24px 22px;border-left:4px solid var(--col);background:var(--tint);border-radius:0 10px 10px 0;padding:2px 16px 10px}
-.ex h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--col);margin:12px 0 4px;font-weight:500}
-.ex p{margin:0}
-.startb,.nb{all:unset;box-sizing:border-box;cursor:pointer;background:var(--gate);color:var(--gate-ink);border-radius:8px;padding:9px 14px;font-weight:600;font-size:14px}
-.startb:focus-visible,.nb:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.nav{position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 24px;background:var(--surface);border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
-.nb{font-family:var(--sans)}
-.nb[disabled]{opacity:.35;cursor:default}
-.risk{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding:9px 0;font-size:14px}
-.risk div:first-child{color:var(--risk);font-weight:500}
-.risk div:first-child::before{content:"Risque · ";font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
-.risk div:last-child::before{content:"Parade · ";font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--c4)}
-@media (max-width:1000px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.fail{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.flow,.fail{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.risk{grid-template-columns:1fr;gap:2px}h1{font-size:25px}}
-@media (prefers-reduced-motion:reduce){.step{transition:none}.step:hover{transform:none}}
-.tl-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
-#tl{display:block;width:100%;min-width:980px;height:auto}
-#tl text{font-family:var(--sans)}
-#tl .ph{fill:#fff;font-size:14px;font-weight:600}
-#tl .mo{fill:var(--muted);font-size:12px;font-family:var(--mono)}
-#tl .grid{stroke:var(--line);stroke-width:1}
-#tl .golive{stroke:var(--c3);stroke-width:3}
-#tl .flag{fill:var(--c3)}
-#tl .gline{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 4;opacity:.6}
-#tl .gate-d{fill:var(--gate)}
-#tl .gl-t{fill:var(--gate-ink);font-size:10px;font-weight:700}
-#tl .b{fill:var(--tint);stroke:var(--col);stroke-width:1.5}
-#tl .ic-bg{fill:var(--col)}
-#tl .ic{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-#tl .bl{fill:var(--ink);font-size:13.5px;font-weight:600}
-#tl .hot{cursor:pointer;outline:none}
-#tl .hot:hover .b,#tl .hot:focus-visible .b{stroke-width:3}
-#tl .hot:hover .ic-bg,#tl .hot:focus-visible .ic-bg{stroke:var(--focus);stroke-width:3}
-#tl .hot:focus-visible .gate-d,#tl .hot:hover .gate-d{stroke:var(--focus);stroke-width:3}
-.legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 2px 0;font-size:13px;color:var(--muted)}
-.legend i{display:inline-block;vertical-align:-2px;margin-right:6px}
-.lg-bar{width:26px;height:12px;border-radius:6px;border:1.5px solid var(--c2);background:var(--t2)}
-.lg-gate{width:11px;height:11px;transform:rotate(45deg);background:var(--gate)}
-.lg-gl{width:3px;height:14px;background:var(--c3)}
-.fail{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.fail h3{flex-basis:100%;margin:0 0 4px;font-size:16px}
-.fail span{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:13.5px}
-.fail span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--risk);margin-right:8px;vertical-align:1px}
-.story{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:0 0 14px}
-</style>
+<link rel="stylesheet" href="../shared/frise.css">
 </head>
 <body>
 
-
+<!-- Page de frise : le contenu vient de rollout.json, l'affichage de shared/frise.js. -->
 <div class="wrap">
-  <button type="button" class="back" onclick="history.length>1?history.back():(location.href='../')">← Portail</button>
-  <div class="eyebrow">Déploiement d'un core model, site par site</div>
-  <h1>La démarche d'un roll-out SAP, de A à Z</h1>
-  <p class="lede">Cliquez sur une barre, une gate ou le go-live pour ouvrir le détail.</p>
+  <button type="button" class="back" onclick="history.length>1?history.back():(location.href='../')" data-t="frise.retour"></button>
+  <div class="eyebrow" id="f-surtitre"></div>
+  <h1 id="f-titre"></h1>
+  <p class="lede" id="f-intro"></p>
   <div class="story">
-    <span><b>Exemple fil rouge :</b> Nordval (fictif), entrepôt de Porto</span>
-    <button type="button" class="startb" id="start">Suivre l'exemple pas à pas →</button>
+    <span id="f-exemple"><b data-t="frise.exempleFilRouge"></b></span>
+    <button type="button" class="startb" id="start" data-t="frise.suivreExemple"></button>
   </div>
-  <div class="tl-wrap"><svg id="tl" role="img" aria-label="Chronologie du roll-out : phases, étapes et gates de M-8 à M+2"></svg></div>
+  <div class="tl-wrap"><svg id="tl" role="img"></svg></div>
   <div class="legend">
-    <span><i class="lg-bar"></i>Étape</span><span><i class="lg-gate"></i>Gate de passage</span><span><i class="lg-gl"></i>Go-live</span>
+    <span><i class="lg-bar"></i><span data-t="frise.legendeEtape"></span></span><span><i class="lg-gate"></i><span id="f-legende-gate" data-t="frise.legendeGate"></span></span><span><i class="lg-gl"></i><span data-t="frise.legendeGolive"></span></span>
   </div>
-  <button class="band" id="band" data-k="transverse" type="button"><b>En continu :</b> <span>gouvernance, risques, conduite du changement</span></button>
-  <div class="fail">
-    <h3>Les 5 causes d'échec les plus fréquentes</h3>
-    <span>Core model instable</span><span>Site peu impliqué</span><span>Données sales</span><span>Tests compressés</span><span>Go sous pression</span>
+  <button class="band" id="band" data-k="transverse" type="button"><b data-t="frise.enContinu"></b> <span id="f-continu"></span></button>
+  <div class="fail" id="f-causes">
+    <h3 id="f-causes-titre"></h3>
   </div>
-  <p class="note">Démarche générique et durées indicatives, à adapter à la méthode du programme.</p>
+  <p class="note" id="f-note"></p>
 </div>
 
 <div class="ov" id="ov" hidden>
   <div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
-    <button class="x" id="x" type="button" aria-label="Fermer">×</button>
+    <button class="x" id="x" type="button" data-t-aria="frise.fermer">×</button>
     <div id="dlg-body"></div>
   </div>
 </div>
 
-<script>
-const PH=[
- {id:0,name:"Cadrage",eq:"Prepare (programme)"},
- {id:1,name:"Diagnose",eq:"Prepare · Explore"},
- {id:2,name:"Adjust",eq:"Realize"},
- {id:3,name:"Deploy",eq:"Deploy"},
- {id:4,name:"Run",eq:"Run"}
-];
-const S={
-s1:{p:0,n:"01",t:"Plan de vagues",s:"Quels sites, dans quel ordre, avec quelles ressources",
- obj:"Décider quels sites passent sur le core model, dans quel ordre et avec quelles ressources.",
- act:["Inventaire des sites : taille, complexité, criticité","Regroupement des sites en vagues","Choix d'un site pilote","Capacité de l'équipe de déploiement","Périodes interdites : clôtures, pics d'activité, congés"],
- pre:["Core model stable et en production sur au moins un site","Sponsor et budget du programme","Gouvernance du roll-out en place : comités, design authority, change board"],
- liv:["Plan de vagues","Organisation du roll-out","Budget par vague"],
- ai:["Analyser les données des sites (volumes, articles, complexité) pour les classer et former les vagues", "Simuler plusieurs plans de vagues et leur charge sur l'équipe"],aig:"Moyen",ex:"Nordval a six sites à déployer. Lyon, le site pilote, tourne sur le core model depuis six mois. Porto est choisi pour la vague 2 : taille moyenne, processus proches de Lyon. Mexico, plus complexe, passe en vague 3. Go-live visé le 15 mars : décembre est exclu à cause de la clôture annuelle, l'été à cause des congés.",own:"Direction du programme côté client, avec l'intégrateur",
- r:[["Core model encore instable : chaque site paie les corrections","Geler une version du core model par vague"],["Vagues trop ambitieuses, plusieurs gros sites en parallèle : équipe saturée","Limiter les sites en parallèle, commencer par un pilote simple"],["Calendrier métier ignoré : go-live en pleine clôture","Intégrer les périodes interdites dès le plan"]]},
-s2:{p:1,n:"02",t:"Site Readiness Assessment",s:"Le site est-il prêt, critère par critère ?",
- obj:"Mesurer si le site peut recevoir la solution : processus, données, infrastructure, personnes, interfaces, contraintes de bascule.",
- act:["Visite et entretiens sur site","Évaluation de chaque critère en vert, orange ou rouge","Plan d'actions avec un responsable et une date par action"],
- pre:["Grille d'évaluation standard du programme","Interlocuteurs du site nommés : directeur de site, process owners locaux","Accès aux données et à l'infrastructure du site"],
- liv:["Rapport de readiness signé","Plan d'actions"],
- ai:["Pré-remplir la grille à partir des extractions du site : qualité des données, volumétrie", "Process mining (ex. SAP Signavio) : voir comment le site travaille vraiment, pas ce qu'il déclare"],aig:"Fort",ex:"Trois jours sur place. Processus : vert. Données : orange, 18 % des articles sans unité d'emballage. Infrastructure : rouge, pas de WiFi dans la zone de stockage extérieure. Personnes : orange, un seul key user pour trois processus. Actions : audit WiFi avant fin octobre (IT de Porto), deux key users de plus nommés par le directeur de site.",own:"Équipe roll-out et direction du site",
- r:[["Évaluation déclarative, « tout va bien » : surprises au build","Vérifier sur preuves : extraction de données, test WiFi réel"],["Actions sans responsable ni date : elles restent rouges jusqu'au go-live","Suivre chaque action en comité"],["Site peu impliqué, puis indisponible","Faire signer le rapport par le directeur de site"]]},
-s3:{p:1,n:"03",t:"Analyse des écarts",s:"Core model face au site : adopter, adapter, refuser",
- obj:"Confronter le fonctionnement du site au core model et décider pour chaque écart.",
- act:["Ateliers fit-to-standard avec les key users locaux, démonstration du core model","Liste des écarts : légaux, métier, organisation","Décision par écart : standard, paramétrage, développement ou refus","Passage en design authority ou en change board pour les écarts qui touchent le core model"],
- pre:["Core model documenté : processus, paramétrage, développements","Key users du site disponibles et autorisés à décider","Règles de gestion des écarts : qui décide quoi"],
- liv:["Registre des écarts validé","Spécifications des deltas"],
- ai:["Comparer les processus réels du site au core model et pré-classer les écarts", "Retrouver si un écart similaire a déjà été traité sur un autre site"],aig:"Moyen à fort",ex:"Quatre ateliers, onze écarts. Les étiquettes douanières portugaises sont obligatoires : écart accepté, un formulaire sera développé. Le site veut garder son repérage des emplacements par couleur : refusé, le standard EWM fait la même chose autrement. Une règle de rangement que Porto propose pour tous les sites part en design authority. Bilan : six acceptés, quatre refusés, un en arbitrage.",own:"Process owners et design authority",
- r:[["Le site recrée son ancien fonctionnement à coups d'écarts : explosion du spécifique","Exiger une justification légale ou chiffrée pour chaque écart"],["Écarts découverts seulement en recette : retards","Travailler les processus de bout en bout, pas seulement les écrans"],["Écart local intégré au core model sans arbitrage : régression sur les autres sites","Passage obligatoire en design authority"]]},
-s4:{p:1,n:"04",t:"Baseline du site",s:"Périmètre, planning, budget et équipe figés",
- obj:"Figer le périmètre, le planning, le budget et l'équipe du site.",
- act:["Chiffrage des deltas, des données, des tests et de la formation","Planning détaillé avec jalons et gates","Staffing","Commandes ou contrats avec les fournisseurs"],
- pre:["Registre des écarts validé","Capacité des équipes connue","Périodes interdites confirmées"],
- liv:["Plan de projet du site","Budget","Engagements des fournisseurs"],
- ai:["Chiffrage assisté à partir de l'historique des sites précédents", "Repérer dans le planning les tâches sous-estimées par rapport aux sites passés"],aig:"Moyen",ex:"Chiffrage : 180 jours pour les six écarts, 60 pour les données, 90 pour les tests, 40 pour la formation. Planning de sept mois jusqu'au 15 mars. Le fournisseur signe son engagement sur les six écarts validés seulement ; l'écart en design authority est provisionné à part.",own:"Chef de projet du site et fournisseurs",
- r:[["Chiffrage sur des écarts encore flous : dérive","Chiffrer seulement les écarts mûrs, provisionner le reste"],["Planning qui écrase les tests pour tenir la date : bugs en production","Protéger la durée des tests dans le planning"],["Engagement fournisseur signé avant validation des écarts : le fournisseur absorbe","Conditionner l'engagement à la baseline validée"]]},
-g1:{p:1,gate:1,t:"Gate 1 · Fin de Diagnose",s:"",
- obj:"Autoriser le passage en Adjust : le site est compris, le périmètre figé, le plan financé.",
- act:["Revue du rapport de readiness et du plan d'actions","Revue du registre des écarts","Approbation de la baseline en comité"],
- pre:["Aucun rouge bloquant au SRA, ou un plan crédible pour le lever","Écarts validés et signés","Baseline approuvée"],
- liv:["Décision de passage tracée, avec ses conditions"],
- ai:["Consolider automatiquement l'état des critères de la gate"],aig:"Faible",ex:"Le comité autorise le passage en Adjust avec une condition : le WiFi, encore rouge, a un plan d'action financé et sera revu à la gate 2.",own:"Comité de pilotage",
- r:[["Gate passée « sous conditions » sans suivi des conditions","Chaque condition a un responsable, une date et un suivi en comité"]]},
-s5:{p:2,n:"05",t:"Build des deltas",s:"Paramétrage du site, développements, interfaces",
- obj:"Adapter la solution au site.",
- act:["Paramétrage de l'organisation du site : société, usine, entrepôt, emplacements","Développement des écarts acceptés","Interfaces locales","Tests unitaires"],
- pre:["Spécifications validées","Environnements de développement et circuit de transport disponibles","Version du core model gelée"],
- liv:["Paramétrage et développements livrés en qualification","Tests unitaires documentés"],
- ai:["Brouillons de spécifications à partir du registre des écarts", "Génération et relecture de code ABAP (ex. Joule pour les développeurs)"],aig:"Moyen",ex:"L'entrepôt PT01 est paramétré : 2 400 emplacements. Le formulaire douanier et l'interface avec le transporteur local sont développés. Le transporteur livre ses spécifications avec trois semaines de retard : le risque est remonté en comité dès le premier jour.",own:"Équipes fonctionnelles et de développement",
- r:[["Spécifications qui changent pendant le build : retard et surcoût","Toute modification passe par le change board"],["Double maintenance avec les évolutions du core model : conflits","Calendrier de transports et rétrofit organisés"],["Interface locale dépendante d'un tiers : bloquée","Identifier le tiers et son planning dès Diagnose"]]},
-s6:{p:2,n:"06",t:"Données et migrations à blanc",s:"Nettoyer, transformer, charger, contrôler",
- obj:"Migrer des données justes et complètes, dans le temps imparti.",
- act:["Nettoyage des données dans l'ancien système","Règles de transformation","Deux à trois migrations à blanc avec contrôle métier","Mesure du taux de rejet et du temps de chargement"],
- pre:["Data owners du site nommés","Outil de migration en place","Accès aux données sources","Règles de correspondance validées"],
- liv:["Rapport de chaque migration à blanc","Données validées par le métier","Durée de chargement mesurée, reprise dans le runbook"],
- ai:["Détecter doublons, anomalies et champs incohérents dans les données sources", "Proposer les règles de correspondance", "Contrôler automatiquement chaque migration à blanc"],aig:"Fort",ex:"Migration à blanc 1 : 22 % de rejets, surtout des unités d'emballage manquantes et des emplacements en double. Le data owner lance le nettoyage. Migration 2 : 4 % de rejets. Migration 3 : 0,5 %, chargement en 5 h 40, pour une fenêtre de bascule de 8 heures.",own:"Data owners côté client et équipe migration",
- r:[["Nettoyage commencé trop tard : données sales au go-live","Démarrer dès Diagnose, avec un seuil de qualité par migration à blanc"],["Validation métier symbolique : erreurs découvertes en production","Le data owner signe chaque migration à blanc"],["Durée de chargement inconnue : la bascule dépasse la fenêtre","Chronométrer chaque migration à blanc"]]},
-s7:{p:2,n:"07",t:"Infrastructure et équipements",s:"Réseau, WiFi, terminaux, imprimantes, accès",
- obj:"Rendre le site physiquement prêt.",
- act:["Réseau et couverture WiFi, y compris les zones de stockage","Postes, terminaux mobiles, scanners, imprimantes d'étiquettes","Accès et habilitations des utilisateurs","Connexions aux systèmes locaux"],
- pre:["Besoins issus du SRA","Budget et délais d'achat connus","Équipe infrastructure du site disponible"],
- liv:["Matériel installé et testé","Habilitations créées et testées"],
- ai:["Analyser les relevés de couverture WiFi et repérer les zones à risque", "Générer les listes d'habilitations par rôle"],aig:"Faible à moyen",ex:"L'audit trouve deux zones blanches dans le stockage extérieur : six bornes WiFi ajoutées. 45 terminaux et 8 imprimantes d'étiquettes commandés en octobre, livrés en janvier.",own:"IT du site",
- r:[["Délai d'achat du matériel sous-estimé : bloquant au go-live","Commander dès la baseline"],["Couverture WiFi jamais testée en conditions réelles : magasiniers bloqués","Tester la couverture zone par zone"],["Habilitations créées la veille : utilisateurs sans accès","Les créer avant la recette et les tester"]]},
-s8:{p:2,n:"08",t:"Tests d'intégration (SIT)",s:"Les flux de bout en bout, interfaces comprises",
- obj:"Vérifier que les processus fonctionnent de bout en bout, interfaces comprises.",
- act:["Scénarios de bout en bout : réception, stockage, préparation, expédition","Tests des interfaces","Correction des défauts, suivi par sévérité"],
- pre:["Environnement de qualification complet et à jour","Données de test réalistes, issues d'une migration à blanc","Scénarios écrits","Systèmes tiers disponibles"],
- liv:["Rapport de tests","Défauts bloquants et majeurs corrigés"],
- ai:["Générer les scénarios et les jeux de données de test à partir des processus", "Analyser, classer et dédoublonner les défauts"],aig:"Fort",ex:"64 scénarios de bout en bout, 37 défauts, dont 3 bloquants. Exemple : l'interface transporteur rejette les livraisons de plus de 99 colis. Correction en deux semaines. Sortie : zéro bloquant, deux majeurs avec contournement.",own:"Équipe de test et intégrateur",
- r:[["Environnement incomplet ou partagé : tests bloqués","Réserver l'environnement et les systèmes tiers"],["Données de test irréalistes : bugs en production","Tester sur les données d'une migration à blanc"],["Critères de sortie flous : des tests qui s'étirent","Fixer les critères de sortie avant de commencer"]]},
-s9:{p:2,n:"09",t:"Recette et non-régression",s:"Validation par le site, sans casser les autres",
- obj:"Faire valider la solution par les utilisateurs du site, sans dégrader les sites déjà en production.",
- act:["Recette par les key users sur leurs cas réels","Tests de non-régression sur les sites en production","Signature de la recette"],
- pre:["Tests d'intégration terminés selon leurs critères","Key users disponibles et formés à l'outil de test","Jeu de non-régression à jour, automatisé si possible"],
- liv:["Procès-verbal de recette signé","Rapport de non-régression"],
- ai:["Automatiser la non-régression (ex. Tricentis)", "Résumer les retours de recette et repérer les demandes hors périmètre"],aig:"Fort",ex:"Six key users testent pendant trois semaines. Quatorze remarques, dont cinq nouvelles demandes envoyées au change board, deux acceptées pour une version ultérieure. Non-régression sur Lyon : 320 tests automatisés, tous verts. Le directeur de site signe la recette.",own:"Key users et process owners",
- r:[["Key users pris par leur activité : recette bâclée","Réserver leur temps dans le planning, avec l'accord du directeur de site"],["La recette devient une liste de nouvelles demandes : dérive","Les demandes vont au change board, pas dans la recette"],["Non-régression négligée : panne sur un site déjà en production","Rendre le jeu obligatoire et l'automatiser"]]},
-g2:{p:2,gate:1,t:"Gate 2 · Fin d'Adjust",s:"",
- obj:"Autoriser le passage en Deploy : la solution est testée, les données et le site sont prêts.",
- act:["Revue des défauts restants","Revue des migrations à blanc","Revue de l'infrastructure"],
- pre:["Zéro défaut bloquant, défauts majeurs avec contournement","Recette signée","Migrations à blanc dans les seuils de qualité et de durée","Infrastructure prête"],
- liv:["Décision de passage tracée"],
- ai:["Consolider l'état des défauts, des migrations et de l'infrastructure"],aig:"Faible",ex:"Zéro défaut bloquant, migrations dans les seuils, WiFi passé au vert. Passage en Deploy autorisé.",own:"Comité de pilotage",
- r:[["Défauts reclassés en « mineurs » pour passer la gate","Sévérité arbitrée par le métier, pas par l'équipe qui livre"]]},
-s10:{p:3,n:"10",t:"Formation et conduite du changement",s:"Des utilisateurs capables dès le jour 1",
- obj:"Rendre chaque utilisateur capable de travailler dès le premier jour.",
- act:["Supports et modes opératoires","Formation des formateurs : les key users","Formation des utilisateurs finaux sur un environnement dédié","Communication sur les changements de poste"],
- pre:["Solution stabilisée, après la recette","Environnement de formation avec des données","Liste des utilisateurs par rôle"],
- liv:["Utilisateurs formés, avec un taux de participation","Supports","Analyse d'impact sur les postes"],
- ai:["Générer modes opératoires, supports et quiz par rôle", "Traduire les supports pour les sites étrangers"],aig:"Fort",ex:"Quatre key users formés comme formateurs. Les 40 magasiniers sont formés en trois sessions, trois semaines avant le go-live, sur des cas réels : recevoir un camion, préparer une commande urgente. Taux de présence : 95 %.",own:"Conduite du changement et key users",
- r:[["Formation trop tôt : oubliée au go-live","Former deux à quatre semaines avant"],["Formation à l'outil mais pas au nouveau processus : erreurs","Former par scénario métier"],["Résistance non traitée, managers absents : contournements","Impliquer les managers du site"]]},
-s11:{p:3,n:"11",t:"Préparation de la bascule",s:"Runbook, répétition, retour arrière",
- obj:"Préparer la bascule minute par minute, puis la répéter.",
- act:["Runbook : tâche, responsable, durée, dépendance","Arrêt de l'activité et inventaire physique","Répétition générale en conditions réelles","Point de non-retour et plan de retour arrière"],
- pre:["Durées de chargement mesurées","Fenêtre de bascule validée avec le métier","Équipe de bascule nommée"],
- liv:["Runbook validé","Rapport de répétition","Plan de retour arrière testé"],
- ai:["Vérifier la cohérence du runbook : dépendances, durées, tâches oubliées", "Comparer au runbook des sites précédents"],aig:"Faible à moyen",ex:"Runbook de 186 tâches. Bascule du vendredi 18 h au dimanche 18 h. Répétition trois semaines avant : 9 h 10 au lieu des 8 heures prévues, donc deux tâches sont parallélisées. Point de non-retour : samedi 14 h. Inventaire physique complet le vendredi.",own:"Cutover manager",
- r:[["Pas de répétition : la vraie bascule dépasse la fenêtre","Au moins une répétition complète et chronométrée"],["Retour arrière jamais testé : inutilisable le jour J","Le tester pendant la répétition"],["Stock physique différent du stock système : données fausses dès le jour 1","Inventaire avant la bascule"]]},
-s12:{p:3,n:"12",t:"Go / no-go",s:"Décider sur des faits",gate:1,
- obj:"Décider, sur des critères écrits à l'avance, si on bascule.",
- act:["Revue des critères : tests, données, formation, infrastructure, support, runbook","SRA final","Décision formelle et tracée en comité"],
- pre:["Critères de go / no-go définis et signés à l'avance","État à jour de chaque critère"],
- liv:["Décision signée, avec ses réserves éventuelles"],
- ai:["Préparer le tableau de bord des critères"],aig:"Faible : la décision reste humaine",ex:"Comité du mercredi : 14 critères verts, 1 orange, deux key users en congé la première semaine. Décision : go avec réserve, un consultant de Lyon vient en renfort.",own:"Comité de pilotage côté client",
- r:[["Pression de la date : go malgré des critères rouges","Critères fixés à l'avance et non renégociables en séance"],["Réserves non suivies après le go : incidents","Chaque réserve a un responsable et une date"],["Le no-go vécu comme un échec : personne n'ose le proposer","Le présenter comme une option normale de pilotage"]]},
-s13:{p:3,n:"13",t:"Bascule et go-live",s:"Exécuter le runbook, ouvrir le site",
- obj:"Exécuter la bascule et démarrer l'activité sur la nouvelle solution.",
- act:["Exécution du runbook","Chargement des données","Réconciliation : stocks, en-cours","Ouverture aux utilisateurs, premiers flux sous surveillance"],
- pre:["Go validé","Équipes de bascule et de support présentes","Support éditeur prévenu"],
- liv:["Système en production","Réconciliation signée par le métier"],
- ai:["Surveiller les flux en erreur et les écarts de réconciliation en temps réel"],aig:"Moyen",ex:"L'ancien logiciel s'arrête vendredi à 18 h. Inventaire, chargement, réconciliation : écart de 12 articles sur 12 000, corrigé avant l'ouverture. Ouverture dimanche à 16 h, premier camion reçu lundi à 6 h.",own:"Cutover manager et métier",
- r:[["Tâche oubliée ou dépendance mal gérée : retard en chaîne","Points de contrôle horaires sur le runbook"],["Réconciliation sautée pour gagner du temps : écarts de stock invisibles","Réconciliation obligatoire avant l'ouverture"],["Retour arrière décidé trop tard : ni l'ancien ni le nouveau système","Critères de retour arrière fixés avant le point de non-retour"]]},
-s14:{p:4,n:"14",t:"Hypercare",s:"Stabiliser les premières semaines",
- obj:"Stabiliser le site pendant les premières semaines de production.",
- act:["Support renforcé sur place","Triage quotidien des incidents","Suivi des indicateurs : incidents, flux en erreur, délais","Corrections rapides"],
- pre:["Équipe d'hypercare dimensionnée","Processus d'incident et circuit d'escalade","Indicateurs et critères de sortie définis"],
- liv:["Incidents résolus","Bilan de stabilisation","Critères de sortie atteints"],
- ai:["Trier et classer les tickets", "Suggérer des solutions à partir des incidents déjà résolus", "Repérer les tendances avant qu'elles deviennent des crises"],aig:"Fort",ex:"Quatre semaines d'hypercare. Semaine 1 : 85 tickets, dont 60 % de questions d'utilisation. Semaine 4 : 9 tickets. Critère de sortie : moins de 10 tickets par semaine et aucun bloquant pendant deux semaines.",own:"Équipe projet et support",
- r:[["Les experts partent trop tôt sur le site suivant : incidents sans réponse","Verrouiller l'équipe d'hypercare jusqu'à la sortie"],["Hypercare sans fin : coût et confusion avec le run","Critères de sortie chiffrés"],["Contournements non signalés : problèmes cachés","Présence sur le terrain, écoute des utilisateurs"]]},
-s15:{p:4,n:"15",t:"Transfert au run et retour d'expérience",s:"Passer la main, améliorer la vague suivante",
- obj:"Transférer la maintenance au run et améliorer les vagues suivantes.",
- act:["Transfert de connaissances et documentation au run","Shadowing puis reverse shadowing","Retour d'expérience","Mise à jour du core model et de la méthode"],
- pre:["Critères de sortie d'hypercare atteints","Équipe de run dimensionnée","Documentation à jour"],
- liv:["Procès-verbal de transfert","Retour d'expérience","Backlog d'améliorations du core model"],
- ai:["Produire la documentation pour le run", "Synthétiser le retour d'expérience de tous les sites"],aig:"Moyen",ex:"Deux semaines de shadowing avec l'équipe de run. Retour d'expérience : la première migration à blanc est arrivée trop tard, et le WiFi aurait dû être audité dès le cadrage. Ces deux points sont ajoutés à la grille SRA de Mexico.",own:"Run et direction du programme",
- r:[["Transfert sans documentation : le run dépend toujours de l'équipe projet","Shadowing, puis reverse shadowing, avant de libérer l'équipe"],["Retour d'expérience jamais fait : mêmes erreurs à la vague suivante","Atelier obligatoire avant le site suivant, avec des actions suivies"]]},
-g3:{p:4,gate:1,t:"Gate 3 · Sortie d'hypercare",s:"",
- obj:"Clore le projet du site et confirmer que le run peut assumer seul.",
- act:["Revue des indicateurs de stabilité","Revue du transfert au run"],
- pre:["Indicateurs sous les seuils pendant une période convenue","Plus aucun incident bloquant ouvert","Run formé et documenté"],
- liv:["Clôture formelle du site"],
- ai:["Calculer les indicateurs de stabilité sur la période"],aig:"Faible",ex:"Sortie d'hypercare prononcée six semaines après le go-live. Trois tickets mineurs sont repris formellement par le run.",own:"Comité de pilotage et responsable du run",
- r:[["Clôture prononcée avec des incidents ouverts : le run hérite d'une dette","Liste des incidents ouverts reprise formellement par le run"]]},
-transverse:{p:0,t:"En continu, du début à la fin",s:"",
- obj:"Tenir le roll-out d'un bout à l'autre : décider vite, arbitrer proprement, garder le site engagé.",
- act:["Comité de pilotage : arbitrages, gates, go / no-go","Design authority : conformité au core model","Change board : toute modification de périmètre, planning ou budget","Registre des risques avec seuils d'alerte","Conduite du changement et communication vers le site"],
- pre:["Rôles et instances définis dès le cadrage","Sponsor du site impliqué"],
- liv:["Décisions tracées","Registre des risques à jour","Plan de communication"],
- ai:["Comptes rendus de comités et suivi des décisions", "Détection précoce des risques à partir des indicateurs", "Attention : données client uniquement dans un outil validé par le client"],aig:"Moyen",ex:"Comité de pilotage mensuel, puis hebdomadaire les six dernières semaines. Le registre suit 14 risques ; seuls le retard du transporteur et le WiFi sont passés au rouge, et tous deux ont été traités avant la gate 2.",own:"Direction du programme",
- r:[["Comités qui constatent sans décider : les problèmes s'accumulent","Chaque comité se termine par des décisions tracées"],["Indicateurs au vert, réalité au rouge, l'effet pastèque","Seuils d'alerte chiffrés et vérification sur le terrain"],["Sponsor du site absent : arbitrages bloqués","Le faire siéger aux gates du site"]]}
-};
-const ORDER={0:["s1"],1:["s2","s3","s4","g1"],2:["s5","s6","s7","s8","s9","g2"],3:["s10","s11","s12","s13"],4:["s14","s15","g3"]};
-const pcol=p=>`--col:var(--c${p});--tint:var(--t${p})`;
-const SEQ=[].concat(...[0,1,2,3,4].map(p=>ORDER[p]));
-const IC={
- s1:"M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14",
- s2:"M9 3h6v3H9z M7 4.5H5V21h14V4.5h-2 M8.5 13l2.5 2.5 4.5-5",
- s3:"M4 8h15l-3.5-3.5 M20 16H5l3.5 3.5",
- s4:"M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M12 11.5v1",
- s5:"M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
- s6:"M4 6c0-2.7 16-2.7 16 0s-16 2.7-16 0z M4 6v12c0 2.7 16 2.7 16 0V6 M4 12c0 2.7 16 2.7 16 0",
- s7:"M2 9a15 15 0 0 1 20 0 M5 12.5a10 10 0 0 1 14 0 M8.5 16a5 5 0 0 1 7 0 M12 19.5v.5",
- s8:"M9 15l6-6 M10.5 6l1.5-1.5a4 4 0 0 1 6 6L16.5 12 M13.5 18L12 19.5a4 4 0 0 1-6-6L7.5 12",
- s9:"M9 11a4 4 0 1 0 0-8a4 4 0 1 0 0 8 M2 21v-1a7 7 0 0 1 14 0v1 M16 10l2 2 4-4",
- s10:"M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
- s11:"M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
- s12:"M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
- s13:"M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
- s14:"M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
- s15:"M3 12h13 M12 7l5 5-5 5 M20.5 4v16"
-};
-const TL={s1:[0,.9,"Plan de vagues"],s2:[1,1.6,"SRA"],s3:[1.5,2.6,"Analyse des écarts"],s4:[2.5,3,"Baseline"],
- s5:[3,5.5,"Build"],s6:[2,7.1,"Données et migrations à blanc"],s7:[3,7,"Infra et matériel"],s8:[5.5,6.5,"Tests SIT"],s9:[6.5,7.3,"Recette"],
- s10:[7.3,7.9,"Formation"],s11:[6.8,7.9,"Préparation bascule"],s12:[7.9,7.9,"Go / no-go"],s13:[7.95,8.15,"Bascule"],s14:[8.15,9.6,"Hypercare"],s15:[9,9.8,"Transfert run"]};
-const GT={g1:[3,"G1"],g2:[7.3,"G2"],g3:[9.8,"G3"]};
-const PSPAN=[[0,1],[1,3],[3,7.3],[7.3,8.15],[8.15,10]];
-const W=1240,X0=24,X1=1210,MW=(X1-X0)/10,RH=40,TOP=92;
-const xm=m=>X0+m*MW;
-const svg=document.getElementById('tl');const NS="http://www.w3.org/2000/svg";
-const rows=Object.keys(TL);const H=TOP+rows.length*RH+20;
-svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
-const el=(t,a,p=svg)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
-// phase columns + header
-PSPAN.forEach(([a,b],p)=>{
-  el('rect',{x:xm(a),y:TOP-8,width:xm(b)-xm(a),height:H-TOP,style:`fill:var(--t${p})`,opacity:.55});
-  el('rect',{x:xm(a)+1,y:6,width:xm(b)-xm(a)-2,height:28,rx:6,style:`fill:var(--c${p})`});
-  const t=el('text',{x:(xm(a)+xm(b))/2,y:25,'text-anchor':'middle',class:'ph'});t.textContent=PH[p].name;
-});
-// month axis
-const ML=["M-8","M-7","M-6","M-5","M-4","M-3","M-2","M-1","Go-live","M+1","M+2"];
-ML.forEach((l,i)=>{const x=xm(i);el('line',{x1:x,y1:44,x2:x,y2:H-6,class:'grid'});const t=el('text',{x:x+4,y:58,class:'mo'});t.textContent=l;});
-// go-live line
-const gl=el('g',{class:'hot',tabindex:0,role:'button','aria-label':'Go-live : bascule','data-k':'s13'});
-el('line',{x1:xm(8),y1:62,x2:xm(8),y2:H-6,class:'golive'},gl);
-el('path',{d:`M${xm(8)} 64h40l-8 7 8 7h-40z`,class:'flag'},gl);
-// gates
-for(const k in GT){const [m,lab]=GT[k];const x=xm(m);
-  const g=el('g',{class:'hot',tabindex:0,role:'button','aria-label':S[k].t,'data-k':k});
-  el('line',{x1:x,y1:80,x2:x,y2:H-6,class:'gline'},g);
-  el('path',{d:`M${x} 64l11 11-11 11-11-11z`,class:'gate-d'},g);
-  const t=el('text',{x:x,y:79,'text-anchor':'middle',class:'gl-t'},g);t.textContent=lab;}
-// bars
-rows.forEach((k,i)=>{const [a,b,lab]=TL[k];const d=S[k];const p=d.p;const y=TOP+i*RH+RH/2;
-  const g=el('g',{class:'hot bar',tabindex:0,role:'button','aria-label':d.t,'data-k':k,style:`--col:var(--c${p});--tint:var(--t${p})`});
-  const tt=el('title',{},g);tt.textContent=d.t+(d.s?' : '+d.s:'');
-  const xa=xm(a),xb=Math.max(xm(b),xa);
-  if(xb-xa>4) el('rect',{x:xa,y:y-13,width:xb-xa,height:26,rx:13,class:'b'},g);
-  el('circle',{cx:xa,cy:y,r:16,class:'ic-bg'},g);
-  el('path',{d:IC[k],transform:`translate(${xa-9} ${y-9}) scale(.75)`,class:'ic'},g);
-  const est=lab.length*7.3;let tx,anchor='start';
-  if(xb-xa-26>est+8){tx=xa+24;}else if(xb+10+est<W-4){tx=Math.max(xb,xa+16)+10;}else{tx=xa-22;anchor='end';}
-  const t=el('text',{x:tx,y:y+4.5,'text-anchor':anchor,class:'bl'},g);t.textContent=lab;
-});
-
-const ov=document.getElementById('ov'),dlg=document.getElementById('dlg'),body=document.getElementById('dlg-body'),X=document.getElementById('x');
-let last=null;
-const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const list=a=>'<ul>'+a.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>';
-function open(k,src){
-  const d=S[k];if(!d)return;last=src;
-  dlg.style.cssText=pcol(d.p);
-  const ph=PH[d.p].name;
-  const eb=k==='transverse'?'Transverse':(d.gate&&!d.n?'Gate de passage · '+ph:'Étape '+d.n+' · '+ph);
-  body.innerHTML=`<div class="dlg-h"><div class="eyebrow">${eb}</div><h2 id="dlg-title">${esc(d.t)}</h2><p>${esc(d.obj)}</p><span class="owner">Qui porte : ${esc(d.own)}</span></div>
-  <div class="grid"><section><h3>Activités</h3>${list(d.act)}</section><section><h3>Prérequis</h3>${list(d.pre)}</section><section><h3>Livrables</h3>${list(d.liv)}</section></div>
-  ${d.ai?`<div class="ai"><h3>Apport de l'IA <span class="gain">Gain : ${esc(d.aig)}</span></h3>${list(d.ai)}</div>`:''}
-  <div class="risks"><h3>Risques d'échec</h3>${d.r.map(r=>`<div class="risk"><div>${esc(r[0])}</div><div>${esc(r[1])}</div></div>`).join('')}</div>
-  ${d.ex?`<div class="ex"><h3>Dans l'exemple · Nordval, site de Porto</h3><p>${esc(d.ex)}</p></div>`:''}`;
-  const i=SEQ.indexOf(k);
-  if(i>=0){body.insertAdjacentHTML('beforeend',`<div class="nav"><button type="button" class="nb" ${i===0?'disabled':''} data-go="${SEQ[i-1]||''}">← Précédent</button><span>${i+1} / ${SEQ.length}</span><button type="button" class="nb" ${i===SEQ.length-1?'disabled':''} data-go="${SEQ[i+1]||''}">Suivant →</button></div>`);}
-  ov.hidden=false;dlg.scrollTop=0;X.focus();
-}
-function close(){ov.hidden=true;if(last)last.focus();}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b&&b.id==='start')return;if(b&&!ov.contains(b))open(b.dataset.k,b);});
-X.addEventListener('click',close);
-svg.addEventListener('keydown',e=>{const g=e.target.closest('[data-k]');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(g.dataset.k,g);}});
-body.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g&&g.dataset.go)open(g.dataset.go,last);});
-document.getElementById('start').addEventListener('click',e=>open('s1',e.currentTarget));
-ov.addEventListener('click',e=>{if(e.target===ov)close();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!ov.hidden)close();});
-</script>
-
 <script src="../shared/libelles.js"></script>
 <script src="../shared/documents.js"></script>
+<script src="../shared/frise.js" data-frise="rollout.json"></script>
 <script src="../shared/glossaire.js"></script>
 </body>
 </html>

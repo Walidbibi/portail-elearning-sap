@@ -27,9 +27,9 @@ const FRISES = ['greenfield', 'brownfield', 'bluefield', 'rollout'];
 
 // Chaque page : adresse, attente avant capture, capture pleine page ou non, états supplémentaires.
 const PAGES = {
-  accueil: { url: 'index.html', plein: true },
+  accueil: { url: 'index.html', plein: true, attente: `document.querySelectorAll('.card').length>0` },
   glossaire: {
-    url: 'index.html', plein: false,
+    url: 'index.html', plein: false, attente: `document.querySelectorAll('.card').length>0&&!!document.querySelector('.gl-term-btn')`,
     action: `(async()=>{
       if(innerWidth<=1100)document.getElementById('gl-open').click();
       const q=document.getElementById('gl-q');q.value='cutover';q.dispatchEvent(new Event('input'));
@@ -109,10 +109,15 @@ try {
         await evaluer(`(()=>{try{localStorage.clear()}catch(e){};const s=document.createElement('style');s.textContent=${JSON.stringify(SANS_ANIM)};document.head.appendChild(s)})()`);
         await evaluer('document.fonts.ready.then(()=>true)');
         // Les pages construisent leur contenu après des fetch : on attend que le nombre d'éléments se stabilise.
-        await evaluer(`new Promise(r=>{let n=-1,k=0;const t=setInterval(()=>{const m=document.getElementsByTagName('*').length;if(m===n){if(++k>=3){clearInterval(t);r(true);}}else{n=m;k=0;}},100);})`);
-        // Les aperçus sont en chargement différé : on les charge tous et on attend qu'ils soient décodés.
-        await evaluer(`Promise.all([...document.images].map(i=>{i.loading='eager';return i.complete?0:new Promise(r=>{i.onload=i.onerror=r})})).then(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>0))))`);
+        // Contenu propre à la page (cartes, canvas…) : construit après des fetch.
         if (p.attente && !await attendre(() => evaluer(p.attente))) console.warn(`  attention : ${nom} pas prêt`);
+        await evaluer(`new Promise(r=>{let n=-1,k=0;const t=setInterval(()=>{const m=document.getElementsByTagName('*').length;if(m===n){if(++k>=5){clearInterval(t);r(true);}}else{n=m;k=0;}},100);})`);
+        // Les aperçus sont en chargement différé : on les charge tous, on attend leur décodage,
+        // et on recommence tant que le nombre d'images change. Puis deux images d'animation pour l'affichage.
+        await evaluer(`(async()=>{let n=-1;while(document.images.length!==n){n=document.images.length;
+          await Promise.all([...document.images].map(i=>{i.loading='eager';return i.complete?0:new Promise(r=>{i.addEventListener('load',r,{once:true});i.addEventListener('error',r,{once:true})})}));
+          await Promise.all([...document.images].map(i=>i.decode().catch(()=>0)));}
+          await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));return true;})()`);
         if (p.action) await evaluer(p.action);
         await pause(p.attente ? 1200 : 400);
 

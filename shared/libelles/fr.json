@@ -69,7 +69,7 @@
     "fermer": "Fermer",
     "goliveAria": "Go-live : bascule",
     "transverse": "Transverse",
-    "surtitreGate": "Quality gate · {phase}",
+    "surtitreGate": "{gate} · {phase}",
     "surtitreEtape": "Étape {n} · {phase}",
     "quiPorte": "Qui porte : {qui}",
     "activites": "Activités",

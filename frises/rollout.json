@@ -1,0 +1,1026 @@
+{
+ "titreOnglet": "Démarche roll-out SAP",
+ "surtitre": "Déploiement d'un core model, site par site",
+ "titre": "La démarche d'un roll-out SAP, de A à Z",
+ "intro": "Cliquez sur une barre, une gate ou le go-live pour ouvrir le détail.",
+ "exemple": {
+  "entreprise": "Nordval, site de Porto",
+  "description": "Nordval (fictif), entrepôt de Porto"
+ },
+ "chronologieAria": "Chronologie du roll-out : phases, étapes et gates de M-8 à M+2",
+ "enContinu": "gouvernance, risques, conduite du changement",
+ "causesTitre": "Les 5 causes d'échec les plus fréquentes",
+ "causes": [
+  "Core model instable",
+  "Site peu impliqué",
+  "Données sales",
+  "Tests compressés",
+  "Go sous pression"
+ ],
+ "note": "Démarche générique et durées indicatives, à adapter à la méthode du programme.",
+ "nomGate": "Gate de passage",
+ "couleurs": [
+  0,
+  2,
+  3,
+  4,
+  5
+ ],
+ "couleurParade": 5,
+ "chronologie": {
+  "largeur": 1240,
+  "x1": 1210,
+  "mois": [
+   "M-8",
+   "M-7",
+   "M-6",
+   "M-5",
+   "M-4",
+   "M-3",
+   "M-2",
+   "M-1",
+   "Go-live",
+   "M+1",
+   "M+2"
+  ],
+  "golive": {
+   "mois": 8,
+   "etape": "s13"
+  }
+ },
+ "phases": [
+  {
+   "id": 0,
+   "name": "Cadrage",
+   "eq": "Prepare (programme)"
+  },
+  {
+   "id": 1,
+   "name": "Diagnose",
+   "eq": "Prepare · Explore"
+  },
+  {
+   "id": 2,
+   "name": "Adjust",
+   "eq": "Realize"
+  },
+  {
+   "id": 3,
+   "name": "Deploy",
+   "eq": "Deploy"
+  },
+  {
+   "id": 4,
+   "name": "Run",
+   "eq": "Run"
+  }
+ ],
+ "etenduePhases": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   3,
+   7.3
+  ],
+  [
+   7.3,
+   8.15
+  ],
+  [
+   8.15,
+   10
+  ]
+ ],
+ "ordre": {
+  "0": [
+   "s1"
+  ],
+  "1": [
+   "s2",
+   "s3",
+   "s4",
+   "g1"
+  ],
+  "2": [
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9",
+   "g2"
+  ],
+  "3": [
+   "s10",
+   "s11",
+   "s12",
+   "s13"
+  ],
+  "4": [
+   "s14",
+   "s15",
+   "g3"
+  ]
+ },
+ "positions": {
+  "s1": [
+   0,
+   0.9,
+   "Plan de vagues"
+  ],
+  "s2": [
+   1,
+   1.6,
+   "SRA"
+  ],
+  "s3": [
+   1.5,
+   2.6,
+   "Analyse des écarts"
+  ],
+  "s4": [
+   2.5,
+   3,
+   "Baseline"
+  ],
+  "s5": [
+   3,
+   5.5,
+   "Build"
+  ],
+  "s6": [
+   2,
+   7.1,
+   "Données et migrations à blanc"
+  ],
+  "s7": [
+   3,
+   7,
+   "Infra et matériel"
+  ],
+  "s8": [
+   5.5,
+   6.5,
+   "Tests SIT"
+  ],
+  "s9": [
+   6.5,
+   7.3,
+   "Recette"
+  ],
+  "s10": [
+   7.3,
+   7.9,
+   "Formation"
+  ],
+  "s11": [
+   6.8,
+   7.9,
+   "Préparation bascule"
+  ],
+  "s12": [
+   7.9,
+   7.9,
+   "Go / no-go"
+  ],
+  "s13": [
+   7.95,
+   8.15,
+   "Bascule"
+  ],
+  "s14": [
+   8.15,
+   9.6,
+   "Hypercare"
+  ],
+  "s15": [
+   9,
+   9.8,
+   "Transfert run"
+  ]
+ },
+ "gates": {
+  "g1": [
+   3,
+   "G1"
+  ],
+  "g2": [
+   7.3,
+   "G2"
+  ],
+  "g3": [
+   9.8,
+   "G3"
+  ]
+ },
+ "icones": {
+  "s1": "M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14",
+  "s2": "M9 3h6v3H9z M7 4.5H5V21h14V4.5h-2 M8.5 13l2.5 2.5 4.5-5",
+  "s3": "M4 8h15l-3.5-3.5 M20 16H5l3.5 3.5",
+  "s4": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M12 11.5v1",
+  "s5": "M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16",
+  "s6": "M4 6c0-2.7 16-2.7 16 0s-16 2.7-16 0z M4 6v12c0 2.7 16 2.7 16 0V6 M4 12c0 2.7 16 2.7 16 0",
+  "s7": "M2 9a15 15 0 0 1 20 0 M5 12.5a10 10 0 0 1 14 0 M8.5 16a5 5 0 0 1 7 0 M12 19.5v.5",
+  "s8": "M9 15l6-6 M10.5 6l1.5-1.5a4 4 0 0 1 6 6L16.5 12 M13.5 18L12 19.5a4 4 0 0 1-6-6L7.5 12",
+  "s9": "M9 11a4 4 0 1 0 0-8a4 4 0 1 0 0 8 M2 21v-1a7 7 0 0 1 14 0v1 M16 10l2 2 4-4",
+  "s10": "M2 9l10-5 10 5-10 5z M6 11v5c3 3 9 3 12 0v-5",
+  "s11": "M4 6h9 M4 12h5 M4 18h5 M17 11a5 5 0 1 0 0 10a5 5 0 1 0 0-10 M17 13.5v2.5l1.8 1.2",
+  "s12": "M12 3l9 9-9 9-9-9z M8.5 12l2.5 2.5 4.5-5",
+  "s13": "M13 4c4 0 7 3 7 7l-7 7-6-6z M7.5 13.5l-3 1-1 3 3-1 M15.5 8.5h.01",
+  "s14": "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18 M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8 M5.6 5.6l3.6 3.6 M14.8 14.8l3.6 3.6 M18.4 5.6l-3.6 3.6 M9.2 14.8l-3.6 3.6",
+  "s15": "M3 12h13 M12 7l5 5-5 5 M20.5 4v16"
+ },
+ "etapes": {
+  "s1": {
+   "p": 0,
+   "n": "01",
+   "t": "Plan de vagues",
+   "s": "Quels sites, dans quel ordre, avec quelles ressources",
+   "obj": "Décider quels sites passent sur le core model, dans quel ordre et avec quelles ressources.",
+   "act": [
+    "Inventaire des sites : taille, complexité, criticité",
+    "Regroupement des sites en vagues",
+    "Choix d'un site pilote",
+    "Capacité de l'équipe de déploiement",
+    "Périodes interdites : clôtures, pics d'activité, congés"
+   ],
+   "pre": [
+    "Core model stable et en production sur au moins un site",
+    "Sponsor et budget du programme",
+    "Gouvernance du roll-out en place : comités, design authority, change board"
+   ],
+   "liv": [
+    "Plan de vagues",
+    "Organisation du roll-out",
+    "Budget par vague"
+   ],
+   "ai": [
+    "Analyser les données des sites (volumes, articles, complexité) pour les classer et former les vagues",
+    "Simuler plusieurs plans de vagues et leur charge sur l'équipe"
+   ],
+   "aig": "Moyen",
+   "ex": "Nordval a six sites à déployer. Lyon, le site pilote, tourne sur le core model depuis six mois. Porto est choisi pour la vague 2 : taille moyenne, processus proches de Lyon. Mexico, plus complexe, passe en vague 3. Go-live visé le 15 mars : décembre est exclu à cause de la clôture annuelle, l'été à cause des congés.",
+   "own": "Direction du programme côté client, avec l'intégrateur",
+   "r": [
+    [
+     "Core model encore instable : chaque site paie les corrections",
+     "Geler une version du core model par vague"
+    ],
+    [
+     "Vagues trop ambitieuses, plusieurs gros sites en parallèle : équipe saturée",
+     "Limiter les sites en parallèle, commencer par un pilote simple"
+    ],
+    [
+     "Calendrier métier ignoré : go-live en pleine clôture",
+     "Intégrer les périodes interdites dès le plan"
+    ]
+   ]
+  },
+  "s2": {
+   "p": 1,
+   "n": "02",
+   "t": "Site Readiness Assessment",
+   "s": "Le site est-il prêt, critère par critère ?",
+   "obj": "Mesurer si le site peut recevoir la solution : processus, données, infrastructure, personnes, interfaces, contraintes de bascule.",
+   "act": [
+    "Visite et entretiens sur site",
+    "Évaluation de chaque critère en vert, orange ou rouge",
+    "Plan d'actions avec un responsable et une date par action"
+   ],
+   "pre": [
+    "Grille d'évaluation standard du programme",
+    "Interlocuteurs du site nommés : directeur de site, process owners locaux",
+    "Accès aux données et à l'infrastructure du site"
+   ],
+   "liv": [
+    "Rapport de readiness signé",
+    "Plan d'actions"
+   ],
+   "ai": [
+    "Pré-remplir la grille à partir des extractions du site : qualité des données, volumétrie",
+    "Process mining (ex. SAP Signavio) : voir comment le site travaille vraiment, pas ce qu'il déclare"
+   ],
+   "aig": "Fort",
+   "ex": "Trois jours sur place. Processus : vert. Données : orange, 18 % des articles sans unité d'emballage. Infrastructure : rouge, pas de WiFi dans la zone de stockage extérieure. Personnes : orange, un seul key user pour trois processus. Actions : audit WiFi avant fin octobre (IT de Porto), deux key users de plus nommés par le directeur de site.",
+   "own": "Équipe roll-out et direction du site",
+   "r": [
+    [
+     "Évaluation déclarative, « tout va bien » : surprises au build",
+     "Vérifier sur preuves : extraction de données, test WiFi réel"
+    ],
+    [
+     "Actions sans responsable ni date : elles restent rouges jusqu'au go-live",
+     "Suivre chaque action en comité"
+    ],
+    [
+     "Site peu impliqué, puis indisponible",
+     "Faire signer le rapport par le directeur de site"
+    ]
+   ]
+  },
+  "s3": {
+   "p": 1,
+   "n": "03",
+   "t": "Analyse des écarts",
+   "s": "Core model face au site : adopter, adapter, refuser",
+   "obj": "Confronter le fonctionnement du site au core model et décider pour chaque écart.",
+   "act": [
+    "Ateliers fit-to-standard avec les key users locaux, démonstration du core model",
+    "Liste des écarts : légaux, métier, organisation",
+    "Décision par écart : standard, paramétrage, développement ou refus",
+    "Passage en design authority ou en change board pour les écarts qui touchent le core model"
+   ],
+   "pre": [
+    "Core model documenté : processus, paramétrage, développements",
+    "Key users du site disponibles et autorisés à décider",
+    "Règles de gestion des écarts : qui décide quoi"
+   ],
+   "liv": [
+    "Registre des écarts validé",
+    "Spécifications des deltas"
+   ],
+   "ai": [
+    "Comparer les processus réels du site au core model et pré-classer les écarts",
+    "Retrouver si un écart similaire a déjà été traité sur un autre site"
+   ],
+   "aig": "Moyen à fort",
+   "ex": "Quatre ateliers, onze écarts. Les étiquettes douanières portugaises sont obligatoires : écart accepté, un formulaire sera développé. Le site veut garder son repérage des emplacements par couleur : refusé, le standard EWM fait la même chose autrement. Une règle de rangement que Porto propose pour tous les sites part en design authority. Bilan : six acceptés, quatre refusés, un en arbitrage.",
+   "own": "Process owners et design authority",
+   "r": [
+    [
+     "Le site recrée son ancien fonctionnement à coups d'écarts : explosion du spécifique",
+     "Exiger une justification légale ou chiffrée pour chaque écart"
+    ],
+    [
+     "Écarts découverts seulement en recette : retards",
+     "Travailler les processus de bout en bout, pas seulement les écrans"
+    ],
+    [
+     "Écart local intégré au core model sans arbitrage : régression sur les autres sites",
+     "Passage obligatoire en design authority"
+    ]
+   ]
+  },
+  "s4": {
+   "p": 1,
+   "n": "04",
+   "t": "Baseline du site",
+   "s": "Périmètre, planning, budget et équipe figés",
+   "obj": "Figer le périmètre, le planning, le budget et l'équipe du site.",
+   "act": [
+    "Chiffrage des deltas, des données, des tests et de la formation",
+    "Planning détaillé avec jalons et gates",
+    "Staffing",
+    "Commandes ou contrats avec les fournisseurs"
+   ],
+   "pre": [
+    "Registre des écarts validé",
+    "Capacité des équipes connue",
+    "Périodes interdites confirmées"
+   ],
+   "liv": [
+    "Plan de projet du site",
+    "Budget",
+    "Engagements des fournisseurs"
+   ],
+   "ai": [
+    "Chiffrage assisté à partir de l'historique des sites précédents",
+    "Repérer dans le planning les tâches sous-estimées par rapport aux sites passés"
+   ],
+   "aig": "Moyen",
+   "ex": "Chiffrage : 180 jours pour les six écarts, 60 pour les données, 90 pour les tests, 40 pour la formation. Planning de sept mois jusqu'au 15 mars. Le fournisseur signe son engagement sur les six écarts validés seulement ; l'écart en design authority est provisionné à part.",
+   "own": "Chef de projet du site et fournisseurs",
+   "r": [
+    [
+     "Chiffrage sur des écarts encore flous : dérive",
+     "Chiffrer seulement les écarts mûrs, provisionner le reste"
+    ],
+    [
+     "Planning qui écrase les tests pour tenir la date : bugs en production",
+     "Protéger la durée des tests dans le planning"
+    ],
+    [
+     "Engagement fournisseur signé avant validation des écarts : le fournisseur absorbe",
+     "Conditionner l'engagement à la baseline validée"
+    ]
+   ]
+  },
+  "g1": {
+   "p": 1,
+   "gate": 1,
+   "t": "Gate 1 · Fin de Diagnose",
+   "s": "",
+   "obj": "Autoriser le passage en Adjust : le site est compris, le périmètre figé, le plan financé.",
+   "act": [
+    "Revue du rapport de readiness et du plan d'actions",
+    "Revue du registre des écarts",
+    "Approbation de la baseline en comité"
+   ],
+   "pre": [
+    "Aucun rouge bloquant au SRA, ou un plan crédible pour le lever",
+    "Écarts validés et signés",
+    "Baseline approuvée"
+   ],
+   "liv": [
+    "Décision de passage tracée, avec ses conditions"
+   ],
+   "ai": [
+    "Consolider automatiquement l'état des critères de la gate"
+   ],
+   "aig": "Faible",
+   "ex": "Le comité autorise le passage en Adjust avec une condition : le WiFi, encore rouge, a un plan d'action financé et sera revu à la gate 2.",
+   "own": "Comité de pilotage",
+   "r": [
+    [
+     "Gate passée « sous conditions » sans suivi des conditions",
+     "Chaque condition a un responsable, une date et un suivi en comité"
+    ]
+   ]
+  },
+  "s5": {
+   "p": 2,
+   "n": "05",
+   "t": "Build des deltas",
+   "s": "Paramétrage du site, développements, interfaces",
+   "obj": "Adapter la solution au site.",
+   "act": [
+    "Paramétrage de l'organisation du site : société, usine, entrepôt, emplacements",
+    "Développement des écarts acceptés",
+    "Interfaces locales",
+    "Tests unitaires"
+   ],
+   "pre": [
+    "Spécifications validées",
+    "Environnements de développement et circuit de transport disponibles",
+    "Version du core model gelée"
+   ],
+   "liv": [
+    "Paramétrage et développements livrés en qualification",
+    "Tests unitaires documentés"
+   ],
+   "ai": [
+    "Brouillons de spécifications à partir du registre des écarts",
+    "Génération et relecture de code ABAP (ex. Joule pour les développeurs)"
+   ],
+   "aig": "Moyen",
+   "ex": "L'entrepôt PT01 est paramétré : 2 400 emplacements. Le formulaire douanier et l'interface avec le transporteur local sont développés. Le transporteur livre ses spécifications avec trois semaines de retard : le risque est remonté en comité dès le premier jour.",
+   "own": "Équipes fonctionnelles et de développement",
+   "r": [
+    [
+     "Spécifications qui changent pendant le build : retard et surcoût",
+     "Toute modification passe par le change board"
+    ],
+    [
+     "Double maintenance avec les évolutions du core model : conflits",
+     "Calendrier de transports et rétrofit organisés"
+    ],
+    [
+     "Interface locale dépendante d'un tiers : bloquée",
+     "Identifier le tiers et son planning dès Diagnose"
+    ]
+   ]
+  },
+  "s6": {
+   "p": 2,
+   "n": "06",
+   "t": "Données et migrations à blanc",
+   "s": "Nettoyer, transformer, charger, contrôler",
+   "obj": "Migrer des données justes et complètes, dans le temps imparti.",
+   "act": [
+    "Nettoyage des données dans l'ancien système",
+    "Règles de transformation",
+    "Deux à trois migrations à blanc avec contrôle métier",
+    "Mesure du taux de rejet et du temps de chargement"
+   ],
+   "pre": [
+    "Data owners du site nommés",
+    "Outil de migration en place",
+    "Accès aux données sources",
+    "Règles de correspondance validées"
+   ],
+   "liv": [
+    "Rapport de chaque migration à blanc",
+    "Données validées par le métier",
+    "Durée de chargement mesurée, reprise dans le runbook"
+   ],
+   "ai": [
+    "Détecter doublons, anomalies et champs incohérents dans les données sources",
+    "Proposer les règles de correspondance",
+    "Contrôler automatiquement chaque migration à blanc"
+   ],
+   "aig": "Fort",
+   "ex": "Migration à blanc 1 : 22 % de rejets, surtout des unités d'emballage manquantes et des emplacements en double. Le data owner lance le nettoyage. Migration 2 : 4 % de rejets. Migration 3 : 0,5 %, chargement en 5 h 40, pour une fenêtre de bascule de 8 heures.",
+   "own": "Data owners côté client et équipe migration",
+   "r": [
+    [
+     "Nettoyage commencé trop tard : données sales au go-live",
+     "Démarrer dès Diagnose, avec un seuil de qualité par migration à blanc"
+    ],
+    [
+     "Validation métier symbolique : erreurs découvertes en production",
+     "Le data owner signe chaque migration à blanc"
+    ],
+    [
+     "Durée de chargement inconnue : la bascule dépasse la fenêtre",
+     "Chronométrer chaque migration à blanc"
+    ]
+   ]
+  },
+  "s7": {
+   "p": 2,
+   "n": "07",
+   "t": "Infrastructure et équipements",
+   "s": "Réseau, WiFi, terminaux, imprimantes, accès",
+   "obj": "Rendre le site physiquement prêt.",
+   "act": [
+    "Réseau et couverture WiFi, y compris les zones de stockage",
+    "Postes, terminaux mobiles, scanners, imprimantes d'étiquettes",
+    "Accès et habilitations des utilisateurs",
+    "Connexions aux systèmes locaux"
+   ],
+   "pre": [
+    "Besoins issus du SRA",
+    "Budget et délais d'achat connus",
+    "Équipe infrastructure du site disponible"
+   ],
+   "liv": [
+    "Matériel installé et testé",
+    "Habilitations créées et testées"
+   ],
+   "ai": [
+    "Analyser les relevés de couverture WiFi et repérer les zones à risque",
+    "Générer les listes d'habilitations par rôle"
+   ],
+   "aig": "Faible à moyen",
+   "ex": "L'audit trouve deux zones blanches dans le stockage extérieur : six bornes WiFi ajoutées. 45 terminaux et 8 imprimantes d'étiquettes commandés en octobre, livrés en janvier.",
+   "own": "IT du site",
+   "r": [
+    [
+     "Délai d'achat du matériel sous-estimé : bloquant au go-live",
+     "Commander dès la baseline"
+    ],
+    [
+     "Couverture WiFi jamais testée en conditions réelles : magasiniers bloqués",
+     "Tester la couverture zone par zone"
+    ],
+    [
+     "Habilitations créées la veille : utilisateurs sans accès",
+     "Les créer avant la recette et les tester"
+    ]
+   ]
+  },
+  "s8": {
+   "p": 2,
+   "n": "08",
+   "t": "Tests d'intégration (SIT)",
+   "s": "Les flux de bout en bout, interfaces comprises",
+   "obj": "Vérifier que les processus fonctionnent de bout en bout, interfaces comprises.",
+   "act": [
+    "Scénarios de bout en bout : réception, stockage, préparation, expédition",
+    "Tests des interfaces",
+    "Correction des défauts, suivi par sévérité"
+   ],
+   "pre": [
+    "Environnement de qualification complet et à jour",
+    "Données de test réalistes, issues d'une migration à blanc",
+    "Scénarios écrits",
+    "Systèmes tiers disponibles"
+   ],
+   "liv": [
+    "Rapport de tests",
+    "Défauts bloquants et majeurs corrigés"
+   ],
+   "ai": [
+    "Générer les scénarios et les jeux de données de test à partir des processus",
+    "Analyser, classer et dédoublonner les défauts"
+   ],
+   "aig": "Fort",
+   "ex": "64 scénarios de bout en bout, 37 défauts, dont 3 bloquants. Exemple : l'interface transporteur rejette les livraisons de plus de 99 colis. Correction en deux semaines. Sortie : zéro bloquant, deux majeurs avec contournement.",
+   "own": "Équipe de test et intégrateur",
+   "r": [
+    [
+     "Environnement incomplet ou partagé : tests bloqués",
+     "Réserver l'environnement et les systèmes tiers"
+    ],
+    [
+     "Données de test irréalistes : bugs en production",
+     "Tester sur les données d'une migration à blanc"
+    ],
+    [
+     "Critères de sortie flous : des tests qui s'étirent",
+     "Fixer les critères de sortie avant de commencer"
+    ]
+   ]
+  },
+  "s9": {
+   "p": 2,
+   "n": "09",
+   "t": "Recette et non-régression",
+   "s": "Validation par le site, sans casser les autres",
+   "obj": "Faire valider la solution par les utilisateurs du site, sans dégrader les sites déjà en production.",
+   "act": [
+    "Recette par les key users sur leurs cas réels",
+    "Tests de non-régression sur les sites en production",
+    "Signature de la recette"
+   ],
+   "pre": [
+    "Tests d'intégration terminés selon leurs critères",
+    "Key users disponibles et formés à l'outil de test",
+    "Jeu de non-régression à jour, automatisé si possible"
+   ],
+   "liv": [
+    "Procès-verbal de recette signé",
+    "Rapport de non-régression"
+   ],
+   "ai": [
+    "Automatiser la non-régression (ex. Tricentis)",
+    "Résumer les retours de recette et repérer les demandes hors périmètre"
+   ],
+   "aig": "Fort",
+   "ex": "Six key users testent pendant trois semaines. Quatorze remarques, dont cinq nouvelles demandes envoyées au change board, deux acceptées pour une version ultérieure. Non-régression sur Lyon : 320 tests automatisés, tous verts. Le directeur de site signe la recette.",
+   "own": "Key users et process owners",
+   "r": [
+    [
+     "Key users pris par leur activité : recette bâclée",
+     "Réserver leur temps dans le planning, avec l'accord du directeur de site"
+    ],
+    [
+     "La recette devient une liste de nouvelles demandes : dérive",
+     "Les demandes vont au change board, pas dans la recette"
+    ],
+    [
+     "Non-régression négligée : panne sur un site déjà en production",
+     "Rendre le jeu obligatoire et l'automatiser"
+    ]
+   ]
+  },
+  "g2": {
+   "p": 2,
+   "gate": 1,
+   "t": "Gate 2 · Fin d'Adjust",
+   "s": "",
+   "obj": "Autoriser le passage en Deploy : la solution est testée, les données et le site sont prêts.",
+   "act": [
+    "Revue des défauts restants",
+    "Revue des migrations à blanc",
+    "Revue de l'infrastructure"
+   ],
+   "pre": [
+    "Zéro défaut bloquant, défauts majeurs avec contournement",
+    "Recette signée",
+    "Migrations à blanc dans les seuils de qualité et de durée",
+    "Infrastructure prête"
+   ],
+   "liv": [
+    "Décision de passage tracée"
+   ],
+   "ai": [
+    "Consolider l'état des défauts, des migrations et de l'infrastructure"
+   ],
+   "aig": "Faible",
+   "ex": "Zéro défaut bloquant, migrations dans les seuils, WiFi passé au vert. Passage en Deploy autorisé.",
+   "own": "Comité de pilotage",
+   "r": [
+    [
+     "Défauts reclassés en « mineurs » pour passer la gate",
+     "Sévérité arbitrée par le métier, pas par l'équipe qui livre"
+    ]
+   ]
+  },
+  "s10": {
+   "p": 3,
+   "n": "10",
+   "t": "Formation et conduite du changement",
+   "s": "Des utilisateurs capables dès le jour 1",
+   "obj": "Rendre chaque utilisateur capable de travailler dès le premier jour.",
+   "act": [
+    "Supports et modes opératoires",
+    "Formation des formateurs : les key users",
+    "Formation des utilisateurs finaux sur un environnement dédié",
+    "Communication sur les changements de poste"
+   ],
+   "pre": [
+    "Solution stabilisée, après la recette",
+    "Environnement de formation avec des données",
+    "Liste des utilisateurs par rôle"
+   ],
+   "liv": [
+    "Utilisateurs formés, avec un taux de participation",
+    "Supports",
+    "Analyse d'impact sur les postes"
+   ],
+   "ai": [
+    "Générer modes opératoires, supports et quiz par rôle",
+    "Traduire les supports pour les sites étrangers"
+   ],
+   "aig": "Fort",
+   "ex": "Quatre key users formés comme formateurs. Les 40 magasiniers sont formés en trois sessions, trois semaines avant le go-live, sur des cas réels : recevoir un camion, préparer une commande urgente. Taux de présence : 95 %.",
+   "own": "Conduite du changement et key users",
+   "r": [
+    [
+     "Formation trop tôt : oubliée au go-live",
+     "Former deux à quatre semaines avant"
+    ],
+    [
+     "Formation à l'outil mais pas au nouveau processus : erreurs",
+     "Former par scénario métier"
+    ],
+    [
+     "Résistance non traitée, managers absents : contournements",
+     "Impliquer les managers du site"
+    ]
+   ]
+  },
+  "s11": {
+   "p": 3,
+   "n": "11",
+   "t": "Préparation de la bascule",
+   "s": "Runbook, répétition, retour arrière",
+   "obj": "Préparer la bascule minute par minute, puis la répéter.",
+   "act": [
+    "Runbook : tâche, responsable, durée, dépendance",
+    "Arrêt de l'activité et inventaire physique",
+    "Répétition générale en conditions réelles",
+    "Point de non-retour et plan de retour arrière"
+   ],
+   "pre": [
+    "Durées de chargement mesurées",
+    "Fenêtre de bascule validée avec le métier",
+    "Équipe de bascule nommée"
+   ],
+   "liv": [
+    "Runbook validé",
+    "Rapport de répétition",
+    "Plan de retour arrière testé"
+   ],
+   "ai": [
+    "Vérifier la cohérence du runbook : dépendances, durées, tâches oubliées",
+    "Comparer au runbook des sites précédents"
+   ],
+   "aig": "Faible à moyen",
+   "ex": "Runbook de 186 tâches. Bascule du vendredi 18 h au dimanche 18 h. Répétition trois semaines avant : 9 h 10 au lieu des 8 heures prévues, donc deux tâches sont parallélisées. Point de non-retour : samedi 14 h. Inventaire physique complet le vendredi.",
+   "own": "Cutover manager",
+   "r": [
+    [
+     "Pas de répétition : la vraie bascule dépasse la fenêtre",
+     "Au moins une répétition complète et chronométrée"
+    ],
+    [
+     "Retour arrière jamais testé : inutilisable le jour J",
+     "Le tester pendant la répétition"
+    ],
+    [
+     "Stock physique différent du stock système : données fausses dès le jour 1",
+     "Inventaire avant la bascule"
+    ]
+   ]
+  },
+  "s12": {
+   "p": 3,
+   "n": "12",
+   "t": "Go / no-go",
+   "s": "Décider sur des faits",
+   "gate": 1,
+   "obj": "Décider, sur des critères écrits à l'avance, si on bascule.",
+   "act": [
+    "Revue des critères : tests, données, formation, infrastructure, support, runbook",
+    "SRA final",
+    "Décision formelle et tracée en comité"
+   ],
+   "pre": [
+    "Critères de go / no-go définis et signés à l'avance",
+    "État à jour de chaque critère"
+   ],
+   "liv": [
+    "Décision signée, avec ses réserves éventuelles"
+   ],
+   "ai": [
+    "Préparer le tableau de bord des critères"
+   ],
+   "aig": "Faible : la décision reste humaine",
+   "ex": "Comité du mercredi : 14 critères verts, 1 orange, deux key users en congé la première semaine. Décision : go avec réserve, un consultant de Lyon vient en renfort.",
+   "own": "Comité de pilotage côté client",
+   "r": [
+    [
+     "Pression de la date : go malgré des critères rouges",
+     "Critères fixés à l'avance et non renégociables en séance"
+    ],
+    [
+     "Réserves non suivies après le go : incidents",
+     "Chaque réserve a un responsable et une date"
+    ],
+    [
+     "Le no-go vécu comme un échec : personne n'ose le proposer",
+     "Le présenter comme une option normale de pilotage"
+    ]
+   ]
+  },
+  "s13": {
+   "p": 3,
+   "n": "13",
+   "t": "Bascule et go-live",
+   "s": "Exécuter le runbook, ouvrir le site",
+   "obj": "Exécuter la bascule et démarrer l'activité sur la nouvelle solution.",
+   "act": [
+    "Exécution du runbook",
+    "Chargement des données",
+    "Réconciliation : stocks, en-cours",
+    "Ouverture aux utilisateurs, premiers flux sous surveillance"
+   ],
+   "pre": [
+    "Go validé",
+    "Équipes de bascule et de support présentes",
+    "Support éditeur prévenu"
+   ],
+   "liv": [
+    "Système en production",
+    "Réconciliation signée par le métier"
+   ],
+   "ai": [
+    "Surveiller les flux en erreur et les écarts de réconciliation en temps réel"
+   ],
+   "aig": "Moyen",
+   "ex": "L'ancien logiciel s'arrête vendredi à 18 h. Inventaire, chargement, réconciliation : écart de 12 articles sur 12 000, corrigé avant l'ouverture. Ouverture dimanche à 16 h, premier camion reçu lundi à 6 h.",
+   "own": "Cutover manager et métier",
+   "r": [
+    [
+     "Tâche oubliée ou dépendance mal gérée : retard en chaîne",
+     "Points de contrôle horaires sur le runbook"
+    ],
+    [
+     "Réconciliation sautée pour gagner du temps : écarts de stock invisibles",
+     "Réconciliation obligatoire avant l'ouverture"
+    ],
+    [
+     "Retour arrière décidé trop tard : ni l'ancien ni le nouveau système",
+     "Critères de retour arrière fixés avant le point de non-retour"
+    ]
+   ]
+  },
+  "s14": {
+   "p": 4,
+   "n": "14",
+   "t": "Hypercare",
+   "s": "Stabiliser les premières semaines",
+   "obj": "Stabiliser le site pendant les premières semaines de production.",
+   "act": [
+    "Support renforcé sur place",
+    "Triage quotidien des incidents",
+    "Suivi des indicateurs : incidents, flux en erreur, délais",
+    "Corrections rapides"
+   ],
+   "pre": [
+    "Équipe d'hypercare dimensionnée",
+    "Processus d'incident et circuit d'escalade",
+    "Indicateurs et critères de sortie définis"
+   ],
+   "liv": [
+    "Incidents résolus",
+    "Bilan de stabilisation",
+    "Critères de sortie atteints"
+   ],
+   "ai": [
+    "Trier et classer les tickets",
+    "Suggérer des solutions à partir des incidents déjà résolus",
+    "Repérer les tendances avant qu'elles deviennent des crises"
+   ],
+   "aig": "Fort",
+   "ex": "Quatre semaines d'hypercare. Semaine 1 : 85 tickets, dont 60 % de questions d'utilisation. Semaine 4 : 9 tickets. Critère de sortie : moins de 10 tickets par semaine et aucun bloquant pendant deux semaines.",
+   "own": "Équipe projet et support",
+   "r": [
+    [
+     "Les experts partent trop tôt sur le site suivant : incidents sans réponse",
+     "Verrouiller l'équipe d'hypercare jusqu'à la sortie"
+    ],
+    [
+     "Hypercare sans fin : coût et confusion avec le run",
+     "Critères de sortie chiffrés"
+    ],
+    [
+     "Contournements non signalés : problèmes cachés",
+     "Présence sur le terrain, écoute des utilisateurs"
+    ]
+   ]
+  },
+  "s15": {
+   "p": 4,
+   "n": "15",
+   "t": "Transfert au run et retour d'expérience",
+   "s": "Passer la main, améliorer la vague suivante",
+   "obj": "Transférer la maintenance au run et améliorer les vagues suivantes.",
+   "act": [
+    "Transfert de connaissances et documentation au run",
+    "Shadowing puis reverse shadowing",
+    "Retour d'expérience",
+    "Mise à jour du core model et de la méthode"
+   ],
+   "pre": [
+    "Critères de sortie d'hypercare atteints",
+    "Équipe de run dimensionnée",
+    "Documentation à jour"
+   ],
+   "liv": [
+    "Procès-verbal de transfert",
+    "Retour d'expérience",
+    "Backlog d'améliorations du core model"
+   ],
+   "ai": [
+    "Produire la documentation pour le run",
+    "Synthétiser le retour d'expérience de tous les sites"
+   ],
+   "aig": "Moyen",
+   "ex": "Deux semaines de shadowing avec l'équipe de run. Retour d'expérience : la première migration à blanc est arrivée trop tard, et le WiFi aurait dû être audité dès le cadrage. Ces deux points sont ajoutés à la grille SRA de Mexico.",
+   "own": "Run et direction du programme",
+   "r": [
+    [
+     "Transfert sans documentation : le run dépend toujours de l'équipe projet",
+     "Shadowing, puis reverse shadowing, avant de libérer l'équipe"
+    ],
+    [
+     "Retour d'expérience jamais fait : mêmes erreurs à la vague suivante",
+     "Atelier obligatoire avant le site suivant, avec des actions suivies"
+    ]
+   ]
+  },
+  "g3": {
+   "p": 4,
+   "gate": 1,
+   "t": "Gate 3 · Sortie d'hypercare",
+   "s": "",
+   "obj": "Clore le projet du site et confirmer que le run peut assumer seul.",
+   "act": [
+    "Revue des indicateurs de stabilité",
+    "Revue du transfert au run"
+   ],
+   "pre": [
+    "Indicateurs sous les seuils pendant une période convenue",
+    "Plus aucun incident bloquant ouvert",
+    "Run formé et documenté"
+   ],
+   "liv": [
+    "Clôture formelle du site"
+   ],
+   "ai": [
+    "Calculer les indicateurs de stabilité sur la période"
+   ],
+   "aig": "Faible",
+   "ex": "Sortie d'hypercare prononcée six semaines après le go-live. Trois tickets mineurs sont repris formellement par le run.",
+   "own": "Comité de pilotage et responsable du run",
+   "r": [
+    [
+     "Clôture prononcée avec des incidents ouverts : le run hérite d'une dette",
+     "Liste des incidents ouverts reprise formellement par le run"
+    ]
+   ]
+  },
+  "transverse": {
+   "p": 0,
+   "t": "En continu, du début à la fin",
+   "s": "",
+   "obj": "Tenir le roll-out d'un bout à l'autre : décider vite, arbitrer proprement, garder le site engagé.",
+   "act": [
+    "Comité de pilotage : arbitrages, gates, go / no-go",
+    "Design authority : conformité au core model",
+    "Change board : toute modification de périmètre, planning ou budget",
+    "Registre des risques avec seuils d'alerte",
+    "Conduite du changement et communication vers le site"
+   ],
+   "pre": [
+    "Rôles et instances définis dès le cadrage",
+    "Sponsor du site impliqué"
+   ],
+   "liv": [
+    "Décisions tracées",
+    "Registre des risques à jour",
+    "Plan de communication"
+   ],
+   "ai": [
+    "Comptes rendus de comités et suivi des décisions",
+    "Détection précoce des risques à partir des indicateurs",
+    "Attention : données client uniquement dans un outil validé par le client"
+   ],
+   "aig": "Moyen",
+   "ex": "Comité de pilotage mensuel, puis hebdomadaire les six dernières semaines. Le registre suit 14 risques ; seuls le retard du transporteur et le WiFi sont passés au rouge, et tous deux ont été traités avant la gate 2.",
+   "own": "Direction du programme",
+   "r": [
+    [
+     "Comités qui constatent sans décider : les problèmes s'accumulent",
+     "Chaque comité se termine par des décisions tracées"
+    ],
+    [
+     "Indicateurs au vert, réalité au rouge, l'effet pastèque",
+     "Seuils d'alerte chiffrés et vérification sur le terrain"
+    ],
+    [
+     "Sponsor du site absent : arbitrages bloqués",
+     "Le faire siéger aux gates du site"
+    ]
+   ]
+  }
+ }
+}

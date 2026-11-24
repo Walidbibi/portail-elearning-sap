@@ -27,7 +27,7 @@ shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface de l'accueil, du glossaire et du lecteur
 outils/captures/           captures avant / après et comparaison pixel par pixel (voir LISEZMOI.md)
-frises/rollout.html        frise roll-out (Diagnose, Adjust, Deploy)
+frises/rollout.html        frise roll-out (Diagnose, Adjust, Deploy), contenu dans frises/rollout.json
 frises/greenfield.html     frise greenfield (SAP Activate), contenu dans frises/greenfield.json
 shared/frise.js, frise.css gabarit commun des frises (dessin de la chronologie, popups)
 frises/brownfield.html     frise brownfield (SAP Activate), contenu dans frises/brownfield.json
@@ -67,12 +67,41 @@ Le lecteur n'ouvre que les PDF listés dans le manifeste et rangés sous `docume
 
 ### Les frises
 
-- **Greenfield, brownfield, bluefield (gabarit, US-005 et US-006)** : chaque page (`frises/<nom>.html`) est courte et identique aux autres, sauf le nom du fichier de contenu. Le contenu est dans `frises/<nom>.json`, l'affichage dans `shared/frise.js` et `shared/frise.css`, les textes communs dans `shared/libelles/fr.json` sous `frise`. La page déclare son fichier : `<script src="../shared/frise.js" data-frise="greenfield.json">`.
-- Champs du JSON d'une frise : `titreOnglet`, `surtitre`, `titre`, `intro`, `exemple` (`entreprise`, `description`), `chronologieAria`, `enContinu`, `causesTitre`, `causes`, `note`, `chronologie` (`largeur`, `x1`, `mois`, `golive` : `mois` et `etape`), `phases`, `etenduePhases`, `ordre`, `positions`, `gates`, `icones`, `etapes`.
-- **Roll-out (en attente de US-007)** : la page est encore autonome, avec le contenu dans son script : constantes `PH` (phases), `S` (étapes et gates), `ORDER`, `TL` (positions sur la chronologie), `GT` (gates), `PSPAN` (étendue des phases), `ML` (mois), `IC` (icônes SVG).
-- Chaque étape (`etapes` dans le JSON, `S` dans les anciennes pages) contient : `t` titre, `s` sous-titre, `obj` objectif, `act` activités, `pre` prérequis, `liv` livrables, `own` qui porte, `ai` apport de l'IA, `aig` gain estimé, `r` risques `[risque, parade]`, `ex` exemple fil rouge (affiché en fin de popup). Une gate a `gate: 1`.
-- Popups avec navigation Précédent / Suivant et bouton « Suivre l'exemple pas à pas ».
-- Bouton « ← Portail » en haut de chaque frise.
+Les quatre frises partagent un gabarit (US-005 à US-007). Chaque page `frises/<nom>.html` est courte et identique aux autres, sauf le nom de son fichier de contenu : `<script src="../shared/frise.js" data-frise="<nom>.json">`. L'affichage est dans `shared/frise.js` et `shared/frise.css`, les textes communs (Activités, Risques d'échec, Précédent…) dans `shared/libelles/fr.json`, sous `frise`.
+
+Champs de `frises/<nom>.json` :
+
+| Champ | Contenu |
+|---|---|
+| `titreOnglet`, `surtitre`, `titre`, `intro` | en-tête de la page |
+| `exemple` | `entreprise` (affichée dans « Dans l'exemple · … ») et `description` (ligne « Exemple fil rouge ») |
+| `chronologieAria` | description de la chronologie pour les lecteurs d'écran |
+| `enContinu` | texte du bandeau « En continu », qui ouvre l'étape `transverse` |
+| `causesTitre`, `causes` | titre et liste des causes d'échec |
+| `note` | note de bas de page |
+| `nomGate` (facultatif) | nom des gates, « Quality gate » par défaut (« Gate de passage » pour le roll-out) |
+| `couleurs` (facultatif) | couleur de chaque phase, en indice de la palette `--c0` à `--c5` ; par défaut la phase n prend la couleur n |
+| `couleurParade` (facultatif) | couleur de l'étiquette « Parade », indice de la palette ; `--c4` (rouge) par défaut |
+| `chronologie` | `largeur` et `x1` (dimensions du dessin), `mois` (libellés de l'axe, un par mois), `golive` (`mois` : position, `etape` : étape ouverte au clic) |
+| `phases` | `[{id, name, eq}]`, une par colonne |
+| `etenduePhases` | `[début, fin]` de chaque phase, en mois depuis le début de l'axe |
+| `ordre` | étapes de chaque phase, dans l'ordre du parcours « pas à pas » |
+| `positions` | pour chaque étape : `[début, fin, libellé court]` sur la chronologie |
+| `gates` | pour chaque gate : `[mois, étiquette du losange]` |
+| `icones` | tracé SVG de l'icône de chaque étape |
+| `etapes` | le contenu des popups, voir ci-dessous |
+
+Chaque étape de `etapes` contient : `p` phase, `n` numéro, `t` titre, `s` sous-titre, `obj` objectif, `act` activités, `pre` prérequis, `liv` livrables, `own` qui porte, `ai` apport de l'IA, `aig` gain estimé, `r` risques `[risque, parade]`, `ex` exemple fil rouge (affiché en fin de popup). Une gate a `gate: 1` et pas de `n`. L'étape `transverse` sert au bandeau « En continu ».
+
+Ajouter une frise :
+
+1. Copier une page existante en `frises/<nom>.html` et changer `data-frise`.
+2. Copier le JSON le plus proche en `frises/<nom>.json` et remplacer le contenu. Le bouton « Suivre l'exemple » ouvre la première étape de `ordre`.
+3. Ajuster `chronologie.largeur` et `x1` si le nombre de mois change : les frises existantes vont de 1240 à 1320 de large pour 10 à 17 mois.
+4. Déclarer la frise dans `documents.json` (type `frise`) et l'ajouter à la section `frises` de l'accueil.
+5. Faire un aperçu `apercus/<clé>.jpg`, puis vérifier la page dans un navigateur.
+
+Les popups ont une navigation Précédent / Suivant, un bouton « Suivre l'exemple pas à pas » et le bouton « ← Portail » en haut de page. Clavier : Entrée ou Espace sur un élément de la chronologie, Échap pour fermer.
 
 ## Les autres supports (à récupérer en PDF)
 
@@ -111,7 +140,7 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 2. **Mise à jour sans code** : Walid remplace un PDF en déposant un fichier du même nom dans `documents/` via l'interface GitHub ; le site se met à jour seul.
 3. **Manifeste des documents** : fait le 24/11/2026 (`documents.json`, US-003). Reste en option une GitHub Action qui vérifie que chaque fichier du manifeste existe (US-008).
 4. **Glossaire en JSON** : fait le 24/11/2026 (`glossaire.json`, US-004).
-5. **Frises industrialisées** : un seul gabarit + un fichier JSON par frise. Fait pour greenfield, brownfield et bluefield (US-005, US-006) ; roll-out en US-007.
+5. **Frises industrialisées** : un seul gabarit + un fichier JSON par frise. Fait pour les quatre frises (US-005 à US-007).
 6. **eLearning** : quiz par module, suivi de progression, accès par compte.
 
 ## Points ouverts
