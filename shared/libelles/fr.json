@@ -40,5 +40,12 @@
     "erreurInconnu": "Ce document n'existe pas. <a href=\"index.html\">Retour au portail</a>.",
     "erreurPdfjs": "Le lecteur n'a pas pu se charger (fichiers PDF.js introuvables). <a href=\"{src}\" download>Télécharger le PDF</a>.",
     "erreurOuverture": "Impossible d'ouvrir ce PDF. <a href=\"{src}\" download>Le télécharger</a>."
+  },
+  "types": {
+    "deck": "Deck",
+    "doc": "Doc",
+    "frise": "Frise",
+    "act": "Certification",
+    "prat": "Pratique"
   }
 }

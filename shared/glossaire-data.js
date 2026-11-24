@@ -1,25 +1,6 @@
-/* Données partagées du portail : documents et glossaire.
+/* Données du glossaire. Les documents sont dans documents.json.
    Pour ajouter un terme, ajouter une ligne dans SAP_GLOSSAIRE :
    [terme, nom complet, catégorie, définition, « pour le DP », [clés de documents]] */
-window.SAP_U="https://claude.ai/";
-window.SAP_DOCS={
- synth:{k:"deck",t:"Formation SAP · Synthèse",d:"Le deck complet : modules, processus, gouvernance, tests, bascule, run, roll-out.",u:"documents/formation-sap-synthese.pdf"},
- mig:{k:"deck",t:"Migration ECC vers S/4HANA",d:"Ce qui change entre ECC et S/4HANA, et les chemins pour y aller.",u:"documents/migration-ecc-s4hana.pdf"},
- fiche:{k:"doc",t:"Fiche de révision",d:"L'essentiel sur une page, à relire avant un entretien.",u:"documents/fiche-de-revision.pdf"},
- simu:{k:"prat",t:"Simulation d'entretien",d:"Les questions types et les bonnes réponses, dont les seuils d'alerte.",u:"documents/simulation-entretien.pdf"},
- rollout:{k:"frise",t:"Roll-out",d:"Déployer un core model site par site : Diagnose, Adjust, Deploy.",u:"frises/rollout.html"},
- green:{k:"frise",t:"Greenfield",d:"Nouvelle implémentation à partir du standard.",u:"frises/greenfield.html"},
- brown:{k:"frise",t:"Brownfield",d:"Conversion du système ECC existant.",u:"frises/brownfield.html"},
- blue:{k:"frise",t:"Bluefield",d:"Transition sélective : garder une partie, reconcevoir le reste.",u:"frises/bluefield.html"},
- act:{k:"act",t:"ACT100 · Livre de révision",d:"SAP Activate : les 7 chapitres en un seul document, à imprimer.",u:"documents/act100-livre-de-revision.pdf"},
- act2:{k:"act",t:"ACT200 · Livre de révision",d:"SAP Activate Agile : le livre de révision complet.",u:"documents/act200-livre-de-revision.pdf"},
- synthEN:{k:"deck",t:"SAP Training · Summary (EN)",d:"Version anglaise du deck de synthèse.",u:"documents/sap-training-summary-en.pdf"},
- migEN:{k:"deck",t:"ECC to S/4HANA Migration (EN)",d:"Version anglaise du deck de migration.",u:"documents/ecc-s4hana-migration-en.pdf"},
- script:{k:"doc",t:"Script de narration",d:"Le texte à lire pour transformer les decks en eLearning.",u:"documents/script-de-narration.pdf"}
-};
-/* Un PDF local s'ouvre dans le lecteur (lecteur.html), le reste tel quel. */
-window.SAP_HREF=u=>(!/^https?:/.test(u)&&/\.pdf$/i.test(u))?"lecteur.html?doc="+encodeURIComponent(u):u;
-window.SAP_KL={deck:"Deck",doc:"Doc",frise:"Frise",act:"Certification",prat:"Pratique"};
 window.SAP_CAT={meth:"Méthode et gouvernance",proc:"Modules et processus",tech:"Technique et intégration",data:"Données et migration",test:"Tests et bascule",run:"Run et support",agile:"Agile et pilotage"};
 window.SAP_GLOSSAIRE=[
 // méthode et gouvernance

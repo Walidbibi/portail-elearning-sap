@@ -1,9 +1,10 @@
 /* Glossaire partagé : panneau fixé à droite sur grand écran, tiroir sur petit écran.
-   Inclus sur toutes les pages du portail, après shared/libelles.js. Raccourci : « / ». */
+   Inclus sur toutes les pages du portail, après shared/libelles.js et shared/documents.js. Raccourci : « / ». */
 (function(){
 const me=document.currentScript;const BASE=new URL('..',me.src);
-(window.SAP_LIBELLES||Promise.resolve(k=>k)).then(function(T){
-const D=window.SAP_DOCS||{},KL=window.SAP_KL||{},CAT=window.SAP_CAT||{},G=window.SAP_GLOSSAIRE||[];
+Promise.all([window.SAP_LIBELLES||Promise.resolve(k=>k),window.SAP_DOCUMENTS||Promise.resolve({documents:{}})]).then(function([T,M]){
+const D=M.documents;
+const CAT=window.SAP_CAT||{},G=window.SAP_GLOSSAIRE||[];
 const abs=u=>u.startsWith('http')?u:new URL(u,BASE).href;
 const tgt=u=>u.startsWith('http')?' target="_blank" rel="noopener"':'';
 const css=`
@@ -70,7 +71,7 @@ function render(){
     if(letter!==L){L=letter;h+=`<div class="gl-letter">${letter}</div>`;}
     const o=opened.has(g.i)||auto;
     h+=`<div><button type="button" class="gl-term-btn" data-i="${g.i}" aria-expanded="${o}"><b>${hl(g.t,qq)}</b>${g.f?`<span class="gl-f">${hl(g.f,qq)}</span>`:''}</button>`;
-    if(o){h+=`<div class="gl-body"><p>${hl(g.d,qq)}</p>${g.dp?`<p class="gl-dp"><span class="gl-dp-l">${esc(T('glossaire.pourLeDP'))}</span>${esc(g.dp)}</p>`:''}${g.l.filter(k=>D[k]).length?`<div class="gl-links">${g.l.filter(k=>D[k]).map(k=>{const u=abs((window.SAP_HREF||(x=>x))(D[k].u));return `<a class="gl-link" href="${u}"${tgt(D[k].u)}>${KL[D[k].k]||''} · ${esc(D[k].t)}</a>`;}).join('')}</div>`:''}</div>`;}
+    if(o){h+=`<div class="gl-body"><p>${hl(g.d,qq)}</p>${g.dp?`<p class="gl-dp"><span class="gl-dp-l">${esc(T('glossaire.pourLeDP'))}</span>${esc(g.dp)}</p>`:''}${g.l.filter(k=>D[k]).length?`<div class="gl-links">${g.l.filter(k=>D[k]).map(k=>{const u=abs((window.SAP_HREF||(x=>x))(D[k].fichier));return `<a class="gl-link" href="${u}"${tgt(D[k].fichier)}>${T('types.'+D[k].type)} · ${esc(D[k].titre)}</a>`;}).join('')}</div>`:''}</div>`;}
     h+='</div>';
   }
   list.innerHTML=h;

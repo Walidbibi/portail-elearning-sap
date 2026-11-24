@@ -64,3 +64,4 @@ La comparaison affiche « Identique » ou la liste des images qui diffèrent, av
 
 - Les polices IBM Plex viennent de Google Fonts. Sans connexion internet, les captures changent.
 - Deux passages successifs sur le même code donnent des images identiques (vérifié le 2026-11-24).
+- Il arrive qu'une image diffère de 1 ou 2 pixels, sans lien avec le code (lissage du texte). Relancer la page concernée : si l'écart disparaît, ce n'est pas une régression.

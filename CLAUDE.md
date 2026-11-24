@@ -20,7 +20,9 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 
 ```
 index.html                 accueil : parcours conseillé, frises, autres supports
-shared/glossaire-data.js   données : documents (SAP_DOCS), catégories, 136 termes (SAP_GLOSSAIRE)
+documents.json             manifeste : la liste des documents et l'ordre des sections de l'accueil
+shared/documents.js        chargeur du manifeste (SAP_DOCUMENTS) et SAP_HREF
+shared/glossaire-data.js   données : catégories, 136 termes (SAP_GLOSSAIRE)
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface de l'accueil, du glossaire et du lecteur
@@ -34,14 +36,30 @@ apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmana
 documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
 ```
 
-Le site fonctionne en ouvrant `index.html` dans un navigateur, sans compilation. Le lecteur PDF demande un serveur (même local : `python3 -m http.server 8080`) ; PDF.js est copié dans `shared/pdfjs/` (version 3.11.174), aucun CDN. `SAP_HREF` dans `glossaire-data.js` envoie tout PDF local vers le lecteur.
+Le site ne demande aucune compilation, mais il doit être servi par un serveur, même local (`python3 -m http.server 8080`) : les textes et le manifeste sont chargés par `fetch`. PDF.js est copié dans `shared/pdfjs/` (version 3.11.174), aucun CDN. `SAP_HREF` dans `shared/documents.js` envoie tout PDF local vers le lecteur.
+
+### Le manifeste des documents
+
+`documents.json` contient deux blocs :
+
+- `documents` : une entrée par support, sous une clé courte (`synth`, `mig`…). Champs : `type` (`deck`, `doc`, `frise`, `act`, `prat`, libellés dans `shared/libelles/fr.json` sous `types`), `titre`, `description`, `fichier` (chemin depuis la racine du site).
+- `accueil` : l'ordre des cartes dans les trois sections de l'accueil (`parcours`, `frises`, `autres`), par clé.
+
+Ajouter un document :
+
+1. Déposer le PDF dans `documents/` (nom en minuscules, sans espace ni accent).
+2. Ajouter une entrée dans `documents` avec une nouvelle clé.
+3. Ajouter la clé dans une section de `accueil` pour qu'une carte apparaisse.
+4. Optionnel : un aperçu `apercus/<clé>.jpg` (sinon la carte s'affiche sans image).
+
+Le lecteur n'ouvre que les PDF listés dans le manifeste et rangés sous `documents/`.
 
 ### Le glossaire
 
 - Fixé à droite sur grand écran (au-delà de 1100 px), tiroir sur petit écran. Bouton « Masquer », bouton flottant « Glossaire », raccourci « / ».
 - Chaque terme est une ligne de `SAP_GLOSSAIRE` : `[terme, nom complet, catégorie, définition, « pour le DP », [clés de documents]]`.
 - Catégories : `meth`, `proc`, `tech`, `data`, `test`, `run`, `agile` (libellés dans `SAP_CAT`).
-- Les clés de documents renvoient à `SAP_DOCS`. Un lien local (sans `http`) est résolu par rapport à la racine du site.
+- Les clés de documents renvoient à `documents.json`. Un lien local (sans `http`) est résolu par rapport à la racine du site.
 - La recherche ignore les accents et cherche aussi dans les définitions.
 
 ### Les frises
@@ -55,7 +73,7 @@ Le site fonctionne en ouvrant `index.html` dans un navigateur, sans compilation.
 
 Ces documents existent comme artefacts privés sur claude.ai. Claude Code ne peut pas les lire : Walid doit les exporter en PDF et les déposer dans `documents/`.
 
-| Clé `SAP_DOCS` | Document | Type |
+| Clé du manifeste | Document | Type |
 |---|---|---|
 | synth | Formation SAP · Synthèse (FR) | Deck |
 | synthEN | SAP Training · Summary (EN) | Deck |
@@ -86,7 +104,7 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 
 1. **Hébergement** : décidé le 23/11/2026, dépôt public `Walidbibi/portail-elearning-sap` sur le compte personnel, publié avec GitHub Pages. Pour un accès restreint plus tard : Cloudflare Pages + Cloudflare Access (gratuit jusqu'à 50 utilisateurs).
 2. **Mise à jour sans code** : Walid remplace un PDF en déposant un fichier du même nom dans `documents/` via l'interface GitHub ; le site se met à jour seul.
-3. **Manifeste des documents** : les liens claude.ai sont déjà remplacés par des PDF locaux ; reste à sortir `SAP_DOCS` vers un `documents.json` (titre, description, type, fichier). Ajouter un document = déposer le fichier + une ligne dans le manifeste. Option : une GitHub Action qui vérifie que chaque fichier du manifeste existe.
+3. **Manifeste des documents** : fait le 24/11/2026 (`documents.json`, US-003). Reste en option une GitHub Action qui vérifie que chaque fichier du manifeste existe (US-008).
 4. **Glossaire en JSON** : sortir les données de `glossaire-data.js` vers `glossaire.json`, chargé par `fetch` (le site devra alors être servi par un serveur, même local).
 5. **Frises industrialisées** : un seul gabarit HTML + un fichier JSON par frise, au lieu de quatre pages qui dupliquent le code.
 6. **eLearning** : quiz par module, suivi de progression, accès par compte.

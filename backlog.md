@@ -110,7 +110,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `shared/libelles/fr.json` (34 clés) et `shared/libelles.js` (chargeur, attributs `data-t`, `data-t-aria`, `data-t-placeholder`, fonction `SAP_T`). « Pour le DP » sort du CSS vers une balise. Les frises chargent aussi `libelles.js`, pour leur glossaire. Captures : 44 sur 44 identiques à la référence. Vérifié dans le navigateur : titres d'onglet, textes pour lecteurs d'écran, message « document introuvable », recherche sans résultat, clé absente affichée telle quelle, aucune erreur en console. Suite : US-003.
 
 ### US-003 · Manifeste des documents
-- Statut : Validée
+- Statut : Prête à publier
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -120,18 +120,19 @@ Journal
 En tant que Walid, je veux que la liste des documents soit dans un fichier `documents.json` afin d'ajouter un support en déposant un fichier et une ligne, sans toucher au code.
 
 Critères d'acceptation
-- [ ] `documents.json` contient les 13 entrées actuelles de `SAP_DOCS` : clé, type, titre, description, fichier.
-- [ ] Les libellés de type (Deck, Doc, Frise, Certification, Pratique) sont dans le fichier de libellés de US-002.
-- [ ] L'ordre des trois sections de l'accueil (parcours conseillé, frises, autres supports) est décrit dans le manifeste, plus dans le script de l'accueil.
-- [ ] `SAP_DOCS` n'existe plus dans `glossaire-data.js`.
-- [ ] Le lecteur n'ouvre toujours que les fichiers PDF listés dans le manifeste, sous `documents/`.
-- [ ] Les liens « documents » des termes du glossaire fonctionnent tous.
-- [ ] Le `CLAUDE.md` décrit le format du manifeste et la marche à suivre pour ajouter un document.
-- [ ] Rendu identique aux captures de US-001.
+- [x] `documents.json` contient les 13 entrées actuelles de `SAP_DOCS` : clé, type, titre, description, fichier.
+- [x] Les libellés de type (Deck, Doc, Frise, Certification, Pratique) sont dans le fichier de libellés de US-002.
+- [x] L'ordre des trois sections de l'accueil (parcours conseillé, frises, autres supports) est décrit dans le manifeste, plus dans le script de l'accueil.
+- [x] `SAP_DOCS` n'existe plus dans `glossaire-data.js`.
+- [x] Le lecteur n'ouvre toujours que les fichiers PDF listés dans le manifeste, sous `documents/`.
+- [x] Les liens « documents » des termes du glossaire fonctionnent tous.
+- [x] Le `CLAUDE.md` décrit le format du manifeste et la marche à suivre pour ajouter un document.
+- [x] Rendu identique aux captures de US-001.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `documents.json` (13 documents, ordre des trois sections de l'accueil), `shared/documents.js` (chargeur et `SAP_HREF`), libellés de type dans `fr.json` sous `types`. `SAP_DOCS`, `SAP_KL` et `SAP_U` (inutilisé) retirés de `glossaire-data.js`. Captures : 44 sur 44 identiques (un écart de 1 à 2 pixels au premier passage a disparu à la relance). Vérifié : les 129 liens du glossaire (8 documents) répondent, le lecteur refuse un fichier hors manifeste, aucune erreur en console. CLAUDE.md décrit le manifeste et l'ajout d'un document. Suite : US-004.
 
 ### US-004 · Glossaire en JSON
 - Statut : Validée
@@ -474,3 +475,4 @@ Journal
 - 2026-11-24 · session principale · Walid retient les options recommandées pour Q1 à Q4 et Q6 à Q8 (Q5 déjà tranchée). Besoin B-001 inscrit dans `besoins.md`. Statuts inchangés (« À affiner ») : restent l'accord de Walid sur les stories et les priorités. Suite : lot 1 sans maquette, US-001 passe en « Validée » dès l'accord de Walid.
 - 2026-11-24 · session principale · US-001 à US-008 passées en « Validée » sur accord de Walid. US-001 livrée, en « Prête à publier ». Suite : US-002 (fichier de libellés).
 - 2026-11-24 · session principale · US-002 livrée, en « Prête à publier ». Suite : US-003 (manifeste des documents).
+- 2026-11-24 · session principale · US-003 livrée, en « Prête à publier ». Suite : US-004 (glossaire en JSON).

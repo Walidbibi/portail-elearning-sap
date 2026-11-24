@@ -86,15 +86,18 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 
 
 <script src="shared/libelles.js"></script>
+<script src="shared/documents.js"></script>
 <script src="shared/glossaire-data.js"></script>
 <script src="shared/glossaire.js"></script>
 <script>
-const D=window.SAP_DOCS,KL=window.SAP_KL;
+Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(([T,M])=>{
+const D=M.documents,A=M.accueil;
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
-const card=key=>{const d=D[key];return `<a class="card k-${d.k}" href="${window.SAP_HREF(d.u)}"${tgt(d.u)}><span class="thumb"><img src="apercus/${key}.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span><span class="cbody"><span class="kind">${KL[d.k]}</span><b>${d.t}</b><span class="d">${d.d}</span></span></a>`;};
-document.getElementById('path').innerHTML=["synth","mig","act","act2","fiche"].map(k=>`<li>${card(k)}</li>`).join('');
-document.getElementById('frises').innerHTML=["rollout","green","brown","blue"].map(k=>card(k)).join('');
-document.getElementById('other').innerHTML=["simu","synthEN","migEN","script"].map(k=>card(k)).join('');
+const card=key=>{const d=D[key];if(!d)return '';return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="thumb"><img src="apercus/${key}.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span><span class="cbody"><span class="kind">${T('types.'+d.type)}</span><b>${d.titre}</b><span class="d">${d.description}</span></span></a>`;};
+document.getElementById('path').innerHTML=(A.parcours||[]).filter(k=>D[k]).map(k=>`<li>${card(k)}</li>`).join('');
+document.getElementById('frises').innerHTML=(A.frises||[]).map(card).join('');
+document.getElementById('other').innerHTML=(A.autres||[]).map(card).join('');
+});
 </script>
 
 </body>

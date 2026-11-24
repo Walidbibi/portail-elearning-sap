@@ -1,0 +1,104 @@
+{
+  "_aide": "Liste des supports du portail. Ajouter un document : déposer le fichier dans documents/, puis ajouter une entrée ici. Voir CLAUDE.md.",
+  "accueil": {
+    "parcours": [
+      "synth",
+      "mig",
+      "act",
+      "act2",
+      "fiche"
+    ],
+    "frises": [
+      "rollout",
+      "green",
+      "brown",
+      "blue"
+    ],
+    "autres": [
+      "simu",
+      "synthEN",
+      "migEN",
+      "script"
+    ]
+  },
+  "documents": {
+    "synth": {
+      "type": "deck",
+      "titre": "Formation SAP · Synthèse",
+      "description": "Le deck complet : modules, processus, gouvernance, tests, bascule, run, roll-out.",
+      "fichier": "documents/formation-sap-synthese.pdf"
+    },
+    "mig": {
+      "type": "deck",
+      "titre": "Migration ECC vers S/4HANA",
+      "description": "Ce qui change entre ECC et S/4HANA, et les chemins pour y aller.",
+      "fichier": "documents/migration-ecc-s4hana.pdf"
+    },
+    "fiche": {
+      "type": "doc",
+      "titre": "Fiche de révision",
+      "description": "L'essentiel sur une page, à relire avant un entretien.",
+      "fichier": "documents/fiche-de-revision.pdf"
+    },
+    "simu": {
+      "type": "prat",
+      "titre": "Simulation d'entretien",
+      "description": "Les questions types et les bonnes réponses, dont les seuils d'alerte.",
+      "fichier": "documents/simulation-entretien.pdf"
+    },
+    "rollout": {
+      "type": "frise",
+      "titre": "Roll-out",
+      "description": "Déployer un core model site par site : Diagnose, Adjust, Deploy.",
+      "fichier": "frises/rollout.html"
+    },
+    "green": {
+      "type": "frise",
+      "titre": "Greenfield",
+      "description": "Nouvelle implémentation à partir du standard.",
+      "fichier": "frises/greenfield.html"
+    },
+    "brown": {
+      "type": "frise",
+      "titre": "Brownfield",
+      "description": "Conversion du système ECC existant.",
+      "fichier": "frises/brownfield.html"
+    },
+    "blue": {
+      "type": "frise",
+      "titre": "Bluefield",
+      "description": "Transition sélective : garder une partie, reconcevoir le reste.",
+      "fichier": "frises/bluefield.html"
+    },
+    "act": {
+      "type": "act",
+      "titre": "ACT100 · Livre de révision",
+      "description": "SAP Activate : les 7 chapitres en un seul document, à imprimer.",
+      "fichier": "documents/act100-livre-de-revision.pdf"
+    },
+    "act2": {
+      "type": "act",
+      "titre": "ACT200 · Livre de révision",
+      "description": "SAP Activate Agile : le livre de révision complet.",
+      "fichier": "documents/act200-livre-de-revision.pdf"
+    },
+    "synthEN": {
+      "type": "deck",
+      "titre": "SAP Training · Summary (EN)",
+      "description": "Version anglaise du deck de synthèse.",
+      "fichier": "documents/sap-training-summary-en.pdf"
+    },
+    "migEN": {
+      "type": "deck",
+      "titre": "ECC to S/4HANA Migration (EN)",
+      "description": "Version anglaise du deck de migration.",
+      "fichier": "documents/ecc-s4hana-migration-en.pdf"
+    },
+    "script": {
+      "type": "doc",
+      "titre": "Script de narration",
+      "description": "Le texte à lire pour transformer les decks en eLearning.",
+      "fichier": "documents/script-de-narration.pdf"
+    }
+  }
+}

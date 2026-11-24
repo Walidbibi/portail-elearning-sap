@@ -82,23 +82,24 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
 <p class="hint" data-t="lecteur.aide"></p>
 
 <script src="shared/libelles.js"></script>
+<script src="shared/documents.js"></script>
 <script src="shared/glossaire-data.js"></script>
 <script src="shared/pdfjs/pdf.min.js"></script>
 <script>
-SAP_LIBELLES.then(function(T){
+Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(function([T,M]){
 const portail=T('portail.nom');
 document.title=T('lecteur.titreOnglet',{portail});
 const $=id=>document.getElementById(id);
 const cv=$('cv'),ctx=cv.getContext('2d'),msg=$('msg');
 const fail=t=>{cv.hidden=true;msg.hidden=false;msg.innerHTML=t;$('doc-title').textContent=T('lecteur.introuvable');};
 
-/* Seuls les PDF déclarés dans SAP_DOCS sont ouverts. */
+/* Seuls les PDF déclarés dans documents.json, sous documents/, sont ouverts. */
 const src=new URLSearchParams(location.search).get('doc')||'';
-const entry=Object.values(window.SAP_DOCS||{}).find(d=>d.u===src);
+const entry=Object.values(M.documents).find(d=>d.fichier===src);
 if(!entry||!/^documents\/[\w.-]+\.pdf$/.test(src)){fail(T('lecteur.erreurInconnu'));return;}
-document.title=T('lecteur.titreDocument',{doc:entry.t,portail});
-$('doc-title').textContent=entry.t;
-$('kind').textContent=(window.SAP_KL||{})[entry.k]||T('lecteur.document');
+document.title=T('lecteur.titreDocument',{doc:entry.titre,portail});
+$('doc-title').textContent=entry.titre;
+$('kind').textContent=entry.type?T('types.'+entry.type):T('lecteur.document');
 $('dl').href=src;$('dl').setAttribute('download',src.split('/').pop());
 
 if(!window.pdfjsLib){fail(T('lecteur.erreurPdfjs',{src}));return;}
