@@ -14,7 +14,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 Promise.all([window.SAP_LIBELLES,charger]).then(([T,F])=>{
   // en-tête de page
-  document.title=F.titreOnglet;
+  document.title=T('frise.titreOnglet',{page:F.titreOnglet,portail:T('portail.nom')});
   $('f-surtitre').textContent=F.surtitre;
   $('f-titre').textContent=F.titre;
   $('f-intro').textContent=F.intro;

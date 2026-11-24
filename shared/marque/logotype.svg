@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 32" role="img" aria-label="Jalon">
+  <title>Jalon</title>
+  <style>
+    .ligne{stroke:#17202E}.jalon{fill:#B45309}.mot{fill:#17202E}
+    @media (prefers-color-scheme: dark){.ligne{stroke:#E9EDF3}.jalon{fill:#F2B05E}.mot{fill:#E9EDF3}}
+  </style>
+  <path class="ligne" d="M2 16H30" stroke-width="2" stroke-linecap="round"/>
+  <rect class="jalon" x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)"/>
+  <text class="mot" x="40" y="23" font-family="IBM Plex Sans, -apple-system, Segoe UI, Arial, sans-serif" font-weight="700" font-size="21" letter-spacing="-0.2">Jalon</text>
+</svg>

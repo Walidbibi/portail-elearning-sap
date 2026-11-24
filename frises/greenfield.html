@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../shared/marque/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../shared/marque/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../shared/marque/apple-touch-icon.png">
+<meta name="description" content="Nouvelle implémentation à partir du standard.">
+<meta property="og:site_name" content="Jalon">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Greenfield · Jalon">
+<meta property="og:description" content="Nouvelle implémentation à partir du standard.">
+<meta property="og:url" content="https://walidbibi.github.io/portail-elearning-sap/frises/greenfield.html">
+<meta property="og:image" content="https://walidbibi.github.io/portail-elearning-sap/shared/marque/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jalon · Piloter un programme SAP">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
 <title></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="../shared/theme.css?v=202611241609">
-<link rel="stylesheet" href="../shared/frise.css?v=202611241609">
+<link rel="stylesheet" href="../shared/theme.css?v=202611241855">
+<link rel="stylesheet" href="../shared/frise.css?v=202611241855">
 </head>
 <body>
 
 <!-- Page de frise : le contenu vient de greenfield.json, l'affichage de shared/frise.js. -->
+<header data-entete data-doc="green"></header>
 <div class="wrap">
-  <div class="fz-top">
-    <button type="button" class="back" onclick="history.length>1?history.back():(location.href='../')" data-t="frise.retour"></button>
-    <div data-langue></div>
-  </div>
   <div class="eyebrow" id="f-surtitre"></div>
   <h1 id="f-titre"></h1>
   <p class="lede" id="f-intro"></p>
@@ -41,9 +54,10 @@
   </div>
 </div>
 
-<script src="../shared/libelles.js?v=202611241609"></script>
-<script src="../shared/documents.js?v=202611241609"></script>
-<script src="../shared/frise.js?v=202611241609" data-frise="greenfield.json"></script>
-<script src="../shared/glossaire.js?v=202611241609"></script>
+<script src="../shared/libelles.js?v=202611241855"></script>
+<script src="../shared/documents.js?v=202611241855"></script>
+<script src="../shared/entete.js?v=202611241855"></script>
+<script src="../shared/frise.js?v=202611241855" data-frise="greenfield.json"></script>
+<script src="../shared/glossaire.js?v=202611241855"></script>
 </body>
 </html>

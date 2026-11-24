@@ -757,7 +757,7 @@ Journal
 - 2026-11-24 · session principale · livrée : IBM Plex Sans 400, 500, 600, 700 et IBM Plex Mono 500, 700 (paquet officiel IBM, version 1.1.0 de 2024, la 2.0.0 n'ayant que six jours) dans `shared/polices/` avec la licence SIL OFL, déclarées dans `theme.css` avec `font-display: swap` ; plus aucun appel à Google Fonts sur les 8 pages (contrôlé dans le navigateur et par `verifier.mjs`). Captures : même police, seule la flèche « ← » change légèrement de dessin (version IBM). `node outils/verifier.mjs` sans erreur.
 
 ### US-026 · Favicon et aperçu de partage
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 2, logotype A, favicon 16 et 24 px)
@@ -780,6 +780,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3 et 14) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : favicon SVG, favicon 32 px et apple-touch-icon 180 px tirés du monogramme sur fond bleu nuit ; image de partage `shared/marque/partage.png` 1200 × 630 (nom, logotype, signature FR et EN, sans logo ni bleu SAP), générée depuis `outils/partage.html` ; balises Open Graph et carte de réseau social sur les 8 pages, adresses absolues vers GitHub Pages. Reste : vérifier l'aperçu avec un outil de prévisualisation en ligne, possible seulement après publication. `node outils/verifier.mjs` sans erreur.
 
 ### US-027 · Mention de marque SAP en pied de page
 - Statut : À tester
@@ -809,7 +810,7 @@ Journal
 ### Bloc C · Identité
 
 ### US-028 · Nom « Jalon » et signature partout
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 1, le nom)
@@ -834,9 +835,10 @@ Rappel : vérification du nom à l'INPI et à l'EUIPO (classe 41) avant toute di
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 1 et 2) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : nom « Jalon », signature « Piloter un programme SAP » / « Running SAP programs » (`portail.nom`, `portail.signature`) ; onglets « Jalon · Piloter un programme SAP » sur l'accueil, « <page> · Jalon » ailleurs (frises, lecteur, schémas). Recherche de « Portail SAP du DP » et « SAP Program Director's Portal » dans les pages, scripts, JSON et schémas : 0 résultat. Le titre de l'accueil dit « Jalon » en attendant le bandeau d'entrée (US-032). `node outils/verifier.mjs` sans erreur.
 
 ### US-029 · Logotype Jalon
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 2, logotype A)
@@ -858,9 +860,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : `shared/marque/logotype.svg` (losange ambre sur la ligne, puis « Jalon »), `monogramme.svg`, versions claire et sombre, texte alternatif « Jalon », ni bleu ni forme SAP. Écart : le mot « Jalon » est écrit avec IBM Plex Sans Bold (hébergée sur le site), pas encore converti en tracés : aucun outil de conversion de police n'est installé sur le Mac ; l'installer (fontTools) demande l'accord de Walid. `node outils/verifier.mjs` sans erreur.
 
 ### US-030 · En-tête commun sur toutes les pages
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écrans 3, 5, 6, 7 et 9, en-têtes)
@@ -886,9 +889,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 7) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : `shared/entete.js` dessine l'en-tête des 8 pages : logotype (lien vers l'accueil, « Jalon, accueil »), signature sur l'accueil, fil d'Ariane ailleurs (« Frises / Greenfield », « Parcours / Les rôles… », « Annexes » dans le lecteur), lien de section vers l'ancre de l'accueil, sélecteur FR / EN à droite ; liens « ← Portail » supprimés ; sur téléphone, monogramme seul. Tous les liens et boutons font 40 px ; aucun débordement à 375 px en FR et EN. Le logo du schéma des rôles mesurait 91 px (règle `svg{width:100%}` du schéma) : corrigé. Aperçus des frises et du schéma refaits (thème clair forcé). Écart : dans le lecteur, les commandes de page restent dans la barre existante, avec le monogramme et la section à la place du retour ; le fil d'Ariane ne répète pas le titre, déjà affiché. `node outils/verifier.mjs` sans erreur.
 
 ### US-031 · CLAUDE.md et README au nom de Jalon
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (documentation)
@@ -910,6 +914,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité ; statut « Validée »
+- 2026-11-24 · session principale · livrée : CLAUDE.md au nom de Jalon (section « Le nom et l'identité » : signature, règles de marque SAP et choix de Walid, logotype, ambre réservé au jalon, rappel INPI / EUIPO), règle de design mise à jour (theme.css, polices hébergées, échelle, 40 px, AA), structure de fichiers à jour ; README au nom de Jalon avec la mention de marque. `node outils/verifier.mjs` sans erreur.
 
 ### Bloc D · Écrans
 
@@ -1114,3 +1119,4 @@ Journal
 - 2026-11-24 · Walid · décisions après lecture des règles de marque SAP : (1) signature gardée avec « SAP » (« Piloter un programme SAP »), en connaissance du risque (les règles SAP interdisent la marque dans un slogan) ; (2) symbole ® à la première mention sur l'accueil et phrase d'attribution en pied de page, PDF inchangés ; (3) adresse du site inchangée pour l'instant (dépôt `portail-elearning-sap`) ; (4) polices IBM Plex téléchargées depuis le paquet officiel IBM (npm, via jsDelivr) pour US-025.
 - 2026-11-24 · session principale · Bloc socle livré : US-024, US-025, US-027 en « À tester ». Non publié. Suite : bloc identité (US-028 nom Jalon).
 - 2026-11-24 · Walid · bloc socle (US-024, US-025, US-027) publié (« Oui, publie et enchaîne »).
+- 2026-11-24 · session principale · Bloc identité livré : US-026, US-028 à US-031 en « À tester ». Non publié. Ouvert : conversion du mot « Jalon » en tracés (outil à installer, accord de Walid).

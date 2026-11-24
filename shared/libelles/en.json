@@ -1,10 +1,11 @@
 {
   "portail": {
-    "nom": "SAP Program Director's Portal"
+    "nom": "Jalon",
+    "signature": "Running SAP programs"
   },
   "accueil": {
     "surtitre": "SAP® training · Program Director",
-    "titre": "SAP Program Director's Portal",
+    "titre": "Jalon",
     "intro": "All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.",
     "parcoursTitre": "Recommended path",
     "parcoursSousTitre": "From the big picture to day-to-day delivery.",
@@ -14,7 +15,8 @@
     "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, how AI helps, and the main failure risks.",
     "autresTitre": "Other resources",
     "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them.",
-    "marque": "Independent site. SAP, SAP S/4HANA, SAP Activate and the other SAP products mentioned are the trademarks or registered trademarks of SAP SE or its affiliates in Germany and in other countries. This site is not affiliated with, sponsored by or endorsed by SAP SE."
+    "marque": "Independent site. SAP, SAP S/4HANA, SAP Activate and the other SAP products mentioned are the trademarks or registered trademarks of SAP SE or its affiliates in Germany and in other countries. This site is not affiliated with, sponsored by or endorsed by SAP SE.",
+    "titreOnglet": "Jalon · Running SAP programs"
   },
   "glossaire": {
     "titre": "Glossary",
@@ -93,7 +95,8 @@
     "precedent": "← Previous",
     "suivant": "Next →",
     "erreur": "This timeline could not be loaded. Reload the page.",
-    "glisser": "Swipe the timeline"
+    "glisser": "Swipe the timeline",
+    "titreOnglet": "{page} · {portail}"
   },
   "langue": {
     "groupe": "Language",
@@ -102,5 +105,13 @@
   },
   "documents": {
     "enFrancais": "In French"
+  },
+  "entete": {
+    "accueil": "Jalon, home",
+    "ariane": "Breadcrumb",
+    "parcours": "Path",
+    "certification": "Certification",
+    "frises": "Timelines",
+    "autres": "Resources"
   }
 }

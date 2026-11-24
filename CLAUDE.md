@@ -1,4 +1,4 @@
-# Portail SAP du DP — contexte du projet
+# Jalon — contexte du projet
 
 Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier avant toute modification.
 
@@ -9,17 +9,29 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 - Objectif à terme : un portail d'eLearning pour des chefs de projet et directeurs de programme SAP.
 - Langue : français, vouvoiement. Il préfère des réponses directes et franches, et l'exécution plutôt que les longues discussions.
 
+## Le nom et l'identité
+
+- Le portail s'appelle **Jalon**, en français et en anglais. Signature : « Piloter un programme SAP » / « Running SAP programs ».
+- « SAP » ne forme jamais le nom ni le logotype. Les règles de marque de SAP (https://www.sap.com/about/legal/trademark.html, lues le 24/11/2026) interdisent aussi la marque dans un slogan : Walid a choisi de garder la signature avec « SAP », en connaissance du risque.
+- Mention de marque obligatoire en pied d'accueil (phrase d'attribution officielle de SAP, site ni affilié ni approuvé), et symbole ® à la première mention de « SAP » sur l'accueil.
+- Logotype : losange ambre posé sur une ligne de temps, suivi du mot « Jalon » (`shared/marque/`). L'ambre (`--jalon`) est réservé au jalon : ne pas l'utiliser ailleurs.
+- À faire par Walid avant une diffusion large : vérifier que « Jalon » n'est pas déjà déposé (INPI, EUIPO, classe 41).
+
 ## Règles non négociables
 
 1. **Aucune information propre à un client.** Pas de nom de client, de système interne (SID), d'interface interne, de site ou d'organisation réelle. Les exemples utilisent des entreprises fictives : Nordval (roll-out), Calvane (greenfield), Ternova (brownfield), Alvéa (bluefield). Le site peut devenir public un jour : tout doit pouvoir être montré à un recruteur.
 2. **Exactitude.** Les faits SAP datés (fins de maintenance, noms de produits, outils) sont à vérifier avant publication. En cas de doute, le dire plutôt qu'inventer. Les chiffres des exemples fil rouge sont fictifs et doivent rester présentés comme tels.
 3. **Style d'écriture.** Phrases courtes, voix active, termes techniques expliqués ou présents dans le glossaire. Pas d'emoji.
-4. **Design.** Police IBM Plex Sans (texte) et IBM Plex Mono (étiquettes). Couleurs définies en variables CSS avec un thème clair et un thème sombre (`prefers-color-scheme`). Pages utilisables sur téléphone (pas de défilement horizontal de la page).
+4. **Design.** Police IBM Plex Sans (texte) et IBM Plex Mono (étiquettes), hébergées sur le site (`shared/polices/`, version 1.1.0, licence OFL) : aucun CDN ni Google Fonts. Toutes les couleurs sont dans `shared/theme.css`, thème clair et sombre (`prefers-color-scheme`) ; `verifier.mjs` refuse une couleur écrite ailleurs. `theme.css` déclare aussi l'échelle de 8 tailles (`--t-12` à `--t-32`) et les rayons (`--r-6`, `--r-10`, `--r-14`, `--r-pastille`). Pages utilisables sur téléphone (pas de défilement horizontal de la page), cibles d'au moins 40 px, contraste AA.
 
 ## Structure actuelle
 
 ```
-index.html                 accueil : parcours conseillé, frises, autres supports
+index.html                 accueil : parcours conseillé, certification, frises, supports annexes
+shared/theme.css           toutes les couleurs (clair, sombre), polices, tailles et rayons
+shared/polices/            IBM Plex Sans et Mono (woff2) et leur licence
+shared/entete.js           en-tête commun : logotype, fil d'Ariane, sélecteur FR / EN (data-entete sur chaque page)
+shared/marque/             logotype, monogramme, favicon (SVG et PNG), image de partage partage.png (refaite depuis outils/partage.html)
 documents.json             manifeste : la liste des documents et l'ordre des sections de l'accueil
 shared/documents.js        chargeur du manifeste (SAP_DOCUMENTS) et SAP_HREF
 glossaire.json             les 136 termes du glossaire, un terme par ligne
@@ -39,7 +51,7 @@ frises/brownfield.html     frise brownfield (SAP Activate), contenu dans frises/
 frises/bluefield.html      frise bluefield (SAP Activate), contenu dans frises/bluefield.json
 schemas/                   schémas interactifs (rôles d'un programme SAP), une page par langue (data-langue-fixe, lien rel=alternate vers l'autre langue)
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
-apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, réduit à 720 px de haut ; frises : Chrome headless 1080 × 673 sur `?lang=fr`, réduit à 720 de large), à refaire si le support change
+apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, réduit à 720 px de haut ; frises et schéma des rôles : Chrome headless 1080 × 673 sur `?lang=fr`, avec `--blink-settings=preferredColorScheme=1` pour forcer le thème clair, réduit à 720 de large), à refaire si le support change
 apercus/<clé>.en.jpg       aperçu anglais d'une frise (même capture sur `?lang=en`)
 documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
 ```
@@ -121,7 +133,7 @@ Ajouter une frise :
 4. Déclarer la frise dans `documents.json` (type `frise`) et l'ajouter à la section `frises` de l'accueil.
 5. Faire un aperçu `apercus/<clé>.jpg`, puis vérifier la page dans un navigateur.
 
-Les popups ont une navigation Précédent / Suivant, un bouton « Suivre l'exemple pas à pas » et le bouton « ← Portail » en haut de page. Clavier : Entrée ou Espace sur un élément de la chronologie, Échap pour fermer.
+Les popups ont une navigation Précédent / Suivant, un bouton « Suivre l'exemple pas à pas » et l'en-tête commun de Jalon en haut de page (logotype, fil d'Ariane, FR / EN). Clavier : Entrée ou Espace sur un élément de la chronologie, Échap pour fermer.
 
 ## Les autres supports (à récupérer en PDF)
 

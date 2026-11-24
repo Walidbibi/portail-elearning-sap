@@ -3,10 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="shared/marque/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="shared/marque/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="shared/marque/apple-touch-icon.png">
+<meta name="description" content="Frises, glossaire et supports pour piloter un programme SAP : directeurs de programme et chefs de projet. En français et en anglais.">
+<meta property="og:site_name" content="Jalon">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jalon · Piloter un programme SAP">
+<meta property="og:description" content="Frises, glossaire et supports pour piloter un programme SAP : directeurs de programme et chefs de projet. En français et en anglais.">
+<meta property="og:url" content="https://walidbibi.github.io/portail-elearning-sap/index.html">
+<meta property="og:image" content="https://walidbibi.github.io/portail-elearning-sap/shared/marque/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jalon · Piloter un programme SAP">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
-<title data-t="portail.nom"></title>
+<title data-t="accueil.titreOnglet"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="shared/theme.css?v=202611241609">
+<link rel="stylesheet" href="shared/theme.css?v=202611241855">
 <style>
 /* Layout: content column on the left, glossary pinned on the right (drawer on narrow screens). */
 *{box-sizing:border-box}
@@ -43,6 +59,7 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 .card .sub a{font-size:12.5px;text-decoration:none;background:var(--soft);border-radius:6px;padding:2px 8px}
 .card .sub a:hover{text-decoration:underline}
 .k-schema{--kc:var(--k-doc)}.k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
+#path,#certification,#frises,#other{scroll-margin-top:90px}
 .foot{margin-top:40px;font-size:13px;color:var(--muted)}
 .foot.marque{margin-top:8px;font-size:12px;max-width:90ch}
 /* en-tête : surtitre à gauche, sélecteur de langue à droite */
@@ -56,11 +73,9 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 <body>
 
 
+<header data-entete="accueil"></header>
 <main><div class="inner">
-  <div class="top">
-    <div class="eyebrow" data-t="accueil.surtitre"></div>
-    <div data-langue></div>
-  </div>
+  <div class="eyebrow" data-t="accueil.surtitre"></div>
   <h1 data-t="accueil.titre"></h1>
   <p class="lede" data-t="accueil.intro"></p>
 
@@ -84,9 +99,10 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611241609"></script>
-<script src="shared/documents.js?v=202611241609"></script>
-<script src="shared/glossaire.js?v=202611241609"></script>
+<script src="shared/libelles.js?v=202611241855"></script>
+<script src="shared/documents.js?v=202611241855"></script>
+<script src="shared/entete.js?v=202611241855"></script>
+<script src="shared/glossaire.js?v=202611241855"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(([T,M])=>{
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
