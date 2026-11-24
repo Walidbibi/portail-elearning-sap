@@ -15,7 +15,7 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 - Le portail s'appelle **Jalon**, en français et en anglais. Signature : « Piloter un programme SAP » / « Running SAP programs ».
 - « SAP » ne forme jamais le nom ni le logotype. Les règles de marque de SAP (https://www.sap.com/about/legal/trademark.html, lues le 24/11/2026) interdisent aussi la marque dans un slogan : Walid a choisi de garder la signature avec « SAP », en connaissance du risque.
 - Mention de marque obligatoire en pied d'accueil (phrase d'attribution officielle de SAP, site ni affilié ni approuvé), et symbole ® à la première mention de « SAP » sur l'accueil.
-- Logotype : losange ambre posé sur une ligne de temps, suivi du mot « Jalon » (`shared/marque/`). L'ambre (`--jalon`) est réservé au jalon : ne pas l'utiliser ailleurs.
+- Logotype : losange ambre posé sur une ligne de temps, suivi du mot « Jalon » (`shared/marque/`). L'ambre (`--jalon`) est réservé au jalon et au repère de l'exemple fil rouge (décision de Walid, Q12, 24/11/2026) : ne pas l'utiliser ailleurs.
 - À faire par Walid avant une diffusion large : vérifier que « Jalon » n'est pas déjà déposé (INPI, EUIPO, classe 41).
 
 ## Règles non négociables
