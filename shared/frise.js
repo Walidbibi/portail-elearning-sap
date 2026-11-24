@@ -5,7 +5,7 @@
 (function(){
 const me=document.currentScript;
 const url=new URL(me.dataset.frise,location.href);
-const lire=u=>fetch(u).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
+const lire=u=>fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
 // en anglais : <nom>.en.json, et le français si la version anglaise manque
 const urlLangue=window.SAP_LANGUE&&window.SAP_LANGUE!=='fr'?new URL(me.dataset.frise.replace(/\.json$/,'.'+window.SAP_LANGUE+'.json'),location.href):null;
 const charger=urlLangue?lire(urlLangue).catch(e=>{console.warn('Version '+window.SAP_LANGUE+' introuvable ('+urlLangue+') : frise en français.',e);return lire(url);}):lire(url);

@@ -29,6 +29,7 @@ shared/libelles/fr.json    textes d'interface (accueil, glossaire, lecteur, fris
 glossaire.en.json          glossaire anglais, relié au français par termeFr ; nomFr = nom français affiché avec le repère FR
 frises/<nom>.en.json       contenu anglais de chaque frise, même structure que <nom>.json
 outils/captures/           captures avant / après et comparaison pixel par pixel (voir LISEZMOI.md)
+outils/version.mjs         pose le même numéro de version (?v=) sur les scripts et le style de toutes les pages, à lancer avant chaque publication
 outils/verifier.mjs        contrôle des données : JSON bien formés, fichiers présents, clés cohérentes, textes existants
 .github/workflows/verifier.yml   lance outils/verifier.mjs à chaque envoi sur main
 frises/rollout.html        frise roll-out (Diagnose, Adjust, Deploy), contenu dans frises/rollout.json
@@ -66,6 +67,12 @@ Ajouter un document :
 4. Optionnel : un aperçu `apercus/<clé>.jpg` (sinon la carte s'affiche sans image).
 
 Le lecteur n'ouvre que les PDF listés dans le manifeste et rangés sous `documents/`.
+
+### Publier
+
+1. `node outils/version.mjs` : nouveau numéro de version sur les scripts et le style, pour que le navigateur ne garde pas d'anciens scripts (GitHub Pages autorise 10 minutes de cache).
+2. `node outils/verifier.mjs` : aucune erreur.
+3. Accord de Walid, commit, envoi sur `main`. Les fichiers JSON sont toujours revalidés par le navigateur (`cache: 'no-cache'`), ils n'ont pas besoin de numéro.
 
 ### Le glossaire
 

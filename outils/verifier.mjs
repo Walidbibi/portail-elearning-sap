@@ -169,6 +169,19 @@ for (const [cle, d] of Object.entries(docs)) {
   if (d.versionEn && docs[d.versionEn] && docs[d.versionEn].langue !== 'en') erreur('documents.json', l, `la version anglaise « ${d.versionEn} » du document « ${cle} » n'a pas la langue « en »`);
 }
 
+// 4 quater. Scripts et style versionnés (outils/version.mjs) : même numéro partout
+{
+  const versions = new Map();
+  for (const p of ['index.html', 'lecteur.html', ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.html')).map(f => `frises/${f}`)]) {
+    const t = readFileSync(join(RACINE, p), 'utf8');
+    for (const m of t.matchAll(/(?:src|href)="(?:\.\.\/)?(shared\/(?!pdfjs\/)[\w.-]+\.(?:js|css))(\?v=([\w.-]+))?"/g)) {
+      if (!m[3]) erreur(p, ligneDe(t, m[1]), `« ${m[1]} » n'a pas de numéro de version : lancer node outils/version.mjs avant de publier`);
+      else versions.set(m[3], (versions.get(m[3]) || []).concat(p));
+    }
+  }
+  if (versions.size > 1) erreur('index.html', 1, `numéros de version différents selon les pages (${[...versions.keys()].join(', ')}) : lancer node outils/version.mjs`);
+}
+
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json
 const sources = ['index.html', 'lecteur.html', ...readdirSync(join(RACINE, 'frises')).filter(f => f.endsWith('.html')).map(f => `frises/${f}`),
   ...readdirSync(join(RACINE, 'shared')).filter(f => f.endsWith('.js')).map(f => `shared/${f}`)];

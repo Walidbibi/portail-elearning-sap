@@ -5,6 +5,7 @@
    s'affiche en français, une clé absente partout s'affiche telle quelle.
    SAP_T('cle.sous-cle', {variable}) rend le texte. Dans le HTML : data-t (texte), data-t-aria (aria-label),
    data-t-placeholder ; <div data-langue></div> reçoit le sélecteur FR / EN.
+   Les JSON sont toujours revalidés (cache: no-cache) : après une publication, jamais d'anciens textes.
    SAP_LANGUE vaut 'fr' ou 'en'. SAP_LIBELLES est une promesse résolue quand tout est appliqué. */
 (function(){
 const me=document.currentScript;
@@ -22,7 +23,7 @@ window.SAP_LANGUE=langue;
 const L={};
 const aplatir=(o,p)=>{for(const[k,v]of Object.entries(o)){const c=p?p+'.'+k:k;if(v&&typeof v==='object')aplatir(v,c);else L[c]=String(v);}};
 const T=(k,v)=>{const s=L[k];if(s===undefined)return k;return v?s.replace(/\{(\w+)\}/g,(m,n)=>n in v?v[n]:m):s;};
-const charger=l=>fetch(new URL('libelles/'+l+'.json',me.src))
+const charger=l=>fetch(new URL('libelles/'+l+'.json',me.src),{cache:'no-cache'})
   .then(r=>{if(!r.ok)throw new Error(r.status);return r.json();})
   .then(o=>aplatir(o,''))
   .catch(e=>console.warn('Libellés '+l+' introuvables : '+(l==='fr'?'les clés s\'affichent à la place des textes.':'le français est affiché.'),e));

@@ -3,7 +3,7 @@
    Les termes viennent de glossaire.json, à la racine du site. Raccourci : « / ». */
 (function(){
 const me=document.currentScript;const BASE=new URL('..',me.src);
-const lireTermes=nom=>{const u=new URL(nom,BASE);return fetch(u).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(j=>j.termes).catch(e=>{console.warn('Glossaire introuvable ('+u+').',e);return null;});};
+const lireTermes=nom=>{const u=new URL(nom,BASE);return fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(j=>j.termes).catch(e=>{console.warn('Glossaire introuvable ('+u+').',e);return null;});};
 // En anglais : glossaire.en.json, relié au français par termeFr ; un terme sans traduction reste en français.
 const EN=window.SAP_LANGUE==='en';
 const chargerTermes=EN?Promise.all([lireTermes('glossaire.json'),lireTermes('glossaire.en.json')]).then(([fr,en])=>{
