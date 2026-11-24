@@ -15,6 +15,8 @@
   /* marque et accents (choix A) : sarcelle, bleu nuit de marque, ambre réservé au jalon */
   --accent:#1B7287;--accent-soft:#E0F0F3;--marque:#16213A;--jalon:#B45309;
   --mark:#FCE9B8;--focus:#C25E12;
+  --marque-texte:#FFFFFF;--marque-doux:#B8C2D6;--marque-trait:#2A3754;--jalon-clair:#F2B05E;
+  --mat:#E3E8EF;--filtre-apercu:none;
   /* types de documents (étiquettes des cartes) */
   --k-deck:#3460A8;--k-doc:#2B7549;--k-frise:#8F5C0C;--k-act:#6A4FA3;--k-prat:#AF4234;
   /* frises : couleurs des phases, teintes de fond, gates, IA, risques */
@@ -25,11 +27,11 @@
   --page-blanc:#FFFFFF;
   /* ombres */
   --shadow:0 12px 40px rgba(17,26,40,.22);--shadow-fort:0 18px 50px rgba(17,26,40,.28);--page-shadow:0 6px 28px rgba(17,26,40,.18);
-  /* schéma des rôles : teintes propres jusqu'à son harmonisation (US-037) */
-  --sch-bg:#F7F6F2;--sch-card:#FFFFFF;--sch-text:#14213D;--sch-muted:#5F5E5A;--sch-line:#D3D1C7;--sch-arrow:#888780;
-  --sch-gray-f:#F1EFE8;--sch-gray-s:#888780;--sch-gray-t:#444441;--sch-gray-st:#5F5E5A;
-  --sch-pur-f:#EEEDFE;--sch-pur-s:#534AB7;--sch-pur-t:#3C3489;--sch-pur-st:#534AB7;
-  --sch-tea-f:#E1F5EE;--sch-tea-s:#0F6E56;--sch-tea-t:#085041;--sch-tea-st:#0F6E56;
+  /* schéma des rôles, harmonisé avec le site (US-037) : instances en gris, client en violet, intégrateur en sarcelle */
+  --sch-bg:#F3F5F8;--sch-card:#FFFFFF;--sch-text:#17202E;--sch-muted:#5A6577;--sch-line:#D5DBE4;--sch-arrow:#8A94A6;
+  --sch-gray-f:#EBEFF5;--sch-gray-s:#8A94A6;--sch-gray-t:#17202E;--sch-gray-st:#5A6577;
+  --sch-pur-f:#ECE9F7;--sch-pur-s:#6A4FA3;--sch-pur-t:#4E3F99;--sch-pur-st:#5B4691;
+  --sch-tea-f:#E0F0F3;--sch-tea-s:#1B7287;--sch-tea-t:#0E5463;--sch-tea-st:#16697C;
   /* polices */
   --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -42,28 +44,32 @@
   --ink:#E9EDF3;--muted:#A3ADBD;
   --accent:#5FC0D4;--accent-soft:#16303A;--marque:#0D1526;--jalon:#F2B05E;
   --mark:#5A4710;--focus:#F0A35E;
+  --marque-texte:#FFFFFF;--marque-doux:#A9B4C8;--marque-trait:#26314A;--jalon-clair:#F2B05E;
+  --mat:#151A22;--filtre-apercu:brightness(.82) contrast(1.05);
   --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
   --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
   --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
   --gate:#E9EDF3;--gate-ink:#12161D;--ph-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;
   --shadow:0 12px 40px rgba(0,0,0,.55);--shadow-fort:0 18px 50px rgba(0,0,0,.55);--page-shadow:0 6px 28px rgba(0,0,0,.6);
-  --sch-bg:#1C1C1A;--sch-card:#262624;--sch-text:#F1EFE8;--sch-muted:#B4B2A9;--sch-line:#444441;--sch-arrow:#B4B2A9;
-  --sch-gray-f:#444441;--sch-gray-s:#B4B2A9;--sch-gray-t:#F1EFE8;--sch-gray-st:#D3D1C7;
-  --sch-pur-f:#3C3489;--sch-pur-s:#AFA9EC;--sch-pur-t:#EEEDFE;--sch-pur-st:#CECBF6;
-  --sch-tea-f:#085041;--sch-tea-s:#5DCAA5;--sch-tea-t:#E1F5EE;--sch-tea-st:#9FE1CB;
+  --sch-bg:#12161D;--sch-card:#1B212B;--sch-text:#E9EDF3;--sch-muted:#A3ADBD;--sch-line:#323B49;--sch-arrow:#7D8798;
+  --sch-gray-f:#222936;--sch-gray-s:#7D8798;--sch-gray-t:#E9EDF3;--sch-gray-st:#A3ADBD;
+  --sch-pur-f:#25213A;--sch-pur-s:#B7A9F2;--sch-pur-t:#E4DEFF;--sch-pur-st:#C9BEF7;
+  --sch-tea-f:#16303A;--sch-tea-s:#5FC0D4;--sch-tea-t:#D7F2F7;--sch-tea-st:#9ADCE8;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12161D;--surface:#1B212B;--soft:#222936;--line:#323B49;
   --ink:#E9EDF3;--muted:#A3ADBD;
   --accent:#5FC0D4;--accent-soft:#16303A;--marque:#0D1526;--jalon:#F2B05E;
   --mark:#5A4710;--focus:#F0A35E;
+  --marque-texte:#FFFFFF;--marque-doux:#A9B4C8;--marque-trait:#26314A;--jalon-clair:#F2B05E;
+  --mat:#151A22;--filtre-apercu:brightness(.82) contrast(1.05);
   --k-deck:#86A9EC;--k-doc:#6CC58F;--k-frise:#E3AE52;--k-act:#B7A9F2;--k-prat:#EC8A7C;
   --c0:#9AA8BE;--c1:#86A9EC;--c2:#5FC0D4;--c3:#E3AE52;--c4:#EC8A7C;--c5:#6CC58F;
   --t0:#222936;--t1:#1C2740;--t2:#16303A;--t3:#33291A;--t4:#3A2220;--t5:#183224;
   --gate:#E9EDF3;--gate-ink:#12161D;--ph-ink:#12161D;--aibg:#25213A;--aiink:#B7A9F2;--risk:#EC8A7C;
   --shadow:0 12px 40px rgba(0,0,0,.55);--shadow-fort:0 18px 50px rgba(0,0,0,.55);--page-shadow:0 6px 28px rgba(0,0,0,.6);
-  --sch-bg:#1C1C1A;--sch-card:#262624;--sch-text:#F1EFE8;--sch-muted:#B4B2A9;--sch-line:#444441;--sch-arrow:#B4B2A9;
-  --sch-gray-f:#444441;--sch-gray-s:#B4B2A9;--sch-gray-t:#F1EFE8;--sch-gray-st:#D3D1C7;
-  --sch-pur-f:#3C3489;--sch-pur-s:#AFA9EC;--sch-pur-t:#EEEDFE;--sch-pur-st:#CECBF6;
-  --sch-tea-f:#085041;--sch-tea-s:#5DCAA5;--sch-tea-t:#E1F5EE;--sch-tea-st:#9FE1CB;
+  --sch-bg:#12161D;--sch-card:#1B212B;--sch-text:#E9EDF3;--sch-muted:#A3ADBD;--sch-line:#323B49;--sch-arrow:#7D8798;
+  --sch-gray-f:#222936;--sch-gray-s:#7D8798;--sch-gray-t:#E9EDF3;--sch-gray-st:#A3ADBD;
+  --sch-pur-f:#25213A;--sch-pur-s:#B7A9F2;--sch-pur-t:#E4DEFF;--sch-pur-st:#C9BEF7;
+  --sch-tea-f:#16303A;--sch-tea-s:#5FC0D4;--sch-tea-t:#D7F2F7;--sch-tea-st:#9ADCE8;
   color-scheme:dark}

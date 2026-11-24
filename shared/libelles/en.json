@@ -4,19 +4,27 @@
     "signature": "Running SAP programs"
   },
   "accueil": {
-    "surtitre": "SAP® training · Program Director",
-    "titre": "Jalon",
-    "intro": "All the materials built to understand and run an SAP program, in the order to read them. The glossary stays open on the right on every page, timelines included: press “/” to search for a term.",
+    "surtitre": "For program directors and project managers",
+    "titre": "Running an SAP® program, one milestone at a time.",
+    "intro": "The materials to understand and run an SAP program, in the order to read them. The glossary stays open on every page: press “/” to search for a term.",
     "parcoursTitre": "Recommended path",
     "parcoursSousTitre": "From the big picture to day-to-day delivery.",
     "certificationTitre": "SAP Activate Certification",
     "certificationSousTitre": "Revision books for the ACT100 and ACT200 certifications.",
     "frisesTitre": "Timelines, from A to Z",
-    "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, how AI helps, and the main failure risks.",
+    "frisesSousTitre": "Each approach on a timeline, with a running example, how AI helps, and the main failure risks.",
     "autresTitre": "Other resources",
     "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them.",
     "marque": "Independent site. SAP, SAP S/4HANA, SAP Activate and the other SAP products mentioned are the trademarks or registered trademarks of SAP SE or its affiliates in Germany and in other countries. This site is not affiliated with, sponsored by or endorsed by SAP SE.",
-    "titreOnglet": "Jalon · Running SAP programs"
+    "titreOnglet": "Jalon · Running SAP programs",
+    "introCourte": "The materials in the order to read them. A {n}-term glossary on every page.",
+    "commencer": "Start the path →",
+    "chercher": "Look up a term",
+    "stats": "{supports} resources · {frises} timelines · {termes} terms · FR / EN",
+    "compteEtapes": "{n} steps",
+    "compteDemarches": "{n} approaches",
+    "fictif": "{nom} (fictional)",
+    "autresSousTitre": "For practice and for producing the eLearning."
   },
   "glossaire": {
     "titre": "Glossary",
@@ -50,7 +58,9 @@
     "erreurOuverture": "This PDF could not be opened. <a href=\"{src}\" download>Download it</a>.",
     "bandeauFr": "This document is in French.",
     "versionAnglaise": "Open the English version →",
-    "bandeauFrSansVersion": "This document is in French. No English version yet."
+    "bandeauFrSansVersion": "This document is in French. No English version yet.",
+    "pdf": "PDF",
+    "astuce": "Swipe left for the next page. Turn your phone to read larger."
   },
   "types": {
     "deck": "Deck",
@@ -113,5 +123,14 @@
     "certification": "Certification",
     "frises": "Timelines",
     "autres": "Resources"
+  },
+  "categoriesCourtes": {
+    "meth": "Method",
+    "proc": "Processes",
+    "tech": "Technical",
+    "data": "Data",
+    "test": "Testing",
+    "run": "Run",
+    "agile": "Agile"
   }
 }

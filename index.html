@@ -22,103 +22,201 @@
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title data-t="accueil.titreOnglet"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="shared/theme.css?v=202611241855">
+<link rel="stylesheet" href="shared/theme.css?v=202611242107">
 <style>
-/* Layout: content column on the left, glossary pinned on the right (drawer on narrow screens). */
+/* Accueil de Jalon : bandeau d'entrée, grilles à 4 colonnes, lignes ; téléphone compact (US-032 à US-034). Couleurs : shared/theme.css. */
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
 a{color:inherit}
-main{padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));min-width:0}
-.inner{max-width:1080px;margin:0 auto}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-h1{font-size:30px;line-height:1.2;margin:4px 0 8px;text-wrap:balance}
-.lede{color:var(--muted);max-width:64ch;margin:0}
-h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
-.sec-sub{color:var(--muted);margin:0 0 14px;font-size:14px}
-/* grilles : 3 colonnes, 2 sur tablette, 1 sur téléphone */
-.path,.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.path{counter-reset:st}
-.path li{counter-increment:st;display:flex;min-width:0;position:relative}
-.path li>.card{flex:1}
-.path li::before{content:counter(st);position:absolute;z-index:1;top:8px;left:8px;font-family:var(--mono);font-size:13px;font-weight:500;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.25);pointer-events:none}
-@media (max-width:900px){.path,.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.path,.cards{grid-template-columns:1fr}}
-.card{display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0;overflow:hidden;transition:border-color .12s}
-.thumb{display:block;position:relative;aspect-ratio:16/9;background:var(--soft);border-bottom:1px solid var(--line);overflow:hidden}
-.thumb img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top}
-.card:hover .thumb img{transform:scale(1.02)}
-.thumb img{transition:transform .2s}
-.cbody{display:block;padding:12px 14px;min-width:0}
-@media (prefers-reduced-motion:reduce){.thumb img{transition:none}.card:hover .thumb img{transform:none}}
+.inner{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* bandeau d'entrée */
+.hero{background:var(--marque);color:var(--marque-texte);border-bottom:1px solid var(--marque-trait);position:relative;overflow:hidden}
+.hero .inner{padding-top:36px;padding-bottom:30px;position:relative}
+.hero .ey{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.08em;text-transform:uppercase;color:var(--jalon-clair)}
+.hero h1{font-size:var(--t-32);line-height:1.15;margin:8px 0 10px;max-width:22ch;text-wrap:balance}
+.hero p{color:var(--marque-doux);max-width:60ch;margin:0 0 18px}
+.hero .court{display:none}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r-6);font:inherit;font-weight:600;font-size:var(--t-15);text-decoration:none;cursor:pointer;border:0}
+.btn:focus-visible{outline:3px solid var(--jalon-clair);outline-offset:2px}
+.btn.p{background:var(--marque-texte);color:var(--marque)}
+.btn.s{background:transparent;border:1px solid var(--marque-trait);color:var(--marque-texte)}
+.btn.s kbd{font-family:var(--mono);font-size:var(--t-12);border:1px solid var(--marque-doux);border-radius:4px;padding:0 5px;color:var(--marque-doux)}
+.hero .stats{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--marque-doux);margin-top:18px}
+.hero .rail{position:absolute;right:16px;bottom:22px;width:160px;height:54px}
+.rail .tr{stroke:var(--marque-trait);fill:none;stroke-width:2}.rail .tr.v{fill:var(--marque)}.rail .jl{fill:var(--jalon-clair)}
+@media (max-width:900px){.hero .rail{display:none}}
+/* sections */
+main{padding-bottom:24px}
+.sec{container-type:inline-size}
+h2{font-size:var(--t-24);line-height:1.25;margin:34px 0 2px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;text-wrap:balance}
+h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(--muted);letter-spacing:.06em}
+.sub{color:var(--muted);margin:0 0 14px;font-size:var(--t-14)}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0}
+.g4>li{display:flex;min-width:0}
+@container (max-width:820px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+@container (max-width:720px){.g2{grid-template-columns:1fr}}
+/* cartes */
+.card{display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);overflow:hidden;min-width:0;width:100%;transition:border-color .12s}
 .card:hover{border-color:var(--kc)}
-.card:focus-visible,.chip:focus-visible,.term-btn:focus-visible,.gl-toggle:focus-visible,.x:focus-visible,.doclink:focus-visible,#q:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.kind{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--kc)}
-.card b{display:block;font-size:15px;line-height:1.35;margin:2px 0}
-.card span.d{display:block;color:var(--muted);font-size:13.5px;line-height:1.45}
-.card .sub{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.card .sub a{font-size:12.5px;text-decoration:none;background:var(--soft);border-radius:6px;padding:2px 8px}
-.card .sub a:hover{text-decoration:underline}
+.card:focus-visible,.rows a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.thumb{display:block;aspect-ratio:16/10;background:var(--mat);padding:10px 10px 0;overflow:hidden;border-bottom:1px solid var(--line)}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:4px 4px 0 0;box-shadow:0 2px 10px rgba(0,0,0,.12);filter:var(--filtre-apercu)}
+.cb{display:block;padding:12px 14px 14px;min-width:0}
+.kl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.step{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(--surface);background:var(--ink);border-radius:var(--r-pastille);min-width:26px;height:22px;display:inline-grid;place-items:center;padding:0 7px;flex:none}
+.step.tel{display:none}
+.kind{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--kc)}
+.card b{display:block;font-size:var(--t-15);line-height:1.35;margin:4px 0 2px}
+.card .d{display:block;color:var(--muted);font-size:var(--t-14);line-height:1.45}
 .k-schema{--kc:var(--k-doc)}.k-deck{--kc:var(--k-deck)}.k-doc{--kc:var(--k-doc)}.k-frise{--kc:var(--k-frise)}.k-act{--kc:var(--k-act)}.k-prat{--kc:var(--k-prat)}
-#path,#certification,#frises,#other{scroll-margin-top:90px}
-.foot{margin-top:40px;font-size:13px;color:var(--muted)}
-.foot.marque{margin-top:8px;font-size:12px;max-width:90ch}
-/* en-tête : surtitre à gauche, sélecteur de langue à droite */
-.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.top .eyebrow{padding-top:11px}
-/* étiquette « In French » à côté du type (version anglaise) */
-.kline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
 .infr{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px;line-height:18px;white-space:nowrap}
+/* vignette schématique d'une frise : bandes de phases proportionnelles */
+.fthumb{display:flex;flex-direction:column;justify-content:center;gap:8px;aspect-ratio:16/10;background:var(--mat);padding:14px;border-bottom:1px solid var(--line)}
+.fthumb .ph{display:flex;gap:2px}
+.fthumb .ph i{display:grid;place-items:center;height:20px;border-radius:3px;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ph-ink);overflow:hidden;white-space:nowrap;min-width:0}
+.fthumb .bars{display:flex;flex-direction:column;gap:4px}
+.fthumb .bars s{display:block;height:6px;border-radius:3px;background:var(--line)}
+.fthumb .ex{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+/* lignes : certification et annexes */
+.rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);overflow:hidden}
+.rows li+li{border-top:1px solid var(--line)}
+.rows a{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 14px;text-decoration:none}
+.rows a:hover{background:var(--soft)}
+.rows .kind{width:120px;flex:none}
+.rows .t{flex:1;min-width:0}
+.rows .t b{display:block;font-size:var(--t-15);line-height:1.3}
+.rows .t span.d{display:block;color:var(--muted);font-size:var(--t-13);line-height:1.4}
+.rows .go{color:var(--muted);font-size:18px}
+#path,#certification,#frises,#other{scroll-margin-top:90px}
+/* pied de page */
+.foot{margin-top:36px;padding:16px 0 28px;border-top:1px solid var(--line);font-size:var(--t-13);color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.foot p{margin:0;max-width:70ch}
+.foot .marque{font-size:var(--t-12)}
+/* téléphone : bandeau court, parcours en lignes, frises en 2 × 2, lignes compactes */
+@media (max-width:560px){
+  .hero .inner{padding-top:22px;padding-bottom:20px}
+  .hero h1{font-size:26px;line-height:1.2;margin:6px 0 8px}
+  .hero p{font-size:var(--t-14);margin-bottom:14px}
+  .hero .long,.hero .btn.s,.hero .stats{display:none}
+  .hero .court{display:block}
+  .hero .btn.p{width:100%;justify-content:center}
+  h2{font-size:var(--t-20);margin-top:24px}
+  .sub{font-size:var(--t-13);margin-bottom:10px}
+  .g4.parcours{display:block;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);overflow:hidden}
+  .g4.parcours>li+li{border-top:1px solid var(--line)}
+  .parcours .card{flex-direction:row;align-items:center;gap:10px;border:0;border-radius:0;min-height:56px;padding:8px 12px}
+  .parcours .thumb{width:72px;flex:none;padding:4px 4px 0;border:0;border-radius:4px}
+  .parcours .cb{padding:0}
+  .parcours .kl .step,.parcours .d{display:none}
+  .parcours .step.tel{display:inline-grid}
+  .parcours .card b{font-size:var(--t-14);margin:0}
+  .g4.frises{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .frises .fthumb{padding:8px;gap:5px}
+  .frises .fthumb .ph i{height:12px;font-size:0}
+  .frises .card b{font-size:var(--t-14)}
+  .frises .card .d{display:none}
+  .rows a{flex-wrap:wrap;gap:0 12px}
+  .rows .kind{width:auto}
+  .rows .t span.d{display:none}
+  .foot{display:block}.foot p+p{margin-top:8px}
+}
 </style>
 </head>
 <body>
 
 
 <header data-entete="accueil"></header>
+<section class="hero" aria-labelledby="titre">
+  <div class="inner">
+    <svg class="rail" viewBox="0 0 360 120" aria-hidden="true" focusable="false"><path class="tr" d="M0 60H360"/><rect class="tr v" x="52" y="52" width="16" height="16" transform="rotate(45 60 60)"/><rect class="tr v" x="142" y="52" width="16" height="16" transform="rotate(45 150 60)"/><rect class="jl" x="232" y="52" width="16" height="16" transform="rotate(45 240 60)"/><rect class="tr v" x="322" y="52" width="16" height="16" transform="rotate(45 330 60)"/></svg>
+    <div class="ey" data-t="accueil.surtitre"></div>
+    <h1 id="titre" data-t="accueil.titre"></h1>
+    <p class="long" data-t="accueil.intro"></p>
+    <p class="court" id="intro-courte"></p>
+    <div class="cta">
+      <a class="btn p" href="#path" data-t="accueil.commencer"></a>
+      <button class="btn s" type="button" id="chercher"><span data-t="accueil.chercher"></span><kbd>/</kbd></button>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
 <main><div class="inner">
-  <div class="eyebrow" data-t="accueil.surtitre"></div>
-  <h1 data-t="accueil.titre"></h1>
-  <p class="lede" data-t="accueil.intro"></p>
-
-  <h2 data-t="accueil.parcoursTitre"></h2>
-  <p class="sec-sub" data-t="accueil.parcoursSousTitre"></p>
-  <ol class="path" id="path"></ol>
-
-  <h2 data-t="accueil.certificationTitre"></h2>
-  <p class="sec-sub" data-t="accueil.certificationSousTitre"></p>
-  <div class="cards" id="certification"></div>
-
-  <h2 data-t="accueil.frisesTitre"></h2>
-  <p class="sec-sub" data-t="accueil.frisesSousTitre"></p>
-  <div class="cards" id="frises"></div>
-
-  <h2 data-t="accueil.autresTitre"></h2>
-  <div class="cards" id="other"></div>
-
-  <p class="foot" data-t="accueil.pied"></p>
-  <p class="foot marque" data-t="accueil.marque"></p>
+  <section class="sec" aria-labelledby="t-parcours">
+    <h2 id="t-parcours"><span data-t="accueil.parcoursTitre"></span><span class="ct" id="ct-parcours"></span></h2>
+    <p class="sub" data-t="accueil.parcoursSousTitre"></p>
+    <ol class="g4 parcours" id="path"></ol>
+  </section>
+  <section class="sec" aria-labelledby="t-frises">
+    <h2 id="t-frises"><span data-t="accueil.frisesTitre"></span><span class="ct" id="ct-frises"></span></h2>
+    <p class="sub" data-t="accueil.frisesSousTitre"></p>
+    <div class="g4 frises" id="frises"></div>
+  </section>
+  <div class="sec"><div class="g2">
+    <section aria-labelledby="t-certif">
+      <h2 id="t-certif" data-t="accueil.certificationTitre"></h2>
+      <p class="sub" data-t="accueil.certificationSousTitre"></p>
+      <ul class="rows" id="certification"></ul>
+    </section>
+    <section aria-labelledby="t-autres">
+      <h2 id="t-autres" data-t="accueil.autresTitre"></h2>
+      <p class="sub" data-t="accueil.autresSousTitre"></p>
+      <ul class="rows" id="other"></ul>
+    </section>
+  </div></div>
+  <footer class="foot">
+    <p data-t="accueil.pied"></p>
+    <p class="marque" data-t="accueil.marque"></p>
+  </footer>
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611241855"></script>
-<script src="shared/documents.js?v=202611241855"></script>
-<script src="shared/entete.js?v=202611241855"></script>
-<script src="shared/glossaire.js?v=202611241855"></script>
+<script src="shared/libelles.js?v=202611242107"></script>
+<script src="shared/documents.js?v=202611242107"></script>
+<script src="shared/entete.js?v=202611242107"></script>
+<script src="shared/glossaire.js?v=202611242107"></script>
 <script>
-Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(([T,M])=>{
+Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(async([T,M])=>{
+const en=window.SAP_LANGUE==='en';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
-// aperçu : une page bilingue (frise) a son aperçu anglais <clé>.en.jpg ; s'il manque, l'aperçu français
-const apercu=d=>{const bil=window.SAP_LANGUE==='en'&&d.langue==='fr en';
+const lire=u=>fetch(u,{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
+// aperçu : une page bilingue (frise, schéma) a son aperçu anglais <clé>.en.jpg ; s'il manque, l'aperçu français
+const apercu=d=>{const bil=en&&d.langue==='fr en';
   return bil?`<img src="apercus/${d.cle}.en.jpg" alt="" loading="lazy" onerror="if(!this.dataset.repli){this.dataset.repli=1;this.src='apercus/${d.cle}.jpg'}else{this.parentNode.remove()}">`
             :`<img src="apercus/${d.cle}.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()">`;};
-// M.doc donne la carte dans la langue en cours (version anglaise, étiquette « In French »)
-const card=key=>{const d=M.doc(key);if(!d)return '';
-  const kind=`<span class="kind">${T('types.'+d.type)}</span>`;
-  const ligne=d.enFrancais?`<span class="kline">${kind}<span class="infr" lang="en">${T('documents.enFrancais')}</span></span>`:kind;
-  return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="thumb">${apercu(d)}</span><span class="cbody">${ligne}<b>${d.titre}</b><span class="d">${d.description}</span></span></a>`;};
-document.getElementById('path').innerHTML=M.section('parcours').map(k=>`<li>${card(k)}</li>`).join('');
-document.getElementById('certification').innerHTML=M.section('certification').map(card).join('');
-document.getElementById('frises').innerHTML=M.section('frises').map(card).join('');
-document.getElementById('other').innerHTML=M.section('autres').map(card).join('');
+const kind=d=>`<span class="kind">${esc(T('types.'+d.type))}</span>`+(d.enFrancais?`<span class="infr" lang="en">${esc(T('documents.enFrancais'))}</span>`:'');
+// parcours : cartes numérotées (le numéro est dans le corps de la carte)
+const parcours=M.section('parcours');
+document.getElementById('path').innerHTML=parcours.map((k,i)=>{const d=M.doc(k);if(!d)return '';
+  return `<li><a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="step tel">${i+1}</span><span class="thumb">${apercu(d)}</span><span class="cb"><span class="kl"><span class="step">${i+1}</span>${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a></li>`;}).join('');
+document.getElementById('ct-parcours').textContent=T('accueil.compteEtapes',{n:parcours.length});
+// frises : vignette schématique tirée du JSON de chaque frise (phases proportionnelles, exemple fictif)
+const frises=M.section('frises');
+document.getElementById('ct-frises').textContent=T('accueil.compteDemarches',{n:frises.length});
+const contenus=await Promise.all(frises.map(k=>{const f=M.doc(k).fichier.replace(/\.html$/,'');return (en?lire(f+'.en.json'):Promise.resolve(null)).then(j=>j||lire(f+'.json'));}));
+document.getElementById('frises').innerHTML=frises.map((k,i)=>{const d=M.doc(k),F=contenus[i];if(!d)return '';
+  let vig='';
+  if(F){const C=F.couleurs||F.phases.map((_,p)=>p);
+    const total=F.etenduePhases.reduce((s,[a,b])=>s+(b-a),0);
+    // seul un segment assez large (30 % de la frise) porte son nom : pas de nom tronqué
+    const ph=F.phases.map((p,j)=>{const [a,b]=F.etenduePhases[j];return `<i style="flex:${Math.max(b-a,.6).toFixed(2)};background:var(--c${C[j]})">${(b-a)/total>=.3?esc(p.name):''}</i>`;}).join('');
+    const bars=[.15,.4,.7].map(x=>`<s style="width:${Math.round(40+x*55)}%;margin-left:${Math.round(x*35)}%"></s>`).join('');
+    vig=`<span class="fthumb" aria-hidden="true"><span class="ph">${ph}</span><span class="bars">${bars}</span><span class="ex">${esc(T('accueil.fictif',{nom:F.exemple.entreprise.split(',')[0]}))}</span></span>`;}
+  return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}">${vig}<span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a>`;}).join('');
+// certification et annexes : lignes sans aperçu
+const ligne=k=>{const d=M.doc(k);if(!d)return '';
+  return `<li><a class="k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}>${kind(d)}<span class="t"><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span><span class="go" aria-hidden="true">→</span></a></li>`;};
+document.getElementById('certification').innerHTML=M.section('certification').map(ligne).join('');
+document.getElementById('other').innerHTML=M.section('autres').map(ligne).join('');
+// chiffres du bandeau, calculés : supports affichés hors frises, frises, termes du glossaire
+const G=await lire('glossaire.json');const termes=G&&G.termes?G.termes.length:0;
+const supports=['parcours','certification','autres'].reduce((n,s)=>n+M.section(s).length,0);
+document.getElementById('stats').textContent=T('accueil.stats',{supports,frises:frises.length,termes});
+document.getElementById('intro-courte').textContent=T('accueil.introCourte',{n:termes});
+// « Chercher un terme » : ouvre le glossaire, curseur dans la recherche (raccourci « / » du glossaire)
+document.getElementById('chercher').addEventListener('click',()=>document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'})));
 });
 </script>
 

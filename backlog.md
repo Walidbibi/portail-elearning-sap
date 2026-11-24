@@ -919,7 +919,7 @@ Journal
 ### Bloc D · Écrans
 
 ### US-032 · Accueil bureau : bandeau d'entrée
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 3, bandeau)
@@ -943,9 +943,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 8) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : bandeau bleu nuit (surtitre « Pour les directeurs de programme et chefs de projet », titre « Piloter un programme SAP®, jalon par jalon. » / « Running an SAP® program, one milestone at a time. », introduction, « Commencer le parcours → » vers le parcours, « Chercher un terme / » qui ouvre le glossaire curseur dans la recherche), chiffres calculés (8 supports · 4 frises · 136 termes · FR / EN), motif de losanges décoratif avec un seul ambre. Contrastes sur `#16213A` / `#0D1526` : texte 16,0 / 18,2 ; texte secondaire 8,9 / 8,7 ; surtitre ambre 8,5 / 9,7. Téléphone : titre, phrase courte calculée, un bouton pleine largeur. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 
 ### US-033 · Accueil bureau : grilles à 4 colonnes, vignettes de frise, lignes
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 3, sections)
@@ -970,9 +971,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 8) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : grilles à 4 colonnes, 2 sous 820 px de contenu (requête de conteneur), jamais 3 ; numéro d'étape dans le corps de la carte ; compteurs « 4 étapes » / « 4 démarches » calculés ; vignettes de frise tirées du JSON de chaque frise (bandes de phases proportionnelles, nom seulement pour la phase la plus longue pour éviter les noms tronqués, exemple « (fictif) ») ; certification et annexes en lignes côte à côte ; sous-titre des annexes ; aperçus sur fond mat et atténués en sombre ; titres de section 24 px. Vérifié à 1100 px (2 colonnes) et 1440 px (4 colonnes), FR et EN. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 
 ### US-034 · Accueil téléphone compact
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 4)
@@ -995,9 +997,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 9) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : parcours en lignes (numéro, vignette 72 px, type, titre), frises en 2 × 2, certification et annexes en lignes, lignes de 56 px. Hauteur à 390 px : 1 848 px en français, 1 829 px en anglais (4 638 px avant ; plafond 2 400). Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 
 ### US-035 · Glossaire : filtres sur une seule ligne
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée : termine la correction des cibles tactiles)
 - Taille : S
 - Maquette nécessaire : non (maquette d'identité validée : écran 8, variante A)
@@ -1019,9 +1022,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 11, variante A) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : pastilles de 40 px sur une ligne qui défile (« Tout, Méthode, Processus, Technique, Données, Tests, Run, Agile » / « All, Method, Processes, Technical, Data, Testing, Run, Agile »), nom complet en infobulle et pour les lecteurs d'écran, pastille active annoncée (`aria-pressed`) et marquée d'un ✓. Haut du glossaire jusqu'au premier terme : 260 px avant, 176 px après. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 
 ### US-036 · Lecteur sur téléphone
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 7, téléphone)
@@ -1046,9 +1050,10 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 12) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : sur téléphone, barre du bas (précédent, numéro, suivant, « PDF ») collée en bas avec la zone sûre, boutons 40 × 40 px ; en haut « ← Parcours » (section d'origine) et FR / EN ; type et titre dessous ; phrase « Glissez vers la gauche… Tournez le téléphone pour lire plus grand. » ; bandeau de langue toujours dans le flux ; bouton « Glossaire » au-dessus de la barre. Barre de bureau inchangée (comparée à la capture). Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 
 ### US-037 · Schéma des rôles harmonisé
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : non (maquette d'identité validée : écran 9)
@@ -1072,6 +1077,7 @@ Critères d'acceptation
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 13) ; statut « Validée »
+- 2026-11-24 · session principale · livrée : teintes du schéma alignées sur le site dans `theme.css` (fond, surface, encre du site ; client violet `#6A4FA3`, intégrateur sarcelle `#1B7287`, instances gris). Contrastes titre / sous-titre, clair : instances 14,2 / 5,1 ; client 7,0 / 6,4 ; intégrateur 7,3 / 5,4 ; sombre : 12,4 / 6,4 ; 11,9 / 9,0 ; 11,8 / 9,1. Titre 32 px (24 px sur téléphone). Sous 620 px, liste en une colonne groupée par famille, construite à partir du dessin (`shared/schema.js`), qui ouvre le même panneau. Textes des rôles inchangés. Aperçus FR et EN refaits. Aucun débordement à 375 px, `node outils/verifier.mjs` sans erreur.
 
 ### Questions du lot 3 (à trancher par Walid)
 
@@ -1120,3 +1126,4 @@ Journal
 - 2026-11-24 · session principale · Bloc socle livré : US-024, US-025, US-027 en « À tester ». Non publié. Suite : bloc identité (US-028 nom Jalon).
 - 2026-11-24 · Walid · bloc socle (US-024, US-025, US-027) publié (« Oui, publie et enchaîne »).
 - 2026-11-24 · session principale · Bloc identité livré : US-026, US-028 à US-031 en « À tester ». Non publié. Ouvert : conversion du mot « Jalon » en tracés (outil à installer, accord de Walid).
+- 2026-11-24 · session principale · Bloc écrans livré : US-032 à US-037 en « À tester ». Non publié, comme le bloc identité. Restent à écrire par le PO : US-038 (retouches de la frise bureau, Q9) et la story de finition des tailles et rayons (Q11).

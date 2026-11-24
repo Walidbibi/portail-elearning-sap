@@ -28,9 +28,10 @@ body.gl-pinned{padding-right:var(--gl-w)}
 .gl-hide{all:unset;cursor:pointer;font-size:13px;color:var(--muted);padding:0 10px;min-height:40px;display:inline-flex;align-items:center;border-radius:6px}
 .gl-hide:hover{background:var(--soft);color:var(--ink)}
 #gl-q{width:100%;font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
-.gl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.gl-chip{all:unset;cursor:pointer;font-size:12.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
-.gl-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.gl-chips{display:flex;flex-wrap:nowrap;gap:6px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.gl-chip{all:unset;box-sizing:border-box;cursor:pointer;flex:none;min-height:40px;display:inline-flex;align-items:center;font-size:13px;padding:0 12px;border-radius:var(--r-pastille);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.gl-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+.gl-chip[aria-pressed="true"]::before{content:"✓";margin-right:6px}
 .gl-list{overflow-y:auto;flex:1;padding:6px 10px 24px;padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
 .gl-letter{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);padding:12px 8px 4px;position:sticky;top:0;background:var(--surface)}
 .gl-term-btn{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:block;padding:8px}
@@ -74,7 +75,8 @@ const list=aside.querySelector('#gl-list'),q=aside.querySelector('#gl-q'),chips=
 let cat='all';const opened=new Set();
 const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const hl=(t,qq)=>{if(!qq)return esc(t);const i=norm(t).indexOf(qq);return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+qq.length))+'</mark>'+esc(t.slice(i+qq.length));};
-chips.innerHTML=[['all',T('glossaire.tout')],...Object.entries(CAT)].map(([k,v])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
+// pastilles courtes sur une ligne qui défile ; le nom complet reste en infobulle et pour les lecteurs d'écran
+chips.innerHTML=[['all',T('glossaire.tout'),T('glossaire.tout')],...Object.entries(CAT).map(([k,v])=>[k,T('categoriesCourtes.'+k),v])].map(([k,court,long])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}" title="${esc(long)}" aria-label="${esc(long)}">${esc(court)}</button>`).join('');
 chips.addEventListener('click',e=>{const b=e.target.closest('.gl-chip');if(!b)return;cat=b.dataset.c;chips.querySelectorAll('.gl-chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();});
 const items=G.map((g,i)=>({i,t:g.terme,f:g.nomComplet||'',fr:g.nomFr||'',c:g.categorie,d:g.definition,dp:g.pourLeDP||'',l:g.documents||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
 function render(){
