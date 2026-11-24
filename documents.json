@@ -18,6 +18,8 @@
       "simu",
       "synthEN",
       "migEN",
+      "actEN",
+      "act2EN",
       "script"
     ]
   },
@@ -110,10 +112,7 @@
       "description": "SAP Activate : les 7 chapitres en un seul document, à imprimer.",
       "fichier": "documents/act100-livre-de-revision.pdf",
       "langue": "fr",
-      "en": {
-        "titre": "ACT100 · Study guide",
-        "description": "SAP Activate: all 7 chapters in one document, ready to print."
-      }
+      "versionEn": "actEN"
     },
     "act2": {
       "type": "act",
@@ -121,10 +120,21 @@
       "description": "SAP Activate Agile : le livre de révision complet.",
       "fichier": "documents/act200-livre-de-revision.pdf",
       "langue": "fr",
-      "en": {
-        "titre": "ACT200 · Study guide",
-        "description": "SAP Activate Agile: the complete study guide."
-      }
+      "versionEn": "act2EN"
+    },
+    "actEN": {
+      "type": "act",
+      "titre": "ACT100 · Study guide",
+      "description": "SAP Activate: all 7 chapters in one document, ready to print.",
+      "fichier": "documents/act100-study-guide-en.pdf",
+      "langue": "en"
+    },
+    "act2EN": {
+      "type": "act",
+      "titre": "ACT200 · Study guide",
+      "description": "SAP Activate Agile: the complete study guide.",
+      "fichier": "documents/act200-study-guide-en.pdf",
+      "langue": "en"
     },
     "synthEN": {
       "type": "deck",
