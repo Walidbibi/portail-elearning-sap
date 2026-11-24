@@ -100,11 +100,15 @@ h2{font-size:19px;margin:36px 0 4px;text-wrap:balance}
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(([T,M])=>{
 const tgt=u=>u.startsWith("http")?' target="_blank" rel="noopener"':"";
+// aperçu : une page bilingue (frise) a son aperçu anglais <clé>.en.jpg ; s'il manque, l'aperçu français
+const apercu=d=>{const bil=window.SAP_LANGUE==='en'&&d.langue==='fr en';
+  return bil?`<img src="apercus/${d.cle}.en.jpg" alt="" loading="lazy" onerror="if(!this.dataset.repli){this.dataset.repli=1;this.src='apercus/${d.cle}.jpg'}else{this.parentNode.remove()}">`
+            :`<img src="apercus/${d.cle}.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()">`;};
 // M.doc donne la carte dans la langue en cours (version anglaise, étiquette « In French »)
 const card=key=>{const d=M.doc(key);if(!d)return '';
   const kind=`<span class="kind">${T('types.'+d.type)}</span>`;
   const ligne=d.enFrancais?`<span class="kline">${kind}<span class="infr" lang="en">${T('documents.enFrancais')}</span></span>`:kind;
-  return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="thumb"><img src="apercus/${d.cle}.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span><span class="cbody">${ligne}<b>${d.titre}</b><span class="d">${d.description}</span></span></a>`;};
+  return `<a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="thumb">${apercu(d)}</span><span class="cbody">${ligne}<b>${d.titre}</b><span class="d">${d.description}</span></span></a>`;};
 document.getElementById('path').innerHTML=M.section('parcours').map(k=>`<li>${card(k)}</li>`).join('');
 document.getElementById('frises').innerHTML=M.section('frises').map(card).join('');
 document.getElementById('other').innerHTML=M.section('autres').map(card).join('');

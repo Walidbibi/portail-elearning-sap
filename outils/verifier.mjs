@@ -73,6 +73,7 @@ if (M) {
     }
     if (LIB_OK && d.type && LIB['types.' + d.type] === undefined) erreur(f, l, `le type « ${d.type} » du document « ${cle} » n'a pas de libellé dans shared/libelles/fr.json (types)`);
     if (!existsSync(join(RACINE, 'apercus', `${cle}.jpg`))) attention(f, l, `pas d'aperçu apercus/${cle}.jpg : la carte s'affichera sans image`);
+    if (d.langue === 'fr en' && !existsSync(join(RACINE, 'apercus', `${cle}.en.jpg`))) attention(f, l, `pas d'aperçu anglais apercus/${cle}.en.jpg : la version anglaise montrera l'aperçu français`);
   }
   for (const [section, cles] of Object.entries(M.data.accueil || {}))
     for (const cle of cles) if (!docs[cle]) erreur(f, ligneDe(M.texte, `"${section}"`), `la section « ${section} » de l'accueil cite le document « ${cle} », absent du bloc « documents »`);

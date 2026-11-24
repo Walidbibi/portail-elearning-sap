@@ -494,7 +494,7 @@ Journal
 - 2026-11-24 · session principale · livrée : la frise roll-out charge `frises/<nom>.en.json` en anglais (le français si le fichier manque) ; libellés des barres sans chevauchement constaté sur les captures anglaises.
 
 ### US-018 · Aperçus anglais des cartes
-- Statut : À affiner
+- Statut : À tester
 - Priorité : basse (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -511,6 +511,7 @@ Critères d'acceptation
 
 Journal
 - 2026-11-24 · po · story créée
+- 2026-11-24 · session principale · passée en « Validée » sur demande de Walid (« Corrige ça »), puis livrée : aperçus anglais des quatre frises `apercus/<clé>.en.jpg` (Chrome sans fenêtre, 1080 × 673 réduit à 720, comme les français), affichés en anglais avec repli sur l'aperçu français ; aperçus français refaits pour montrer le sélecteur ; synthèse, migration, ACT100 et ACT200 montrent déjà l'aperçu de leur version anglaise. Le contrôle signale une frise sans aperçu anglais.
 
 ### Questions du lot 2 (tranchées par Walid)
 
@@ -542,3 +543,4 @@ Journal
 - 2026-11-24 · Walid · maquette du lot 2 validée avec ses 10 recommandations (sélecteur FR | EN sur chaque page, en haut à droite ; dans le lecteur à droite de Download ; « In French » à côté du type ; Frise → Timeline ; « Other resources » ; Study guide, Review sheet ; repère FR dans le glossaire ; bandeau du lecteur dans le flux). US-009, US-010, US-012, US-013 en « Validée ». Critère de US-012 corrigé (3 documents restent en français). Suite : développement de US-009 après le renouvellement de la limite d'usage.
 - 2026-11-24 · session principale · Version anglaise branchée : US-009, US-010, US-011, US-013, US-014 à US-017 en « À tester ». US-012 attend les PDF anglais d'ACT100 et ACT200. Nouvelles captures de référence en français (le sélecteur décale chaque page d'environ 20 pixels) et en anglais (`reference-en`). Suite : export ACT100 / ACT200, puis test persona-pm et relecture de Walid (accueil, frise greenfield, 15 termes).
 - 2026-11-24 · session principale · US-012 en « À tester » : ACT100 et ACT200 anglais ajoutés. Toutes les stories du lot 2 sauf US-018 sont « À tester ». Ouvert : orthographe britannique des deux livres ACT en anglais.
+- 2026-11-24 · session principale · Walid garde l'orthographe britannique des livres ACT100 et ACT200 anglais (option 2 : différence de style, pas d'erreur). US-018 livrée. Tout le lot 2 est « À tester ». Suite : test persona-pm, relecture de Walid, publication.
