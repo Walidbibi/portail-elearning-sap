@@ -184,7 +184,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `shared/frise.js` et `shared/frise.css` (gabarit commun), `frises/greenfield.json` (contenu extrait par script, sans recopie), 25 textes communs dans `fr.json` sous `frise` ; `frises/greenfield.html` réduit à une page courte, même adresse. « Risque · » et « Parade · » sortis du CSS. Le gabarit gère déjà largeur, mois et position du go-live : brownfield et bluefield n'ont plus qu'à fournir leur JSON. Captures : 44 sur 44 identiques (un premier écart de 115 pixels, lettres décalées d'une fraction de pixel sur « Exemple fil rouge », corrigé). Comparaison ancienne / nouvelle page dans le navigateur : 22 popups parcourues par Suivant, Précédent, Échap, Entrée, Espace sur le go-live, bandeau « En continu », titre d'onglet, textes pour lecteurs d'écran et textes de la chronologie : aucune différence. Aucune erreur en console. Suite : US-006.
 
 ### US-006 · Frises brownfield et bluefield sur le gabarit
-- Statut : Validée
+- Statut : Prête à publier
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -194,14 +194,15 @@ Journal
 En tant que Walid, je veux que les frises brownfield et bluefield utilisent le gabarit afin de n'avoir plus qu'un code à maintenir pour les frises SAP Activate.
 
 Critères d'acceptation
-- [ ] Le contenu de chaque frise est dans son propre fichier JSON, au même format que le greenfield.
-- [ ] Les deux pages ne contiennent plus de code d'affichage propre.
-- [ ] Les adresses `frises/brownfield.html` et `frises/bluefield.html` restent valides.
-- [ ] Rendu identique aux captures de US-001, popups comprises.
+- [x] Le contenu de chaque frise est dans son propre fichier JSON, au même format que le greenfield.
+- [x] Les deux pages ne contiennent plus de code d'affichage propre.
+- [x] Les adresses `frises/brownfield.html` et `frises/bluefield.html` restent valides.
+- [x] Rendu identique aux captures de US-001, popups comprises.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `frises/brownfield.json` (Ternova) et `frises/bluefield.json` (Alvéa), extraits par script ; les deux pages sont la page courte du greenfield avec leur fichier de contenu. Aucun changement du gabarit nécessaire. Captures : 44 sur 44 identiques. Comparaison ancienne / nouvelle page pour chaque frise : 22 popups, navigation, clavier, bandeau, titres, textes et formes de la chronologie : aucune différence. Aucune erreur en console. Suite : US-007.
 
 ### US-007 · Frise roll-out sur le gabarit
 - Statut : Validée
@@ -480,3 +481,4 @@ Journal
 - 2026-11-24 · session principale · US-003 livrée, en « Prête à publier ». Suite : US-004 (glossaire en JSON).
 - 2026-11-24 · session principale · US-004 livrée, en « Prête à publier ». Suite : US-005 (gabarit de frise, greenfield).
 - 2026-11-24 · session principale · US-005 livrée, en « Prête à publier ». Suite : US-006 (brownfield et bluefield sur le gabarit).
+- 2026-11-24 · session principale · US-006 livrée, en « Prête à publier ». Suite : US-007 (roll-out sur le gabarit).

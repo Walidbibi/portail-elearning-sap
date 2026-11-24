@@ -30,8 +30,8 @@ outils/captures/           captures avant / après et comparaison pixel par pixe
 frises/rollout.html        frise roll-out (Diagnose, Adjust, Deploy)
 frises/greenfield.html     frise greenfield (SAP Activate), contenu dans frises/greenfield.json
 shared/frise.js, frise.css gabarit commun des frises (dessin de la chronologie, popups)
-frises/brownfield.html     frise brownfield (SAP Activate)
-frises/bluefield.html      frise bluefield (SAP Activate)
+frises/brownfield.html     frise brownfield (SAP Activate), contenu dans frises/brownfield.json
+frises/bluefield.html      frise bluefield (SAP Activate), contenu dans frises/bluefield.json
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
 apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, capture Chrome headless pour les frises), à refaire si le support change
 documents/                 les 9 supports en PDF, anonymisés (le plan de formation a été retiré du site)
@@ -67,9 +67,9 @@ Le lecteur n'ouvre que les PDF listés dans le manifeste et rangés sous `docume
 
 ### Les frises
 
-- **Greenfield (gabarit, depuis US-005)** : `frises/greenfield.html` est une page courte. Le contenu est dans `frises/greenfield.json`, l'affichage dans `shared/frise.js` et `shared/frise.css`, les textes communs dans `shared/libelles/fr.json` sous `frise`. La page déclare son fichier : `<script src="../shared/frise.js" data-frise="greenfield.json">`.
+- **Greenfield, brownfield, bluefield (gabarit, US-005 et US-006)** : chaque page (`frises/<nom>.html`) est courte et identique aux autres, sauf le nom du fichier de contenu. Le contenu est dans `frises/<nom>.json`, l'affichage dans `shared/frise.js` et `shared/frise.css`, les textes communs dans `shared/libelles/fr.json` sous `frise`. La page déclare son fichier : `<script src="../shared/frise.js" data-frise="greenfield.json">`.
 - Champs du JSON d'une frise : `titreOnglet`, `surtitre`, `titre`, `intro`, `exemple` (`entreprise`, `description`), `chronologieAria`, `enContinu`, `causesTitre`, `causes`, `note`, `chronologie` (`largeur`, `x1`, `mois`, `golive` : `mois` et `etape`), `phases`, `etenduePhases`, `ordre`, `positions`, `gates`, `icones`, `etapes`.
-- **Brownfield, bluefield, roll-out (en attente de US-006 et US-007)** : chaque page est encore autonome, avec le contenu dans son script : constantes `PH` (phases), `S` (étapes et gates), `ORDER`, `TL` (positions sur la chronologie), `GT` (gates), `PSPAN` (étendue des phases), `ML` (mois), `IC` (icônes SVG).
+- **Roll-out (en attente de US-007)** : la page est encore autonome, avec le contenu dans son script : constantes `PH` (phases), `S` (étapes et gates), `ORDER`, `TL` (positions sur la chronologie), `GT` (gates), `PSPAN` (étendue des phases), `ML` (mois), `IC` (icônes SVG).
 - Chaque étape (`etapes` dans le JSON, `S` dans les anciennes pages) contient : `t` titre, `s` sous-titre, `obj` objectif, `act` activités, `pre` prérequis, `liv` livrables, `own` qui porte, `ai` apport de l'IA, `aig` gain estimé, `r` risques `[risque, parade]`, `ex` exemple fil rouge (affiché en fin de popup). Une gate a `gate: 1`.
 - Popups avec navigation Précédent / Suivant et bouton « Suivre l'exemple pas à pas ».
 - Bouton « ← Portail » en haut de chaque frise.
@@ -111,7 +111,7 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 2. **Mise à jour sans code** : Walid remplace un PDF en déposant un fichier du même nom dans `documents/` via l'interface GitHub ; le site se met à jour seul.
 3. **Manifeste des documents** : fait le 24/11/2026 (`documents.json`, US-003). Reste en option une GitHub Action qui vérifie que chaque fichier du manifeste existe (US-008).
 4. **Glossaire en JSON** : fait le 24/11/2026 (`glossaire.json`, US-004).
-5. **Frises industrialisées** : un seul gabarit + un fichier JSON par frise. Fait pour le greenfield (US-005) ; brownfield et bluefield en US-006, roll-out en US-007.
+5. **Frises industrialisées** : un seul gabarit + un fichier JSON par frise. Fait pour greenfield, brownfield et bluefield (US-005, US-006) ; roll-out en US-007.
 6. **eLearning** : quiz par module, suivi de progression, accès par compte.
 
 ## Points ouverts
