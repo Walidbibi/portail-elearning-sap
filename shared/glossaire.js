@@ -1,10 +1,13 @@
 /* Glossaire partagé : panneau fixé à droite sur grand écran, tiroir sur petit écran.
-   Inclus sur toutes les pages du portail, après shared/libelles.js et shared/documents.js. Raccourci : « / ». */
+   Inclus sur toutes les pages du portail, après shared/libelles.js et shared/documents.js.
+   Les termes viennent de glossaire.json, à la racine du site. Raccourci : « / ». */
 (function(){
 const me=document.currentScript;const BASE=new URL('..',me.src);
-Promise.all([window.SAP_LIBELLES||Promise.resolve(k=>k),window.SAP_DOCUMENTS||Promise.resolve({documents:{}})]).then(function([T,M]){
-const D=M.documents;
-const CAT=window.SAP_CAT||{},G=window.SAP_GLOSSAIRE||[];
+const URL_GLOSSAIRE=new URL('glossaire.json',BASE);
+const chargerTermes=fetch(URL_GLOSSAIRE).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(j=>j.termes).catch(e=>{console.warn('Glossaire introuvable ('+URL_GLOSSAIRE+').',e);return null;});
+Promise.all([window.SAP_LIBELLES||Promise.resolve(k=>k),window.SAP_DOCUMENTS||Promise.resolve({documents:{}}),chargerTermes]).then(function([T,M,termes]){
+const D=M.documents,G=termes||[];
+const CAT=Object.fromEntries(['meth','proc','tech','data','test','run','agile'].map(c=>[c,T('categories.'+c)]));
 const abs=u=>u.startsWith('http')?u:new URL(u,BASE).href;
 const tgt=u=>u.startsWith('http')?' target="_blank" rel="noopener"':'';
 const css=`
@@ -59,8 +62,9 @@ const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const hl=(t,qq)=>{if(!qq)return esc(t);const i=norm(t).indexOf(qq);return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+qq.length))+'</mark>'+esc(t.slice(i+qq.length));};
 chips.innerHTML=[['all',T('glossaire.tout')],...Object.entries(CAT)].map(([k,v])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
 chips.addEventListener('click',e=>{const b=e.target.closest('.gl-chip');if(!b)return;cat=b.dataset.c;chips.querySelectorAll('.gl-chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();});
-const items=G.map((g,i)=>({i,t:g[0],f:g[1],c:g[2],d:g[3],dp:g[4],l:g[5]||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
+const items=G.map((g,i)=>({i,t:g.terme,f:g.nomComplet||'',c:g.categorie,d:g.definition,dp:g.pourLeDP||'',l:g.documents||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
 function render(){
+  if(!termes){count.textContent='';list.innerHTML=`<p class="gl-empty">${esc(T('glossaire.erreur'))}</p>`;return;}
   const qq=norm(q.value.trim());
   const its=items.filter(g=>(cat==='all'||g.c===cat)&&(!qq||norm(g.t+' '+g.f+' '+g.d+' '+g.dp).includes(qq)));
   count.textContent=its.length+' / '+G.length;

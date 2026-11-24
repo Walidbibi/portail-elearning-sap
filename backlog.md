@@ -135,7 +135,7 @@ Journal
 - 2026-11-24 · session principale · livrée : `documents.json` (13 documents, ordre des trois sections de l'accueil), `shared/documents.js` (chargeur et `SAP_HREF`), libellés de type dans `fr.json` sous `types`. `SAP_DOCS`, `SAP_KL` et `SAP_U` (inutilisé) retirés de `glossaire-data.js`. Captures : 44 sur 44 identiques (un écart de 1 à 2 pixels au premier passage a disparu à la relance). Vérifié : les 129 liens du glossaire (8 documents) répondent, le lecteur refuse un fichier hors manifeste, aucune erreur en console. CLAUDE.md décrit le manifeste et l'ajout d'un document. Suite : US-004.
 
 ### US-004 · Glossaire en JSON
-- Statut : Validée
+- Statut : Prête à publier
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non
@@ -145,18 +145,19 @@ Journal
 En tant que Walid, je veux que les termes du glossaire soient dans un fichier `glossaire.json` afin de pouvoir les traduire et les enrichir sans toucher au code.
 
 Critères d'acceptation
-- [ ] `glossaire.json` contient les 136 termes, chacun avec des champs nommés : terme, nom complet, catégorie, définition, pour le DP, documents.
-- [ ] Les libellés des 7 catégories sont dans le fichier de libellés de US-002.
-- [ ] Le glossaire est chargé par `fetch`, sur toutes les pages.
-- [ ] La recherche donne les mêmes résultats qu'avant sur trois essais notés dans le journal (par exemple « cutover », « donnees », « RICEFW »).
-- [ ] Si le fichier ne se charge pas, le glossaire affiche un message clair au lieu d'une liste vide.
-- [ ] `glossaire-data.js` est supprimé, ou ne contient plus de données.
-- [ ] Le `CLAUDE.md` décrit le nouveau format d'un terme.
-- [ ] Rendu identique aux captures de US-001.
+- [x] `glossaire.json` contient les 136 termes, chacun avec des champs nommés : terme, nom complet, catégorie, définition, pour le DP, documents.
+- [x] Les libellés des 7 catégories sont dans le fichier de libellés de US-002.
+- [x] Le glossaire est chargé par `fetch`, sur toutes les pages.
+- [x] La recherche donne les mêmes résultats qu'avant sur trois essais notés dans le journal (par exemple « cutover », « donnees », « RICEFW »).
+- [x] Si le fichier ne se charge pas, le glossaire affiche un message clair au lieu d'une liste vide.
+- [x] `glossaire-data.js` est supprimé, ou ne contient plus de données.
+- [x] Le `CLAUDE.md` décrit le nouveau format d'un terme.
+- [x] Rendu identique aux captures de US-001.
 
 Journal
 - 2026-11-24 · po · story créée
 - 2026-11-24 · session principale · passée en « Validée » sur accord de Walid (« ok attaque »), sans maquette
+- 2026-11-24 · session principale · livrée : `glossaire.json` (136 termes, champs nommés, un terme par ligne), chargé par `fetch` dans `shared/glossaire.js` ; libellés des 7 catégories et message d'erreur dans `fr.json` ; `glossaire-data.js` supprimé et retiré des 6 pages. Recherche identique avant / après : « cutover » 2 termes (Cutover, Deploy) ; « donnees » 18 termes (Archivage … SRA) ; « RICEFW » 2 termes (RICEFW, Service Interface) ; « fit-to-standard » 2 termes (Explore, Fit-to-standard). Fichier absent : message « Le glossaire n'a pas pu se charger… », l'accueil reste utilisable. Captures : 44 sur 44 identiques. Outil de capture renforcé : attente de la fin de construction de la page (sinon faux écart sur les aperçus), écarts de 5 pixels ou moins classés en bruit, zone de l'écart affichée. CLAUDE.md et l'agent persona-pm mis à jour. Suite : US-005.
 
 ### US-005 · Gabarit de frise unique, appliqué au greenfield
 - Statut : Validée
@@ -476,3 +477,4 @@ Journal
 - 2026-11-24 · session principale · US-001 à US-008 passées en « Validée » sur accord de Walid. US-001 livrée, en « Prête à publier ». Suite : US-002 (fichier de libellés).
 - 2026-11-24 · session principale · US-002 livrée, en « Prête à publier ». Suite : US-003 (manifeste des documents).
 - 2026-11-24 · session principale · US-003 livrée, en « Prête à publier ». Suite : US-004 (glossaire en JSON).
+- 2026-11-24 · session principale · US-004 livrée, en « Prête à publier ». Suite : US-005 (gabarit de frise, greenfield).

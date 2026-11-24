@@ -22,7 +22,7 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 index.html                 accueil : parcours conseillé, frises, autres supports
 documents.json             manifeste : la liste des documents et l'ordre des sections de l'accueil
 shared/documents.js        chargeur du manifeste (SAP_DOCUMENTS) et SAP_HREF
-shared/glossaire-data.js   données : catégories, 136 termes (SAP_GLOSSAIRE)
+glossaire.json             les 136 termes du glossaire, un terme par ligne
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface de l'accueil, du glossaire et du lecteur
@@ -57,8 +57,10 @@ Le lecteur n'ouvre que les PDF listés dans le manifeste et rangés sous `docume
 ### Le glossaire
 
 - Fixé à droite sur grand écran (au-delà de 1100 px), tiroir sur petit écran. Bouton « Masquer », bouton flottant « Glossaire », raccourci « / ».
-- Chaque terme est une ligne de `SAP_GLOSSAIRE` : `[terme, nom complet, catégorie, définition, « pour le DP », [clés de documents]]`.
-- Catégories : `meth`, `proc`, `tech`, `data`, `test`, `run`, `agile` (libellés dans `SAP_CAT`).
+- Les termes sont dans `glossaire.json`, tableau `termes`, un terme par ligne. Champs : `terme`, `nomComplet` (peut être vide), `categorie`, `definition`, `pourLeDP` (peut être vide), `documents` (liste de clés de `documents.json`). Exemple :
+  `{"terme":"Cutover","nomComplet":"Bascule","categorie":"test","definition":"…","pourLeDP":"…","documents":["synth","rollout"]}`
+- Catégories : `meth`, `proc`, `tech`, `data`, `test`, `run`, `agile` (libellés dans `shared/libelles/fr.json`, sous `categories`).
+- Si `glossaire.json` ne se charge pas, le panneau affiche un message d'erreur au lieu de la liste.
 - Les clés de documents renvoient à `documents.json`. Un lien local (sans `http`) est résolu par rapport à la racine du site.
 - La recherche ignore les accents et cherche aussi dans les définitions.
 
@@ -105,7 +107,7 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 1. **Hébergement** : décidé le 23/11/2026, dépôt public `Walidbibi/portail-elearning-sap` sur le compte personnel, publié avec GitHub Pages. Pour un accès restreint plus tard : Cloudflare Pages + Cloudflare Access (gratuit jusqu'à 50 utilisateurs).
 2. **Mise à jour sans code** : Walid remplace un PDF en déposant un fichier du même nom dans `documents/` via l'interface GitHub ; le site se met à jour seul.
 3. **Manifeste des documents** : fait le 24/11/2026 (`documents.json`, US-003). Reste en option une GitHub Action qui vérifie que chaque fichier du manifeste existe (US-008).
-4. **Glossaire en JSON** : sortir les données de `glossaire-data.js` vers `glossaire.json`, chargé par `fetch` (le site devra alors être servi par un serveur, même local).
+4. **Glossaire en JSON** : fait le 24/11/2026 (`glossaire.json`, US-004).
 5. **Frises industrialisées** : un seul gabarit HTML + un fichier JSON par frise, au lieu de quatre pages qui dupliquent le code.
 6. **eLearning** : quiz par module, suivi de progression, accès par compte.
 

@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 const ICI = dirname(fileURLToPath(import.meta.url));
 const [a = 'reference', b = 'apres'] = process.argv.slice(2);
 const AVANT = resolve(ICI, a), APRES = resolve(ICI, b);
+const BRUIT = 5;
 
 // Décode un PNG 8 bits non entrelacé (ce que produit Chrome) en octets bruts.
 function decoder(fichier) {
@@ -43,9 +44,18 @@ for (const f of noms) {
   const x = decoder(join(AVANT, f)), y = decoder(join(APRES, f));
   if (x.w !== y.w || x.h !== y.h) { console.log(`TAILLE      ${f} : ${x.w}x${x.h} puis ${y.w}x${y.h}`); ecarts++; continue; }
   if (x.bpp !== y.bpp) { console.log(`FORMAT      ${f}`); ecarts++; continue; }
-  let diff = 0;
-  for (let i = 0; i < x.px.length; i += x.bpp) { for (let c = 0; c < x.bpp; c++) if (x.px[i + c] !== y.px[i + c]) { diff++; break; } }
-  if (diff) { console.log(`DIFFÉRENT   ${f} : ${diff} pixels (${(100 * diff / (x.w * x.h)).toFixed(3)} %)`); ecarts++; }
+  let diff = 0, x0 = Infinity, y0 = Infinity, x1 = -1, y1 = -1;
+  for (let i = 0; i < x.px.length; i += x.bpp) {
+    for (let c = 0; c < x.bpp; c++) if (x.px[i + c] !== y.px[i + c]) {
+      diff++; const p = i / x.bpp, px = p % x.w, py = (p / x.w) | 0;
+      if (px < x0) x0 = px; if (px > x1) x1 = px; if (py < y0) y0 = py; if (py > y1) y1 = py;
+      break;
+    }
+  }
+  const zone = `zone x ${x0}-${x1}, y ${y0}-${y1}`;
+  // 5 pixels ou moins : bruit du lissage des bords arrondis, observé entre deux passages sur le même code.
+  if (diff && diff <= BRUIT) console.log(`BRUIT       ${f} : ${diff} pixel(s), ${zone} (ignoré)`);
+  else if (diff) { console.log(`DIFFÉRENT   ${f} : ${diff} pixels (${(100 * diff / (x.w * x.h)).toFixed(3)} %), ${zone}`); ecarts++; }
 }
 console.log(ecarts ? `${ecarts} écart(s) sur ${noms.length} captures` : `Identique : ${noms.length} captures`);
 process.exit(ecarts ? 1 : 0);

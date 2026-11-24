@@ -108,6 +108,8 @@ try {
         await charge;
         await evaluer(`(()=>{try{localStorage.clear()}catch(e){};const s=document.createElement('style');s.textContent=${JSON.stringify(SANS_ANIM)};document.head.appendChild(s)})()`);
         await evaluer('document.fonts.ready.then(()=>true)');
+        // Les pages construisent leur contenu après des fetch : on attend que le nombre d'éléments se stabilise.
+        await evaluer(`new Promise(r=>{let n=-1,k=0;const t=setInterval(()=>{const m=document.getElementsByTagName('*').length;if(m===n){if(++k>=3){clearInterval(t);r(true);}}else{n=m;k=0;}},100);})`);
         // Les aperçus sont en chargement différé : on les charge tous et on attend qu'ils soient décodés.
         await evaluer(`Promise.all([...document.images].map(i=>{i.loading='eager';return i.complete?0:new Promise(r=>{i.onload=i.onerror=r})})).then(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>0))))`);
         if (p.attente && !await attendre(() => evaluer(p.attente))) console.warn(`  attention : ${nom} pas prêt`);

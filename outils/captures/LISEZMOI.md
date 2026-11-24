@@ -64,4 +64,5 @@ La comparaison affiche « Identique » ou la liste des images qui diffèrent, av
 
 - Les polices IBM Plex viennent de Google Fonts. Sans connexion internet, les captures changent.
 - Deux passages successifs sur le même code donnent des images identiques (vérifié le 2026-11-24).
-- Il arrive qu'une image diffère de 1 ou 2 pixels, sans lien avec le code (lissage du texte). Relancer la page concernée : si l'écart disparaît, ce n'est pas une régression.
+- Il arrive qu'une image diffère de 1 ou 2 pixels sans lien avec le code, à cause du lissage d'un bord arrondi. La comparaison classe les écarts de 5 pixels ou moins en « BRUIT » et ne les compte pas comme des régressions. La zone de chaque écart est indiquée, pour aller voir.
+- Le script attend que la page ait fini de se construire (nombre d'éléments stable) avant de capturer, car l'accueil et le glossaire se remplissent après le chargement de fichiers JSON.

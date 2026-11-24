@@ -21,7 +21,8 @@
     "rechercheAria": "Chercher dans le glossaire",
     "tout": "Tout",
     "aucun": "Aucun terme ne correspond à « {q} ».",
-    "pourLeDP": "Pour le DP · "
+    "pourLeDP": "Pour le DP · ",
+    "erreur": "Le glossaire n'a pas pu se charger. Rechargez la page ; si le problème persiste, vérifiez que le site est servi par un serveur."
   },
   "lecteur": {
     "titreOnglet": "Lecteur · {portail}",
@@ -47,5 +48,14 @@
     "frise": "Frise",
     "act": "Certification",
     "prat": "Pratique"
+  },
+  "categories": {
+    "meth": "Méthode et gouvernance",
+    "proc": "Modules et processus",
+    "tech": "Technique et intégration",
+    "data": "Données et migration",
+    "test": "Tests et bascule",
+    "run": "Run et support",
+    "agile": "Agile et pilotage"
   }
 }

@@ -30,7 +30,7 @@ Ne réécrivez pas les besoins existants. Ajoutez-en, ou ajoutez une ligne daté
 Lisez l'élément à tester (et sa story dans `backlog.md` s'il y en a une) comme vous le feriez vraiment, et notez honnêtement :
 
 1. **Compréhension** : les passages que vous ne comprenez pas du premier coup.
-2. **Jargon** : chaque terme ou sigle SAP non expliqué sur place. Vérifiez s'il est dans le glossaire (`shared/glossaire-data.js`, tableau `SAP_GLOSSAIRE`). S'il manque, dites-le.
+2. **Jargon** : chaque terme ou sigle SAP non expliqué sur place. Vérifiez s'il est dans le glossaire (`glossaire.json`, tableau `termes`). S'il manque, dites-le.
 3. **Utilité pour piloter** : ce qui vous aide à décider, à poser les bonnes questions en comité, à repérer un risque. Et ce qui manque.
 4. **Parcours** : savez-vous où cliquer ensuite ? Qu'est-ce qui vous a fait hésiter ?
 5. **Critères d'acceptation** : si une story existe, dites lesquels ne sont pas remplis.
