@@ -542,6 +542,529 @@ Journal
 - Q7 · **Tranchée par Walid le 2026-11-24 : option recommandée retenue.** Documents français : faut-il les traduire ? Option recommandée : non pour l'instant. On applique la règle de US-012 (étiquette « In French » et renvoi vers la version anglaise quand elle existe). Traduire un PDF demande de refaire l'export depuis claude.ai puis l'anonymisation : à traiter plus tard, document par document, en commençant par la fiche de révision et la simulation d'entretien.
 - Q8 · **Tranchée par Walid le 2026-11-24 : option recommandée retenue.** Relecture des traductions. Option recommandée : Walid relit l'accueil et une frise (US-010, US-014) avant que les autres soient traduites. Les suivantes reprennent les choix de vocabulaire validés.
 
+## Lot 3 · Identité Jalon et confort de visite
+
+Sources : `rapports/2026-11-24-audit-ux-ui.md` (constats et valeurs), `maquettes/identite-portail.html` (écrans 1 à 9), 14 choix validés par Walid le 2026-11-24 (« Oui, toutes », voir le Journal du backlog). Ces choix ne sont pas rouverts ici.
+
+### Note du PO sur le besoin servi
+
+Le lot 3 vient d'une demande directe de Walid, le 2026-11-24 : audit UX/UI, identité et nom du portail. Aucun besoin de `besoins.md` ne le couvre. Le PO propose le texte ci-dessous, à inscrire sous le numéro B-002 par la session principale (le PO ne modifie que le champ « Couvert par »).
+
+```
+### B-002 · Un portail qui inspire confiance et se lit partout
+- Source : Walid
+- Importance : important (à confirmer par Walid)
+- Couvert par : US-019 à US-037
+
+Situation : le portail est public. Walid peut l'envoyer à un recruteur ou à une équipe, qui l'ouvre souvent sur téléphone.
+Ce qui bloque : pas de nom ni de logo, un nom qui ressemble à un produit SAP, des textes illisibles en thème sombre, des boutons trop petits, un accueil très long sur téléphone.
+Ce que je voudrais pouvoir faire : montrer un portail qui a une identité claire, lisible par tous, agréable sur bureau comme sur téléphone.
+```
+
+Règles communes au lot :
+- Maquette de référence : `maquettes/identite-portail.html`, validée par Walid. Aucune nouvelle maquette n'est demandée.
+- Chaque story est vérifiée en thème clair et sombre, en français et en anglais, à 375 px et à 1440 px de large.
+- Aucune page ne défile horizontalement à 375 px.
+- `node outils/verifier.mjs` passe sans erreur avant chaque envoi.
+- Les captures de référence FR et EN (`outils/captures/`) sont refaites à la fin de chaque story qui change l'écran. Les aperçus des frises sont refaits si une frise change.
+- Tout nouveau texte d'interface est dans `fr.json` et `en.json`.
+- Le site est en ligne uniquement (GitHub Pages). Walid ne modifie pas les fichiers lui-même : tout passe par Claude.
+
+Ordre de développement proposé : US-019 à US-023 (accessibilité, livrables tout de suite), US-024, US-025, US-027, US-028, US-029, US-026, US-030, US-031, puis US-032 à US-037. US-035 ne dépend que de US-021 : elle peut être avancée.
+
+### Bloc A · Correctifs d'accessibilité
+
+### US-019 · Contrastes des phases de frise et de l'étiquette « Frise »
+- Statut : Validée
+- Priorité : haute (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 2, palette, et écran 5, frise greenfield)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur, je veux lire les noms des phases et l'étiquette « Frise » dans les deux thèmes afin de ne pas deviner la phase d'une étape.
+
+Critères d'acceptation
+- [ ] Thème sombre : le texte des six bandeaux de phase passe en `#12161D` (au lieu du blanc). Chaque couleur de phase atteint au moins 4,5:1 ; les six ratios sont notés au journal.
+- [ ] Thème sombre : les pictogrammes posés sur les pastilles de couleur atteignent au moins 3:1.
+- [ ] Thème clair : la couleur de Realize passe de `#A86E12` à `#8F5C0C`. Texte blanc dessus : au moins 4,5:1 (attendu 5,7:1).
+- [ ] Thème clair : les six bandeaux de phase atteignent au moins 4,5:1 avec leur texte ; les ratios sont notés au journal.
+- [ ] L'étiquette de type « Frise » / « Timeline » des cartes de l'accueil utilise `#8F5C0C` en clair : au moins 4,5:1 sur la carte. En sombre, son ratio est vérifié et noté.
+- [ ] Les quatre frises sont corrigées, roll-out compris (couleurs choisies par `couleurs` dans son JSON).
+- [ ] Les aperçus FR et EN des quatre frises sont refaits.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+
+### US-020 · Couleur du contour de focus
+- Statut : Validée
+- Priorité : haute (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 2, palette, nuancier « Focus »)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur qui navigue au clavier, je veux voir nettement l'élément actif afin de savoir où j'en suis sur la page.
+
+Critères d'acceptation
+- [ ] Le contour de focus passe de `#E07A2F` à `#C25E12` en clair et à `#F0A35E` en sombre.
+- [ ] Ratio du contour sur le fond de page : au moins 3:1 dans les deux thèmes (attendu 3,9:1 en clair, 8,7:1 en sombre).
+- [ ] Le changement s'applique à toutes les pages : accueil, quatre frises, popups, lecteur, glossaire, schéma des rôles FR et EN.
+- [ ] Schéma des rôles : la règle `.n:focus{outline:none}` disparaît. Un rôle sélectionné au clavier montre le même contour que le reste du site.
+- [ ] Un parcours au clavier (Tab) de l'accueil, d'une frise, du lecteur et du schéma montre un contour visible sur chaque élément actif.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+
+### US-021 · Cibles tactiles de 40 px : glossaire et lecteur
+- Statut : Validée
+- Priorité : haute (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 7, lecteur, et écran 8, glossaire)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur sur téléphone, je veux des boutons assez grands afin de toucher le bon du premier coup.
+
+Hors de cette story : les pastilles de catégorie du glossaire. À 40 px sur quatre lignes, elles repousseraient la liste de près de 180 px. Elles passent à 40 px dans US-035, sur une seule ligne.
+
+Critères d'acceptation
+- [ ] Glossaire : le bouton « Masquer » / « Hide » mesure au moins 40 px de haut (27 px aujourd'hui).
+- [ ] Glossaire : chaque lien vers un document mesure au moins 40 px de haut (24 px aujourd'hui), sans se chevaucher.
+- [ ] Lecteur : les boutons de page mesurent au moins 40 × 40 px (38 px aujourd'hui).
+- [ ] Lecteur : le lien de retour mesure au moins 40 px de haut (31 px aujourd'hui).
+- [ ] Les tailles sont mesurées dans le navigateur et notées au journal.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+
+### US-022 · Tiroir du glossaire sur téléphone
+- Statut : Validée
+- Priorité : haute (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 8, note « Sur téléphone »)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur sur téléphone, je veux un glossaire qui couvre l'écran et se ferme simplement afin de ne pas croire à un défaut d'affichage.
+
+Critères d'acceptation
+- [ ] À 375 px et à 390 px, le tiroir ouvert couvre toute la largeur : aucune bande de page visible (10 px aujourd'hui à 390 px).
+- [ ] En mode tiroir (sous 1100 px), un voile assombrit la page derrière le glossaire, dans les deux thèmes.
+- [ ] Toucher le voile ferme le glossaire. La touche Échap aussi.
+- [ ] Sur téléphone, le bouton « Masquer » devient « Fermer » / « Close ».
+- [ ] À la fermeture, le focus revient au bouton flottant « Glossaire ».
+- [ ] Chaque page réserve en bas une marge égale à la hauteur du bouton flottant : la dernière ligne de contenu n'est plus cachée par lui.
+- [ ] Au-delà de 1100 px, le glossaire épinglé ne change pas.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 6) ; statut « Validée »
+
+### US-023 · Indice de glissement de la frise sur téléphone
+- Statut : Validée
+- Priorité : haute (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 6, variante A)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur sur téléphone, je veux savoir que la frise continue hors de l'écran afin de voir toutes les étapes, pas seulement les six premières.
+
+Critères d'acceptation
+- [ ] Au-dessus de la frise, sur téléphone, une ligne indique « Faites glisser la frise » / texte anglais dans `en.json`, et l'étendue de la chronologie (par exemple « M-15 → M+2 »), lue dans le JSON de la frise.
+- [ ] Un dégradé en bord droit montre que la frise continue. Il disparaît quand on arrive au bout.
+- [ ] Sur téléphone, la frise fait 760 px de large au lieu de 980 px.
+- [ ] À 760 px, aucun libellé ne chevauche un voisin de plus qu'aujourd'hui, sur les quatre frises, en FR et en EN (les libellés serrés du roll-out, notés au lot 2, ne doivent pas empirer).
+- [ ] Le bouton flottant « Glossaire » ne cache aucune partie de la frise, page défilée jusqu'en bas.
+- [ ] Sur bureau, la frise ne change pas.
+- [ ] Le dégradé ne gêne ni le toucher ni la lecture d'écran (il est décoratif).
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal de la page.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 10, variante A) ; statut « Validée »
+
+### Bloc B · Socle
+
+### US-024 · Un seul fichier de couleurs partagé
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 2, palette)
+- Dépend de : US-019, US-020
+- Sert : B-002
+
+En tant que Walid, je veux que les couleurs soient définies une seule fois afin qu'une retouche s'applique partout sans dérive entre les pages.
+
+Critères d'acceptation
+- [ ] Un fichier `shared/theme.css` définit toutes les couleurs, en thème clair et sombre, avec un seul nom par couleur.
+- [ ] Il contient la palette validée (accent A) : encre `#17202E` / `#E9EDF3`, sarcelle `#1B7287` / `#5FC0D4`, bleu nuit de marque `#16213A` / `#0D1526`, ambre du jalon `#B45309` / `#F2B05E`, focus et Realize de US-019 et US-020, fond `#F3F5F8` / `#12161D`, surface `#FFFFFF` / `#1B212B`.
+- [ ] Il déclare aussi l'échelle de 8 tailles (12, 13, 14, 15, 17, 20, 24, 32 px) et les rayons (6, 10, 14 px, pastille pleine), pour les stories suivantes.
+- [ ] L'accueil, le lecteur, `frise.css`, le glossaire et les deux fichiers du schéma des rôles chargent ce fichier. Leurs ensembles de couleurs propres disparaissent.
+- [ ] Le lecteur prend le fond commun (`#F3F5F8` / `#12161D` au lieu de `#E6EAF0` / `#0E1218`).
+- [ ] Le schéma des rôles garde ses teintes propres jusqu'à US-037, mais déclarées dans `theme.css`.
+- [ ] `outils/verifier.mjs` signale une couleur écrite en dur dans une page ou un script, hors `theme.css`. Les fichiers de données JSON ne sont pas concernés.
+- [ ] Captures FR et EN : seules différences attendues, le fond du lecteur. Toute autre différence est expliquée au journal.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 4 et 14) ; statut « Validée »
+
+### US-025 · Polices IBM Plex hébergées sur le site
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (aucun changement visible attendu)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur, je veux que le site ne transmette pas mon adresse IP à Google afin de le consulter sans fuite de données.
+
+Critères d'acceptation
+- [ ] Les fichiers woff2 d'IBM Plex Sans et IBM Plex Mono sont copiés dans le site (par exemple `shared/polices/`), comme PDF.js.
+- [ ] Les poids copiés couvrent ceux utilisés par le site. IBM Plex Mono a son poids 700 : plus de faux gras sur `#tl .gl-t`.
+- [ ] La licence des polices (SIL Open Font License) est copiée à côté des fichiers.
+- [ ] Aucune page ne charge plus rien depuis `fonts.googleapis.com` ni `fonts.gstatic.com`. `outils/verifier.mjs` le contrôle.
+- [ ] Les polices s'affichent sans texte invisible pendant le chargement (`font-display: swap`).
+- [ ] Captures FR et EN identiques à la référence, hors écarts de rendu de quelques pixels notés au journal.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
+
+### US-026 · Favicon et aperçu de partage
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 2, logotype A, favicon 16 et 24 px)
+- Dépend de : US-028, US-029
+- Sert : B-002
+
+En tant que Walid, je veux qu'un lien vers le portail s'affiche avec un titre, une description et une image afin de faire bonne impression quand je l'envoie à un recruteur.
+
+Critères d'acceptation
+- [ ] Chaque page a un favicon tiré du monogramme A (losange ambre sur la ligne), lisible à 16 px, en clair et en sombre.
+- [ ] Un fichier d'icône pour l'écran d'accueil du téléphone existe (`apple-touch-icon`).
+- [ ] Chaque page a des balises de partage : titre, description, image, adresse (Open Graph), et leur équivalent pour les cartes de réseaux sociaux.
+- [ ] Titre et description suivent la langue par défaut de la page ; le texte anglais est prêt dans `en.json` si le partage se fait avec `?lang=en`.
+- [ ] L'image de partage (1200 × 630 px) montre le nom « Jalon », le logotype et la signature, sans logo ni bleu SAP.
+- [ ] Les adresses des balises sont absolues, vers le site GitHub Pages.
+- [ ] Un aperçu de partage est vérifié avec un outil de prévisualisation en ligne ; le résultat est noté au journal.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3 et 14) ; statut « Validée »
+
+### US-027 · Mention de marque SAP en pied de page
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 1, encadré « Risque de marque », écrans 3 et 4, pied de page)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que Walid, je veux dire clairement que le site est indépendant de SAP afin de ne pas laisser croire à un site officiel.
+
+Critères d'acceptation
+- [ ] Le pied de page de l'accueil affiche : « Site indépendant. SAP, S/4HANA et SAP Activate sont des marques de SAP SE ; ce site n'est ni affilié à SAP SE ni approuvé par elle. »
+- [ ] La version anglaise est dans `en.json` et dit la même chose.
+- [ ] Sur téléphone, la mention tient sans débordement (version courte de l'écran 4 acceptée).
+- [ ] La phrase actuelle sur les exemples fictifs reste en place.
+- [ ] Les règles d'usage des marques publiées par SAP sont relues avant publication. La source et la date de lecture sont notées au journal. Si elles demandent une autre formulation, Walid tranche avant publication.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 14) ; statut « Validée »
+
+### Bloc C · Identité
+
+### US-028 · Nom « Jalon » et signature partout
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 1, le nom)
+- Dépend de : aucune
+- Sert : B-002
+
+En tant que visiteur, je veux un nom court et une signature claire afin de retenir le portail et de comprendre son sujet d'un coup d'œil.
+
+Critères d'acceptation
+- [ ] Le nom est « Jalon » en français et en anglais.
+- [ ] La signature est « Piloter un programme SAP » en français, « Running SAP programs » en anglais.
+- [ ] « Portail SAP du DP » et « SAP Program Director's Portal » ne figurent plus dans le site publié (pages, `fr.json`, `en.json`, `frise.css`, schéma des rôles FR et EN). Une recherche le prouve, notée au journal.
+- [ ] Le titre d'onglet de l'accueil est « Jalon · Piloter un programme SAP » / « Jalon · Running SAP programs ». Les autres pages ont « <nom de la page> · Jalon ».
+- [ ] « SAP » n'apparaît jamais dans le nom, seulement dans la signature.
+- [ ] Le libellé « Pour le DP » / « For the Program Director » du glossaire ne change pas.
+- [ ] Les retours « ← Portail » restent en place : ils disparaissent avec US-030.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Rappel : vérification du nom à l'INPI et à l'EUIPO (classe 41) avant toute diffusion large (choix 1). Ce n'est pas un critère de la story, mais un point à suivre par Walid.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 1 et 2) ; statut « Validée »
+
+### US-029 · Logotype Jalon
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 2, logotype A)
+- Dépend de : US-024
+- Sert : B-002
+
+En tant que visiteur, je veux un signe reconnaissable afin d'identifier le portail sur chaque page et dans un onglet.
+
+Critères d'acceptation
+- [ ] Le logotype A existe en SVG dans le site : losange ambre posé sur une ligne de temps, suivi du mot « Jalon ».
+- [ ] Le mot « Jalon » est converti en tracés : le logotype ne dépend pas de la police.
+- [ ] Un monogramme seul (losange sur la ligne) existe pour les petites tailles et reste lisible à 16 px.
+- [ ] Le logotype a une version claire (ambre `#B45309`) et une version sombre (ambre `#F2B05E`), prises dans `theme.css`.
+- [ ] Il n'utilise ni bleu SAP ni forme rappelant un logo SAP.
+- [ ] Il porte un texte alternatif « Jalon » pour les lecteurs d'écran.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 3) ; statut « Validée »
+
+### US-030 · En-tête commun sur toutes les pages
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écrans 3, 5, 6, 7 et 9, en-têtes)
+- Dépend de : US-021, US-024, US-028, US-029
+- Sert : B-002
+
+En tant que visiteur, je veux le même en-tête partout afin de savoir où je suis et de revenir à l'accueil sans chercher.
+
+Critères d'acceptation
+- [ ] Un seul code dessine l'en-tête, pour l'accueil, les quatre frises, le lecteur et le schéma des rôles FR et EN.
+- [ ] L'en-tête contient : le logotype (lien vers l'accueil), un fil d'Ariane, le sélecteur FR / EN à droite.
+- [ ] Sur l'accueil bureau, la signature suit le logotype ; il n'y a pas de fil d'Ariane.
+- [ ] Le fil d'Ariane nomme la section d'origine et la page : « Frises / Greenfield », « Parcours / Formation SAP · Synthèse », « Parcours / Rôles ». Le lien de section ramène à la bonne section de l'accueil.
+- [ ] Les liens « ← Portail » disparaissent des frises, du lecteur et du schéma.
+- [ ] Lecteur bureau : boutons de page, numéro de page, « Télécharger le PDF » et sélecteur sont dans l'en-tête, comme l'écran 7.
+- [ ] Sur téléphone, le logotype se réduit au monogramme ; le fil d'Ariane et le sélecteur tiennent sur une ligne à 375 px, en FR et en EN.
+- [ ] Chaque lien et bouton de l'en-tête mesure au moins 40 px de haut.
+- [ ] Le fil d'Ariane est annoncé aux lecteurs d'écran (« Fil d'Ariane » / texte anglais dans `en.json`).
+- [ ] Les captures FR et EN sont refaites ; les aperçus des frises aussi.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 7) ; statut « Validée »
+
+### US-031 · CLAUDE.md et README au nom de Jalon
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (documentation)
+- Dépend de : US-024, US-025, US-028, US-030
+- Sert : B-002
+
+En tant que Walid, je veux que la documentation du projet suive la nouvelle identité afin que chaque session de Claude parte des bonnes règles.
+
+Critères d'acceptation
+- [ ] `CLAUDE.md` nomme le portail « Jalon », avec sa signature FR et EN, et rappelle que « SAP » ne forme jamais le nom.
+- [ ] `CLAUDE.md` décrit `shared/theme.css` (seul endroit des couleurs), l'échelle de 8 tailles et les 3 rayons.
+- [ ] `CLAUDE.md` indique que les polices sont hébergées sur le site et qu'aucun CDN n'est utilisé.
+- [ ] `CLAUDE.md` décrit l'en-tête commun et le logotype (fichiers, usage de l'ambre réservé au jalon).
+- [ ] `CLAUDE.md` rappelle la mention de marque SAP et le point INPI / EUIPO à suivre.
+- [ ] La structure de fichiers de `CLAUDE.md` est à jour.
+- [ ] `README.md` utilise le nouveau nom.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité ; statut « Validée »
+
+### Bloc D · Écrans
+
+### US-032 · Accueil bureau : bandeau d'entrée
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 3, bandeau)
+- Dépend de : US-030
+- Sert : B-002
+
+En tant que chef de projet qui découvre le portail, je veux comprendre en quelques secondes à quoi il sert et par où commencer afin de ne pas me perdre.
+
+Critères d'acceptation
+- [ ] Un bandeau bleu nuit remplace le surtitre gris : surtitre « Pour les directeurs de programme et chefs de projet », titre « Piloter un programme SAP, jalon par jalon. », texte d'introduction, comme l'écran 3.
+- [ ] Le titre anglais est « Running an SAP program, one milestone at a time. » ; les autres textes anglais sont dans `en.json`.
+- [ ] Bouton « Commencer le parcours → » : il mène à la première carte du parcours.
+- [ ] Bouton « Chercher un terme / » : il ouvre le glossaire et place le curseur dans la recherche.
+- [ ] La ligne de chiffres (supports, frises, termes, FR / EN) est calculée à partir de `documents.json` et du glossaire, pas écrite en dur.
+- [ ] Le motif de losanges du bandeau est décoratif (ignoré par les lecteurs d'écran). Un seul losange est ambre.
+- [ ] Texte du bandeau : au moins 4,5:1 sur le bleu nuit, dans les deux thèmes.
+- [ ] Sur téléphone, le bandeau suit la version courte de l'écran 4 (titre, phrase courte, un bouton).
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 8) ; statut « Validée »
+
+### US-033 · Accueil bureau : grilles à 4 colonnes, vignettes de frise, lignes
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 3, sections)
+- Dépend de : US-024, US-030
+- Sert : B-002
+
+En tant que visiteur sur bureau, je veux un accueil équilibré et lisible afin de voir tous les supports sans carte isolée ni image éblouissante.
+
+Critères d'acceptation
+- [ ] Parcours conseillé et frises : 4 colonnes sur bureau, glossaire épinglé compris. Aux largeurs intermédiaires, 2 colonnes. Jamais 3 : aucune carte seule sur sa ligne.
+- [ ] Le numéro d'étape du parcours passe dans le corps de la carte : il ne masque plus l'aperçu ni son titre.
+- [ ] Chaque titre de section porte un compteur (« 4 étapes », « 4 démarches ») calculé à partir des données.
+- [ ] Les cartes de frise montrent une vignette schématique : bandes de phases proportionnelles, nom de l'exemple suivi de « (fictif) ». Les données viennent du JSON de chaque frise, pas d'une recopie.
+- [ ] Certification SAP Activate et Supports annexes passent en lignes sans aperçu, côte à côte sur bureau.
+- [ ] « Supports annexes » reçoit le sous-titre « Pour s'entraîner et pour produire l'eLearning. » et son équivalent anglais.
+- [ ] En sombre, les aperçus PDF sont posés sur un fond mat et atténués : plus de rectangle blanc éblouissant.
+- [ ] Les titres de section passent à 24 px, les titres de carte restent nettement plus petits (échelle de `theme.css`).
+- [ ] L'étiquette « In French » reste visible en anglais.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px, 1100 px et 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 8) ; statut « Validée »
+
+### US-034 · Accueil téléphone compact
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 4)
+- Dépend de : US-033
+- Sert : B-002
+
+En tant que visiteur sur téléphone, je veux un accueil court afin de trouver un support sans faire défiler treize grandes images.
+
+Critères d'acceptation
+- [ ] Le parcours s'affiche en lignes compactes : numéro, vignette de 72 px à gauche, type et titre.
+- [ ] Les frises s'affichent en 2 × 2, avec leur vignette schématique et le nom de l'exemple.
+- [ ] Certification et annexes s'affichent en lignes : type, titre, flèche.
+- [ ] Chaque ligne mesure au moins 40 px de haut et se touche sur toute sa largeur.
+- [ ] À 390 px, la page fait au plus 2 400 px de haut en français (4 638 px aujourd'hui). La hauteur FR et EN est notée au journal.
+- [ ] Une marge basse laisse la dernière ligne visible au-dessus du bouton « Glossaire ».
+- [ ] Sur bureau, l'accueil de US-033 ne change pas.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 9) ; statut « Validée »
+
+### US-035 · Glossaire : filtres sur une seule ligne
+- Statut : Validée
+- Priorité : haute (proposée : termine la correction des cibles tactiles)
+- Taille : S
+- Maquette nécessaire : non (maquette d'identité validée : écran 8, variante A)
+- Dépend de : US-021
+- Sert : B-002
+
+En tant que visiteur, je veux filtrer le glossaire d'un seul toucher et voir les termes tout de suite afin de chercher vite, même sur téléphone.
+
+Critères d'acceptation
+- [ ] Les pastilles de catégorie mesurent au moins 40 px de haut (25 px aujourd'hui).
+- [ ] Elles tiennent sur une seule ligne, qui défile à l'horizontale dans le glossaire. La page, elle, ne défile pas.
+- [ ] Les libellés sont raccourcis (« Méthode », « Processus », « Technique », « Données », « Tests », « Run », « Agile ») ; les libellés anglais courts sont dans `en.json`.
+- [ ] Le nom complet de la catégorie reste en infobulle et dans l'annonce des lecteurs d'écran.
+- [ ] La pastille active est annoncée (`aria-pressed`) et visible sans la couleur seule.
+- [ ] La hauteur entre le haut du glossaire et le premier terme baisse nettement (120 px de pastilles aujourd'hui) ; la valeur est notée au journal.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 11, variante A) ; statut « Validée »
+
+### US-036 · Lecteur sur téléphone
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 7, téléphone)
+- Dépend de : US-021, US-030
+- Sert : B-002
+
+En tant que visiteur sur téléphone, je veux tourner les pages avec le pouce afin de lire un support sans viser le haut de l'écran.
+
+Critères d'acceptation
+- [ ] Sur téléphone, la navigation de page (précédent, numéro, suivant) est en bas de l'écran, au-dessus de la zone sûre.
+- [ ] Le bouton de téléchargement garde un libellé court : « PDF ».
+- [ ] En haut : retour vers la section d'origine (« ← Parcours », « ← Certification »…) à gauche, sélecteur FR / EN à droite.
+- [ ] Sous l'en-tête : le type et le titre du document.
+- [ ] Une phrase d'aide invite à tourner le téléphone pour lire plus grand ; texte anglais dans `en.json`.
+- [ ] Le bandeau de langue (US-013) reste dans le flux et ne cache pas la page.
+- [ ] Chaque bouton mesure au moins 40 × 40 px.
+- [ ] Le bouton « Glossaire » ne recouvre pas la barre de navigation du bas.
+- [ ] Sur bureau, le lecteur de US-030 ne change pas.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 12) ; statut « Validée »
+
+### US-037 · Schéma des rôles harmonisé
+- Statut : Validée
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : non (maquette d'identité validée : écran 9)
+- Dépend de : US-020, US-024, US-030
+- Sert : B-002
+
+En tant que visiteur, je veux que le schéma des rôles ressemble au reste du portail afin de ne pas croire que j'ai changé de site.
+
+Critères d'acceptation
+- [ ] Les deux fichiers (FR et EN) prennent le fond, la surface et l'encre du site (plus de fond crème `#F7F6F2`).
+- [ ] Côté client : violet du site `#6A4FA3`. Côté intégrateur : sarcelle `#1B7287`. Instances : gris neutre du site. Les teintes sombres sont prises dans `theme.css`.
+- [ ] Chaque texte atteint au moins 4,5:1 sur son fond, dans les deux thèmes ; les ratios des trois familles sont notés au journal.
+- [ ] Le titre suit l'échelle du site (32 px sur bureau, 24 px sur téléphone).
+- [ ] Le sens des couleurs ne change pas : client, intégrateur, instances restent distincts.
+- [ ] Sous 620 px, le schéma se replie en une colonne.
+- [ ] Le texte des rôles et l'exemple de la vanne ne changent pas.
+- [ ] L'aperçu `apercus/roles.jpg` (et sa version anglaise s'il y en a une) est refait.
+- [ ] Vérifié en clair et en sombre, en FR et en EN, à 375 px et à 1440 px : aucun débordement horizontal.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-24 · po · story créée
+- 2026-11-24 · po · validée par Walid le 2026-11-24 avec la maquette d'identité (choix 13) ; statut « Validée »
+
+### Questions du lot 3 (à trancher par Walid)
+
+- Q9 · Frise sur bureau. L'écran 5 de la maquette montre des retouches qui ne figurent pas dans les 14 choix : libellés d'étape toujours à droite de la barre (à gauche après le go-live), exemple fil rouge en encadré ambre, popup centrée dans la colonne de contenu (plus sous le glossaire), « Qui porte » en étiquette rectangulaire, bouton « Précédent » désactivé en pointillés au lieu d'un pavé délavé. Option recommandée : une story de plus (US-038, taille M), après US-030. Autre option : les laisser de côté pour l'instant. La couleur de « Parade » (verte dans le roll-out, rouge ailleurs) pourrait être tranchée dans la même story.
+- Q10 · Lecteur sur téléphone : geste de balayage pour tourner les pages. La maquette le note « option de développement, à confirmer ». Option recommandée : non dans US-036 (boutons en bas seulement), à ajouter plus tard si le besoin se confirme. Autre option : l'inclure, ce qui fait passer US-036 en taille L.
+- Q11 · Échelle de tailles (8 valeurs) et rayons (3 valeurs). US-024 les déclare ; l'accueil, l'en-tête et le schéma les appliquent. Les frises, le lecteur et le glossaire gardent leurs tailles actuelles. Option recommandée : les appliquer à ces pages dans une story de finition à la fin du lot. Autre option : les appliquer au fil des stories qui touchent ces pages.
+
 ## Journal du backlog
 
 - 2026-11-24 · po · 18 stories créées (US-001 à US-018) depuis la demande de Walid « version anglaise du portail ». Lot 1 (US-001 à US-008) sans maquette ; lot 2 avec maquette pour US-009, US-010, US-012, US-013. Statut « À affiner » en attente des questions Q1 à Q8 et de l'inscription du besoin B-001 dans `besoins.md`. Suite : Walid répond aux questions et fixe les priorités ; le lot 1 peut démarrer par US-001 dès l'accord de Walid (pas de maquette).
@@ -575,3 +1098,4 @@ Journal
 - 2026-11-24 · Walid · publication accordée (« Oui, publie ») : schéma des rôles, Revision Sheet anglaise, section « Supports annexes ».
 - 2026-11-24 · ux-ui · Demande de Walid (audit, identité, nom) : audit dans `rapports/2026-11-24-audit-ux-ui.md`, maquette dans [`maquettes/identite-portail.html`](maquettes/identite-portail.html) (nom proposé « Jalon », logotype en losange, palette, accueil, frise, lecteur, glossaire, schéma des rôles, bureau et téléphone). 14 choix à trancher par Walid en fin de maquette. Aucune story créée : à faire par le po après les choix de Walid ; les correctifs d'accessibilité peuvent former un lot à part.
 - 2026-11-24 · Walid · audit UX/UI (rapports/2026-11-24-audit-ux-ui.md) et maquette d'identité (maquettes/identite-portail.html) validés, les 14 recommandations retenues (« Oui, toutes ») : nom « Jalon » (vérification INPI / EUIPO avant diffusion large), signature « Piloter un programme SAP » / « Running SAP programs », logotype A (losange ambre sur une ligne de temps), accent A (sarcelle + bleu nuit de marque, ambre réservé au jalon), IBM Plex Sans seule, correctifs d'accessibilité en premier et en lot séparé, en-tête commun, accueil refondu (bandeau, 4 colonnes), accueil téléphone compact, frise téléphone A (glisser avec indice), filtres du glossaire A, lecteur téléphone (boutons en bas, libellé PDF), schéma des rôles harmonisé, socle (couleurs partagées, polices IBM Plex hébergées, favicon, Open Graph, mention de marque SAP). Suite : le PO découpe le lot 3.
+- 2026-11-24 · po · Lot 3 « Identité Jalon et confort de visite » écrit : 19 stories (US-019 à US-037), toutes en « Validée » sur la décision de Walid du 2026-11-24 (maquette d'identité et 14 choix), sans nouvelle maquette. Bloc A accessibilité US-019 à US-023 (sans dépendance, livrables tout de suite) ; bloc B socle US-024 à US-027 ; bloc C identité US-028 à US-031 ; bloc D écrans US-032 à US-037. US-026 (favicon, partage) attend le nom et le logotype : elle se développe après US-029. Besoin B-002 proposé dans la note du lot, à inscrire dans `besoins.md`. Questions ouvertes Q9 (retouches de la frise sur bureau, hors des 14 choix), Q10 (balayage dans le lecteur), Q11 (échelle de tailles sur les frises, le lecteur et le glossaire). Suite : session principale, US-019.

@@ -36,3 +36,16 @@ Ce que je voudrais pouvoir faire : basculer tout le portail en anglais d'un clic
 Suivi
 - 2026-11-24 · Walid · besoin exprimé (« Version anglaise du portail. D'abord séparer le texte et la mise en page, ensuite traduire. »)
 - 2026-11-24 · po · stories US-001 à US-018 dans `backlog.md`
+
+### B-002 · Un portail qui inspire confiance et se lit partout
+- Source : Walid
+- Importance : important (à confirmer par Walid)
+- Couvert par : US-019 à US-037
+
+Situation : le portail est public. Walid peut l'envoyer à un recruteur ou à une équipe, qui l'ouvre souvent sur téléphone.
+Ce qui bloque : pas de nom ni de logo, un nom qui ressemble à un produit SAP, des textes illisibles en thème sombre, des boutons trop petits, un accueil très long sur téléphone.
+Ce que je voudrais pouvoir faire : montrer un portail qui a une identité claire, lisible par tous, agréable sur bureau comme sur téléphone.
+
+Suivi
+- 2026-11-24 · Walid · besoin exprimé (« rendre l'appli plus agréable à visiter, donner une identité au portail, un nom »)
+- 2026-11-24 · po · stories US-019 à US-037 dans `backlog.md`
