@@ -93,8 +93,8 @@ canvas{display:block;background:#fff;box-shadow:var(--page-shadow);border-radius
 </main>
 <p class="hint" data-t="lecteur.aide"></p>
 
-<script src="shared/libelles.js?v=202611241456"></script>
-<script src="shared/documents.js?v=202611241456"></script>
+<script src="shared/libelles.js?v=202611241504"></script>
+<script src="shared/documents.js?v=202611241504"></script>
 <script src="shared/pdfjs/pdf.min.js"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(function([T,M]){
@@ -174,6 +174,6 @@ pdfjsLib.getDocument({url:src,isEvalSupported:false}).promise.then(d=>{
 }).catch(()=>fail(T('lecteur.erreurOuverture',{src})));
 });
 </script>
-<script src="shared/glossaire.js?v=202611241456"></script>
+<script src="shared/glossaire.js?v=202611241504"></script>
 </body>
 </html>
