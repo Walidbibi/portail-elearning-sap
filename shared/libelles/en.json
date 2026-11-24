@@ -9,7 +9,7 @@
     "parcoursTitre": "Recommended path",
     "parcoursSousTitre": "From the big picture to day-to-day delivery.",
     "frisesTitre": "Timelines, from A to Z",
-    "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, what AI brings, and the main failure risks.",
+    "frisesSousTitre": "Each approach on an illustrated timeline, with a running example, how AI helps, and the main failure risks.",
     "autresTitre": "Other resources",
     "pied": "Generic content, with no client-specific information. Everything opens in the portal: documents in a page-by-page reader, with a button to download them."
   },
@@ -43,7 +43,8 @@
     "erreurPdfjs": "The reader could not be loaded. <a href=\"{src}\" download>Download the PDF</a>.",
     "erreurOuverture": "This PDF could not be opened. <a href=\"{src}\" download>Download it</a>.",
     "bandeauFr": "This document is in French.",
-    "versionAnglaise": "Open the English version →"
+    "versionAnglaise": "Open the English version →",
+    "bandeauFrSansVersion": "This document is in French. No English version yet."
   },
   "types": {
     "deck": "Deck",
@@ -82,7 +83,7 @@
     "gain": "Gain: {gain}",
     "risques": "Failure risks",
     "risque": "Risk · ",
-    "parade": "Fix · ",
+    "parade": "Mitigation · ",
     "dansExemple": "In the example · {entreprise}",
     "precedent": "← Previous",
     "suivant": "Next →",

@@ -72,7 +72,7 @@ const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const hl=(t,qq)=>{if(!qq)return esc(t);const i=norm(t).indexOf(qq);return i<0?esc(t):esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+qq.length))+'</mark>'+esc(t.slice(i+qq.length));};
 chips.innerHTML=[['all',T('glossaire.tout')],...Object.entries(CAT)].map(([k,v])=>`<button type="button" class="gl-chip" data-c="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
 chips.addEventListener('click',e=>{const b=e.target.closest('.gl-chip');if(!b)return;cat=b.dataset.c;chips.querySelectorAll('.gl-chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();});
-const items=G.map((g,i)=>({i,t:g.terme,f:g.nomComplet||'',fr:g.termeFr&&g.termeFr!==g.terme&&!norm(g.nomComplet||'').includes(norm(g.termeFr))?g.termeFr:'',c:g.categorie,d:g.definition,dp:g.pourLeDP||'',l:g.documents||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
+const items=G.map((g,i)=>({i,t:g.terme,f:g.nomComplet||'',fr:g.nomFr||'',c:g.categorie,d:g.definition,dp:g.pourLeDP||'',l:g.documents||[]})).sort((a,b)=>norm(a.t).localeCompare(norm(b.t)));
 function render(){
   if(!termes){count.textContent='';list.innerHTML=`<p class="gl-empty">${esc(T('glossaire.erreur'))}</p>`;return;}
   const qq=norm(q.value.trim());

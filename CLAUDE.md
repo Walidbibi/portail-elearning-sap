@@ -26,7 +26,7 @@ glossaire.json             les 136 termes du glossaire, un terme par ligne
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface (accueil, glossaire, lecteur, frises) ; en.json pour l'anglais
-glossaire.en.json          glossaire anglais, relié au français par termeFr
+glossaire.en.json          glossaire anglais, relié au français par termeFr ; nomFr = nom français affiché avec le repère FR
 frises/<nom>.en.json       contenu anglais de chaque frise, même structure que <nom>.json
 outils/captures/           captures avant / après et comparaison pixel par pixel (voir LISEZMOI.md)
 outils/verifier.mjs        contrôle des données : JSON bien formés, fichiers présents, clés cohérentes, textes existants

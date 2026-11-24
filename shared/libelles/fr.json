@@ -43,7 +43,8 @@
     "erreurPdfjs": "Le lecteur n'a pas pu se charger (fichiers PDF.js introuvables). <a href=\"{src}\" download>Télécharger le PDF</a>.",
     "erreurOuverture": "Impossible d'ouvrir ce PDF. <a href=\"{src}\" download>Le télécharger</a>.",
     "bandeauFr": "Ce document est en français.",
-    "versionAnglaise": "Ouvrir la version anglaise →"
+    "versionAnglaise": "Ouvrir la version anglaise →",
+    "bandeauFrSansVersion": "Ce document est en français. Pas encore de version anglaise."
   },
   "types": {
     "deck": "Deck",

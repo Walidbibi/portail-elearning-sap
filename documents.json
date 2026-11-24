@@ -59,7 +59,7 @@
       "langue": "fr",
       "en": {
         "titre": "Interview simulation",
-        "description": "Typical questions and good answers, including warning thresholds."
+        "description": "Typical questions and good answers, including alert thresholds."
       }
     },
     "rollout": {
@@ -124,17 +124,25 @@
     },
     "actEN": {
       "type": "act",
-      "titre": "ACT100 · Study guide",
-      "description": "SAP Activate: all 7 chapters in one document, ready to print.",
+      "titre": "ACT100 · Revision book (EN)",
+      "description": "Version anglaise du livre de révision ACT100.",
       "fichier": "documents/act100-study-guide-en.pdf",
-      "langue": "en"
+      "langue": "en",
+      "en": {
+        "titre": "ACT100 · Revision book",
+        "description": "SAP Activate: all 7 chapters in one document, ready to print."
+      }
     },
     "act2EN": {
       "type": "act",
-      "titre": "ACT200 · Study guide",
-      "description": "SAP Activate Agile: the complete study guide.",
+      "titre": "ACT200 · Revision book (EN)",
+      "description": "Version anglaise du livre de révision ACT200.",
       "fichier": "documents/act200-study-guide-en.pdf",
-      "langue": "en"
+      "langue": "en",
+      "en": {
+        "titre": "ACT200 · Revision book",
+        "description": "SAP Activate Agile: the complete revision book."
+      }
     },
     "synthEN": {
       "type": "deck",

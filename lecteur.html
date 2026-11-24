@@ -118,7 +118,7 @@ $('kind').textContent=entry.type?T('types.'+entry.type):T('lecteur.document');
 if(en&&(brut.langue||'fr').split(' ').indexOf('en')<0){
   const v=brut.versionEn&&M.documents[brut.versionEn];
   const n=$('langnote');n.hidden=false;
-  n.innerHTML=`<span class="fr">FR</span><span>${T('lecteur.bandeauFr')}</span>`+(v?` <a href="lecteur.html?doc=${encodeURIComponent(v.fichier)}">${T('lecteur.versionAnglaise')}</a>`:'');
+  n.innerHTML=`<span class="fr">FR</span><span>${T(v?'lecteur.bandeauFr':'lecteur.bandeauFrSansVersion')}</span>`+(v?` <a href="lecteur.html?doc=${encodeURIComponent(v.fichier)}">${T('lecteur.versionAnglaise')}</a>`:'');
 }
 $('dl').href=src;$('dl').setAttribute('download',src.split('/').pop());
 
