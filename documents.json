@@ -7,6 +7,12 @@
       "roles",
       "fiche"
     ],
+    "flux": [
+      "p2p",
+      "ptp",
+      "o2c",
+      "r2r"
+    ],
     "certification": [
       "act",
       "act2"
@@ -189,6 +195,82 @@
       "en": {
         "titre": "ECC to S/4HANA Migration",
         "description": "What changes between ECC and S/4HANA, and the paths to get there."
+      }
+    },
+    "p2p": {
+      "type": "schema",
+      "titre": "Procure-to-Pay (P2P)",
+      "description": "De la demande d'achat au paiement du fournisseur, étape par étape, avec les écritures comptables.",
+      "fichier": "schemas/flux-p2p.html",
+      "langue": "fr",
+      "versionEn": "p2pEN"
+    },
+    "p2pEN": {
+      "type": "schema",
+      "titre": "Procure-to-Pay (P2P) (EN)",
+      "description": "Version anglaise du flux Procure-to-Pay.",
+      "fichier": "schemas/flux-p2p-en.html",
+      "langue": "en",
+      "en": {
+        "titre": "Procure-to-Pay (P2P)",
+        "description": "From purchase requisition to supplier payment, step by step, with the accounting entries."
+      }
+    },
+    "ptp": {
+      "type": "schema",
+      "titre": "Plan-to-Produce",
+      "description": "De la prévision de la demande au produit fini en stock, avec le coût de l'ordre de fabrication.",
+      "fichier": "schemas/flux-ptp.html",
+      "langue": "fr",
+      "versionEn": "ptpEN"
+    },
+    "ptpEN": {
+      "type": "schema",
+      "titre": "Plan-to-Produce (EN)",
+      "description": "Version anglaise du flux Plan-to-Produce.",
+      "fichier": "schemas/flux-ptp-en.html",
+      "langue": "en",
+      "en": {
+        "titre": "Plan-to-Produce",
+        "description": "From demand forecast to finished goods in stock, with the cost of the production order."
+      }
+    },
+    "o2c": {
+      "type": "schema",
+      "titre": "Order-to-Cash (O2C)",
+      "description": "De la commande du client à l'encaissement, avec la marge et les écritures comptables.",
+      "fichier": "schemas/flux-o2c.html",
+      "langue": "fr",
+      "versionEn": "o2cEN"
+    },
+    "o2cEN": {
+      "type": "schema",
+      "titre": "Order-to-Cash (O2C) (EN)",
+      "description": "Version anglaise du flux Order-to-Cash.",
+      "fichier": "schemas/flux-o2c-en.html",
+      "langue": "en",
+      "en": {
+        "titre": "Order-to-Cash (O2C)",
+        "description": "From customer order to cash collection, with the margin and the accounting entries."
+      }
+    },
+    "r2r": {
+      "type": "schema",
+      "titre": "Record-to-Report (R2R)",
+      "description": "De l'écriture comptable au bilan : la clôture du mois, qui reçoit tous les autres flux.",
+      "fichier": "schemas/flux-r2r.html",
+      "langue": "fr",
+      "versionEn": "r2rEN"
+    },
+    "r2rEN": {
+      "type": "schema",
+      "titre": "Record-to-Report (R2R) (EN)",
+      "description": "Version anglaise du flux Record-to-Report.",
+      "fichier": "schemas/flux-r2r-en.html",
+      "langue": "en",
+      "en": {
+        "titre": "Record-to-Report (R2R)",
+        "description": "From journal entry to financial statements: the month-end close that receives every other flow."
       }
     }
   }

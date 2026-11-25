@@ -51,6 +51,7 @@ shared/frise.js, frise.css gabarit commun des frises (dessin de la chronologie, 
 frises/brownfield.html     frise brownfield (SAP Activate), contenu dans frises/brownfield.json
 frises/bluefield.html      frise bluefield (SAP Activate), contenu dans frises/bluefield.json
 schemas/                   schémas interactifs (rôles d'un programme SAP), une page par langue (data-langue-fixe, lien rel=alternate vers l'autre langue)
+schemas/flux-<nom>.html     principaux flux logistiques (p2p, ptp, o2c, r2r), FR et -en.html ; contenu en JSON dans la page, affichage dans shared/flux.js et flux.css
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
 apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, réduit à 720 px de haut ; frises et schéma des rôles : Chrome headless 1080 × 673 sur `?lang=fr`, avec `--blink-settings=preferredColorScheme=1` pour forcer le thème clair, réduit à 720 de large), à refaire si le support change
 apercus/<clé>.en.jpg       aperçu anglais d'une frise (même capture sur `?lang=en`)

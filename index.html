@@ -87,7 +87,8 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 .rows .t b{display:block;font-size:var(--t-15);line-height:1.3}
 .rows .t span.d{display:block;color:var(--muted);font-size:var(--t-13);line-height:1.4}
 .rows .go{color:var(--muted);font-size:18px}
-#path,#certification,#frises,#other{scroll-margin-top:90px}
+#path,#flux,#certification,#frises,#other{scroll-margin-top:90px}
+ul.parcours{list-style:none}
 /* pied de page */
 .foot{margin-top:36px;padding:16px 0 28px;border-top:1px solid var(--line);font-size:var(--t-13);color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 .foot p{margin:0;max-width:70ch}
@@ -145,6 +146,11 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
     <p class="sub" data-t="accueil.parcoursSousTitre"></p>
     <ol class="g4 parcours" id="path"></ol>
   </section>
+  <section class="sec" aria-labelledby="t-flux">
+    <h2 id="t-flux"><span data-t="accueil.fluxTitre"></span><span class="ct" id="ct-flux"></span></h2>
+    <p class="sub" data-t="accueil.fluxSousTitre"></p>
+    <ul class="g4 parcours flux" id="flux"></ul>
+  </section>
   <section class="sec" aria-labelledby="t-frises">
     <h2 id="t-frises"><span data-t="accueil.frisesTitre"></span><span class="ct" id="ct-frises"></span></h2>
     <p class="sub" data-t="accueil.frisesSousTitre"></p>
@@ -189,6 +195,11 @@ const parcours=M.section('parcours');
 document.getElementById('path').innerHTML=parcours.map((k,i)=>{const d=M.doc(k);if(!d)return '';
   return `<li><a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="step tel">${i+1}</span><span class="thumb">${apercu(d)}</span><span class="cb"><span class="kl"><span class="step">${i+1}</span>${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a></li>`;}).join('');
 document.getElementById('ct-parcours').textContent=T('accueil.compteEtapes',{n:parcours.length});
+// principaux flux logistiques : mêmes cartes, sans numéro
+const flux=M.section('flux');
+document.getElementById('flux').innerHTML=flux.map(k=>{const d=M.doc(k);if(!d)return '';
+  return `<li><a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"><span class="thumb">${apercu(d)}</span><span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a></li>`;}).join('');
+document.getElementById('ct-flux').textContent=T('accueil.compteFlux',{n:flux.length});
 // frises : vignette schématique tirée du JSON de chaque frise (phases proportionnelles, exemple fictif)
 const frises=M.section('frises');
 document.getElementById('ct-frises').textContent=T('accueil.compteDemarches',{n:frises.length});
@@ -211,7 +222,7 @@ document.getElementById('certification').innerHTML=M.section('certification').ma
 document.getElementById('other').innerHTML=M.section('autres').map(ligne).join('');
 // chiffres du bandeau, calculés : supports affichés hors frises, frises, termes du glossaire
 const G=await lire('glossaire.json');const termes=G&&G.termes?G.termes.length:0;
-const supports=['parcours','certification','autres'].reduce((n,s)=>n+M.section(s).length,0);
+const supports=['parcours','flux','certification','autres'].reduce((n,s)=>n+M.section(s).length,0);
 document.getElementById('stats').textContent=T('accueil.stats',{supports,frises:frises.length,termes});
 document.getElementById('intro-courte').textContent=T('accueil.introCourte',{n:termes});
 });

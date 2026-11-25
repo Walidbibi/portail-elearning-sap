@@ -37,7 +37,7 @@ zones.forEach(z=>{
 });
 
 // section de l'accueil qui contient un document (ou dont un document a cette version anglaise)
-const ANCRES={parcours:'path',certification:'certification',frises:'frises',autres:'other'};
+const ANCRES={parcours:'path',flux:'flux',certification:'certification',frises:'frises',autres:'other'};
 function section(M,cle){
   for(const s of Object.keys(ANCRES)){
     const cles=(M.accueil[s]||[]);
