@@ -28,7 +28,7 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 ## Structure actuelle
 
 ```
-index.html                 accueil : parcours conseillé, certification, frises, supports annexes
+index.html                 accueil : parcours conseillé, principaux flux logistiques, scénarios de mise en œuvre, certification SAP Activate, supports annexes
 shared/theme.css           toutes les couleurs (clair, sombre), polices, tailles et rayons
 shared/polices/            IBM Plex Sans et Mono (woff2) et leur licence
 shared/entete.js           en-tête commun : logotype, fil d'Ariane, sélecteur FR / EN (data-entete sur chaque page)
@@ -71,8 +71,8 @@ Le site ne demande aucune compilation, mais il doit être servi par un serveur, 
 
 `documents.json` contient deux blocs :
 
-- `documents` : une entrée par support, sous une clé courte (`synth`, `mig`…). Champs : `type` (`deck`, `doc`, `frise`, `act`, `prat`, libellés dans `shared/libelles/fr.json` sous `types`), `titre`, `description`, `fichier` (chemin depuis la racine du site).
-- `accueil` : l'ordre des cartes dans les trois sections de l'accueil (`parcours`, `frises`, `autres`), par clé.
+- `documents` : une entrée par support, sous une clé courte (`synth`, `mig`…). Champs : `type` (`deck`, `doc`, `frise`, `schema`, `act`, `prat`, libellés dans `shared/libelles/fr.json` sous `types`), `titre`, `description`, `fichier` (chemin depuis la racine du site), `langue` (`fr`, `en` ou `fr en`), `versionEn` (clé de la version anglaise), `en` (titre et description en anglais).
+- `accueil` : l'ordre des cartes dans les cinq sections de l'accueil (`parcours`, `flux`, `frises`, `certification`, `autres`), par clé. Une nouvelle section demande aussi son bloc dans `index.html`, ses libellés et son ancre dans `ANCRES` de `shared/entete.js`.
 
 Ajouter un document :
 
@@ -139,7 +139,7 @@ Les popups ont une navigation Précédent / Suivant, un bouton « Suivre l'exemp
 
 ## Les autres supports (à récupérer en PDF)
 
-Ces documents existent comme artefacts privés sur claude.ai. Claude Code ne peut pas les lire : Walid doit les exporter en PDF et les déposer dans `documents/`.
+Ces documents existent comme artefacts privés sur claude.ai. Claude Code peut les lire et les exporter (outil Artifact, connecteur des documents), puis les anonymiser avant de les déposer dans `documents/`. Les decks ne s'exportent pas toujours : Walid les exporte alors lui-même en PDF.
 
 | Clé du manifeste | Document | Type |
 |---|---|---|
@@ -178,4 +178,9 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 
 ## Points ouverts
 
+- Vérifier que « Jalon » n'est pas déjà déposé (INPI, EUIPO, classe 41) avant une diffusion large : à faire par Walid.
+- Convertir le mot « Jalon » du logotype en tracés : demande d'installer fontTools, en attente de l'accord de Walid.
+- Contrôler l'aperçu de partage avec LinkedIn Post Inspector.
+- Lot 4 : Walid choisit parmi les besoins B-003 à B-010 de `besoins.md` (B-007, flux logistiques, en partie couvert par la section « Principaux flux logistiques »).
+- Flux Order-to-Cash : l'exemple cite « une compagnie aérienne » ; à remplacer par « un client industriel » si Walid le souhaite.
 - Les PDF sont des copies anonymisées des supports claude.ai (les originaux citent le client, l'employeur et des sites réels). Si un original change, il faut refaire l'export puis l'anonymisation avant de remplacer le PDF.
