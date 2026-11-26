@@ -7,30 +7,164 @@ Exemple fil rouge : la vanne de carburant des flux du portail (1 240 vannes à 5
 
 ---
 
-## 0. Proposition : trois schémas retenus, une piste fusionnée
+## 0. Proposition : quatre schémas, une piste fusionnée
+
+Mise à jour du 26/11/2026 : un schéma 0 de vue générale s'ajoute en tête, à la demande de Walid. Les schémas 1 à 3 ne changent pas.
 
 | Rang | Schéma | Forme | Pourquoi ce rang |
 |---|---|---|---|
+| 0 | ECC et S/4HANA en un coup d'œil | Deux colonnes ECC / S/4HANA reliées par six dimensions, plus un bandeau « Passer de l'un à l'autre » en pied | La porte d'entrée. Un DP débutant en SAP doit d'abord savoir ce qui distingue les deux produits avant de lire le détail logistique. Il renvoie vers les schémas 1 à 3 et vers les scénarios de mise en œuvre. |
 | 1 | Ce qui change, étape par étape (P2P et O2C) | Bascule « ECC / S/4HANA » ajoutée aux deux flux existants | Répond mot pour mot à B-007. Le DP suit déjà ces flux : il voit le changement là où il se produit. Coût de développement le plus bas : on enrichit `flux-p2p` et `flux-o2c`, on ne crée pas de page. |
 | 2 | L'entrepôt : WM, Stock Room Management, EWM embarqué, EWM décentralisé | Matrice de quatre options + trois questions de décision | C'est le domaine du DP logistique, et le sujet le plus coûteux d'une conversion. Des dates d'usage ont changé en 2026 et le deck n'est plus à jour sur ce point (voir section 4). |
 | 3 | Disparaît, remplacé, devient obligatoire | Tableau à trois colonnes ; chaque carte a une bascule avant / après et un niveau d'effort | Donne la liste à suivre en comité. Absorbe la piste « architecture avant / après » : les tables (MATDOC, ACDOCA, Business Partner) y sont des cartes, expliquées par leur conséquence projet et non par leur structure. |
 
 Piste écartée comme schéma séparé : l'architecture avant / après (tables d'agrégats contre ACDOCA, MATDOC). Seule, elle parle aux architectes, pas au DP. Elle est fusionnée dans le schéma 3 (cartes « Agrégats de stock », « Universal Journal », « Business Partner »).
 
-Règle commune aux trois schémas : chaque élément cliquable a quatre rubriques, dans cet ordre : « En ECC », « En S/4HANA », « Qui est touché », « Pour le DP ». Les termes en gras renvoient au glossaire.
+Règle commune aux schémas 1 à 3 : chaque élément cliquable a quatre rubriques, dans cet ordre : « En ECC », « En S/4HANA », « Qui est touché », « Pour le DP ». Le schéma 0 remplace « Qui est touché » par « Ce que ça change concrètement », plus parlant pour une vue générale ; la cible touchée y figure en étiquette (« Qui le voit »). Les termes en gras renvoient au glossaire.
+
+---
+
+## Schéma 0 · ECC et S/4HANA en un coup d'œil
+
+### Ce qu'il montre
+La différence générale entre les deux produits, en six dimensions et un passage. À gauche, ECC (l'ERP historique de SAP). À droite, S/4HANA (son successeur, lancé en 2015). Chaque dimension relie les deux colonnes par une flèche. En pied, un bandeau montre comment on passe de l'un à l'autre : les échéances de maintenance et les trois chemins de migration.
+
+Le message central, à afficher sous le titre : « S/4HANA n'est pas une nouvelle version d'ECC. C'est un nouveau produit, sur une seule base de données, avec un modèle de données plus simple. Le passage est un programme, pas une montée de version. »
+
+### Dimensions retenues, fusionnées, écartées
+- Retenues (6 rangées) : base de données ; modèle de données ; interface ; analytique ; extension ; déploiement et rythme de mise à jour.
+- Fusionnée : le rythme de mise à jour rejoint le déploiement. Il en dépend (deux versions par an en cloud public, une tous les deux ans sur site et en cloud privé) : séparés, les deux éléments se répétaient.
+- Déplacée : fin de maintenance et chemins de migration ne sont pas une différence entre les produits mais le passage de l'un à l'autre. Ils forment le bandeau de pied, qui renvoie aux scénarios de mise en œuvre du portail.
+- Écartée : aucune.
+
+### Forme
+- En-tête : deux titres de colonne. « ECC · SAP ERP 6.0 » (gris neutre) et « S/4HANA » (couleur de la palette). Sous chaque titre, une ligne : « L'ERP historique, toutes bases de données » / « Le successeur, sur HANA seule, depuis 2015 ».
+- Six rangées. Chaque rangée a trois zones : à gauche la valeur ECC (cinq mots au plus), au centre une pastille avec le nom de la dimension et une flèche vers la droite, à droite la valeur S/4HANA. Une étiquette « Qui le voit » (Utilisateurs, Finance, Équipe IT, Contrat) se place sous la pastille, avec un mot et pas seulement une couleur.
+- Clic (ou Entrée) sur n'importe quelle zone d'une rangée : popup avec quatre rubriques, dans cet ordre : « En ECC », « En S/4HANA », « Ce que ça change concrètement », « Pour le DP ». Navigation Précédent / Suivant entre les rangées, puis vers le bandeau.
+- Bandeau de pied « Passer de l'un à l'autre » : une petite ligne de temps (fin 2027, fin 2030, 2033 à 2035, fin 2040) et trois boutons « Greenfield », « Brownfield », « Bluefield » qui ouvrent les scénarios de mise en œuvre (`frises/greenfield.html`, `frises/brownfield.html`, `frises/bluefield.html`). Clic sur le bandeau : popup avec les mêmes quatre rubriques.
+- Pied : « Pour aller plus loin » : schéma 1 (ce qui change étape par étape), schéma 2 (l'entrepôt), schéma 3 (disparaît, remplacé, obligatoire), deck `mig`. Mention « Dates lues le 26/11/2026 ».
+- Téléphone : les rangées s'empilent. Chaque carte porte le nom de la dimension, puis « ECC : … » et « S/4HANA : … » sur deux lignes.
+- Exemple fil rouge : dans les popups, le paragraphe sur la vanne de carburant porte le repère ambre du fil rouge (seul usage de l'ambre).
+- Champs JSON proposés par élément : `id`, `dimension`, `qui` (liste), `ecc` (libellé court), `s4` (libellé court), `enEcc`, `enS4`, `concret`, `exemple` (facultatif), `dp`.
+
+### S0.1 Français
+
+**Rangée 1 · Base de données** · ECC : « Toutes bases (Oracle, DB2, SQL Server…) » → S/4HANA : « HANA seule, en mémoire » · Qui le voit : Équipe IT, Contrat
+- En ECC : ECC tourne sur la base de données choisie par l'entreprise : Oracle, IBM DB2, Microsoft SQL Server, SAP ASE, SAP MaxDB ou SAP HANA. La base stocke les données sur disque et garde des tables de totaux pour répondre vite.
+- En S/4HANA : S/4HANA ne tourne que sur **HANA**, la base de SAP qui garde les données en mémoire et les range par colonnes. Elle calcule les totaux à la demande, sans tables intermédiaires. C'est ce qui permet le modèle de données simplifié (rangée 2).
+- Ce que ça change concrètement : changer de produit oblige à changer de base, si l'entreprise n'est pas déjà sur HANA. Un ECC déjà sur HANA (« Suite on HANA ») reste un ECC : la base seule ne fait pas S/4HANA. La taille de la mémoire dépend du volume de données : moins de données anciennes, moins de mémoire à payer.
+- Exemple : si l'ECC de Ternova (fictif, scénario brownfield) tourne sur une autre base que HANA, sa conversion comprend aussi la migration de base vers HANA, faite en même temps (DMO).
+- Pour le DP : trois sujets sur le chemin critique technique dès le cadrage. Le dimensionnement (**Sizing**), qui fixe le coût d'infrastructure. L'**Archivage** des données anciennes, qui réduit la mémoire et la **Fenêtre de coupure**. La migration de base (**DMO**) si l'ERP n'est pas déjà sur HANA. Faire chiffrer les trois avant de signer le budget.
+
+**Rangée 2 · Modèle de données** · ECC : « Tables multiples, agrégats, réconciliations » → S/4HANA : « Tables uniques, calcul à la volée » · Qui le voit : Finance, Équipe IT
+- En ECC : une même opération s'écrit dans plusieurs tables. Un mouvement de stock va dans une table d'en-tête, une table de postes et des tables de stock agrégé. Une écriture de coût va d'un côté en comptabilité générale (**FI**), de l'autre en contrôle de gestion (**CO**). Clients et fournisseurs ont chacun leur fiche.
+- En S/4HANA : une table par grand objet. Les mouvements de stock vont dans **MATDOC**. Les écritures de FI et de CO vont ensemble dans le **Universal Journal**. Clients et fournisseurs deviennent des **Business Partner**. Les tables d'agrégats disparaissent : HANA calcule les totaux à la lecture.
+- Ce que ça change concrètement : moins de réconciliations entre la logistique, la comptabilité et le contrôle de gestion. Mais tout programme spécifique qui écrivait dans les anciennes tables doit être repris, et les fiches clients et fournisseurs doivent être converties avant la migration (**CVI**).
+- Exemple : la réception des 1 240 vannes de carburant à 500 € (chiffres fictifs). En ECC, elle s'écrit dans quatre à cinq tables : document article, stock agrégé, pièce comptable de 620 000 €. En S/4HANA, une ligne dans MATDOC pour le stock et des lignes dans le Universal Journal pour la valeur, où la finance et le contrôle de gestion lisent les mêmes données.
+- Pour le DP : c'est la dimension la plus coûteuse d'une conversion, et la moins visible au comité. Demander tôt deux chiffres : le nombre de programmes spécifiques touchés (analyse **ATC**) et le nombre de fiches clients et fournisseurs en erreur de conversion. Le détail est dans le schéma 3.
+
+**Rangée 3 · Interface** · ECC : « SAP GUI, écrans par transaction » → S/4HANA : « Fiori, applications par rôle » · Qui le voit : Utilisateurs
+- En ECC : l'utilisateur travaille dans **SAP GUI**, un logiciel installé sur le poste. Il ouvre des transactions par leur code (par exemple ME21N pour créer une commande d'achat) et passe d'un écran dense à l'autre.
+- En S/4HANA : **Fiori** est l'interface cible : des applications web, dans un navigateur, sur ordinateur, tablette ou téléphone. Chaque utilisateur voit les applications de son rôle (**Business Roles / Business Catalogs**). Sur site et en cloud privé, SAP GUI reste utilisable pour de nombreuses transactions. En cloud public, l'accès passe par Fiori.
+- Ce que ça change concrètement : c'est le changement que tout le monde voit le premier jour. Les gestes changent, les droits d'accès se refont par rôle, la formation change de nature.
+- Exemple : en ECC, le magasinier saisit la réception des vannes sur un poste fixe en SAP GUI. En S/4HANA, il peut la confirmer sur une application Fiori, depuis une tablette, au quai de réception.
+- Pour le DP : décider tôt, rôle par rôle, qui passe à Fiori au démarrage et qui garde SAP GUI. Sans cette décision, on forme deux fois et on refait les rôles deux fois. Le chantier des rôles et habilitations est souvent sous-estimé : le chiffrer à part.
+
+**Rangée 4 · Analytique** · ECC : « Rapports la nuit, entrepôt de données séparé » → S/4HANA : « Analytique embarquée, temps réel » · Qui le voit : Utilisateurs, Finance
+- En ECC : les rapports opérationnels sont lents sur les gros volumes. On copie donc les données, souvent la nuit, dans un entrepôt de données séparé (**BW**) pour les analyser. Les chiffres du matin sont ceux de la veille.
+- En S/4HANA : l'**Analytique embarquée** lit les données directement dans le système, en temps réel, grâce à HANA. Les rapports opérationnels (stock, commandes en retard, marge) n'ont plus besoin de copie. Un entrepôt de données reste utile pour consolider plusieurs systèmes ou de longs historiques ; **SAP Analytics Cloud** sert aux tableaux de bord et à la planification.
+- Ce que ça change concrètement : une partie des rapports BW et des rapports spécifiques n'a plus de raison d'être. Le reporting change de forme pour le métier : moins de fichiers du matin, plus d'indicateurs à jour dans les applications.
+- Exemple : la vente de 12 vannes à 900 € (chiffres fictifs). En ECC, la marge (10 800 € de chiffre d'affaires, 6 000 € de coût, 4 800 € de marge) apparaît dans le rapport du lendemain. En S/4HANA, elle est visible dès la sortie de marchandises et la facture.
+- Pour le DP : inscrire l'inventaire des rapports au périmètre, dès le cadrage : lesquels garder, lesquels remplacer par l'analytique embarquée, lesquels supprimer. Désigner un responsable du reporting. Sinon le métier découvre au démarrage que ses rapports du lundi ont disparu.
+
+**Rangée 5 · Extension** · ECC : « Code Z, modifications du standard » → S/4HANA : « Clean Core : extensions prévues, BTP » · Qui le voit : Équipe IT, Contrat
+- En ECC : l'entreprise adapte le système par du **Développement Z** : programmes spécifiques, et parfois modifications du code standard de SAP. Après quinze ou vingt ans, un ECC compte souvent des milliers d'objets spécifiques (**Dette technique**).
+- En S/4HANA : SAP pousse le **Clean Core** : ne pas modifier le standard, étendre seulement par des moyens prévus. Trois niveaux : l'extension sans code par un utilisateur avancé (**Key User Extensibility**, dite « in-app »), le développement dans le système avec des règles strictes (**ABAP Cloud**, **API publiée**), et le développement à côté du système, sur **BTP** (**Extension side-by-side**). En cloud public, seules ces voies sont ouvertes.
+- Ce que ça change concrètement : chaque développement spécifique d'ECC doit être jugé : supprimé (le standard le fait), refait selon les règles du Clean Core, ou gardé tel quel en sachant qu'il ralentira les montées de version.
+- Exemple : Ternova (fictif) veut un champ « numéro de certification » sur la fiche de la vanne. En ECC, un développeur ajoute un champ Z à la table et modifie l'écran. En S/4HANA, un utilisateur avancé ajoute le champ par Key User Extensibility, sans code, et le champ survit aux montées de version.
+- Pour le DP : le volume de code spécifique est un des premiers chiffres à obtenir, et l'une des premières décisions de gouvernance. Donner à la **Design authority** le mandat de refuser un développement qui contourne le standard. Le coût d'un spécifique ne s'arrête pas au projet : il se paie à chaque montée de version.
+
+**Rangée 6 · Déploiement et rythme de mise à jour** · ECC : « Sur site, packages d'amélioration » → S/4HANA : « Sur site, cloud privé ou public ; versions régulières » · Qui le voit : Contrat, Équipe IT
+- En ECC : le système est installé **On-premise** (chez l'entreprise ou chez un hébergeur). Les nouveautés arrivent par des packages d'amélioration (**EhP**) que l'entreprise installe quand elle veut. Le dernier, l'EhP 8, date de 2016 : ECC ne reçoit plus de nouveautés.
+- En S/4HANA : trois modes. Sur site, géré par l'entreprise. En cloud privé (**SAP Cloud ERP**, version Private, vendue dans **RISE with SAP**) : un système dédié, hébergé et opéré en partie par SAP. En cloud public (SAP Cloud ERP, version publique) : un système partagé, standard, sans code dans le cœur (**Cloud public / Cloud privé**). Le rythme suit le mode. Sur site et en cloud privé : une nouvelle version tous les deux ans depuis la version 2023, maintenue sept ans, avec des **Feature Pack Stack** tous les six mois pendant ses deux premières années ; l'entreprise choisit quand monter. En cloud public : deux versions par an, imposées par SAP.
+- Ce que ça change concrètement : le choix du mode change le contrat (licence ou abonnement), la répartition des rôles avec SAP et le droit d'adapter le système. Après le démarrage, la **Montée de version** devient régulière : ce n'est plus un projet tous les dix ans, c'est un cycle.
+- Exemple : Calvane et Ternova (fictifs) ont choisi le cloud privé via RISE (voir leurs scénarios). Calvane, qui part de zéro, aurait pu viser le cloud public : il aurait alors accepté un standard strict et deux montées de version par an.
+- Pour le DP : le mode de déploiement se décide avant le choix du chemin de migration, car il le contraint (le cloud public n'accepte qu'une nouvelle implémentation). Après le démarrage, prévoir au budget de run une équipe et un calendrier de tests de non-régression pour chaque montée de version. Plus le cœur est propre (rangée 5), plus ce cycle coûte peu.
+
+**Bandeau · Passer de l'un à l'autre** · Échéances et chemins · Qui le voit : Direction, Contrat
+- En ECC : maintenance standard jusqu'à fin 2027. Maintenance étendue payante de 2028 à fin 2030 (**Maintenance étendue**). Au-delà, seulement pour des systèmes déplacés en cloud privé avant fin 2030 : la **Transition option**, de 2031 à 2033, et jusqu'à fin 2035 sous conditions depuis octobre 2026.
+- En S/4HANA : SAP s'engage à maintenir S/4HANA au moins jusqu'à fin 2040. Chaque version sur site ou en cloud privé est maintenue sept ans, ce qui oblige à monter de version au moins une fois dans cette période.
+- Ce que ça change concrètement : trois chemins pour passer. **Greenfield** : nouvelle implémentation, on repart du standard et on ne reprend que les données utiles. **Brownfield** : conversion du système existant, avec son paramétrage, son code et son historique. **Bluefield** : transition sélective, on garde une partie et on reconçoit le reste. Un bouton par chemin ouvre le scénario de mise en œuvre du portail.
+- Exemple : les quatre entreprises fictives du portail suivent chacune un chemin : Calvane (greenfield), Ternova (brownfield), Alvéa (bluefield), Nordval (roll-out d'un modèle déjà en place vers un nouveau site).
+- Pour le DP : partir de l'échéance et rétroplanifier. Pour un programme qui démarre fin 2026, fin 2027 est très proche : la maintenance étendue devient souvent l'hypothèse réaliste, et son surcoût entre dans le **Business case**. Le choix du chemin se fait par un comité de direction, sur la base du SAP Readiness Check et de l'ambition de transformation, pas par l'équipe technique seule.
+
+### S0.2 English
+
+Header line: "S/4HANA is not a new version of ECC. It is a new product, on a single database, with a simpler data model. Moving to it is a programme, not an upgrade."
+
+Column titles: "ECC · SAP ERP 6.0" / "The legacy ERP, any database"; "S/4HANA" / "The successor, HANA only, since 2015".
+
+**Row 1 · Database** · ECC: "Any database (Oracle, DB2, SQL Server…)" → S/4HANA: "HANA only, in memory" · Who sees it: IT team, Contract
+- In ECC: ECC runs on the database the company chose: Oracle, IBM DB2, Microsoft SQL Server, SAP ASE, SAP MaxDB or SAP HANA. The database stores data on disk and keeps totals tables to answer fast.
+- In S/4HANA: S/4HANA runs only on **HANA**, SAP's database that keeps data in memory, organised by columns. It computes totals on demand, without intermediate tables. This is what makes the simplified data model possible (row 2).
+- What it changes in practice: changing product means changing database, unless the company is already on HANA. An ECC already on HANA ("Suite on HANA") is still an ECC: the database alone does not make S/4HANA. Memory size depends on data volume: less old data, less memory to pay for.
+- Example: if the ECC of Ternova (fictitious, brownfield scenario) runs on a database other than HANA, its conversion also includes the database migration to HANA, done at the same time (DMO).
+- For the PD: three topics on the technical critical path from scoping. **Sizing**, which sets the infrastructure cost. **Archiving** of old data, which reduces memory and the **downtime window**. Database migration (**DMO**) if the ERP is not already on HANA. Have all three costed before signing the budget.
+
+**Row 2 · Data model** · ECC: "Many tables, aggregates, reconciliations" → S/4HANA: "Single tables, computed on the fly" · Who sees it: Finance, IT team
+- In ECC: one transaction is written to several tables. A stock movement goes to a header table, an item table and aggregated stock tables. A cost posting goes to financial accounting (**FI**) on one side and controlling (**CO**) on the other. Customers and vendors each have their own record.
+- In S/4HANA: one table per major object. Stock movements go to **MATDOC**. FI and CO postings go together into the **Universal Journal**. Customers and vendors become **Business Partners**. Aggregate tables are gone: HANA computes totals when reading.
+- What it changes in practice: fewer reconciliations between logistics, accounting and controlling. But every custom program that wrote to the old tables must be reworked, and customer and vendor records must be converted before the migration (**CVI**).
+- Example: receipt of the 1,240 fuel valves at €500 (fictitious figures). In ECC, it is written to four or five tables: material document, aggregated stock, €620,000 accounting document. In S/4HANA, one line in MATDOC for stock and lines in the Universal Journal for value, where finance and controlling read the same data.
+- For the PD: the most expensive dimension of a conversion, and the least visible to the steering committee. Ask early for two figures: the number of custom programs affected (**ATC** analysis) and the number of customer and vendor records failing conversion. Details are in diagram 3.
+
+**Row 3 · User interface** · ECC: "SAP GUI, screens by transaction" → S/4HANA: "Fiori, apps by role" · Who sees it: Users
+- In ECC: users work in **SAP GUI**, software installed on the PC. They open transactions by code (for example ME21N to create a purchase order) and move between dense screens.
+- In S/4HANA: **Fiori** is the target interface: web apps in a browser, on PC, tablet or phone. Each user sees the apps of their role (**Business Roles / Business Catalogs**). On premise and in private cloud, SAP GUI remains usable for many transactions. In public cloud, access goes through Fiori.
+- What it changes in practice: this is the change everyone sees on day one. Gestures change, access rights are rebuilt by role, training changes in nature.
+- Example: in ECC, the warehouse clerk enters the valve receipt on a fixed PC in SAP GUI. In S/4HANA, they can confirm it in a Fiori app, from a tablet, at the receiving dock.
+- For the PD: decide early, role by role, who moves to Fiori at go-live and who keeps SAP GUI. Without that decision, you train twice and build roles twice. Roles and authorisations are often underestimated: cost them separately.
+
+**Row 4 · Analytics** · ECC: "Overnight reports, separate data warehouse" → S/4HANA: "Embedded analytics, real time" · Who sees it: Users, Finance
+- In ECC: operational reports are slow on large volumes. Data is therefore copied, often overnight, into a separate data warehouse (**BW**) for analysis. The morning figures are yesterday's.
+- In S/4HANA: **Embedded analytics** reads data directly in the system, in real time, thanks to HANA. Operational reports (stock, late orders, margin) no longer need a copy. A data warehouse remains useful to consolidate several systems or long histories; **SAP Analytics Cloud** serves dashboards and planning.
+- What it changes in practice: part of the BW reports and custom reports lose their purpose. Reporting changes shape for the business: fewer morning files, more up-to-date indicators inside the apps.
+- Example: the sale of 12 valves at €900 (fictitious figures). In ECC, the margin (€10,800 revenue, €6,000 cost, €4,800 margin) shows in the next day's report. In S/4HANA, it is visible as soon as the goods issue and invoice are posted.
+- For the PD: put the report inventory in scope from scoping: which to keep, which to replace with embedded analytics, which to drop. Name a reporting owner. Otherwise the business finds out at go-live that its Monday reports are gone.
+
+**Row 5 · Extensions** · ECC: "Z code, changes to the standard" → S/4HANA: "Clean Core: planned extensions, BTP" · Who sees it: IT team, Contract
+- In ECC: the company adapts the system with **Z developments**: custom programs, and sometimes changes to SAP's standard code. After fifteen or twenty years, an ECC often holds thousands of custom objects (**technical debt**).
+- In S/4HANA: SAP pushes the **Clean Core**: do not modify the standard, extend only through planned means. Three levels: no-code extension by a key user (**Key User Extensibility**, called "in-app"), development inside the system under strict rules (**ABAP Cloud**, **published APIs**), and development next to the system, on **BTP** (**side-by-side extension**). In public cloud, only these routes are open.
+- What it changes in practice: each ECC custom development must be judged: dropped (the standard does it), rebuilt under Clean Core rules, or kept as is, knowing it will slow down upgrades.
+- Example: Ternova (fictitious) wants a "certification number" field on the valve record. In ECC, a developer adds a Z field to the table and changes the screen. In S/4HANA, a key user adds the field through Key User Extensibility, without code, and the field survives upgrades.
+- For the PD: the volume of custom code is one of the first figures to get, and one of the first governance decisions. Give the **design authority** the mandate to refuse any development that bypasses the standard. The cost of custom code does not stop at the project: it is paid at every upgrade.
+
+**Row 6 · Deployment and update rhythm** · ECC: "On premise, enhancement packages" → S/4HANA: "On premise, private or public cloud; regular releases" · Who sees it: Contract, IT team
+- In ECC: the system is installed **on premise** (at the company or a hosting provider). New features come through enhancement packages (**EhP**) that the company installs when it wants. The last one, EhP 8, dates from 2016: ECC no longer receives new features.
+- In S/4HANA: three modes. On premise, run by the company. Private cloud (**SAP Cloud ERP**, Private version, sold in **RISE with SAP**): a dedicated system, hosted and partly operated by SAP. Public cloud (SAP Cloud ERP, public version): a shared, standard system, with no code in the core (**public cloud / private cloud**). The rhythm follows the mode. On premise and in private cloud: a new release every two years since release 2023, maintained for seven years, with **Feature Pack Stacks** every six months during its first two years; the company chooses when to upgrade. In public cloud: two releases a year, set by SAP.
+- What it changes in practice: the choice of mode changes the contract (licence or subscription), the split of roles with SAP and the right to adapt the system. After go-live, **upgrades** become regular: no longer a project every ten years, but a cycle.
+- Example: Calvane and Ternova (fictitious) chose private cloud through RISE (see their scenarios). Calvane, starting from scratch, could have aimed for public cloud: it would then have accepted a strict standard and two upgrades a year.
+- For the PD: the deployment mode is decided before the migration path, because it constrains it (public cloud only accepts a new implementation). After go-live, budget a run team and a regression test calendar for each upgrade. The cleaner the core (row 5), the cheaper this cycle.
+
+**Banner · Moving from one to the other** · Deadlines and paths · Who sees it: Executives, Contract
+- In ECC: mainstream maintenance until end 2027. Paid extended maintenance from 2028 to end 2030 (**extended maintenance**). Beyond that, only for systems moved to private cloud before end 2030: the **transition option**, 2031 to 2033, and up to end 2035 under conditions since October 2026.
+- In S/4HANA: SAP commits to maintaining S/4HANA at least until end 2040. Each on-premise or private cloud release is maintained for seven years, which forces at least one upgrade within that period.
+- What it changes in practice: three paths. **Greenfield**: new implementation, starting from the standard and taking only useful data. **Brownfield**: conversion of the existing system, with its configuration, code and history. **Bluefield**: selective transition, keeping part and redesigning the rest. One button per path opens the portal's implementation scenario.
+- Example: each of the portal's four fictitious companies follows a path: Calvane (greenfield), Ternova (brownfield), Alvéa (bluefield), Nordval (roll-out of a model already in place to a new site).
+- For the PD: start from the deadline and plan backwards. For a programme starting at the end of 2026, end 2027 is very close: extended maintenance often becomes the realistic assumption, and its extra cost goes into the **business case**. The path is chosen by an executive committee, based on the SAP Readiness Check and the transformation ambition, not by the technical team alone.
 
 ---
 
 ## 1. Schéma 1 · Ce qui change, étape par étape (P2P et O2C)
 
 ### Ce qu'il montre
-Les deux flux existants, avec les mêmes étapes et le même exemple. Une bascule en haut de page « Voir ce qui change en S/4HANA » ajoute sur chaque étape une pastille d'impact (Aucun / Faible / Fort) et, dans la popup, un bloc « ECC → S/4HANA ».
+Les deux flux existants, avec les mêmes étapes et le même exemple. Une bascule en haut de page « Voir ce qui change en S/4HANA » ajoute sur chaque étape une pastille d'impact (Faible / Moyen / Fort, fourchette permise, avec un mot de précision : « préalable », « côté finance », « selon l'entrepôt » ; décision du 26/11/2026 sur la maquette) et, dans la popup, un bloc « ECC → S/4HANA ».
 
 ### Forme
 - Bascule à deux positions dans l'en-tête du flux : « Le flux » (vue actuelle) / « ECC → S/4HANA ».
 - Pastille d'impact sur chaque étape quand la bascule est active. Trois niveaux, avec un mot et pas seulement une couleur (accessibilité).
 - Clic sur l'étape : la popup existante affiche en plus le bloc ci-dessous, avant « À surveiller ».
-- Champs JSON proposés par étape : `s4.impact` (`aucun|faible|fort`), `s4.ecc`, `s4.s4`, `s4.qui`, `s4.dp`.
+- Champs JSON proposés par étape : `s4.impact` (`faible|moyen|fort`), `s4.de` (bas de la fourchette, facultatif), `s4.precision` (facultatif), `s4.ecc`, `s4.s4`, `s4.qui`, `s4.dp`.
 
 ### 1.1 Procure-to-Pay (P2P) · français
 
@@ -59,7 +193,7 @@ Les deux flux existants, avec les mêmes étapes et le même exemple. Une bascul
 - Pour le DP : faire tester le circuit complet réception, contrôle, libération, rangement. C'est là que QM et EWM se croisent et que les défauts d'intégration apparaissent.
 
 **Étape 5 · Facture du fournisseur** · Impact : fort (côté finance)
-- En ECC : le rapprochement à trois (commande, réception, facture) passe par le compte d'attente **GR/IR**. La facture écrit en comptabilité générale (FI) et, séparément, en contrôle de gestion (CO). Les deux doivent être rapprochés à la clôture.
+- En ECC : le rapprochement à trois (commande, réception, facture) passe par le compte d'attente **GR/IR**. La facture écrit en comptabilité générale (FI). Le contrôle de gestion (CO) tient ses propres tables : les écarts de prix et les coûts se rapprochent entre FI et CO à la clôture.
 - En S/4HANA : même rapprochement à trois. Mais chaque écriture va dans une seule table, le **Universal Journal** (ACDOCA), où FI et CO écrivent ensemble. Le stock est valorisé par le **Material Ledger**, obligatoire.
 - Qui est touché : comptabilité fournisseurs, contrôle de gestion, équipe reporting financier.
 - Pour le DP : la logistique produit les écritures, la finance les lit. Tout changement de valorisation (prix standard, prix moyen) se voit en finance. Exiger des tests qui vérifient le montant de l'écriture, pas seulement que la transaction passe. Nettoyer le compte GR/IR avant la bascule : les écarts anciens migrent sinon avec le reste.
@@ -135,7 +269,7 @@ Les deux flux existants, avec les mêmes étapes et le même exemple. Une bascul
 - For the PD: have the full chain tested: receipt, inspection, release, putaway. That is where QM and EWM meet and integration defects show up.
 
 **Step 5 · Supplier invoice** · Impact: high (finance side)
-- In ECC: three-way match (order, receipt, invoice) goes through the **GR/IR** clearing account. The invoice posts to financial accounting (FI) and, separately, to controlling (CO). Both must be reconciled at closing.
+- In ECC: three-way match (order, receipt, invoice) goes through the **GR/IR** clearing account. The invoice posts to financial accounting (FI). Controlling (CO) keeps its own tables: price differences and costs are reconciled between FI and CO at closing.
 - In S/4HANA: same three-way match. But every posting goes into one table, the **Universal Journal** (ACDOCA), where FI and CO post together. Stock is valued by the **Material Ledger**, which is mandatory.
 - Who is affected: accounts payable, controlling, financial reporting team.
 - For the PD: logistics produces the postings, finance reads them. Any change in valuation (standard price, moving average) shows in finance. Require tests that check the posting amount, not just that the transaction goes through. Clean the GR/IR account before cutover, or old differences migrate with everything else.
@@ -196,6 +330,7 @@ Un entrepôt géré en LE-WM dans ECC a quatre devenirs en S/4HANA. Le schéma l
   - Q1 « Le système S/4HANA tourne-t-il sous contrat cloud (RISE with SAP) ? »
   - Q2 « L'entrepôt est-il automatisé, à fort volume, ou doit-il tourner même si l'ERP s'arrête ? »
   - Q3 « Les processus entrepôt sont-ils simples (pas de vagues, pas de gestion des ressources) ? »
+- Règles d'estompage (relues sur la maquette le 26/11/2026). A : écartée si Q1 = non (voie fermée depuis le 31/05/2026), « sursis » si Q1 = oui. B : écartée si Q2 = oui ou Q3 = non (liste des fonctions absentes à vérifier dans la note 2881166), retenue si Q3 = oui et Q2 ≠ oui. C : jamais écartée ; si l'entrepôt doit tourner quand l'ERP s'arrête, préférer D. D : écartée si Q2 = non, retenue si Q2 = oui. Le cas « tout non » ne laisse que C : c'est juste. La phrase « Aide à la réflexion, pas une décision » reste obligatoire.
 - En dessous : quatre colonnes cliquables. Chaque colonne porte une étiquette de date limite et une jauge d'effort (Faible / Moyen / Fort, en mots).
 - En pied : un repère « Aujourd'hui » sur une ligne de temps 2025 à 2031, avec les deux échéances (31 mai 2026, fin 2030).
 
@@ -354,13 +489,13 @@ Les changements imposés par S/4HANA qui touchent la logistique et sa finance, r
 - En ECC : toute base (Oracle, DB2, SQL Server…).
 - En S/4HANA : **HANA** uniquement.
 - Qui est touché : équipe Basis, hébergeur.
-- Pour le DP : dimensionnement (**sizing**) et migration de base (**DMO**) sur le chemin critique technique. Le volume de données fixe la fenêtre d'arrêt : archiver avant.
+- Pour le DP : dimensionnement (**sizing**) et migration de base (**DMO**) sur le chemin critique technique. La migration de base se fait pendant la conversion ; le préalable, c'est le dimensionnement et l'archivage. Le volume de données fixe la fenêtre d'arrêt : archiver avant.
 
 **Carte 12 · Universal Journal et Material Ledger** · FI/CO/MM · Effort : moyen · Préalable
 - En ECC : la valorisation du stock en plusieurs devises (Material Ledger) est optionnelle.
 - En S/4HANA : le **Material Ledger** est actif pour la valorisation du stock ; toutes les écritures vont dans le Universal Journal.
 - Qui est touché : contrôle de gestion, comptabilité, logistique (valorisation des mouvements).
-- Pour le DP : la logistique change ses chiffres en finance sans changer ses gestes. Prévoir des tests de valorisation sur des mouvements réels (réception, sortie, inventaire) et la signature du contrôle de gestion.
+- Pour le DP : préalable : dans ECC, rapprocher les comptes et passer les contrôles de cohérence de la finance avant la conversion ; une période mal clôturée bloque la migration des données financières. Ensuite, la logistique change ses chiffres en finance sans changer ses gestes. Prévoir des tests de valorisation sur des mouvements réels (réception, sortie, inventaire) et la signature du contrôle de gestion.
 
 **Carte 13 · Business Partner** · Données · Effort : fort · Préalable
 - Voir carte 3. Elle figure aussi ici parce qu'elle est obligatoire avant la conversion.
@@ -443,13 +578,13 @@ Les changements imposés par S/4HANA qui touchent la logistique et sa finance, r
 - In ECC: any database (Oracle, DB2, SQL Server…).
 - In S/4HANA: **HANA** only.
 - Who is affected: Basis team, hosting provider.
-- For the PD: **sizing** and database migration (**DMO**) sit on the technical critical path. Data volume sets the downtime window: archive first.
+- For the PD: **sizing** and database migration (**DMO**) sit on the technical critical path. The database migration happens during the conversion; the prerequisite is sizing and archiving. Data volume sets the downtime window: archive first.
 
 **Card 12 · Universal Journal and Material Ledger** · FI/CO/MM · Effort: medium · Prerequisite
 - In ECC: multi-currency stock valuation (Material Ledger) is optional.
 - In S/4HANA: the **Material Ledger** is active for stock valuation; all postings go to the Universal Journal.
 - Who is affected: controlling, accounting, logistics (valuation of movements).
-- For the PD: logistics changes its numbers in finance without changing its gestures. Plan valuation tests on real movements (receipt, issue, inventory) and sign-off by controlling.
+- For the PD: prerequisite: in ECC, reconcile the books and run the finance consistency checks before the conversion; a badly closed period blocks the financial data migration. Then, logistics changes its numbers in finance without changing its gestures. Plan valuation tests on real movements (receipt, issue, inventory) and sign-off by controlling.
 
 **Card 13 · Business Partner** · Data · Effort: high · Prerequisite
 - See card 3. It also appears here because it is mandatory before conversion.
@@ -483,6 +618,20 @@ Lus le 26/11/2026.
 | Gestion du crédit FI-AR remplacée par SAP Credit Management (FIN-FSCM-CR) | Simplification item | SAP Community, SAP Insider | Sources secondaires : à vérifier dans le catalogue des simplification items |
 | Ristournes SD remplacées par les contrats de conditions (Settlement Management), cible obligatoire | Simplification item | SAP Community | Idem |
 | Output management (BRF+), aATP, numéro d'article à 40 caractères | — | Non vérifiés lors de cette lecture | À vérifier dans le catalogue des simplification items (https://launchpad.support.sap.com/#/sic/, accès S-user) |
+
+#### Faits du schéma 0
+
+Lus le 26/11/2026. Les échéances d'ECC et l'engagement 2040 reprennent les lignes du tableau ci-dessus.
+
+| Fait | Valeur | Source | Statut |
+|---|---|---|---|
+| Lancement de S/4HANA, base HANA seule | 03/02/2015 ; « built only for SAP HANA » | Communiqué de presse SAP du 03/02/2015 (diffusé par PR Newswire) : https://prnewswire.com/news-releases/sap-unveils-the-next-generation-of-enterprise-software-with-a-new-business-suite-sap-s4hana-300029487.html | Vérifié (résumé de recherche ; page non ouverte en entier) |
+| Rythme sur site et cloud privé | Une version tous les deux ans à partir de S/4HANA 2023 ; sept ans de maintenance standard par version (cinq avant) ; feature packs tous les six mois pendant les deux premières années | SAP News, 15/09/2022, « Neue Release- und Wartungsstrategie für SAP S/4HANA » : https://news.sap.com/germany/2022/09/sap-s4hana-release-maintenance-strategie/ (version anglaise : https://news.sap.com/2022/09/new-sap-s4hana-release-maintenance-strategy/, non ouverte : erreur réseau) | Vérifié |
+| Rythme en cloud public | Deux montées de version par an (semestrielles), imposées par SAP | Base de connaissances SAP, KBA 3398892 (aperçu public) : https://userapps.support.sap.com/sap/support/knowledge/en/3398892 ; SAP Learning, « Navigating Release Upgrades » | Vérifié dans le principe (résumé de recherche) ; calendrier exact : à vérifier |
+| Noms des offres cloud | Depuis le printemps 2025 : « SAP Cloud ERP » (édition publique) et « SAP Cloud ERP Private » (édition privée) ; les noms techniques S/4HANA Cloud Public / Private Edition restent dans les contrats | Pages produit sap.com (« SAP S/4HANA Cloud Public Edition, a foundational application of SAP Cloud ERP ») ; analyse d'un partenaire (timetoact-group.com) | Nom affiché sur sap.com vérifié ; date et portée du changement : sources secondaires, à vérifier |
+| Dernier package d'amélioration d'ECC | EhP 8 pour SAP ERP 6.0, 2016 | Guide de mise à jour SAP (help.sap.com, version 1.0 du 20/01/2016) ; Wikipedia | Année probable ; date de disponibilité générale exacte : à vérifier |
+| Cloud public : nouvelle implémentation seulement | Pas de conversion d'un ECC vers le cloud public | Glossaire du portail (terme « Cloud public / Cloud privé », source livres ACT) | Repris du portail ; non relu sur source SAP à cette date : à vérifier |
+| Cloud public : accès par Fiori, pas de code dans le cœur | — | Connaissance d'intégrateur | À vérifier sur la documentation SAP Cloud ERP (cas particuliers d'accès SAP GUI) |
 
 ### Écarts avec le contenu existant du portail (à corriger par Walid ou la session principale)
 
@@ -531,6 +680,32 @@ Format : `terme` · `nomComplet` · `categorie` · `definition` · `pourLeDP` ·
 
 Catégories proposées : `proc` (processus), `tech`, `run`. `documents` : `["mig"]` pour tous, plus la clé du futur schéma quand il sera déclaré dans `documents.json`.
 
+Mise à jour du 26/11/2026 : les douze termes ci-dessus sont maintenant dans `glossaire.json` (308 termes).
+
+### Termes du schéma 0 à ajouter
+
+Vérifiés absents de `glossaire.json` (308 termes) le 26/11/2026. Déjà présents et réutilisés : HANA, Sizing, Archivage, Fenêtre de coupure, DMO, FI, CO, MATDOC, Universal Journal, Business Partner, CVI, ATC, Fiori, Business Roles / Business Catalogs, SAP Analytics Cloud, Développement Z, Dette technique, Clean Core, Key User Extensibility, ABAP Cloud, API publiée, BTP, Extension side-by-side, Design authority, On-premise, SAP Cloud ERP, RISE with SAP, Cloud public / Cloud privé, Montée de version, Maintenance étendue, Transition option, Greenfield, Brownfield, Bluefield, Business case. Attention : le terme « Feature » existe déjà (catégorie agile) ; le nouveau terme s'appelle donc « Feature Pack Stack ».
+
+| Terme FR | nomComplet | cat. | Définition FR | Pour le DP FR |
+|---|---|---|---|---|
+| SAP GUI | Interface graphique SAP | tech | Logiciel installé sur le poste, par lequel on utilise ECC : des écrans par transaction, ouverts par un code. Encore utilisable dans S/4HANA sur site et en cloud privé. | Décider rôle par rôle qui garde SAP GUI au démarrage, sinon la formation se fait deux fois. |
+| BW | SAP Business Warehouse | tech | Entrepôt de données de SAP. Il copie les données de l'ERP, souvent la nuit, pour les analyser et les consolider. | Inventorier les rapports BW au cadrage : une partie passe à l'analytique embarquée. |
+| Analytique embarquée | Embedded Analytics | tech | Rapports et indicateurs calculés directement dans S/4HANA, en temps réel, sans copie vers un entrepôt de données. | Nommer un responsable du reporting et décider quels rapports garder, remplacer ou supprimer. |
+| EhP | Enhancement Package | run | Package d'amélioration d'ECC : de nouvelles fonctions que l'entreprise installe quand elle veut. Le dernier, l'EhP 8, date de 2016. | ECC ne reçoit plus de nouveautés : toute innovation SAP passe par S/4HANA. |
+| Feature Pack Stack | FPS | run | Livraison semestrielle de nouvelles fonctions pour une version de S/4HANA sur site ou en cloud privé, pendant ses deux premières années. | À intégrer au calendrier de run : chaque installation demande des tests de non-régression. |
+| Suite on HANA | SAP Business Suite on HANA | tech | ECC installé sur la base HANA, sans le modèle de données de S/4HANA. | Ce n'est pas S/4HANA : la conversion reste à faire, mais la migration de base est déjà faite. |
+
+| Terme EN | nomComplet | Definition EN | For the PD EN |
+|---|---|---|---|
+| SAP GUI | SAP graphical user interface | Software installed on the PC, used to work in ECC: screens by transaction, opened by a code. Still usable in S/4HANA on premise and in private cloud. | Decide role by role who keeps SAP GUI at go-live, or training happens twice. |
+| BW | SAP Business Warehouse | SAP's data warehouse. It copies ERP data, often overnight, for analysis and consolidation. | Inventory BW reports at scoping: some move to embedded analytics. |
+| Embedded analytics | | Reports and indicators computed directly in S/4HANA, in real time, with no copy to a data warehouse. | Name a reporting owner and decide which reports to keep, replace or drop. |
+| EhP | Enhancement Package | ECC enhancement package: new functions the company installs when it wants. The last one, EhP 8, dates from 2016. | ECC no longer gets new features: all SAP innovation goes through S/4HANA. |
+| Feature Pack Stack | FPS | Half-yearly delivery of new functions for an S/4HANA on-premise or private cloud release, during its first two years. | Put it in the run calendar: each installation needs regression tests. |
+| Suite on HANA | SAP Business Suite on HANA | ECC installed on the HANA database, without the S/4HANA data model. | It is not S/4HANA: the conversion is still ahead, but the database migration is done. |
+
+`documents` : `["mig"]`, plus la clé du schéma 0 quand il sera déclaré.
+
 ---
 
 ## 6. Points ouverts pour Walid
@@ -538,3 +713,5 @@ Catégories proposées : `proc` (processus), `tech`, `run`. `documents` : `["mig
 1. Le schéma 1 enrichit des pages existantes (`flux-p2p`, `flux-o2c`) au lieu d'en créer une : à valider, car cela change le contenu JSON des deux flux FR et EN.
 2. Les notes SAP (2269324, 2881166, 2206980, 3591251) et le catalogue des simplification items demandent un compte S-user : les points marqués « à vérifier » ne peuvent être confirmés que par quelqu'un qui y a accès.
 3. Les dates du schéma 2 évoluent vite (deux changements en 2026). Proposer une mention « Dates lues le 26/11/2026 » visible en pied de schéma.
+4. Schéma 0 : une page à part (porte d'entrée de B-007) ou un bloc en tête de la page des schémas 1 à 3 ? Recommandation : une page à part, carte « Parcours conseillé » de l'accueil, avec liens vers les trois autres.
+5. Schéma 0 : trois points restent « à vérifier » (calendrier exact des montées de version du cloud public, date de l'EhP 8, accès SAP GUI en cloud public). Ils ne changent pas le message du schéma.

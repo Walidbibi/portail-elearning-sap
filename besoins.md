@@ -101,7 +101,7 @@ Suivi
 ### B-007 · Voir un flux logistique de bout en bout
 - Source : persona-pm
 - Importance : important
-- Couvert par :
+- Couvert par : US-049 à US-058 (ce qui change entre ECC et S/4HANA)
 
 Situation : je pilote le domaine logistique. En atelier, les consultants enchaînent livraison entrante, entrée de marchandises, Handling Unit, EWM, sortie de marchandises.
 Ce qui bloque : chaque terme est dans le glossaire, isolé. Je ne vois pas l'enchaînement : qui fait quoi, dans quel ordre, quel module intervient, et ce qui change entre l'ancien système et S/4HANA. Je n'ai pas pu lire les PDF ; c'est peut-être dans le deck de synthèse ou de migration. Si oui, je ne l'ai pas trouvé depuis le site.

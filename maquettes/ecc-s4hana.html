@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maquette B-007 · ECC / S/4HANA : les quatre schémas</title>
+<link rel="stylesheet" href="../shared/theme.css">
+<style>
+/* Maquette statique et cliquable de B-007 (dossier contenus/ecc-vs-s4hana.md).
+   Couleurs, tailles et rayons : uniquement les variables de shared/theme.css.
+   ECC = gris (--c0, --t0) ; S/4HANA = bleu (--c1, --t1) ; ambre (--jalon) : logotype et exemple fil rouge seulement. */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var(--t-15);line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+button{font:inherit;color:inherit}
+[hidden]{display:none!important}
+
+/* ---------- habillage de la maquette ---------- */
+.mq-page{max-width:1240px;margin:0 auto;padding:20px 16px 80px}
+@media (max-width:480px){.mq-page{padding:12px 10px 60px}}
+.mq-banner{border:1px dashed var(--k-act);background:var(--aibg);border-radius:var(--r-14);padding:14px 16px;margin-bottom:20px}
+.mq-tag{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.08em;text-transform:uppercase;color:var(--aiink)}
+.mq-banner h1{font-size:var(--t-24);line-height:1.25;margin:4px 0 8px}
+.mq-banner p,.mq-banner li{font-size:var(--t-14);margin:0 0 6px;max-width:92ch}
+.mq-banner ul{margin:0 0 8px;padding-left:18px}
+.mq-banner h2{font-size:var(--t-13);margin:14px 0 4px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500}
+.mq-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;font-size:var(--t-13);color:var(--muted)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--r-6);overflow:hidden;background:var(--surface)}
+.seg button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:inline-flex;align-items:center;font-size:var(--t-14);font-weight:600;color:var(--ink)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.seg button:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px;padding:0;list-style:none}
+.toc a{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r-pastille);background:var(--surface);text-decoration:none;font-size:var(--t-14)}
+.toc a:hover{border-color:var(--c1)}
+.screen{margin:44px 0 0;scroll-margin-top:12px}
+.screen>h2{font-size:var(--t-20);margin:0 0 4px}
+.screen>h2 .n{font-family:var(--mono);font-size:var(--t-13);color:var(--aiink);margin-right:8px;font-weight:500}
+.why{color:var(--muted);font-size:var(--t-14);margin:0 0 14px;max-width:90ch}
+.cap{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
+.cap b{color:var(--aiink);font-weight:500}
+.row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.row>div{min-width:0;max-width:100%}
+
+/* cadres de page : bureau fluide (max 1100 px), téléphone 375 px */
+.pg{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-14);overflow:hidden;max-width:100%}
+.pg.desk{flex:1 1 640px}
+.pg.phone{width:375px;flex:none;border-radius:22px;box-shadow:var(--page-shadow)}
+.pgm{padding:22px 22px 28px}
+.phone .pgm{padding:16px 14px 22px}
+
+/* en-tête commun (copie visuelle de shared/entete.js) */
+.hb{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:40px;flex:none}
+.logo svg{width:30px;height:30px;flex:none}
+.mot{font-weight:700;font-size:var(--t-20);letter-spacing:-.01em;line-height:1}
+.ariane{font-size:var(--t-14);color:var(--muted);display:flex;gap:6px;min-width:0;white-space:nowrap;overflow:hidden}
+.ariane b{color:var(--ink);overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.sp{flex:1}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-6);overflow:hidden;font-family:var(--mono);font-size:var(--t-12);flex:none}
+.lang span{min-width:40px;min-height:40px;display:grid;place-items:center}
+.lang span.on{background:var(--ink);color:var(--surface)}
+.phone .hb{padding:8px 12px;gap:10px}.phone .mot{font-size:var(--t-17)}.phone .ariane{display:none}
+
+/* en-tête des pages de schéma */
+.eb{font:500 var(--t-12) var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pgm h1{font-size:var(--t-32);line-height:1.15;margin:4px 0 6px}
+.phone .pgm h1{font-size:var(--t-24)}
+.msg{border-left:4px solid var(--c1);background:var(--surface);border-radius:0 var(--r-10) var(--r-10) 0;padding:10px 14px;margin:0 0 18px;font-size:var(--t-17);line-height:1.45;max-width:80ch}
+.phone .msg{font-size:var(--t-15)}
+.lead{color:var(--muted);margin:0 0 16px;max-width:76ch}
+.dated{font:500 var(--t-12) var(--mono);color:var(--muted);letter-spacing:.04em;margin:14px 0 0}
+
+/* termes du glossaire : dans le site, ils ouvrent le glossaire */
+.gl{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:3px}
+
+/* ---------- pastilles communes ---------- */
+.tag{display:inline-flex;align-items:center;gap:5px;font:500 var(--t-12) var(--mono);letter-spacing:.04em;border:1px solid var(--line);border-radius:var(--r-pastille);padding:1px 9px;line-height:20px;color:var(--ink);background:var(--surface);white-space:nowrap}
+.tag i{font-style:normal;color:var(--muted)}
+.prea{display:inline-flex;align-items:center;font:500 var(--t-12) var(--mono);letter-spacing:.05em;text-transform:uppercase;background:var(--gate);color:var(--gate-ink);border-radius:var(--r-6);padding:1px 8px;line-height:20px;white-space:nowrap}
+.eff{display:inline-flex;align-items:center;gap:6px;font:500 var(--t-12) var(--mono);color:var(--ink);white-space:nowrap}
+.eff .bars{display:inline-flex;gap:2px}
+.eff .bars i{display:block;width:8px;height:12px;border-radius:2px;background:var(--line)}
+.eff .bars i.f{background:var(--ink)}
+/* niveau d'impact : un mot + une jauge, la couleur ne porte jamais seule l'information */
+.ip{display:inline-flex;align-items:center;gap:6px;font:600 var(--t-12) var(--mono);border-radius:var(--r-pastille);padding:1px 9px;line-height:20px;border:1px solid var(--line);background:var(--t0);color:var(--ink);white-space:nowrap}
+.ip.moyen{background:var(--t3);border-color:var(--c3)}
+.ip.fort{background:var(--t4);border-color:var(--risk)}
+.ip.plage{border-style:dashed}
+
+/* exemple fil rouge : seul usage de l'ambre avec le logotype */
+.fr{border-left:3px solid var(--jalon);padding:2px 0 2px 12px;margin:0}
+.fr .frl{display:flex;align-items:center;gap:6px;font:500 var(--t-12) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--jalon-texte);margin-bottom:2px}
+.fr .frl svg{width:10px;height:10px;flex:none}
+
+/* ---------- popup commune (schémas 0, 2, 3) ---------- */
+dialog.pop{border:1px solid var(--line);border-radius:var(--r-14);background:var(--surface);color:var(--ink);padding:0;width:min(720px,calc(100vw - 24px));max-height:calc(100vh - 32px);box-shadow:var(--shadow-fort)}
+dialog.pop::backdrop{background:var(--marque);opacity:.55}
+.pop-h{position:relative;padding:16px 64px 10px 20px;border-bottom:1px solid var(--line)}
+.pop-h h2{margin:2px 0 6px;font-size:var(--t-20);line-height:1.25}
+.pop-h .tags{display:flex;flex-wrap:wrap;gap:6px}
+.x{all:unset;box-sizing:border-box;position:absolute;top:10px;right:10px;width:40px;height:40px;display:grid;place-items:center;border-radius:var(--r-6);cursor:pointer;font-size:22px;line-height:1;color:var(--muted)}
+.x:hover{background:var(--soft);color:var(--ink)}
+.x:focus-visible{outline:3px solid var(--focus);outline-offset:0}
+.pop-b{padding:14px 20px;display:grid;gap:12px}
+.rub h3{margin:0 0 3px;font:500 var(--t-12) var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.rub p{margin:0;font-size:var(--t-15)}
+.rub.ecc{border-left:4px solid var(--c0);padding-left:12px}
+.rub.s4{border-left:4px solid var(--c1);padding-left:12px}
+.rub.s4 h3{color:var(--c1)}
+.rub.dp{background:var(--accent-soft);border-radius:var(--r-10);padding:10px 12px}
+.rub.dp h3{color:var(--accent)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ab-sw{margin-bottom:-4px}
+.pop-l{display:flex;flex-wrap:wrap;gap:8px}
+.pop-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 20px 14px;border-top:1px solid var(--line)}
+.pop-f .cnt{margin-left:auto;font:500 var(--t-13) var(--mono);color:var(--muted)}
+.b{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:40px;border:1px solid var(--line);border-radius:var(--r-6);padding:6px 12px;background:var(--surface);color:var(--ink);font:600 var(--t-14) var(--sans);text-decoration:none}
+.b:hover{border-color:var(--c1)}
+.b:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.b[disabled]{opacity:.45;cursor:default;border-style:dashed}
+.b.pri{background:var(--c1);border-color:var(--c1);color:var(--surface)}
+@media (max-width:560px){
+  dialog.pop{width:100vw;max-width:100vw;margin:auto 0 0;border-radius:var(--r-14) var(--r-14) 0 0;max-height:92vh}
+  .duo{grid-template-columns:1fr}
+  .pop-f .cnt{order:-1;width:100%;margin:0}
+  .pop-f .b{flex:1;justify-content:center}
+}
+
+/* ================= SCHÉMA 0 ================= */
+.s0{container-type:inline-size}
+.s0-head,.s0-row{display:grid;grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr);gap:12px;align-items:center}
+.s0-head{margin-bottom:8px}
+.s0-head .col{padding:8px 12px 6px;border-top:4px solid var(--c0)}
+.s0-head .col b{display:block;font-size:var(--t-20);line-height:1.2}
+.s0-head .col span{display:block;color:var(--muted);font-size:var(--t-13)}
+.s0-head .col.s4{border-top-color:var(--c1)}
+.s0-head .col.s4 b{color:var(--c1)}
+.s0-row{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr);gap:12px;align-items:center;width:100%;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:8px;margin-bottom:8px;min-height:72px}
+.s0-row:hover{border-color:var(--c1)}
+.s0-row:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.s0 .v{display:block;border-radius:var(--r-6);padding:8px 10px;font-size:var(--t-15);line-height:1.35;min-height:52px;align-content:center}
+.s0 .v.ecc{background:var(--t0);border-left:4px solid var(--c0)}
+.s0 .v.s4{background:var(--t1);border-left:4px solid var(--c1);font-weight:600}
+.s0 .v .lab{display:none;font:500 var(--t-12) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.s0 .dim{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.s0 .dim .nm{font:600 var(--t-13) var(--mono);letter-spacing:.03em;border:1px solid var(--line);border-radius:var(--r-pastille);padding:3px 10px;background:var(--bg);line-height:1.3}
+.s0 .dim svg{width:100%;height:10px;display:block}
+.s0 .dim svg path{stroke:var(--muted);fill:none;stroke-width:1.5}
+.s0 .qui{font-size:var(--t-12);color:var(--muted);line-height:1.35}
+.s0 .qui b{font-weight:600;color:var(--ink)}
+.s0 .ouv{display:none}
+/* bandeau « Passer de l'un à l'autre » */
+.s0-band{margin-top:16px;border:1px solid var(--line);border-radius:var(--r-14);background:var(--soft);padding:14px}
+.s0-band .bh{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;border-radius:var(--r-10);padding:6px 6px 8px}
+.s0-band .bh:hover h3{text-decoration:underline}
+.s0-band .bh:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.s0-band h3{margin:0;font-size:var(--t-17)}
+.s0-band .bh>span{display:block;color:var(--muted);font-size:var(--t-13)}
+.ech{list-style:none;margin:12px 0 4px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:relative}
+.ech::before{content:"";position:absolute;left:6px;right:6px;top:7px;height:2px;background:var(--line)}
+.ech li{position:relative;padding:22px 8px 0 0;font-size:var(--t-13);line-height:1.35}
+.ech li::before{content:"";position:absolute;top:1px;left:0;width:10px;height:10px;border-radius:50%;background:var(--c0);border:2px solid var(--soft)}
+.ech li.now::before{background:var(--surface);border:2px solid var(--ink)}
+.ech li.s4::before{background:var(--c1)}
+.ech li b{display:block;font-family:var(--mono);font-size:var(--t-13)}
+.ech li span{color:var(--muted)}
+.chem{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chem .b{flex-direction:column;align-items:flex-start;gap:0;line-height:1.25;padding:6px 14px}
+.chem .b small{font-weight:400;font-size:var(--t-12);color:var(--muted)}
+.chem .lbl{font-size:var(--t-13);color:var(--muted);width:100%}
+.plus{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.plus h3{margin:0 0 6px;font:500 var(--t-12) var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.plus .pop-l .b{font-weight:500}
+@container (max-width:640px){
+  .s0-head{display:none}
+  .s0-row{grid-template-columns:1fr;gap:6px;padding:10px}
+  .s0 .dim{order:-1;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;text-align:left;gap:6px 8px}
+  .s0 .dim svg{display:none}
+  .s0 .dim .nm{background:var(--surface);border:0;padding:0;font-size:var(--t-15);font-family:var(--sans);font-weight:700;letter-spacing:0}
+  .s0 .qui{width:100%}
+  .s0 .v{min-height:0;padding:6px 10px}
+  .s0 .v .lab{display:inline}
+  .s0 .ouv{display:block;font-size:var(--t-13);color:var(--c1);font-weight:600;text-align:right}
+  .ech{grid-template-columns:1fr;gap:10px}
+  .ech::before{left:4px;right:auto;top:6px;bottom:6px;width:2px;height:auto}
+  .ech li{padding:0 0 0 22px}
+  .chem .b{flex:1 1 100%}
+}
+
+/* ================= SCHÉMA 1 : gabarit des flux (copie de shared/flux.css, préfixée .fx) ================= */
+.fx{--k:var(--c1)}
+.fx.o2c{--k:var(--c5)}
+.fx .sous{font-size:var(--t-17);color:var(--k);font-weight:600;margin:0 0 8px}
+.fx .intro{color:var(--muted);margin:0 0 12px;max-width:76ch}
+.vue{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px}
+.vue .lbl{font:500 var(--t-12) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.vue .seg button[aria-pressed="true"]{background:var(--k);color:var(--surface)}
+.vue .aide{font-size:var(--t-13);color:var(--muted)}
+.fx .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-14);padding:14px}
+.fx .ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.fx .b.pri{background:var(--k);border-color:var(--k)}
+.fx .cnt{margin-left:auto;font:500 var(--t-13) var(--mono);color:var(--muted)}
+.fx .dg{overflow-x:auto}
+.fx .dg svg{display:block;margin:0 auto}
+.fx .band{fill:var(--bg)}.fx .band.alt{fill:var(--soft)}
+.fx .ln{fill:var(--ink);font:600 12.5px var(--sans)}.fx .lm{fill:var(--muted);font:500 11px var(--mono)}
+.fx .nd{cursor:pointer;outline:none}
+.fx .nd rect.n{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.fx .nd:hover rect.n{stroke:var(--k)}
+.fx .nd.done rect.n{fill:var(--accent-soft)}
+.fx .nd.on rect.n{stroke:var(--k);stroke-width:3;fill:var(--surface)}
+.fx .nd:focus-visible rect.n{stroke:var(--focus);stroke-width:3}
+.fx .nt{fill:var(--ink);font:600 12px var(--sans);text-anchor:middle}
+.fx .nb circle{fill:var(--surface);stroke:var(--k);stroke-width:1.5}
+.fx .nd.done .nb circle,.fx .nd.on .nb circle{fill:var(--k)}
+.fx .nb text{fill:var(--ink);font:700 11px var(--mono);text-anchor:middle}
+.fx .nd.done .nb text,.fx .nd.on .nb text{fill:var(--surface)}
+.fx .ar{fill:none;stroke:var(--muted);stroke-width:1.6}
+.fx .ar.done{stroke:var(--k);stroke-width:2.2}
+/* pastille d'impact dans le dessin */
+.fx .ipg rect{fill:var(--t0);stroke:var(--muted);stroke-width:1}
+.fx .ipg.moyen rect{fill:var(--t3);stroke:var(--c3)}
+.fx .ipg.fort rect{fill:var(--t4);stroke:var(--risk)}
+.fx .ipg.plage rect{stroke-dasharray:3 2}
+.fx .ipg text{fill:var(--ink);font:600 10.5px var(--mono);text-anchor:middle}
+.fx .ipg .bar{fill:var(--line)}.fx .ipg .bar.f{fill:var(--ink)}
+.fx .hint{color:var(--muted);font-size:var(--t-13);margin:8px 0 0}
+.leg{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:10px;font-size:var(--t-13);color:var(--muted)}
+.fx .det{margin-top:14px}
+.fx .det h2{margin:0;font-size:var(--t-20);line-height:1.25}
+.fx .meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.fx .chip{font-size:var(--t-13);background:var(--soft);border-radius:var(--r-6);padding:2px 9px}
+.fx .chip i{font:500 11px var(--mono);font-style:normal;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-right:5px}
+.fx .what{margin:0 0 12px}
+.fx .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fx .box{border:1px solid var(--line);border-radius:var(--r-10);padding:10px 12px;font-size:var(--t-14);min-width:0}
+.fx .box h3{margin:0 0 5px;font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.fx .box p{margin:0}.fx .box ul{margin:0;padding-left:18px}
+.fx .box.w2{grid-column:1/-1}
+.fx .watch{background:var(--accent-soft);border-color:transparent}.fx .watch h3{color:var(--accent)}
+.fx .entry{display:flex;gap:8px;flex-wrap:wrap}
+.fx .side{flex:1;min-width:150px;border-radius:var(--r-6);padding:8px 10px;border:1.5px solid var(--k)}
+.fx .side b{display:block;font:500 11px var(--mono);text-transform:uppercase;color:var(--k)}
+.fx .amt{align-self:center;font:700 var(--t-15) var(--mono)}
+.fx .small{font-size:var(--t-13);color:var(--muted);margin-top:6px}
+.fx .terms{display:flex;flex-wrap:wrap;gap:6px}
+.fx .tm{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:40px;border:1px dashed var(--muted);border-radius:var(--r-6);padding:2px 10px;font-size:var(--t-14)}
+.fx .tm[aria-expanded=true]{background:var(--soft);border-style:solid}
+.fx .tm:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.fx .def{margin:8px 0 0}
+/* le nouveau bloc « ECC → S/4HANA » */
+.fx .box.s4b{border:1.5px solid var(--c1);background:var(--surface);padding:12px 14px}
+.s4b .s4h{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.s4b .s4h h3{margin:0;font:600 var(--t-13) var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--c1)}
+.s4b .avap{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:stretch;margin-bottom:10px}
+.s4b .avap>div{border-radius:var(--r-6);padding:8px 10px}
+.s4b .avap .e{background:var(--t0);border-left:4px solid var(--c0)}
+.s4b .avap .s{background:var(--t1);border-left:4px solid var(--c1)}
+.s4b .avap b{display:block;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}
+.s4b .avap .s b{color:var(--c1)}
+.s4b .fl{align-self:center;text-align:center;color:var(--muted);font-weight:700}
+.s4b .qd{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.s4b .qd>div h4{margin:0 0 3px;font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.s4b .qd>div.dp{background:var(--accent-soft);border-radius:var(--r-6);padding:8px 10px}
+.s4b .qd>div.dp h4{color:var(--accent)}
+.s4b p{margin:0}
+.fx .inch{color:var(--muted);font-size:var(--t-13);margin:10px 0 0}
+@media (max-width:720px){
+  .fx .grid,.s4b .qd{grid-template-columns:1fr}
+  .s4b .avap{grid-template-columns:1fr}
+  .s4b .fl{transform:rotate(90deg);height:18px}
+  .fx .cnt{margin-left:0;width:100%}
+}
+
+/* ================= SCHÉMA 2 ================= */
+.s2{container-type:inline-size}
+.qs{list-style:none;margin:0 0 14px;padding:0;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface)}
+.qs li{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:10px 14px}
+.qs li+li{border-top:1px solid var(--line)}
+.qs .q{flex:1 1 340px;min-width:0;font-size:var(--t-15)}
+.qs .q b{font-family:var(--mono);font-size:var(--t-13);color:var(--muted);margin-right:6px}
+.qs .seg button[aria-pressed="true"]{background:var(--c1)}
+.qbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:-4px 0 14px;font-size:var(--t-13);color:var(--muted)}
+.opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c1);border-radius:var(--r-10);padding:12px;min-width:0;transition:opacity .15s}
+.opt.a{border-top-color:var(--c0)}
+.opt:hover{border-color:var(--c1)}
+.opt:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.opt .ol{font:600 var(--t-12) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.opt b{font-size:var(--t-17);line-height:1.25}
+.opt .lim{font-size:var(--t-13);line-height:1.35}
+.opt .lim i{display:block;font:500 11px var(--mono);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.opt .cas{font-size:var(--t-14);color:var(--muted);line-height:1.4}
+.opt .st{margin-top:auto;font:600 var(--t-12) var(--mono);letter-spacing:.04em;padding-top:8px;border-top:1px dashed var(--line);line-height:1.4}
+.opt .st span{display:block;font:400 var(--t-13) var(--sans);letter-spacing:0;color:var(--muted);margin-top:2px}
+.opt.off{opacity:.5}
+.opt.off .st{color:var(--muted)}
+.opt.fit{border-color:var(--c1);box-shadow:inset 0 -3px 0 var(--c1)}
+@container (max-width:900px){.opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width:520px){.opts{grid-template-columns:1fr}.opt.off{opacity:.6}}
+/* ligne de temps 2025 à 2031 */
+.tl{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:12px 14px;container-type:inline-size}
+.tl h3{margin:0 0 4px;font:500 var(--t-12) var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.tlw{position:relative;height:208px;margin:0 8px}
+.tlw .axe{position:absolute;left:0;right:0;top:104px;height:2px;background:var(--line)}
+.tlw .yr{position:absolute;top:110px;transform:translateX(-50%);font:500 11px var(--mono);color:var(--muted)}
+.tlw .yr::before{content:"";position:absolute;left:50%;top:-9px;width:1px;height:6px;background:var(--muted)}
+.tlw .ev{position:absolute;width:156px;transform:translateX(-50%);font-size:var(--t-13);line-height:1.3}
+.tlw .ev b{display:block;font-family:var(--mono);font-size:var(--t-13)}
+.tlw .ev.up{bottom:calc(208px - 82px)}
+.tlw .ev.dn{top:132px}
+.tlw .ev.old{color:var(--muted)}
+.tlw .ev.old b{text-decoration:line-through}
+.tlw .pt{position:absolute;top:99px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--c0);border:2px solid var(--surface)}
+.tlw .pt.old{background:var(--surface);border:2px dashed var(--c0)}
+.tlw .lk{position:absolute;width:1px;background:var(--line)}
+.tlw .now{position:absolute;top:84px;bottom:76px;width:2px;margin-left:-1px;background:var(--ink)}
+.tlw .nowl{position:absolute;top:82px;margin-left:6px;font:600 var(--t-12) var(--mono);background:var(--ink);color:var(--surface);border-radius:var(--r-6);padding:0 6px;line-height:18px;white-space:nowrap}
+.tll{display:none;list-style:none;margin:8px 0 0;padding:0}
+.tll li{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:var(--t-14)}
+.tll li b{font-family:var(--mono);font-size:var(--t-13)}
+.tll li.old{color:var(--muted)}.tll li.old b{text-decoration:line-through}
+.tll li.now b{background:var(--ink);color:var(--surface);border-radius:var(--r-6);padding:0 6px;justify-self:start}
+@container (max-width:760px){.tlw{display:none}.tll{display:block}}
+
+/* ================= SCHÉMA 3 ================= */
+.s3{container-type:inline-size}
+.flt{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px}
+.flt .lbl{font:500 var(--t-12) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chipb{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;min-width:40px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:var(--r-pastille);background:var(--surface);font:500 var(--t-13) var(--mono)}
+.chipb[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.chipb:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.chk{display:inline-flex;align-items:center;gap:8px;min-height:40px;cursor:pointer;font-size:var(--t-14);font-weight:600}
+.chk input{width:20px;height:20px;accent-color:var(--ink);margin:0}
+.nb3{font:500 var(--t-13) var(--mono);color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.colh{border-top:4px solid var(--c0);padding:8px 2px 8px;display:flex;align-items:baseline;gap:8px;justify-content:space-between}
+.colh h3{margin:0;font-size:var(--t-17)}
+.colh span{font:500 var(--t-12) var(--mono);color:var(--muted)}
+.col3.rep .colh{border-top-color:var(--c1)}
+.col3.obl .colh{border-top-color:var(--k-act)}
+.c3{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:11px 12px;margin-bottom:8px}
+.c3:hover{border-color:var(--c1)}
+.c3:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.c3 b{font-size:var(--t-15);line-height:1.3}
+.c3 .tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.c3 .vu{font-size:var(--t-13);color:var(--muted)}
+.vide{font-size:var(--t-13);color:var(--muted);border:1px dashed var(--line);border-radius:var(--r-10);padding:10px 12px}
+.pied3{margin:14px 0 0;font-size:var(--t-14);color:var(--muted)}
+@container (max-width:760px){.cols{grid-template-columns:1fr}}
+
+/* ================= ACCUEIL ================= */
+.home{padding:4px 22px 24px}
+.phone .home{padding:4px 14px 18px}
+.home h4{font-size:var(--t-24);line-height:1.25;margin:24px 0 2px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.home h4 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(--muted);letter-spacing:.06em}
+.home .sub{color:var(--muted);margin:0 0 12px;font-size:var(--t-14)}
+.home .fold{font-size:var(--t-13);color:var(--muted);border:1px dashed var(--line);border-radius:var(--r-10);padding:8px 12px}
+.new{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:var(--r-pastille);padding:0 8px;line-height:20px}
+.hg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.hc{display:flex;flex-direction:column;gap:3px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:12px 14px;text-decoration:none;min-height:100%}
+.hc:hover{border-color:var(--c1)}
+.hc.nv{border-color:var(--accent);box-shadow:inset 0 3px 0 var(--accent)}
+.hc .kind{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--k-doc)}
+.hc .kind.deck{color:var(--k-deck)}
+.hc b{font-size:var(--t-15);line-height:1.3}
+.hc .d{color:var(--muted);font-size:var(--t-13);line-height:1.4}
+.hc .bas{margin-top:4px;align-self:flex-start;font:500 var(--t-12) var(--mono);color:var(--c1);border:1px solid var(--c1);border-radius:var(--r-pastille);padding:0 8px;line-height:20px}
+.pas{margin:10px 0 0;font-size:var(--t-14)}
+.pas a{color:var(--accent);font-weight:600}
+.home .step{font-family:var(--mono);font-size:var(--t-12);color:var(--surface);background:var(--ink);border-radius:var(--r-pastille);min-width:22px;height:20px;display:inline-grid;place-items:center;padding:0 6px;margin-right:6px}
+
+/* ================= QUESTIONS ================= */
+.qw{counter-reset:q;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.qw li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:12px 14px;font-size:var(--t-14)}
+.qw li b{display:block;font-size:var(--t-15);margin-bottom:4px}
+.qw .rec{color:var(--accent);font-weight:600}
+
+@media (max-width:560px){
+  .pgm h1{font-size:var(--t-24)}
+  .msg{font-size:var(--t-15)}
+}
+@media (prefers-reduced-motion:reduce){.opt{transition:none}}
+</style>
+</head>
+<body>
+<div class="mq-page">
+
+<!-- ================= BANDEAU DE LA MAQUETTE ================= -->
+<section class="mq-banner" aria-labelledby="mq-t">
+  <div class="mq-tag">Maquette B-007 · ECC / S/4HANA · 26/11/2026</div>
+  <h1 id="mq-t">Ce qui change entre ECC et S/4HANA : quatre schémas</h1>
+  <p>Contenu repris du dossier de l'expert SAP (<code>contenus/ecc-vs-s4hana.md</code>), en français. Tout est cliquable : rangées, étapes, options, cartes. Les termes soulignés en pointillé ouvriront le glossaire dans le site. Chiffres de la vanne de carburant : fictifs.</p>
+  <h2>Ce qui change sur le site</h2>
+  <ul>
+    <li><b>Schéma 0</b> : une nouvelle page « ECC et S/4HANA en un coup d'œil » (six rangées, bandeau « Passer de l'un à l'autre »).</li>
+    <li><b>Schéma 1</b> : pas de nouvelle page. Les flux P2P et O2C reçoivent une bascule « Le flux / ECC → S/4HANA », des pastilles d'impact et un bloc de quatre rubriques dans le détail de l'étape.</li>
+    <li><b>Schémas 2 et 3</b> : deux nouvelles pages, l'entrepôt et la liste « Disparaît, remplacé, devient obligatoire ».</li>
+    <li><b>Accueil</b> : une section dédiée « De ECC à S/4HANA » après le parcours conseillé (A, recommandée), ou la place proposée par l'expert (B).</li>
+  </ul>
+  <h2>Choix faits</h2>
+  <ul>
+    <li>ECC en gris, S/4HANA en bleu, sur les quatre schémas. Le même code se lit partout.</li>
+    <li>Une seule popup pour les schémas 0, 2 et 3 : quatre rubriques, Précédent / Suivant, Échap pour fermer. Sur téléphone, elle monte du bas de l'écran.</li>
+    <li>Le schéma 1 garde la popup actuelle des flux (le détail sous le dessin) : on y ajoute un bloc, on ne la remplace pas.</li>
+    <li>Impact, effort et « préalable » : toujours un mot, jamais une couleur seule.</li>
+    <li>Ambre : logotype et paragraphe « Exemple fil rouge » seulement.</li>
+  </ul>
+  <h2>Variantes écartées</h2>
+  <ul>
+    <li>Schéma 0 en bloc en tête d'une page commune aux schémas 1 à 3 : page trop longue, et le schéma 1 vit déjà dans les flux.</li>
+    <li>Architecture avant / après (tables) en schéma séparé : fusionnée dans le schéma 3, comme le propose l'expert.</li>
+    <li>Pastilles d'impact visibles en permanence sur les flux : elles chargent le dessin pour qui ne prépare pas une conversion.</li>
+  </ul>
+  <div class="mq-ctl" role="group" aria-label="Thème de la maquette">Thème :
+    <span class="seg" id="theme">
+      <button type="button" data-t="auto" aria-pressed="true">Système</button>
+      <button type="button" data-t="light" aria-pressed="false">Clair</button>
+      <button type="button" data-t="dark" aria-pressed="false">Sombre</button>
+    </span>
+  </div>
+</section>
+
+<nav aria-label="Écrans de la maquette">
+  <ul class="toc">
+    <li><a href="#e-accueil">Accueil</a></li>
+    <li><a href="#e-s0">Schéma 0 · Coup d'œil</a></li>
+    <li><a href="#e-s1">Schéma 1 · Flux</a></li>
+    <li><a href="#e-s2">Schéma 2 · Entrepôt</a></li>
+    <li><a href="#e-s3">Schéma 3 · Disparaît, remplacé, obligatoire</a></li>
+    <li><a href="#e-q">Questions pour Walid</a></li>
+  </ul>
+</nav>
+
+<!-- ================= ACCUEIL ================= -->
+<section class="screen" id="e-accueil" aria-labelledby="h-acc">
+  <h2 id="h-acc"><span class="n">Écran 1</span>Accueil : où trouver les quatre schémas</h2>
+  <p class="why">A, recommandée : une section de trois cartes juste après le parcours conseillé. Les quatre schémas restent ensemble et répondent d'un bloc à la question « qu'est-ce qui change ? ». Le parcours conseillé ne s'allonge pas. B, proposée par l'expert : le schéma 0 entre dans le parcours conseillé après le deck de migration, les schémas 2 et 3 rejoignent les flux.</p>
+  <div class="row">
+    <div class="pg desk" style="flex-basis:520px">
+      <div class="cap" style="margin:10px 14px 0"><b>A · recommandée</b> · section dédiée</div>
+      <div class="home">
+        <h4>Parcours conseillé <span class="ct">4 SUPPORTS</span></h4>
+        <p class="fold">Inchangé : synthèse, migration ECC vers S/4HANA, rôles, fiche de révision.</p>
+        <h4>De ECC à S/4HANA <span class="ct">3 SCHÉMAS</span> <span class="new">Nouveau</span></h4>
+        <p class="sub">Ce qui change quand on passe d'ECC à S/4HANA, vu du domaine logistique.</p>
+        <ul class="hg">
+          <li><a class="hc nv" href="#e-s0"><span class="kind">Schéma</span><b><span class="step">1</span>ECC et S/4HANA en un coup d'œil</b><span class="d">Six différences et le passage de l'un à l'autre.</span></a></li>
+          <li><a class="hc" href="#e-s2"><span class="kind">Schéma</span><b>L'entrepôt : quelle cible pour LE-WM</b><span class="d">Quatre options, trois questions, les échéances.</span></a></li>
+          <li><a class="hc" href="#e-s3"><span class="kind">Schéma</span><b>Disparaît, remplacé, obligatoire</b><span class="d">La liste à suivre en comité, avec l'effort.</span></a></li>
+        </ul>
+        <p class="pas">Étape par étape : ouvrez <a href="#e-s1">Procure-to-Pay</a> ou <a href="#e-s1">Order-to-Cash</a> et choisissez la vue « ECC → S/4HANA ».</p>
+        <h4>Principaux flux logistiques <span class="ct">4 FLUX</span></h4>
+        <ul class="hg">
+          <li><a class="hc" href="#e-s1"><span class="kind">Schéma</span><b>Procure-to-Pay (P2P)</b><span class="d">De l'achat au paiement.</span><span class="bas">ECC → S/4HANA</span></a></li>
+          <li><a class="hc" href="#e-s1"><span class="kind">Schéma</span><b>Order-to-Cash (O2C)</b><span class="d">De la commande à l'encaissement.</span><span class="bas">ECC → S/4HANA</span></a></li>
+        </ul>
+        <p class="fold" style="margin-top:10px">Plan-to-Produce et Record-to-Report : inchangés.</p>
+      </div>
+    </div>
+    <div class="pg desk" style="flex-basis:520px">
+      <div class="cap" style="margin:10px 14px 0"><b>B · alternative</b> · place proposée par l'expert</div>
+      <div class="home">
+        <h4>Parcours conseillé <span class="ct">5 SUPPORTS</span></h4>
+        <ul class="hg">
+          <li><a class="hc" href="#"><span class="kind deck">Deck</span><b><span class="step">1</span>Formation SAP · Synthèse</b></a></li>
+          <li><a class="hc" href="#"><span class="kind deck">Deck</span><b><span class="step">2</span>Migration ECC vers S/4HANA</b></a></li>
+          <li><a class="hc nv" href="#e-s0"><span class="kind">Schéma</span><b><span class="step">3</span>ECC et S/4HANA en un coup d'œil</b><span class="new" style="align-self:flex-start;margin-top:4px">Nouveau</span></a></li>
+          <li><a class="hc" href="#"><span class="kind">Schéma</span><b><span class="step">4</span>Les rôles d'un programme SAP</b></a></li>
+          <li><a class="hc" href="#"><span class="kind">Doc</span><b><span class="step">5</span>Fiche de révision</b></a></li>
+        </ul>
+        <h4>Principaux flux logistiques <span class="ct">6 SCHÉMAS</span></h4>
+        <ul class="hg">
+          <li><a class="hc" href="#e-s1"><span class="kind">Schéma</span><b>Procure-to-Pay (P2P)</b><span class="bas">ECC → S/4HANA</span></a></li>
+          <li><a class="hc" href="#"><span class="kind">Schéma</span><b>Plan-to-Produce</b></a></li>
+          <li><a class="hc" href="#e-s1"><span class="kind">Schéma</span><b>Order-to-Cash (O2C)</b><span class="bas">ECC → S/4HANA</span></a></li>
+          <li><a class="hc" href="#"><span class="kind">Schéma</span><b>Record-to-Report</b></a></li>
+          <li><a class="hc nv" href="#e-s2"><span class="kind">Schéma</span><b>L'entrepôt : quelle cible pour LE-WM</b></a></li>
+          <li><a class="hc nv" href="#e-s3"><span class="kind">Schéma</span><b>Disparaît, remplacé, obligatoire</b></a></li>
+        </ul>
+        <p class="pas" style="color:var(--muted)">Limite : l'entrepôt et la liste ne sont pas des flux. Le parcours passe à cinq cartes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCHÉMA 0 ================= -->
+<section class="screen" id="e-s0" aria-labelledby="h-s0">
+  <h2 id="h-s0"><span class="n">Écran 2</span>Schéma 0 · ECC et S/4HANA en un coup d'œil (page à part)</h2>
+  <p class="why">La porte d'entrée. Cliquez sur une rangée (ou Entrée) : popup à quatre rubriques, Précédent / Suivant jusqu'au bandeau. À droite, la même page à 375 px : les rangées deviennent des cartes empilées.</p>
+  <div class="row">
+    <div class="pg desk">
+      <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="ariane">Accueil › <b>ECC et S/4HANA</b></span><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+      <div class="pgm"><div class="s0-page"></div></div>
+    </div>
+    <div class="pg phone">
+      <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+      <div class="pgm"><div class="s0-page"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCHÉMA 1 ================= -->
+<section class="screen" id="e-s1" aria-labelledby="h-s1">
+  <h2 id="h-s1"><span class="n">Écran 3</span>Schéma 1 · La bascule dans les flux P2P et O2C</h2>
+  <p class="why">Gabarit actuel des flux, sans changement par défaut. La bascule « ECC → S/4HANA » ajoute une pastille d'impact sur chaque étape et, dans le détail, un bloc à quatre rubriques avant « Ce que surveille le DP ». « Ce que voit la comptabilité » reste sous le détail, inchangé (non reproduit ici).</p>
+  <div class="mq-ctl" style="margin:0 0 10px">Flux montré dans la maquette :
+    <span class="seg" id="fx-pick"><button type="button" data-f="p2p" aria-pressed="true">P2P</button><button type="button" data-f="o2c" aria-pressed="false">O2C</button></span>
+  </div>
+  <div class="pg">
+    <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="ariane">Accueil › Principaux flux logistiques › <b id="fx-ar">Procure-to-Pay (P2P)</b></span><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+    <div class="pgm fx" id="fx"></div>
+  </div>
+</section>
+
+<!-- ================= SCHÉMA 2 ================= -->
+<section class="screen" id="e-s2" aria-labelledby="h-s2">
+  <h2 id="h-s2"><span class="n">Écran 4</span>Schéma 2 · L'entrepôt : quelle cible pour un LE-WM d'ECC</h2>
+  <p class="why">Répondez aux trois questions : les options écartées s'estompent et disent pourquoi, en un mot. Elles restent cliquables. Cliquez sur une option pour ses quatre rubriques. La ligne de temps passe en liste sur téléphone.</p>
+  <div class="pg">
+    <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="ariane">Accueil › De ECC à S/4HANA › <b>L'entrepôt</b></span><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+    <div class="pgm s2" id="s2">
+      <div class="eb">De ECC à S/4HANA</div>
+      <h1>L'entrepôt : quelle cible pour un LE-WM d'ECC</h1>
+      <p class="lead">Un entrepôt géré en <span class="gl">LE-WM</span> dans ECC a quatre devenirs en S/4HANA. C'est le sujet le plus coûteux d'une conversion pour le domaine logistique. Trois questions aident à trier.</p>
+      <ul class="qs" id="qs"></ul>
+      <div class="qbar"><button type="button" class="b" id="q-raz">Effacer les réponses</button><span>Aide à la réflexion, pas une décision : la décision se prend sur l'inventaire des fonctions utilisées et sur le contrat.</span></div>
+      <div class="opts" id="opts"></div>
+      <div class="tl" id="tl"></div>
+      <p class="dated">Dates lues le 26/11/2026. Elles ont changé deux fois en 2026 : à revérifier avant chaque comité.</p>
+      <div class="plus"><h3>Pour aller plus loin</h3><div class="pop-l"><a class="b" href="#e-s0">ECC et S/4HANA en un coup d'œil</a><a class="b" href="#e-s1">Étape par étape (P2P, O2C)</a><a class="b" href="#e-s3">Disparaît, remplacé, obligatoire</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCHÉMA 3 ================= -->
+<section class="screen" id="e-s3" aria-labelledby="h-s3">
+  <h2 id="h-s3"><span class="n">Écran 5</span>Schéma 3 · Disparaît, remplacé, devient obligatoire</h2>
+  <p class="why">Trois colonnes, quatorze cartes. Filtre par domaine et « Préalables seulement ». La popup suit le filtre (Précédent / Suivant ne passent que par les cartes affichées). Deux variantes de popup à comparer :</p>
+  <div class="mq-ctl" style="margin:0 0 10px">Popup du schéma 3 :
+    <span class="seg" id="s3-var"><button type="button" data-v="A" aria-pressed="true">A · bascule ECC / S/4HANA</button><button type="button" data-v="B" aria-pressed="false">B · avant et après côte à côte</button></span>
+  </div>
+  <div class="pg">
+    <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="ariane">Accueil › De ECC à S/4HANA › <b>Disparaît, remplacé, obligatoire</b></span><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+    <div class="pgm s3" id="s3">
+      <div class="eb">De ECC à S/4HANA</div>
+      <h1>Disparaît, remplacé, devient obligatoire</h1>
+      <p class="lead">Les changements imposés par S/4HANA qui touchent la logistique et sa finance. Pas toute la liste des <span class="gl">simplification items</span> (plusieurs centaines) : ceux qu'un DP logistique retrouve en comité.</p>
+      <div class="flt">
+        <span class="lbl">Domaine</span>
+        <span class="chips" id="s3-dom" role="group" aria-label="Filtrer par domaine"></span>
+        <label class="chk"><input type="checkbox" id="s3-pre"> Préalables seulement</label>
+        <span class="nb3" id="s3-nb" aria-live="polite"></span>
+      </div>
+      <div class="cols" id="s3-cols"></div>
+      <p class="pied3">La liste exacte dépend de votre système : elle sort du <span class="gl">SAP Readiness Check</span> et du <span class="gl">Simplification Item Check</span>.</p>
+      <div class="plus"><h3>Pour aller plus loin</h3><div class="pop-l"><a class="b" href="#e-s0">ECC et S/4HANA en un coup d'œil</a><a class="b" href="#e-s1">Étape par étape (P2P, O2C)</a><a class="b" href="#e-s2">L'entrepôt</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUESTIONS ================= -->
+<section class="screen" id="e-q" aria-labelledby="h-q">
+  <h2 id="h-q"><span class="n">À trancher</span>Questions pour Walid</h2>
+  <ol class="qw">
+    <li><b>Q1 · Place sur l'accueil</b>A : section « De ECC à S/4HANA » après le parcours conseillé, trois cartes et un renvoi vers P2P et O2C. B : schéma 0 dans le parcours conseillé, schémas 2 et 3 dans les flux. <span class="rec">Recommandé : A.</span></li>
+    <li><b>Q2 · Schéma 0 en page à part</b>Comme le recommande l'expert, avec liens vers les schémas 1 à 3 et vers le deck de migration. <span class="rec">Recommandé : oui.</span></li>
+    <li><b>Q3 · Niveaux d'impact du schéma 1</b>Le dossier annonce Aucun / Faible / Fort, mais emploie aussi « moyen » et des fourchettes (« faible à fort selon l'entrepôt »). « Aucun » ne sert sur aucune étape de P2P ni d'O2C. <span class="rec">Recommandé : Faible / Moyen / Fort, fourchette permise, avec un mot de précision (préalable, côté finance), comme dans la maquette.</span></li>
+    <li><b>Q4 · Popup du schéma 3</b>A : bascule ECC / S/4HANA, comme le dossier. B : avant et après côte à côte, comme le bloc du schéma 1. <span class="rec">Recommandé : B. Les textes sont courts ; la bascule cache la moitié de la comparaison.</span></li>
+    <li><b>Q5 · Questions du schéma 2</b>Elles estompent des options. Les règles (par exemple « hors contrat cloud, A est écartée ») sont tirées du dossier ; elles doivent être relues par l'expert SAP avant le développement. <span class="rec">Recommandé : oui, avec la phrase « Aide à la réflexion, pas une décision ».</span></li>
+    <li><b>Q6 · Business Partner en double</b>Cartes 3 et 13 : la même carte dans « Disparaît » et « Devient obligatoire ». <span class="rec">Recommandé : garder les deux, la seconde renvoie à la première.</span></li>
+  </ol>
+</section>
+</div>
+
+<dialog class="pop" id="pop" aria-labelledby="pop-t">
+  <div class="pop-h"><div class="eb" id="pop-eb"></div><h2 id="pop-t"></h2><div class="tags" id="pop-tags"></div><button type="button" class="x" id="pop-x" aria-label="Fermer">×</button></div>
+  <div class="pop-b" id="pop-b"></div>
+  <div class="pop-f"><button type="button" class="b" id="pop-p"></button><button type="button" class="b" id="pop-n"></button><span class="cnt" id="pop-c"></span></div>
+</dialog>
+
+<script>
+(function(){
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// **terme** : terme du glossaire
+const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<span class="gl">$1</span>');
+const $=id=>document.getElementById(id);
+const LOS='<svg viewBox="0 0 10 10" aria-hidden="true"><rect x="2" y="2" width="6" height="6" transform="rotate(45 5 5)" fill="var(--jalon)"/></svg>';
+const fr=t=>`<div class="fr"><div class="frl">${LOS}Exemple fil rouge</div><p>${md(t)}</p></div>`;
+const EFF={faible:1,moyen:2,fort:3};
+function eff(lbl,n){return `<span class="eff"><span class="bars" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=n?'f':''}"></i>`).join('')}</span>Effort : ${esc(lbl)}</span>`}
+
+/* ---------- thème ---------- */
+$('theme').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#theme button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  if(b.dataset.t==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',b.dataset.t)});
+
+/* =================== DONNÉES · SCHÉMA 0 =================== */
+const S0=[
+{dim:"Base de données",qui:["Équipe IT","Contrat"],ecc:"Toutes bases (Oracle, DB2, SQL Server…)",s4:"HANA seule, en mémoire",
+ enEcc:"ECC tourne sur la base de données choisie par l'entreprise : Oracle, IBM DB2, Microsoft SQL Server, SAP ASE, SAP MaxDB ou SAP HANA. La base stocke les données sur disque et garde des tables de totaux pour répondre vite.",
+ enS4:"S/4HANA ne tourne que sur **HANA**, la base de SAP qui garde les données en mémoire et les range par colonnes. Elle calcule les totaux à la demande, sans tables intermédiaires. C'est ce qui permet le modèle de données simplifié (rangée 2).",
+ concret:"Changer de produit oblige à changer de base, si l'entreprise n'est pas déjà sur HANA. Un ECC déjà sur HANA (« Suite on HANA ») reste un ECC : la base seule ne fait pas S/4HANA. La taille de la mémoire dépend du volume de données : moins de données anciennes, moins de mémoire à payer.",
+ ex:"Si l'ECC de Ternova (fictif, scénario brownfield) tourne sur une autre base que HANA, sa conversion comprend aussi la migration de base vers HANA, faite en même temps (DMO).",
+ dp:"Trois sujets sur le chemin critique technique dès le cadrage. Le dimensionnement (**Sizing**), qui fixe le coût d'infrastructure. L'**Archivage** des données anciennes, qui réduit la mémoire et la **Fenêtre de coupure**. La migration de base (**DMO**) si l'ERP n'est pas déjà sur HANA. Faire chiffrer les trois avant de signer le budget."},
+{dim:"Modèle de données",qui:["Finance","Équipe IT"],ecc:"Tables multiples, agrégats, réconciliations",s4:"Tables uniques, calcul à la volée",
+ enEcc:"Une même opération s'écrit dans plusieurs tables. Un mouvement de stock va dans une table d'en-tête, une table de postes et des tables de stock agrégé. Une écriture de coût va d'un côté en comptabilité générale (**FI**), de l'autre en contrôle de gestion (**CO**). Clients et fournisseurs ont chacun leur fiche.",
+ enS4:"Une table par grand objet. Les mouvements de stock vont dans **MATDOC**. Les écritures de FI et de CO vont ensemble dans le **Universal Journal**. Clients et fournisseurs deviennent des **Business Partner**. Les tables d'agrégats disparaissent : HANA calcule les totaux à la lecture.",
+ concret:"Moins de réconciliations entre la logistique, la comptabilité et le contrôle de gestion. Mais tout programme spécifique qui écrivait dans les anciennes tables doit être repris, et les fiches clients et fournisseurs doivent être converties avant la migration (**CVI**).",
+ ex:"La réception des 1 240 vannes de carburant à 500 € (chiffres fictifs). En ECC, elle s'écrit dans quatre à cinq tables : document article, stock agrégé, pièce comptable de 620 000 €. En S/4HANA, une ligne dans MATDOC pour le stock et des lignes dans le Universal Journal pour la valeur, où la finance et le contrôle de gestion lisent les mêmes données.",
+ dp:"C'est la dimension la plus coûteuse d'une conversion, et la moins visible au comité. Demander tôt deux chiffres : le nombre de programmes spécifiques touchés (analyse **ATC**) et le nombre de fiches clients et fournisseurs en erreur de conversion. Le détail est dans le schéma 3."},
+{dim:"Interface",qui:["Utilisateurs"],ecc:"SAP GUI, écrans par transaction",s4:"Fiori, applications par rôle",
+ enEcc:"L'utilisateur travaille dans **SAP GUI**, un logiciel installé sur le poste. Il ouvre des transactions par leur code (par exemple ME21N pour créer une commande d'achat) et passe d'un écran dense à l'autre.",
+ enS4:"**Fiori** est l'interface cible : des applications web, dans un navigateur, sur ordinateur, tablette ou téléphone. Chaque utilisateur voit les applications de son rôle (**Business Roles / Business Catalogs**). Sur site et en cloud privé, SAP GUI reste utilisable pour de nombreuses transactions. En cloud public, l'accès passe par Fiori.",
+ concret:"C'est le changement que tout le monde voit le premier jour. Les gestes changent, les droits d'accès se refont par rôle, la formation change de nature.",
+ ex:"En ECC, le magasinier saisit la réception des vannes sur un poste fixe en SAP GUI. En S/4HANA, il peut la confirmer sur une application Fiori, depuis une tablette, au quai de réception.",
+ dp:"Décider tôt, rôle par rôle, qui passe à Fiori au démarrage et qui garde SAP GUI. Sans cette décision, on forme deux fois et on refait les rôles deux fois. Le chantier des rôles et habilitations est souvent sous-estimé : le chiffrer à part."},
+{dim:"Analytique",qui:["Utilisateurs","Finance"],ecc:"Rapports la nuit, entrepôt de données séparé",s4:"Analytique embarquée, temps réel",
+ enEcc:"Les rapports opérationnels sont lents sur les gros volumes. On copie donc les données, souvent la nuit, dans un entrepôt de données séparé (**BW**) pour les analyser. Les chiffres du matin sont ceux de la veille.",
+ enS4:"L'**Analytique embarquée** lit les données directement dans le système, en temps réel, grâce à HANA. Les rapports opérationnels (stock, commandes en retard, marge) n'ont plus besoin de copie. Un entrepôt de données reste utile pour consolider plusieurs systèmes ou de longs historiques ; **SAP Analytics Cloud** sert aux tableaux de bord et à la planification.",
+ concret:"Une partie des rapports BW et des rapports spécifiques n'a plus de raison d'être. Le reporting change de forme pour le métier : moins de fichiers du matin, plus d'indicateurs à jour dans les applications.",
+ ex:"La vente de 12 vannes à 900 € (chiffres fictifs). En ECC, la marge (10 800 € de chiffre d'affaires, 6 000 € de coût, 4 800 € de marge) apparaît dans le rapport du lendemain. En S/4HANA, elle est visible dès la sortie de marchandises et la facture.",
+ dp:"Inscrire l'inventaire des rapports au périmètre, dès le cadrage : lesquels garder, lesquels remplacer par l'analytique embarquée, lesquels supprimer. Désigner un responsable du reporting. Sinon le métier découvre au démarrage que ses rapports du lundi ont disparu."},
+{dim:"Extension",qui:["Équipe IT","Contrat"],ecc:"Code Z, modifications du standard",s4:"Clean Core : extensions prévues, BTP",
+ enEcc:"L'entreprise adapte le système par du **Développement Z** : programmes spécifiques, et parfois modifications du code standard de SAP. Après quinze ou vingt ans, un ECC compte souvent des milliers d'objets spécifiques (**Dette technique**).",
+ enS4:"SAP pousse le **Clean Core** : ne pas modifier le standard, étendre seulement par des moyens prévus. Trois niveaux : l'extension sans code par un utilisateur avancé (**Key User Extensibility**, dite « in-app »), le développement dans le système avec des règles strictes (**ABAP Cloud**, **API publiée**), et le développement à côté du système, sur **BTP** (**Extension side-by-side**). En cloud public, seules ces voies sont ouvertes.",
+ concret:"Chaque développement spécifique d'ECC doit être jugé : supprimé (le standard le fait), refait selon les règles du Clean Core, ou gardé tel quel en sachant qu'il ralentira les montées de version.",
+ ex:"Ternova (fictif) veut un champ « numéro de certification » sur la fiche de la vanne. En ECC, un développeur ajoute un champ Z à la table et modifie l'écran. En S/4HANA, un utilisateur avancé ajoute le champ par Key User Extensibility, sans code, et le champ survit aux montées de version.",
+ dp:"Le volume de code spécifique est un des premiers chiffres à obtenir, et l'une des premières décisions de gouvernance. Donner à la **Design authority** le mandat de refuser un développement qui contourne le standard. Le coût d'un spécifique ne s'arrête pas au projet : il se paie à chaque montée de version."},
+{dim:"Déploiement et rythme",qui:["Contrat","Équipe IT"],ecc:"Sur site, packages d'amélioration",s4:"Sur site, cloud privé ou public ; versions régulières",
+ titre:"Déploiement et rythme de mise à jour",
+ enEcc:"Le système est installé **On-premise** (chez l'entreprise ou chez un hébergeur). Les nouveautés arrivent par des packages d'amélioration (**EhP**) que l'entreprise installe quand elle veut. Le dernier, l'EhP 8, date de 2016 : ECC ne reçoit plus de nouveautés.",
+ enS4:"Trois modes. Sur site, géré par l'entreprise. En cloud privé (**SAP Cloud ERP**, version Private, vendue dans **RISE with SAP**) : un système dédié, hébergé et opéré en partie par SAP. En cloud public (SAP Cloud ERP, version publique) : un système partagé, standard, sans code dans le cœur (**Cloud public / Cloud privé**). Le rythme suit le mode. Sur site et en cloud privé : une nouvelle version tous les deux ans depuis la version 2023, maintenue sept ans, avec des **Feature Pack Stack** tous les six mois pendant ses deux premières années ; l'entreprise choisit quand monter. En cloud public : deux versions par an, imposées par SAP.",
+ concret:"Le choix du mode change le contrat (licence ou abonnement), la répartition des rôles avec SAP et le droit d'adapter le système. Après le démarrage, la **Montée de version** devient régulière : ce n'est plus un projet tous les dix ans, c'est un cycle.",
+ ex:"Calvane et Ternova (fictifs) ont choisi le cloud privé via RISE (voir leurs scénarios). Calvane, qui part de zéro, aurait pu viser le cloud public : il aurait alors accepté un standard strict et deux montées de version par an.",
+ dp:"Le mode de déploiement se décide avant le choix du chemin de migration, car il le contraint (le cloud public n'accepte qu'une nouvelle implémentation). Après le démarrage, prévoir au budget de run une équipe et un calendrier de tests de non-régression pour chaque montée de version. Plus le cœur est propre (rangée 5), plus ce cycle coûte peu."}
+];
+const S0BAND={dim:"Passer de l'un à l'autre",titre:"Passer de l'un à l'autre : échéances et chemins",qui:["Direction","Contrat"],band:1,
+ enEcc:"Maintenance standard jusqu'à fin 2027. Maintenance étendue payante de 2028 à fin 2030 (**Maintenance étendue**). Au-delà, seulement pour des systèmes déplacés en cloud privé avant fin 2030 : la **Transition option**, de 2031 à 2033, et jusqu'à fin 2035 sous conditions depuis octobre 2026.",
+ enS4:"SAP s'engage à maintenir S/4HANA au moins jusqu'à fin 2040. Chaque version sur site ou en cloud privé est maintenue sept ans, ce qui oblige à monter de version au moins une fois dans cette période.",
+ concret:"Trois chemins pour passer. **Greenfield** : nouvelle implémentation, on repart du standard et on ne reprend que les données utiles. **Brownfield** : conversion du système existant, avec son paramétrage, son code et son historique. **Bluefield** : transition sélective, on garde une partie et on reconçoit le reste.",
+ ex:"Les quatre entreprises fictives du portail suivent chacune un chemin : Calvane (greenfield), Ternova (brownfield), Alvéa (bluefield), Nordval (roll-out d'un modèle déjà en place vers un nouveau site).",
+ dp:"Partir de l'échéance et rétroplanifier. Pour un programme qui démarre fin 2026, fin 2027 est très proche : la maintenance étendue devient souvent l'hypothèse réaliste, et son surcoût entre dans le **Business case**. Le choix du chemin se fait par un comité de direction, sur la base du SAP Readiness Check et de l'ambition de transformation, pas par l'équipe technique seule."};
+const S0ALL=S0.concat([S0BAND]);
+const CHEMINS=[["Greenfield","Calvane (fictif)","../frises/greenfield.html"],["Brownfield","Ternova (fictif)","../frises/brownfield.html"],["Bluefield","Alvéa (fictif)","../frises/bluefield.html"]];
+const ARR='<svg viewBox="0 0 160 10" preserveAspectRatio="none" aria-hidden="true"><path d="M4 5H154M148 1L155 5L148 9"/></svg>';
+
+function s0page(root){
+  let h=`<div class="eb">De ECC à S/4HANA</div><h1>ECC et S/4HANA en un coup d'œil</h1>
+  <p class="msg">S/4HANA n'est pas une nouvelle version d'ECC. C'est un nouveau produit, sur une seule base de données, avec un modèle de données plus simple. Le passage est un programme, pas une montée de version.</p>
+  <div class="s0"><div class="s0-head" aria-hidden="true"><div class="col"><b>ECC · SAP ERP 6.0</b><span>L'ERP historique, toutes bases de données</span></div><div></div><div class="col s4"><b>S/4HANA</b><span>Le successeur, sur HANA seule, depuis 2015</span></div></div>`;
+  S0.forEach((r,i)=>{h+=`<button type="button" class="s0-row" data-s0="${i}" aria-label="${esc(r.dim)} : ECC, ${esc(r.ecc)} ; S/4HANA, ${esc(r.s4)}. Ouvrir le détail.">
+    <span class="v ecc"><span class="lab">ECC :</span>${esc(r.ecc)}</span>
+    <span class="dim"><span class="nm">${esc(r.dim)}</span>${ARR}<span class="qui">Qui le voit : <b>${r.qui.map(esc).join(' · ')}</b></span></span>
+    <span class="v s4"><span class="lab">S/4HANA :</span>${esc(r.s4)}</span><span class="ouv" aria-hidden="true">Détail →</span></button>`});
+  h+=`<div class="s0-band"><button type="button" class="bh" data-s0="6"><h3>Passer de l'un à l'autre</h3><span>Échéances de maintenance et trois chemins de migration. Qui le voit : <b>Direction · Contrat</b>. Cliquez pour le détail.</span></button>
+    <ol class="ech">
+      <li class="now"><b>Nov. 2026</b><span>Aujourd'hui</span></li>
+      <li><b>Fin 2027</b><span>Fin de la maintenance standard d'ECC</span></li>
+      <li><b>Fin 2030</b><span>Fin de la maintenance étendue, payante</span></li>
+      <li><b>2031 à 2033 (2035)</b><span>Transition option, cloud privé, sous conditions ; jusqu'à fin 2035 sous conditions de plus</span></li>
+      <li class="s4"><b>Fin 2040</b><span>S/4HANA maintenu au moins jusque-là</span></li>
+    </ol>
+    <div class="chem"><span class="lbl">Trois chemins : ouvrir le scénario de mise en œuvre</span>${CHEMINS.map(c=>`<a class="b" href="${c[2]}">${c[0]} <small>${c[1]}</small></a>`).join('')}</div></div>
+  <div class="plus"><h3>Pour aller plus loin</h3><div class="pop-l"><a class="b" href="#e-s1">Ce qui change, étape par étape</a><a class="b" href="#e-s2">L'entrepôt</a><a class="b" href="#e-s3">Disparaît, remplacé, obligatoire</a><a class="b" href="../lecteur.html?doc=documents/migration-ecc-s4hana.pdf">Deck · Migration ECC vers S/4HANA</a></div></div>
+  <p class="dated">Dates lues le 26/11/2026.</p></div>`;
+  root.innerHTML=h;
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-s0]');if(b)openPop('s0',+b.dataset.s0,b)});
+}
+document.querySelectorAll('.s0-page').forEach(s0page);
+
+/* =================== DONNÉES · SCHÉMA 1 =================== */
+const IMP={
+ faible:{n:1,l:"Faible"},moyen:{n:2,l:"Moyen"},fort:{n:3,l:"Fort"}};
+const FLUX={
+p2p:{title:"Procure-to-Pay (P2P)",sub:"De l'achat au paiement",intro:"Tout ce qui se passe entre le moment où l'entreprise a besoin d'une pièce et celui où elle a payé son fournisseur. Pensez à un restaurateur : il note ce qui manque, commande, vérifie la livraison, vérifie la facture, puis paie. SAP garde la trace de chaque étape et empêche de sauter un contrôle.",
+ lanes:[["Achats","MM-PUR"],["Entrepôt","MM-IM · EWM"],["Qualité","QM"],["Comptabilité","MM · FI-AP"]],
+ steps:[
+ {lane:0,t:"Besoin d'achat",who:"Utilisateur ou calcul automatique (MRP)",mod:"MM-PUR",doc:"Demande d'achat (PR)",what:"Quelqu'un constate qu'il manque une pièce. Le besoin est noté dans SAP sous forme de demande interne, pas encore adressée à un fournisseur.",sap:["Créée à la main, ou automatiquement par le calcul des besoins (MRP) quand le stock passe sous le seuil","Contient l'article, la quantité, la date souhaitée, le service demandeur","Peut exiger l'accord d'un responsable au-dessus d'un montant"],ex:"Le stock de vannes de carburant passe sous le seuil de sécurité : une demande d'achat de 1 240 vannes est créée.",watch:"Qui approuve, et à partir de quel montant ? Sans circuit de validation, les achats échappent au contrôle.",noAcct:"Aucune écriture comptable : une demande n'engage personne.",terms:[["MRP","Calcul automatique des besoins : compare stock et commandes prévues, propose quoi acheter."],["Demande d'achat","Demande interne « j'ai besoin de ça ». Elle ne lie personne."]],
+  s4:{imp:"faible",ecc:"Le calcul des besoins (**MRP**, transaction MD01) tourne en lot, souvent la nuit. Les demandes d'achat sortent le matin.",s4:"**MRP Live** calcule dans la base HANA, en minutes. Le planificateur suit ses alertes dans des applications **Fiori**. La demande d'achat ne change pas.",qui:"Planificateurs, approvisionneurs.",dp:"Peu d'effort de construction. L'effort est dans les tests : comparer les propositions d'achat ECC et S/4HANA sur un même jeu de données. Un écart non expliqué fait perdre la confiance des planificateurs."}},
+ {lane:0,t:"Commande au fournisseur",who:"Acheteur",mod:"MM-PUR",doc:"Commande d'achat (PO)",what:"L'acheteur transforme la demande en commande adressée à un fournisseur précis, avec prix, quantité, date et délai de paiement. C'est un engagement : le fournisseur promet de livrer, l'entreprise promet de payer.",sap:["Prix et conditions repris automatiquement du contrat s'il existe","Devient la référence de contrôle pour la réception puis la facture","Beaucoup d'entreprises appliquent « pas de commande, pas de paiement »"],ex:"1 240 vannes à 500 € l'unité, livraison dans 6 semaines, paiement à 30 jours : 620 000 € engagés (chiffres fictifs).",watch:"Part des commandes hors contrat : elles échappent aux prix négociés.",noAcct:"Aucune écriture comptable : une commande est un engagement, pas encore une dépense.",terms:[["Contrat","Accord négocié (prix, volumes) que SAP applique à chaque commande."],["Conditions de paiement","Délai accordé pour payer, par exemple 30 jours."]],
+  s4:{imp:"fort",q:"préalable",ecc:"Le fournisseur est une fiche fournisseur, séparée de la fiche client même s'il s'agit de la même entreprise.",s4:"Le fournisseur est un **Business Partner**. Une seule fiche porte ses rôles (fournisseur, client). La commande elle-même change peu ; les applications Fiori d'achat deviennent l'écran courant.",qui:"Acheteurs, équipe données de base, équipe interfaces (tout échange qui lit les fiches fournisseurs).",dp:"La conversion des fiches (**CVI**) est un préalable bloquant d'un brownfield. Lancer le nettoyage des fournisseurs des mois avant la conversion. Indicateur : nombre de fiches en erreur de conversion, à suivre chaque semaine."}},
+ {lane:1,t:"Réception de la marchandise",who:"Magasinier",mod:"MM-IM + EWM",doc:"Livraison entrante, entrée de marchandises",what:"Le fournisseur annonce son envoi, puis la marchandise arrive. L'entrepôt la contrôle à la porte, la comptabilise (le stock augmente dans SAP) et la range à un emplacement précis.",sap:["L'avis d'expédition (ASN) crée une livraison entrante qui prévient l'entrepôt","L'entrée de marchandises augmente le stock et crée l'écriture comptable","EWM crée les tâches de rangement : MM-IM sait combien, EWM sait où"],ex:"Les 1 240 vannes arrivent : réception comptabilisée, rangement vers la zone des pièces sous contrôle.",watch:"Le stock SAP doit égaler l'étagère. Sinon le calcul des besoins se trompe et ne commande pas.",acct:{d:"Stock",c:"GR/IR (reçu non facturé)",a:"620 000"},terms:[["ASN","Avis d'expédition : le fournisseur annonce ce qu'il envoie et quand."],["GR/IR","Compte d'attente : reçu, mais pas encore facturé."]],
+  s4:{imp:"fort",ecc:"Chaque **entrée de marchandises** écrit un document article en deux tables (en-tête et postes) et met à jour des tables de stock agrégé. L'entrepôt tourne souvent avec **LE-WM**, dans l'ERP.",s4:"Le document article est écrit dans une seule table, **MATDOC**. Le stock se calcule à la volée, sans tables d'agrégats. L'entrepôt passe à **EWM** (ou à Stock Room Management, voir schéma 2). Le reste de l'étape (livraison entrante, **ASN**) ne change pas.",qui:"Magasiniers (nouveaux écrans, nouveaux terminaux si EWM), équipe développement (programmes spécifiques qui lisent les anciennes tables), équipe reporting.",dp:"SAP fournit des vues de compatibilité, donc le code qui lit les anciennes tables fonctionne en général ; celui qui y écrit doit être corrigé. Faire mesurer ce point par l'analyse de code (**ATC**) dès le cadrage. Le vrai coût de l'étape est le passage à EWM, souvent un projet dans le projet.",lien:["Voir le schéma 2 : l'entrepôt","#e-s2"]}},
+ {lane:2,t:"Contrôle qualité",who:"Contrôleur qualité",mod:"QM",doc:"Lot de contrôle, décision d'emploi",what:"Les pièces critiques restent bloquées en contrôle. Le contrôleur vérifie, puis décide : accepté, refusé ou accepté avec réserve. Seul le stock accepté peut être utilisé.",sap:["Un lot de contrôle est créé automatiquement à la réception","La décision d'emploi fait passer le stock en « libre » ou en « bloqué »","Stock refusé : retour au fournisseur"],ex:"Les vannes ne deviennent utilisables qu'avec un numéro de certificat valide, même si elles semblent parfaites.",watch:"Ne jamais relativiser un contrôle sur une pièce critique. Une date menacée se traite en planning, pas en levant le contrôle.",noAcct:"Pas de nouvelle écriture : le stock change de statut (de « sous contrôle » à « libre »), pas de valeur.",terms:[["Décision d'emploi","Verdict de la qualité sur un lot : accepté, refusé, réserve."],["Stock libre","Stock que la production a le droit d'utiliser."]],
+  s4:{imp:"faible",ecc:"**QM** crée le lot de contrôle à la réception ; la décision d'emploi libère ou bloque le stock.",s4:"Même logique. Avec EWM, le contrôle peut se faire dans l'entrepôt, et la libération du stock passe par l'échange entre QM et EWM.",qui:"Contrôleurs qualité, équipe EWM.",dp:"Faire tester le circuit complet réception, contrôle, libération, rangement. C'est là que QM et EWM se croisent et que les défauts d'intégration apparaissent."}},
+ {lane:3,t:"Facture du fournisseur",who:"Comptable fournisseurs",mod:"MM + FI",doc:"Facture entrante",what:"Le fournisseur envoie sa facture. SAP la compare automatiquement à la commande et à la réception : c'est le contrôle à trois voies. Si tout concorde, elle est validée ; sinon elle est bloquée pour paiement.",sap:["Trois documents comparés : commande (ce qu'on a demandé), réception (ce qu'on a reçu), facture (ce qu'on réclame)","Une tolérance de quelques pour cent est paramétrable","La dette envers le fournisseur est créée, le compte d'attente GR/IR est soldé"],ex:"Facture de 620 000 € : validée car quantité et prix concordent avec la commande et la réception.",watch:"Nombre et ancienneté des factures bloquées : beaucoup de blocages signalent des erreurs en amont.",acct:{d:"GR/IR (reçu non facturé)",c:"Dette fournisseur",a:"620 000"},terms:[["Contrôle à 3 voies","Commande, réception et facture comparées avant tout paiement."],["Facture bloquée","Facture en écart, retenue jusqu'à explication."]],
+  s4:{imp:"fort",q:"côté finance",ecc:"Le rapprochement à trois (commande, réception, facture) passe par le compte d'attente **GR/IR**. La facture écrit en comptabilité générale (FI). Le contrôle de gestion (CO) tient ses propres tables : les écarts de prix et les coûts se rapprochent entre FI et CO à la clôture.",s4:"Même rapprochement à trois. Mais chaque écriture va dans une seule table, le **Universal Journal** (ACDOCA), où FI et CO écrivent ensemble. Le stock est valorisé par le **Material Ledger**, obligatoire.",qui:"Comptabilité fournisseurs, contrôle de gestion, équipe reporting financier.",dp:"La logistique produit les écritures, la finance les lit. Tout changement de valorisation (prix standard, prix moyen) se voit en finance. Exiger des tests qui vérifient le montant de l'écriture, pas seulement que la transaction passe. Nettoyer le compte GR/IR avant la bascule : les écarts anciens migrent sinon avec le reste."}},
+ {lane:3,t:"Paiement",who:"Comptable fournisseurs",mod:"FI-AP",doc:"Exécution de paiement",what:"À l'échéance, SAP lance une exécution de paiement qui regroupe toutes les factures arrivées à terme et prépare les virements envoyés à la banque. La dette est soldée.",sap:["Respecte les conditions de paiement de la commande (30 jours, escompte éventuel)","Produit un fichier de virements transmis à la banque","Le compte fournisseur revient à zéro"],ex:"Le fournisseur est payé à 30 jours : 620 000 € sortent de la banque.",watch:"Trop tôt coûte de la trésorerie ; trop tard abîme la relation avec un fournisseur de pièce critique.",acct:{d:"Dette fournisseur",c:"Banque",a:"620 000"},terms:[["Exécution de paiement","Traitement SAP qui paie en une fois toutes les factures à échéance."],["Escompte","Petite remise si l'on paie plus vite."]],
+  s4:{imp:"faible",ecc:"Programme de paiement, fichier vers la banque.",s4:"Même programme de paiement, avec des applications Fiori de suivi. Le fournisseur payé est un Business Partner.",qui:"Trésorerie, comptabilité fournisseurs.",dp:"Faire retester les formats bancaires et les coordonnées bancaires converties avec les Business Partners. Une erreur ici se voit chez le fournisseur."}}
+ ]},
+o2c:{title:"Order-to-Cash (O2C)",sub:"De la commande à l'encaissement",intro:"De la commande du client jusqu'à l'argent encaissé. Le reste du contenu de la page O2C est inchangé ; la maquette ne reproduit ici que le bloc ajouté.",o2c:1,
+ lanes:[["Ventes","SD"],["Entrepôt","EWM · MM-IM"],["Comptabilité","FI-AR"]],
+ steps:[
+ {lane:0,t:"Commande client",s4:{imp:"fort",q:"préalable",ecc:"Le client est une fiche client. Les remises de fin d'année (ristournes) se gèrent par des accords de ristourne SD.",s4:"Le client est un **Business Partner**. Les accords de ristourne SD sont remplacés par les contrats de conditions et le **Settlement Management**. La saisie de commande reste proche.",qui:"Service client, administration des ventes, équipe données de base, contrôle de gestion (ristournes).",dp:"Les accords de ristourne en cours doivent être soldés avant la bascule, puis recréés sous la nouvelle forme. Caler la date de conversion sur le calendrier des ristournes."}},
+ {lane:0,t:"Disponibilité et crédit",s4:{imp:"fort",ecc:"Contrôle de disponibilité (**ATP**) classique. Contrôle de crédit dans SD (gestion du crédit FI-AR).",s4:"L'ATP devient l'ATP avancé (**aATP**), avec des règles d'allocation et de confirmation par lots de commandes. Le contrôle de crédit passe à **SAP Credit Management** (composant FSCM), seul outil disponible.",qui:"Service client, credit managers, planificateurs.",dp:"La gestion du crédit est un vrai chantier (limites à reprendre, nouveaux rôles, nouveaux écrans). Ne pas la ranger dans « technique ». Côté ATP : faire valider les règles de confirmation par le métier ; elles changent les dates promises, donc le taux de livraison à l'heure (**OTD**)."}},
+ {lane:0,t:"Livraison sortante",s4:{imp:"fort",de:"faible",q:"selon l'entrepôt",ecc:"La **livraison sortante** déclenche un ordre de transfert dans LE-WM, ou part vers un EWM séparé par interface.",s4:"Avec **EWM embarqué**, la livraison passe à l'entrepôt dans le même système, sans interface externe. Avec **EWM décentralisé**, l'interface demeure.",qui:"Service expéditions, équipe EWM, équipe interfaces.",dp:"Le choix d'entrepôt (schéma 2) décide de la charge de cette étape. Suivre le nombre de livraisons non transmises à l'entrepôt pendant les tests et l'**hypercare**.",lien:["Voir le schéma 2 : l'entrepôt","#e-s2"]}},
+ {lane:1,t:"Préparation et sortie",s4:{imp:"fort",ecc:"Prélèvement par ordres de transfert LE-WM ; **sortie de marchandises** écrite dans les tables d'en-tête et de postes.",s4:"Prélèvement par tâches EWM, avec **Handling Units** ; la sortie s'écrit dans **MATDOC**, le coût des ventes dans le **Universal Journal**.",qui:"Préparateurs, chefs d'équipe entrepôt, équipe matériel (terminaux, imprimantes d'étiquettes).",dp:"Formation des opérateurs et matériel sur le chemin critique de la bascule entrepôt. Prévoir des répétitions en entrepôt réel, pas seulement en salle."}},
+ {lane:0,t:"Facturation",s4:{imp:"moyen",de:"faible",ecc:"La facture SD crée la créance, le chiffre d'affaires et la TVA ; l'impression passe par le système de messages (NAST).",s4:"Même logique comptable, écrite dans le Universal Journal. Les éditions peuvent passer au nouvel output management (règles BRF+) ; l'ancien système de messages reste possible selon les cas (à vérifier sur le catalogue des simplification items pour la version cible).",qui:"Facturation, équipe éditions et formulaires.",dp:"Chaque formulaire (facture, bon de livraison) est à retester. Leur nombre est souvent sous-estimé au cadrage."}},
+ {lane:2,t:"Encaissement",s4:{imp:"faible",ecc:"Lettrage des paiements clients sur les créances.",s4:"Même logique, avec des applications Fiori et le Business Partner. Le reporting client devient en temps réel (plus d'attente du rapport de la nuit).",qui:"Comptabilité clients, credit managers.",dp:"Peu de risque propre. Surveiller les créances ouvertes reprises à la bascule (**réconciliation** des soldes)."}}
+ ]}
+};
+const impLbl=s=>{const a=IMP[s.imp].l;return s.de?IMP[s.de].l+' à '+a.toLowerCase():a};
+const impHtml=(s,withQ)=>`<span class="ip ${s.imp}${s.de?' plage':''}"><span class="eff"><span class="bars" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=IMP[s.imp].n?'f':''}"></i>`).join('')}</span></span>Impact : ${esc(impLbl(s))}${withQ&&s.q?' · '+esc(s.q):''}</span>`;
+
+let FX={f:'p2p',s:0,on:false};
+const LW=132,CW=158,LH=92,NW=136,NH=64,PT=6;
+function wrap(t,max){const w=t.split(' ');const lines=[];let cur='';for(const x of w){if((cur+' '+x).trim().length>max&&cur){lines.push(cur);cur=x}else cur=(cur+' '+x).trim()}if(cur)lines.push(cur);return lines}
+function fxRender(){
+  const D=FLUX[FX.f],N=D.steps.length,L=D.lanes.length,W=LW+N*CW+8,H=PT*2+L*LH;
+  const nx=i=>LW+i*CW+(CW-NW)/2,ny=l=>PT+l*LH+(LH-NH)/2;
+  const root=$('fx');root.classList.toggle('o2c',!!D.o2c);
+  $('fx-ar').textContent=D.title;
+  let h=`<div class="eb">Principaux flux logistiques</div><h1>${esc(D.title)}</h1><p class="sous">${esc(D.sub)}</p><p class="intro">${esc(D.intro)}</p>
+  <div class="vue"><span class="lbl">Vue</span><span class="seg" role="group" aria-label="Vue du flux"><button type="button" data-vue="0" aria-pressed="${!FX.on}">Le flux</button><button type="button" data-vue="1" aria-pressed="${FX.on}">ECC → S/4HANA</button></span><span class="aide">${FX.on?'Pastille d\'impact sur chaque étape ; le détail s\'ouvre au clic.':'Voir ce qui change en S/4HANA, étape par étape.'}</span></div>
+  <div class="card"><div class="ctl"><button class="b" type="button" data-nav="-1" ${FX.s===0?'disabled':''}>← Précédent</button><button class="b pri" type="button">Dérouler l'exemple</button><button class="b" type="button" data-nav="1" ${FX.s===N-1?'disabled':''}>Suivant →</button><span class="cnt" aria-live="polite">Étape ${FX.s+1} sur ${N}</span></div><div class="dg">`;
+  let g=`<svg viewBox="0 0 ${W} ${H}" width="${W}" style="width:100%;min-width:${Math.min(W,760)}px" role="group" aria-label="${esc(D.title)}"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round"/></marker></defs>`;
+  D.lanes.forEach((ln,l)=>{g+=`<rect class="band${l%2?' alt':''}" x="0" y="${PT+l*LH}" width="${W}" height="${LH}" rx="6"/><text class="ln" x="10" y="${PT+l*LH+LH/2-3}">${esc(ln[0])}</text><text class="lm" x="10" y="${PT+l*LH+LH/2+13}">${esc(ln[1])}</text>`});
+  for(let i=0;i<N-1;i++){const a=D.steps[i],b=D.steps[i+1];const x1=nx(i)+NW,y1=ny(a.lane)+NH/2,x2=nx(i+1),y2=ny(b.lane)+NH/2,xm=(x1+x2)/2;
+    g+=`<path class="ar${i<FX.s?' done':''}" d="M${x1} ${y1} H${xm} V${y2} H${x2-1}" marker-end="url(#ah)"/>`}
+  D.steps.forEach((st,i)=>{const x=nx(i),y=ny(st.lane);const lines=wrap(st.t,20).slice(0,3);const lh=14;const off=FX.on?-5:0;const top=y+NH/2-(lines.length*lh)/2+10+off;
+    const cls=(i===FX.s?' on':'')+(i<FX.s?' done':'');
+    g+=`<g class="nd${cls}" data-i="${i}" tabindex="0" role="button" aria-pressed="${i===FX.s}" aria-label="Étape ${i+1} : ${esc(st.t)}${FX.on?' · impact '+esc(impLbl(st.s4)):''}"><rect class="n" x="${x}" y="${y}" width="${NW}" height="${NH}" rx="10"/>`+lines.map((t,j)=>`<text class="nt" x="${x+NW/2}" y="${top+j*lh}">${esc(t)}</text>`).join('')+`<g class="nb"><circle cx="${x+4}" cy="${y+4}" r="11"/><text x="${x+4}" y="${y+8}">${i+1}</text></g>`;
+    if(FX.on){const s=st.s4,txt=impLbl(s),w=Math.round(txt.length*6.5)+34,px=x+NW/2-w/2,py=y+NH-9;
+      g+=`<g class="ipg ${s.imp}${s.de?' plage':''}" aria-hidden="true"><rect x="${px}" y="${py}" width="${w}" height="18" rx="9"/>${[0,1,2].map(k=>`<rect class="bar${k<IMP[s.imp].n?' f':''}" x="${px+8+k*5}" y="${py+5}" width="3" height="8" rx="1"/>`).join('')}<text x="${px+26+(w-34)/2}" y="${py+13}">${esc(txt)}</text></g>`}
+    g+=`</g>`});
+  h+=g+`</svg></div><p class="hint">Cliquez sur une étape du schéma, ou utilisez les flèches ← → du clavier.</p>`;
+  if(FX.on){const c={faible:0,moyen:0,fort:0};D.steps.forEach(st=>c[st.s4.imp]++);
+    h+=`<div class="leg"><span>Impact du passage à S/4HANA :</span>${['fort','moyen','faible'].filter(k=>c[k]).map(k=>`<span class="ip ${k}">${IMP[k].l} · ${c[k]} étape${c[k]>1?'s':''}</span>`).join('')}<span>Pointillés : fourchette, selon les choix du programme.</span></div>`}
+  h+=`</div>`;
+  // détail de l'étape (la « popup » actuelle des flux)
+  const st=D.steps[FX.s];
+  h+=`<div class="card det" aria-live="polite"><h2>${FX.s+1}. ${esc(st.t)}</h2>`;
+  const blocS4=()=>{const s=st.s4;return `<div class="box w2 s4b"><div class="s4h"><h3>ECC → S/4HANA</h3>${impHtml(s,true)}</div>
+    <div class="avap"><div class="e"><b>En ECC</b><p>${md(s.ecc)}</p></div><div class="fl" aria-hidden="true">→</div><div class="s"><b>En S/4HANA</b><p>${md(s.s4)}</p></div></div>
+    <div class="qd"><div><h4>Qui est touché</h4><p>${md(s.qui)}</p></div><div class="dp"><h4>Pour le DP</h4><p>${md(s.dp)}</p>${s.lien?`<p style="margin-top:6px"><a href="${s.lien[1]}" style="color:var(--accent);font-weight:600">${esc(s.lien[0])} →</a></p>`:''}</div></div></div>`};
+  if(st.what){
+    h+=`<div class="meta"><span class="chip"><i>Qui</i>${esc(st.who)}</span><span class="chip"><i>Module SAP</i>${esc(st.mod)}</span><span class="chip"><i>Document créé</i>${esc(st.doc)}</span>${FX.on?impHtml(st.s4,true):''}</div><p class="what">${esc(st.what)}</p><div class="grid">`;
+    h+=`<div class="box"><h3>Dans SAP</h3><ul>${st.sap.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="box"><h3>Exemple : la vanne de carburant</h3><p>${esc(st.ex)}</p></div>`;
+    h+=st.acct?`<div class="box w2"><h3>Écriture comptable</h3><div class="entry"><div class="side"><b>Débit</b>${esc(st.acct.d)}</div><div class="amt">${st.acct.a} € →</div><div class="side"><b>Crédit</b>${esc(st.acct.c)}</div></div><p class="small">Une écriture a toujours deux côtés de même montant : le débit et le crédit.</p></div>`:`<div class="box w2"><h3>Écriture comptable</h3><p>${esc(st.noAcct)}</p></div>`;
+    if(FX.on)h+=blocS4();
+    h+=`<div class="box watch"><h3>Ce que surveille le DP</h3><p>${esc(st.watch)}</p></div><div class="box"><h3>Mots à connaître</h3><div class="terms">${st.terms.map((t,j)=>`<button type="button" class="tm" data-j="${j}" aria-expanded="false">${esc(t[0])}</button>`).join('')}</div><p class="def" id="fx-def" hidden></p></div></div>`;
+  }else{
+    h+=`<div class="meta">${FX.on?impHtml(st.s4,true):''}</div><div class="grid">${FX.on?blocS4():`<div class="box w2"><p>Activez la vue « ECC → S/4HANA » pour voir le bloc ajouté.</p></div>`}</div><p class="inch">Dans le site, « Dans SAP », l'exemple, l'écriture comptable et « Ce que surveille le DP » restent ceux de la page O2C actuelle.</p>`;
+  }
+  h+=`</div>`;
+  root.innerHTML=h;
+}
+$('fx').addEventListener('click',e=>{
+  const v=e.target.closest('[data-vue]');if(v){FX.on=v.dataset.vue==='1';fxRender();return}
+  const n=e.target.closest('.nd');if(n){FX.s=+n.dataset.i;fxRender();const f=$('fx').querySelector(`.nd[data-i="${FX.s}"]`);f&&f.focus();return}
+  const b=e.target.closest('[data-nav]');if(b){FX.s=Math.max(0,Math.min(FLUX[FX.f].steps.length-1,FX.s+ +b.dataset.nav));fxRender();return}
+  const t=e.target.closest('.tm');if(t){const st=FLUX[FX.f].steps[FX.s];const open=t.getAttribute('aria-expanded')==='true';$('fx').querySelectorAll('.tm').forEach(x=>x.setAttribute('aria-expanded','false'));const d=$('fx-def');if(open){d.hidden=true}else{t.setAttribute('aria-expanded','true');const term=st.terms[+t.dataset.j];d.innerHTML='<b>'+esc(term[0])+'</b> : '+esc(term[1]);d.hidden=false}}
+});
+$('fx').addEventListener('keydown',e=>{const n=e.target.closest&&e.target.closest('.nd');if(n&&(e.key==='Enter'||e.key===' ')){e.preventDefault();FX.s=+n.dataset.i;fxRender();const f=$('fx').querySelector(`.nd[data-i="${FX.s}"]`);f&&f.focus()}});
+$('fx-pick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#fx-pick button').forEach(x=>x.setAttribute('aria-pressed',x===b));FX.f=b.dataset.f;FX.s=0;fxRender()});
+fxRender();
+
+/* =================== DONNÉES · SCHÉMA 2 =================== */
+const QS=[
+ ["Q1","Le système S/4HANA tourne-t-il sous contrat cloud (RISE with SAP) ?"],
+ ["Q2","L'entrepôt est-il automatisé, à fort volume, ou doit-il tourner même si l'ERP s'arrête ?"],
+ ["Q3","Les processus entrepôt sont-ils simples (pas de vagues, pas de gestion des ressources) ?"]];
+const OPTS=[
+ {k:"A",t:"LE-WM gardé en compatibilité",lim:"31/05/2026 hors contrat cloud (passée) ; fin 2030 sous contrat cloud",eff:"Faible",n:1,cas:"Repousser le projet entrepôt, sous contrat cloud.",
+  ecc:"LE-WM est le module d'entrepôt historique, dans l'ERP.",
+  s4:"LE-WM fait partie des « compatibility packs » (note SAP 2269324). SAP y accorde un droit d'usage limité dans le temps, pas seulement une maintenance limitée. Sous contrat cloud (RISE with SAP, Cloud ERP Private), le droit court jusqu'à fin 2030. Hors contrat cloud, SAP indique l'arrêt d'usage fin mai 2026 pour ces éléments.",
+  qui:"Tout l'entrepôt, plus tard, au moment de la sortie.",
+  dp:"Ce n'est pas une cible, c'est un sursis. Il repousse le projet entrepôt, il ne l'annule pas. Si le programme choisit cette voie, inscrire dès maintenant au plan la migration vers B, C ou D avant fin 2030, avec son budget. Hors RISE, la voie est fermée depuis le 31/05/2026 : vérifier la situation contractuelle avec le compte SAP."},
+ {k:"B",t:"Stock Room Management",lim:"Aucune annoncée (fait partie de S/4HANA)",eff:"Faible à moyen",n:2,cas:"Entrepôt simple : la voie la plus courte.",
+  ecc:"N'existe pas sous ce nom.",
+  s4:"Reprise de LE-WM dans S/4HANA (disponible depuis 1909), avec le même modèle de données et des fonctions en moins (par exemple pas de gestion des tâches et des ressources). Licence incluse dans S/4HANA selon les sources secondaires (à vérifier).",
+  qui:"Peu de changement pour les magasiniers ; l'équipe doit vérifier que les fonctions utilisées existent encore.",
+  dp:"La voie la plus courte pour un entrepôt simple. Faire produire tôt la liste des fonctions LE-WM utilisées et la confronter à la note SAP 2881166 (FAQ Stock Room Management). Chaque fonction absente est un écart à arbitrer."},
+ {k:"C",t:"EWM embarqué",lim:"Suit S/4HANA",eff:"Moyen à fort",n:3,cas:"La cible standard de SAP, sans interface à maintenir.",
+  ecc:"N'existe pas ; EWM existait comme système séparé (SCM EWM).",
+  s4:"EWM tourne dans le système S/4HANA lui-même. Une version « basique » est incluse dans la licence S/4HANA ; les fonctions avancées (gestion de la main-d'œuvre, automatisme, kitting…) demandent une licence en plus (à vérifier sur le contrat).",
+  qui:"Magasiniers et chefs d'équipe (nouveaux processus, nouveaux terminaux), équipe EWM (nouvelle compétence), équipe matériel.",
+  dp:"La cible standard de SAP. Pas d'interface ERP–entrepôt à maintenir. Mais c'est une refonte des processus entrepôt : la traiter comme un projet dans le projet, avec ses ateliers, ses tests de bout en bout, sa formation et sa bascule par entrepôt."},
+ {k:"D",t:"EWM décentralisé",lim:"Suit la version S/4HANA du système EWM ; l'ancien SCM EWM 9.5 s'arrête fin 2027 (à vérifier)",eff:"Fort",n:3,cas:"Entrepôt automatisé, à gros volume, ou qui doit expédier si l'ERP s'arrête.",
+  ecc:"SCM EWM séparé, relié à ECC par les livraisons.",
+  s4:"EWM tourne sur un système S/4HANA à part, relié à l'ERP (ECC ou S/4HANA) par les livraisons. Il peut être migré séparément de l'ERP.",
+  qui:"Comme C, plus l'équipe interfaces et l'équipe d'exploitation (un système de plus à faire tourner).",
+  dp:"Utile pour un entrepôt très automatisé, à gros volume, ou qui doit continuer à expédier si l'ERP s'arrête. Il permet aussi de découpler le calendrier : migrer l'entrepôt avant ou après l'ERP. En échange : un système, des interfaces et une équipe d'exploitation de plus. Si un SCM EWM 9.5 existe déjà, sa fin de maintenance est une deuxième échéance à tenir."}];
+const REP=[null,null,null];
+// règles tirées du dossier (rubriques « Pour le DP ») : à faire relire par l'expert SAP
+function etat(k){
+  const [q1,q2,q3]=REP;const off=[],fit=[];
+  if(k==='A'){if(q1==='non')off.push("Hors contrat cloud, la voie est fermée depuis le 31/05/2026.");if(q1==='oui')fit.push("Possible jusqu'à fin 2030 : un sursis, pas une cible.")}
+  if(k==='B'){if(q3==='non')off.push("Vagues ou gestion des ressources : fonctions absentes de Stock Room Management (liste à vérifier dans la note SAP 2881166).");if(q2==='oui')off.push("Prévue pour un entrepôt simple, pas automatisé ni à fort volume.");if(q3==='oui'&&q2!=='oui')fit.push("Entrepôt simple : la voie la plus courte.")}
+  if(k==='C'){if(REP.some(x=>x))fit.push("Compatible : la cible standard de SAP. Si l'entrepôt doit tourner quand l'ERP s'arrête, préférer D.")}
+  if(k==='D'){if(q2==='non')off.push("Sans automatisme, fort volume ni besoin d'autonomie, un système de plus ne se justifie pas.");if(q2==='oui')fit.push("Son cas d'usage type.")}
+  return {off,fit};
+}
+function s2Render(){
+  $('qs').innerHTML=QS.map((q,i)=>`<li><span class="q"><b>${q[0]}</b>${esc(q[1])}</span><span class="seg" role="group" aria-label="${q[0]}"><button type="button" data-q="${i}" data-r="oui" aria-pressed="${REP[i]==='oui'}">Oui</button><button type="button" data-q="${i}" data-r="non" aria-pressed="${REP[i]==='non'}">Non</button></span></li>`).join('');
+  $('opts').innerHTML=OPTS.map((o,i)=>{const e=etat(o.k);const any=REP.some(x=>x);
+    const st=e.off.length?`Écartée<span>${esc(e.off[0])}</span>`:(e.fit.length?`À étudier<span>${esc(e.fit[0])}</span>`:(any?`Non tranchée<span>Les réponses ne l'écartent pas.</span>`:`Répondez aux questions<span>pour trier les options.</span>`));
+    return `<button type="button" class="opt${o.k==='A'?' a':''}${e.off.length?' off':''}${e.fit.length&&!e.off.length?' fit':''}" data-o="${i}"><span class="ol">Option ${o.k}</span><b>${esc(o.t)}</b><span class="lim"><i>Date limite</i>${esc(o.lim)}</span>${eff(o.eff,o.n)}<span class="cas">${esc(o.cas)}</span><span class="st">${st}</span></button>`}).join('');
+}
+$('s2').addEventListener('click',e=>{
+  const q=e.target.closest('[data-q]');if(q){const i=+q.dataset.q;REP[i]=REP[i]===q.dataset.r?null:q.dataset.r;s2Render();$('s2').querySelector(`[data-q="${i}"][data-r="${q.dataset.r}"]`).focus();return}
+  const o=e.target.closest('[data-o]');if(o)openPop('s2',+o.dataset.o,o);
+});
+$('q-raz').addEventListener('click',()=>{REP.fill(null);s2Render()});
+s2Render();
+// ligne de temps 2025 à 2031 : position en % depuis le 01/01/2025, sur 7 ans
+const pos=(y,m,d)=>((y-2025)+(m-1)/12+(d-1)/365)/7*100;
+const EV=[
+ {d:"31/12/2025",p:pos(2025,12,31),t:"Fin du droit d'usage des compatibility packs, annoncée à l'origine",c:"old",s:"up"},
+ {d:"31/05/2026",p:pos(2026,5,31),t:"Fin effective hors contrat cloud (sauf LE-TRA, CS et PP-PI)",s:"dn"},
+ {d:"31/12/2027",p:pos(2027,12,31),t:"Fin de la maintenance standard d'ECC ; fin annoncée de SCM EWM 9.5 (à vérifier)",s:"up"},
+ {d:"31/12/2030",p:pos(2030,12,31),t:"Fin des compatibility packs sous contrat cloud ; fin de la maintenance étendue d'ECC",s:"dn"}];
+const NOW=pos(2026,11,26);
+(function tl(){
+  let w=`<h3>Ligne de temps · 2025 à 2031</h3><div class="tlw" aria-hidden="true"><div class="axe"></div>`;
+  for(let y=2025;y<=2031;y++)w+=`<span class="yr" style="left:${pos(y,1,1)}%">${y}</span>`;
+  EV.forEach(e=>{w+=`<span class="pt${e.c?' '+e.c:''}" style="left:${e.p}%"></span>`;
+    w+=e.s==='up'?`<span class="lk" style="left:${e.p}%;top:82px;height:18px"></span>`:`<span class="lk" style="left:${e.p}%;top:124px;height:8px"></span>`;
+    w+=`<div class="ev ${e.s}${e.c?' '+e.c:''}" style="left:${Math.min(Math.max(e.p,9),91)}%"><b>${e.d}</b>${esc(e.t)}</div>`});
+  w+=`<span class="now" style="left:${NOW}%"></span><span class="nowl" style="left:${NOW}%">Aujourd'hui</span></div>`;
+  const all=EV.slice(0,2).concat([{d:"26/11/2026",t:"Aujourd'hui",c:"now"}]).concat(EV.slice(2));
+  w+=`<ol class="tll">${all.map(e=>`<li class="${e.c||''}"><b>${e.d}</b><span>${esc(e.t)}</span></li>`).join('')}</ol>`;
+  $('tl').innerHTML=w;
+})();
+
+/* =================== DONNÉES · SCHÉMA 3 =================== */
+const COLS=[["dis","Disparaît"],["rep","Remplacé par"],["obl","Devient obligatoire"]];
+const DOMS=["MM","SD","PP","WM","FI/CO","Données","Technique"];
+const C3=[
+ {c:"dis",n:1,t:"Tables d'agrégats de stock",dom:["MM"],lbl:"MM",eff:"Moyen",e:2,
+  ecc:"Le document article est écrit en deux tables (en-tête MKPF, postes MSEG) ; des tables d'agrégats tiennent les quantités en stock à jour, pour aller vite sur des bases classiques.",
+  s4:"Une seule table, **MATDOC**. Le stock se calcule à la lecture, HANA est assez rapide. Les anciennes tables restent lisibles par des vues de compatibilité.",
+  qui:"Développeurs (programmes spécifiques), équipe reporting, interfaces qui lisent le stock.",
+  dp:"Effort caché dans le code spécifique. Demander le nombre de programmes qui écrivent dans ces tables (rapport ATC). Celui qui lit seulement passe en général ; celui qui écrit doit être repris."},
+ {c:"dis",n:2,t:"Tables d'index et de totaux de la finance",dom:["FI/CO"],lbl:"FI/CO",eff:"Moyen",e:2,
+  ecc:"FI et CO écrivent dans des tables séparées, avec des tables de totaux et d'index pour accélérer les états. Les deux doivent être réconciliés.",
+  s4:"Les écritures vont dans le **Universal Journal** (ACDOCA) ; totaux et index se calculent à la volée.",
+  qui:"Comptables, contrôleurs de gestion, reporting financier, interfaces vers la consolidation.",
+  dp:"Les réconciliations FI / CO disparaissent, ce qui est un gain. Mais la conversion des données financières exige des comptes propres avant la bascule : caler la date sur le calendrier de clôture et prévoir des contrôles de soldes avant / après."},
+ {c:"dis",n:3,t:"Fiches clients et fournisseurs séparées",dom:["Données"],lbl:"Données",eff:"Fort",e:3,pre:1,
+  ecc:"Une fiche client et une fiche fournisseur distinctes, même pour une entreprise qui est les deux.",
+  s4:"Une seule fiche, le **Business Partner**, avec des rôles.",
+  qui:"Équipe données de base, achats, ventes, comptabilité, interfaces.",
+  dp:"Préalable bloquant d'un brownfield. La conversion (**CVI**) se fait dans ECC, avant la conversion du système. Le nettoyage (doublons, adresses, coordonnées bancaires) prend des mois. Chemin critique fréquent."},
+ {c:"dis",n:4,t:"LE-WM",dom:["WM"],lbl:"WM",eff:"Fort",e:3,
+  ecc:"Gestion d'entrepôt dans l'ERP.",
+  s4:"N'est plus que dans les compatibility packs, avec un droit d'usage limité (voir schéma 2).",
+  qui:"Tout l'entrepôt.",
+  dp:"Décision à prendre dès le cadrage. Renvoi au schéma 2.",lien:["Ouvrir le schéma 2 : l'entrepôt","#e-s2"]},
+ {c:"rep",n:5,t:"Gestion du crédit SD → SAP Credit Management",dom:["SD","FI/CO"],lbl:"SD/FI",eff:"Moyen à fort",e:3,
+  ecc:"Limites de crédit et contrôle dans SD (gestion du crédit FI-AR).",
+  s4:"L'ancienne gestion du crédit n'existe plus. Son équivalent est **SAP Credit Management** (FSCM), avec un score, des règles et un dossier de crédit par Business Partner.",
+  qui:"Credit managers, service client, comptabilité clients.",
+  dp:"Traiter comme un chantier fonctionnel avec ses ateliers et sa reprise de données (limites, historiques). Un blocage de crédit mal paramétré arrête les expéditions dès le premier jour."},
+ {c:"rep",n:6,t:"Ristournes SD → contrats de conditions (Settlement Management)",dom:["SD"],lbl:"SD",eff:"Moyen",e:2,
+  ecc:"Accords de ristourne dans SD.",
+  s4:"Contrats de conditions, réglés par le **Settlement Management**. C'est la cible obligatoire.",
+  qui:"Administration des ventes, contrôle de gestion, achats (ristournes fournisseurs).",
+  dp:"Solder les accords en cours avant la bascule ; recréer les nouveaux. Caler la date de conversion sur le calendrier des ristournes."},
+ {c:"rep",n:7,t:"ATP → ATP avancé (aATP)",dom:["SD","PP"],lbl:"SD/PP",eff:"Moyen",e:2,
+  ecc:"Contrôle de disponibilité classique, allocation de produits limitée.",
+  s4:"**aATP** : confirmation par lots de commandes, règles d'allocation, priorités par client. Le périmètre exact remplacé dépend de la version (à vérifier sur le catalogue des simplification items).",
+  qui:"Service client, planificateurs, direction commerciale (qui est servi en premier).",
+  dp:"Les règles de priorité sont une décision métier, pas un paramétrage. Les faire valider en comité. Suivre l'OTD avant et après."},
+ {c:"rep",n:8,t:"MRP classique → MRP Live",dom:["PP","MM"],lbl:"PP/MM",eff:"Faible",e:1,
+  ecc:"MRP en lot, la nuit.",
+  s4:"**MRP Live**, en minutes. L'ancien MRP reste disponible pour certains cas.",
+  qui:"Planificateurs.",
+  dp:"Gain rapide à montrer au métier. Tester les résultats sur un jeu de données identique."},
+ {c:"rep",n:9,t:"Messages NAST → output management",dom:["SD","MM"],lbl:"SD/MM",eff:"Moyen",e:2,
+  ecc:"Éditions (commandes, factures, bons de livraison) par le système de messages NAST.",
+  s4:"Nouvel **Output management** (règles BRF+) proposé ; l'ancien système reste possible selon les cas (à vérifier pour la version cible).",
+  qui:"Équipe éditions, utilisateurs qui impriment ou envoient des documents.",
+  dp:"Compter les formulaires au cadrage. Chaque formulaire est un objet à retester, parfois à refaire."},
+ {c:"rep",n:10,t:"SAP GUI → Fiori",dom:["*"],lbl:"Tous",eff:"Moyen",e:2,
+  ecc:"Écrans SAP GUI.",
+  s4:"**Fiori** devient l'interface cible ; SAP GUI reste utilisable pour beaucoup de transactions.",
+  qui:"Tous les utilisateurs, la formation.",
+  dp:"Décider tôt quels rôles passent à Fiori au démarrage. Sinon la formation se fait deux fois."},
+ {c:"obl",n:11,t:"Base HANA",dom:["Technique"],lbl:"Technique",eff:"Moyen",e:2,pre:1,
+  ecc:"Toute base (Oracle, DB2, SQL Server…).",
+  s4:"**HANA** uniquement.",
+  qui:"Équipe Basis, hébergeur.",
+  dp:"Dimensionnement (**Sizing**) et migration de base (**DMO**) sur le chemin critique technique. La migration de base se fait pendant la conversion ; le préalable, c'est le dimensionnement et l'archivage. Le volume de données fixe la fenêtre d'arrêt : archiver avant."},
+ {c:"obl",n:12,t:"Universal Journal et Material Ledger",dom:["FI/CO","MM"],lbl:"FI/CO/MM",eff:"Moyen",e:2,pre:1,
+  ecc:"La valorisation du stock en plusieurs devises (Material Ledger) est optionnelle.",
+  s4:"Le **Material Ledger** est actif pour la valorisation du stock ; toutes les écritures vont dans le **Universal Journal**.",
+  qui:"Contrôle de gestion, comptabilité, logistique (valorisation des mouvements).",
+  dp:"Préalable : dans ECC, rapprocher les comptes et passer les contrôles de cohérence de la finance avant la conversion ; une période mal clôturée bloque la migration des données financières. Ensuite, la logistique change ses chiffres en finance sans changer ses gestes. Prévoir des tests de valorisation sur des mouvements réels (réception, sortie, inventaire) et la signature du contrôle de gestion."},
+ {c:"obl",n:13,t:"Business Partner",dom:["Données"],lbl:"Données",eff:"Fort",e:3,pre:1,vu:3,
+  ecc:"Une fiche client et une fiche fournisseur distinctes, même pour une entreprise qui est les deux.",
+  s4:"Une seule fiche, le **Business Partner**, avec des rôles. Sans Business Partner pour chaque client et chaque fournisseur, la conversion ne démarre pas.",
+  qui:"Équipe données de base, achats, ventes, comptabilité, interfaces.",
+  dp:"Voir la carte « Fiches clients et fournisseurs séparées » : conversion (**CVI**) dans ECC, avant la conversion du système ; nettoyage de plusieurs mois."},
+ {c:"obl",n:14,t:"Numéro d'article long (jusqu'à 40 caractères)",dom:["MM"],lbl:"MM/Interfaces",eff:"Faible à moyen",e:2,
+  ecc:"Numéro d'article jusqu'à 18 caractères.",
+  s4:"Le champ peut aller jusqu'à 40 caractères ; l'extension s'active ou non (à vérifier selon la version et le choix du programme).",
+  qui:"Interfaces, éditions, partenaires externes.",
+  dp:"Décision d'architecture à prendre une fois. Si elle est activée, chaque interface qui transporte un numéro d'article est à retester."}];
+let S3={dom:null,pre:false,v:'A',vis:[],face:'ecc'};
+$('s3-dom').innerHTML=[`<button type="button" class="chipb" data-d="" aria-pressed="true">Tous</button>`].concat(DOMS.map(d=>`<button type="button" class="chipb" data-d="${d}" aria-pressed="false">${d}</button>`)).join('');
+function s3Render(){
+  const keep=c=>(!S3.dom||c.dom.includes(S3.dom)||c.dom.includes('*'))&&(!S3.pre||c.pre);
+  S3.vis=C3.filter(keep);
+  $('s3-nb').textContent=S3.vis.length+' carte'+(S3.vis.length>1?'s':'')+' sur '+C3.length;
+  $('s3-cols').innerHTML=COLS.map(([k,l])=>{const cs=S3.vis.filter(c=>c.c===k);
+    return `<div class="col3 ${k}"><div class="colh"><h3>${l}</h3><span>${cs.length}</span></div>${cs.length?cs.map(c=>`<button type="button" class="c3" data-c="${c.n}"><b>${esc(c.t)}</b><span class="tags"><span class="tag">${esc(c.lbl)}</span>${eff(c.eff,c.e)}${c.pre?'<span class="prea">Préalable à la conversion</span>':''}</span>${c.vu?`<span class="vu">Voir aussi « Fiches clients et fournisseurs séparées »</span>`:''}</button>`).join(''):'<p class="vide">Aucune carte pour ce filtre.</p>'}</div>`}).join('');
+}
+$('s3-dom').addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(!b)return;S3.dom=b.dataset.d||null;$('s3-dom').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));s3Render()});
+$('s3-pre').addEventListener('change',e=>{S3.pre=e.target.checked;s3Render()});
+$('s3-cols').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;const i=S3.vis.findIndex(c=>c.n===+b.dataset.c);openPop('s3',i,b)});
+$('s3-var').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S3.v=b.dataset.v;document.querySelectorAll('#s3-var button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+s3Render();
+
+/* =================== POPUP COMMUNE =================== */
+const dlg=$('pop');let P={k:null,i:0,from:null};
+const rub=(cls,t,body)=>`<div class="rub ${cls}"><h3>${t}</h3><p>${body}</p></div>`;
+function popRender(){
+  let list,it,eb,title,tags='',body='',lbl;
+  if(P.k==='s0'){list=S0ALL;it=list[P.i];
+    eb=it.band?'Bandeau de pied':'Rangée '+(P.i+1)+' sur 6';title=it.titre||it.dim;lbl=x=>x.dim;
+    tags=`<span class="tag"><i>Qui le voit</i>${it.qui.map(esc).join(' · ')}</span>`;
+    if(!it.band)tags+=`<span class="tag"><i>ECC</i>${esc(it.ecc)}</span><span class="tag"><i>S/4HANA</i>${esc(it.s4)}</span>`;
+    body=rub('ecc','En ECC',md(it.enEcc))+rub('s4','En S/4HANA',md(it.enS4))+rub('','Ce que ça change concrètement',md(it.concret));
+    if(it.band)body+=`<div class="pop-l">${CHEMINS.map(c=>`<a class="b" href="${c[2]}">${c[0]} · ${c[1]}</a>`).join('')}</div>`;
+    body+=fr(it.ex)+rub('dp','Pour le DP',md(it.dp));
+  }else if(P.k==='s2'){list=OPTS;it=list[P.i];
+    eb='Option '+it.k+' sur D';title=it.t;lbl=x=>'Option '+x.k;
+    tags=`<span class="tag"><i>Date limite</i>${esc(it.lim)}</span>${eff(it.eff,it.n)}`;
+    const e=etat(it.k);if(e.off.length)tags+=`<span class="tag"><i>Vos réponses</i>Écartée</span>`;
+    body=`<div class="duo">${rub('ecc','En ECC',md(it.ecc))}${rub('s4','En S/4HANA',md(it.s4))}</div>`+rub('','Qui est touché',md(it.qui))+rub('dp','Pour le DP',md(it.dp));
+  }else{list=S3.vis;it=list[P.i];
+    const col=COLS.find(c=>c[0]===it.c)[1];eb=col+' · carte '+it.n;title=it.t;lbl=x=>x.t;
+    tags=`<span class="tag">${esc(it.lbl)}</span>${eff(it.eff,it.e)}${it.pre?'<span class="prea">Préalable à la conversion</span>':''}`;
+    if(S3.v==='A'){
+      body=`<div class="ab-sw"><span class="seg" role="group" aria-label="Avant ou après"><button type="button" data-face="ecc" aria-pressed="${S3.face==='ecc'}">En ECC</button><button type="button" data-face="s4" aria-pressed="${S3.face==='s4'}">En S/4HANA</button></span></div>`+(S3.face==='ecc'?rub('ecc','En ECC',md(it.ecc)):rub('s4','En S/4HANA',md(it.s4)));
+    }else body=`<div class="duo">${rub('ecc','En ECC',md(it.ecc))}${rub('s4','En S/4HANA',md(it.s4))}</div>`;
+    body+=rub('','Qui est touché',md(it.qui))+rub('dp','Pour le DP',md(it.dp)+(it.lien?` <a href="${it.lien[1]}" class="ln-pop" style="color:var(--accent);font-weight:600">${esc(it.lien[0])} →</a>`:''));
+  }
+  $('pop-eb').textContent=eb;$('pop-t').textContent=title;$('pop-tags').innerHTML=tags;$('pop-b').innerHTML=body;
+  const p=$('pop-p'),n=$('pop-n');
+  p.disabled=P.i===0;n.disabled=P.i===list.length-1;
+  p.textContent='← '+(P.i>0?lbl(list[P.i-1]):'Précédent');
+  n.textContent=(P.i<list.length-1?lbl(list[P.i+1]):'Suivant')+' →';
+  $('pop-c').textContent=(P.i+1)+' sur '+list.length;
+}
+function openPop(k,i,from){P={k,i,from};S3.face='ecc';popRender();if(!dlg.open)dlg.showModal();$('pop-x').focus()}
+$('pop-p').onclick=()=>{if(P.i>0){P.i--;S3.face='ecc';popRender()}};
+$('pop-n').onclick=()=>{P.i++;S3.face='ecc';popRender()};
+$('pop-x').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();
+  const f=e.target.closest('[data-face]');if(f){S3.face=f.dataset.face;popRender();$('pop-b').querySelector(`[data-face="${S3.face}"]`).focus()}
+  if(e.target.closest('a[href^="#"]'))dlg.close()});
+dlg.addEventListener('close',()=>{if(P.from&&document.contains(P.from))P.from.focus()});
+})();
+</script>
+</body>
+</html>
