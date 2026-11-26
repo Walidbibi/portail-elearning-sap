@@ -1192,6 +1192,259 @@ Journal
 - Q13 · Valeurs à plus de 1 px de l'échelle (US-039) : titre de frise 30 px, titre de popup 22 px, rayons 8 px (boutons, étapes) et 12 px (couloirs, chronologie), 16 px, 10,5 px. La règle « pas de changement au-delà de 1 px » les exclut. Option recommandée : les aligner sur la maquette d'identité validée (32 px, 24 px, rayons 6 px et 10 px), soit 2 px d'écart visible, noté au journal. Autre option : les laisser en dur.
 - Q14 · Deux écarts de la maquette, hors du périmètre demandé pour US-038. La croix de fermeture de la popup mesure 36 px (40 px dans la maquette et la règle de US-021). La couleur de « Parade » varie (verte dans le roll-out, rouge ailleurs), point ouvert depuis le lot 2. Option recommandée : passer la croix à 40 px dans US-038 (accessibilité, effort faible) ; laisser « Parade » telle quelle. Autre option : les traiter plus tard.
 
+## Lot 4 · Se préparer : questions de comité
+
+Sert B-003 (« Mes questions de comité, prêtes en trente secondes », source persona-pm, importance vitale). Maquette : [`maquettes/lot4-comite-entrainement.html`](maquettes/lot4-comite-entrainement.html), écrans 1 (accueil, option A), 2 (popup d'étape) et 3 (Préparer un comité). L'outil « S'entraîner » (écran 4, liens « Me tester ») relève de B-004 : il n'est pas développé dans ce lot, seule sa place est prévue.
+
+Les stories suivent les recommandations de la maquette pour Q1 à Q6. Chaque choix est marqué « à valider par Walid » dans la story concernée et repris dans « Questions du lot 4 ».
+
+Ordre proposé : US-040 (format et Explore), puis US-043 (page), qui peut se livrer avec la seule banque Explore ; US-041 et US-042 en parallèle ; puis US-044, US-045, US-046 ; l'anglais (US-047, US-048) en dernier.
+
+### Bloc A · Contenu
+
+### US-040 · Banques de questions de comité : format, contrôle et phase Explore
+- Statut : À affiner
+- Priorité : haute (proposée)
+- Taille : M
+- Maquette nécessaire : non (données)
+- Dépend de : aucune
+- Sert : B-003
+
+En tant que chef de projet qui prépare un comité, je veux une banque de questions fiable pour la phase Explore, avec la preuve à demander et le signal d'alerte, afin de vérifier qu'un avancement annoncé (« fit-to-standard terminé à 90 % ») est réel.
+
+Explore sert de banque pilote : elle fixe le format, que US-041 et US-042 reprennent.
+
+Critères d'acceptation
+- [ ] Un fichier de données unique contient les banques de questions (nom proposé : `comite.json` à la racine, à confirmer par la session principale), un bloc par banque : `discover`, `prepare`, `explore`, `realize`, `deploy`, `run`, `rollout`. Seule `explore` est remplie dans cette story.
+- [ ] Chaque banque porte son nom affiché (« Explore ») et sa liste de questions.
+- [ ] Chaque question a : `id` (unique et stable, il sert à la mémoire du navigateur), `question`, `preuve` (preuve à demander), `alerte` (signal d'alerte), `essentielle` (vrai ou faux). Champs facultatifs : `termes` (termes de `glossaire.json`), `sources` (clés de `documents.json`).
+- [ ] Champ facultatif `scenario` (par exemple « brownfield » pour une question propre à la conversion), sous réserve de Q4 (à valider par Walid).
+- [ ] Chaque banque a exactement 5 questions essentielles. Leur ordre dans le fichier est leur ordre d'affichage.
+- [ ] La banque Explore compte de 12 à 20 questions.
+- [ ] Longueurs, pour une lecture en 5 minutes sur téléphone : question de 120 caractères au plus, preuve et alerte de 160 caractères au plus chacune.
+- [ ] Le contenu est rédigé par l'agent `expert-sap` dans un dossier `contenus/comite-explore.md`, puis passé en JSON par la session principale.
+- [ ] Les 5 essentielles sont proposées par l'expert SAP et relues par Walid (Q3, à valider par Walid). La relecture est notée au journal de la story.
+- [ ] Aucune information propre à un client : ni nom, ni système, ni interface, ni site réel. Un exemple cite au plus une entreprise fictive du portail, marquée « fictif ».
+- [ ] Aucun chiffre n'est présenté comme une norme. Un fait SAP daté ou nommé est vérifié, avec sa source et sa date de lecture dans le dossier de l'expert.
+- [ ] Chaque terme technique employé figure dans le glossaire, ou dans la liste des termes à ajouter (FR et EN) en fin de dossier.
+- [ ] `node outils/verifier.mjs` contrôle le fichier et signale le fichier et la ligne en cause : JSON bien formé, champs obligatoires non vides, `id` uniques, exactement 5 essentielles par banque remplie, au moins 10 questions par banque remplie, longueurs maximales, termes présents dans `glossaire.json`, sources présentes dans `documents.json`. Une banque vide est acceptée.
+- [ ] `CLAUDE.md` décrit le fichier, ses champs et la marche à suivre pour ajouter une question.
+
+Journal
+- 2026-11-26 · po · story créée depuis B-003 et la maquette du lot 4
+
+### US-041 · Banques de questions : Discover, Prepare, Realize
+- Statut : À affiner
+- Priorité : haute (proposée)
+- Taille : M
+- Maquette nécessaire : non (données)
+- Dépend de : US-040
+- Sert : B-003
+
+En tant que chef de projet dont le programme est en début de cycle ou en construction, je veux les questions de comité de Discover, Prepare et Realize afin de préparer un comité quelle que soit la phase.
+
+Critères d'acceptation
+- [ ] Les banques `discover`, `prepare` et `realize` sont remplies au format de US-040, de 12 à 20 questions chacune, 5 essentielles chacune.
+- [ ] Realize couvre au moins : construction et développements, tests (dont SIT et UAT), données (migrations à blanc), préparation de la bascule.
+- [ ] Questions propres à un scénario marquées par le champ `scenario`, selon la réponse de Walid à Q4 (à valider par Walid). Sans réponse, aucune question n'est marquée.
+- [ ] Contenu rédigé par l'agent `expert-sap` (`contenus/comite-discover-prepare-realize.md`), 5 essentielles de chaque phase relues par Walid (Q3), relecture notée au journal.
+- [ ] Mêmes règles qu'US-040 : aucune information client, aucun chiffre présenté comme une norme, faits datés vérifiés avec source, termes au glossaire ou listés à ajouter.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée depuis B-003 et la maquette du lot 4
+
+### US-042 · Banques de questions : Deploy, Run et roll-out
+- Statut : À affiner
+- Priorité : haute (proposée)
+- Taille : M
+- Maquette nécessaire : non (données)
+- Dépend de : US-040
+- Sert : B-003
+
+En tant que chef de projet qui approche du go-live ou pilote un déploiement pays, je veux les questions de comité de Deploy, de Run et du roll-out afin de challenger la bascule, l'hypercare et le déploiement d'un core model.
+
+Le roll-out a sa propre banque : ses phases (Diagnose, Adjust, Deploy) ne sont pas celles de SAP Activate.
+
+Critères d'acceptation
+- [ ] Les banques `deploy`, `run` et `rollout` sont remplies au format de US-040, de 12 à 20 questions chacune, 5 essentielles chacune.
+- [ ] Deploy couvre au moins : répétitions de bascule, critères de go / no-go, plan de retour arrière, formation des utilisateurs.
+- [ ] Run couvre au moins : critères de sortie d'hypercare, transfert à l'équipe de run, suivi des incidents.
+- [ ] Rollout couvre les trois phases Diagnose, Adjust et Deploy : core model figé, écarts locaux justifiés, autorité de design, bascule du pays.
+- [ ] Questions propres à un scénario marquées par le champ `scenario`, selon Q4 (à valider par Walid).
+- [ ] Contenu rédigé par l'agent `expert-sap` (`contenus/comite-deploy-run-rollout.md`), 5 essentielles de chaque banque relues par Walid (Q3), relecture notée au journal.
+- [ ] Mêmes règles qu'US-040 : aucune information client, aucun chiffre présenté comme une norme (aucun nombre « standard » de répétitions ni de semaines d'hypercare), faits datés vérifiés avec source, termes au glossaire ou listés à ajouter.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée depuis B-003 et la maquette du lot 4
+
+### Bloc B · Écrans
+
+### US-043 · Page « Préparer un comité »
+- Statut : Maquette prête
+- Priorité : haute (proposée)
+- Taille : L
+- Maquette nécessaire : oui · Maquette : maquettes/lot4-comite-entrainement.html (écran 3)
+- Dépend de : US-040 (la page peut se livrer avec la seule banque Explore)
+- Sert : B-003
+
+En tant que chef de projet qui révise le soir sur téléphone, je veux choisir la phase de mon projet et lire d'un coup d'œil les questions à poser, la preuve à demander et le signal d'alerte afin de relire l'essentiel en cinq minutes avant d'entrer en salle.
+
+Critères d'acceptation
+- [ ] Une page `comite.html` existe, avec l'en-tête commun (logotype, fil d'Ariane « Se préparer / Préparer un comité », FR / EN) et le glossaire.
+- [ ] En haut : surtitre « Se préparer », titre « Préparer un comité », phrase d'introduction de la maquette.
+- [ ] Une rangée de pastilles de phase : Discover, Prepare, Explore, Realize, Deploy, Run, puis Roll-out séparé par un filet sur bureau. N'apparaissent que les banques remplies. La pastille active est annoncée aux lecteurs d'écran (`aria-pressed`).
+- [ ] `comite.html?phase=explore` ouvre Explore. Changer de phase met à jour l'adresse sans recharger la page. Sans paramètre, ou avec une phase inconnue : la dernière phase consultée, sinon la première banque remplie.
+- [ ] La dernière phase consultée est retenue dans le navigateur (stockage local, rien n'est envoyé). Elle sert à la carte de l'accueil (US-045).
+- [ ] Titre de liste « Explore · les 5 essentielles » et compteur « 5 sur 18 affichées », mis à jour à chaque ajout.
+- [ ] Chaque question : numéro, question en gras, « Preuve à demander » (filet et libellé vert `--c5`) et « Signal d'alerte » (filet et libellé rouge `--risk`). Sur bureau, preuve et alerte côte à côte. Sur téléphone, l'une sous l'autre, libellés courts « Preuve » et « Alerte ».
+- [ ] Les 5 essentielles s'affichent d'abord, toujours les mêmes, dans l'ordre du fichier.
+- [ ] « 5 autres questions » tire 5 questions au hasard parmi celles pas encore affichées et les ajoute sous les précédentes (Q2, à valider par Walid). Un séparateur « 5 autres, tirées au hasard » les précède, leurs cartes sont en pointillés, la numérotation continue. Le focus clavier passe sur la première question ajoutée.
+- [ ] Moins de 5 questions restantes : le bouton les ajoute toutes. Plus aucune : le bouton disparaît.
+- [ ] « Tout voir (18) » affiche toutes les questions de la phase, essentielles d'abord, puis les autres dans l'ordre du fichier. Les deux boutons disparaissent ensuite.
+- [ ] Changer de phase repart des 5 essentielles de la nouvelle phase.
+- [ ] Si le fichier des questions ne se charge pas, la page affiche un message d'erreur au lieu d'une liste vide.
+- [ ] Tous les textes d'interface sont dans `shared/libelles/fr.json` ; les questions viennent du fichier de US-040.
+- [ ] Couleurs, tailles et rayons uniquement depuis `shared/theme.css`. Boutons d'outil en sarcelle (`--accent`). Pas d'ambre.
+- [ ] Libellés « Preuve à demander » et « Signal d'alerte » à 4,5:1 au moins sur leur fond, en clair et en sombre ; ratios notés au journal.
+- [ ] Cibles d'au moins 40 px (pastilles), 44 px pour les boutons.
+- [ ] Vérifié à 375 px et à 1440 px, en clair et en sombre : aucun débordement horizontal.
+- [ ] La page est ajoutée aux captures de référence (`outils/captures/`). `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée depuis la maquette du lot 4 (écran 3) ; Q2 à valider par Walid
+
+### US-044 · Page comité : bloc « Pour aller plus loin »
+- Statut : Maquette prête
+- Priorité : moyenne (proposée)
+- Taille : M
+- Maquette nécessaire : oui · Maquette : maquettes/lot4-comite-entrainement.html (écran 3, colonne de droite)
+- Dépend de : US-043
+- Sert : B-003
+
+En tant que chef de projet qui a lu ses questions, je veux retrouver l'étape du scénario, les termes et les supports liés à la phase afin d'approfondir un point qui m'inquiète.
+
+Critères d'acceptation
+- [ ] Sur bureau, un bloc « Pour aller plus loin » de 300 px à droite des questions. Sur téléphone, il passe sous les boutons « 5 autres questions » et « Tout voir ».
+- [ ] Lien « Voir Explore dans le scénario greenfield » : il ouvre le scénario sur la première étape de la phase. Pour Roll-out, le scénario roll-out. Si le gabarit des frises n'ouvre pas encore une étape par l'adresse, la story ajoute ce paramètre (par exemple `?etape=`) sans changer le reste des frises. Scénario visé pour les phases SAP Activate : greenfield, sous réserve de Q4 et Q9 (à valider par Walid).
+- [ ] « Termes de cette phase » : les termes cités par les questions de la phase (champ `termes`), sans doublon. Un clic ouvre le glossaire sur ce terme.
+- [ ] « Sources » : les supports cités (champ `sources`), titres lus dans `documents.json`, liens par `SAP_HREF` (lecteur pour un PDF).
+- [ ] Une rubrique sans contenu ne s'affiche pas.
+- [ ] Le lien « Me tester sur Explore » n'apparaît pas : il viendra avec B-004. Sa place est prévue sous le lien vers le scénario.
+- [ ] Textes d'interface dans `fr.json`. Cibles de 44 px. Aucun débordement à 375 px. Les quatre scénarios restent identiques à leurs captures de référence quand on les ouvre sans paramètre.
+- [ ] `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée depuis la maquette du lot 4 (écran 3) ; Q4 et Q9 à valider par Walid
+
+### US-045 · Accueil : section « Se préparer » et carte « Préparer un comité »
+- Statut : Maquette prête
+- Priorité : haute (proposée)
+- Taille : M
+- Maquette nécessaire : oui · Maquette : maquettes/lot4-comite-entrainement.html (écran 1, option A)
+- Dépend de : US-043
+- Sert : B-003
+
+En tant que chef de projet qui a un comité demain, je veux trouver l'outil de préparation dès l'accueil, sans défiler, afin de reprendre là où j'en étais en un geste.
+
+Critères d'acceptation
+- [ ] Une section « Se préparer » est placée sous le bandeau, avant le parcours conseillé (Q1, option A, à valider par Walid). Sous-titre « Avant un comité, ou entre deux réunions. »
+- [ ] Sur bureau : une grille de deux colonnes. La carte « Préparer un comité » occupe la première. La carte « S'entraîner » (B-004) n'est pas affichée ; la grille l'accueillera sans autre changement de mise en page.
+- [ ] La carte montre : icône, étiquette « Outil », titre, description de la maquette, et une ligne d'état. La ligne d'état indique « Dernière phase consultée : Explore » si le navigateur l'a retenue, et toujours « N phases · M questions », calculé depuis le fichier des questions.
+- [ ] Étiquette « Outil » : nouveau type `outil` dans le manifeste, en sarcelle, sans nouvelle couleur (Q5, à valider par Walid). Si Walid refuse, l'étiquette est un simple libellé de `fr.json` et le manifeste ne change pas.
+- [ ] Sur téléphone : une ligne de 64 px (icône, titre, « Reprendre : Explore » ou une description courte, flèche). À 375 × 667, la ligne est visible sans défiler.
+- [ ] Un clic ouvre `comite.html`, sur la dernière phase consultée s'il y en a une.
+- [ ] Pastille « Nouveau » à côté du titre de section, comme dans la maquette ; durée d'affichage selon Q8 (à valider par Walid).
+- [ ] Le texte du bandeau ne change pas dans cette story : la phrase de la maquette annonce aussi l'entraînement, qui n'existe pas encore (Q7, à valider par Walid).
+- [ ] Textes dans `fr.json`. Couleurs depuis `theme.css`, pas d'ambre. Cibles d'au moins 40 px. Aucun débordement à 375 px, en clair et en sombre.
+- [ ] Captures de référence de l'accueil refaites (FR). `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée depuis la maquette du lot 4 (écran 1, option A) ; Q1, Q5, Q7 et Q8 à valider par Walid
+
+### US-046 · Popups des scénarios : lien « Questions de comité »
+- Statut : Maquette prête
+- Priorité : moyenne (proposée)
+- Taille : S
+- Maquette nécessaire : oui · Maquette : maquettes/lot4-comite-entrainement.html (écran 2, popup d'étape)
+- Dépend de : US-043
+- Sert : B-003
+
+En tant que chef de projet qui lit une étape d'un scénario, je veux ouvrir en un clic les questions de comité de cette phase afin de passer de la compréhension au pilotage.
+
+Critères d'acceptation
+- [ ] En bas de chaque popup d'étape, au-dessus de Précédent / Suivant : une bande « Se préparer · phase Explore » (fond `--soft`) avec un bouton « Questions de comité » (contour sarcelle).
+- [ ] Le bouton ouvre `comite.html?phase=<banque>` : la phase de l'étape. Une gate ouvre la phase qu'elle clôt. Toute étape du roll-out ouvre la banque `rollout`.
+- [ ] Brownfield et bluefield ouvrent les banques SAP Activate, sous réserve de Q4 (à valider par Walid).
+- [ ] L'étape « En continu » (`transverse`) n'a pas de bande. Une phase sans banque remplie n'a pas de bande.
+- [ ] La correspondance entre phase de scénario et banque est déclarée dans les données des scénarios, pas écrite en dur dans `shared/frise.js`. `node outils/verifier.mjs` vérifie qu'elle renvoie à une banque existante.
+- [ ] Le bouton « Me tester sur Explore » n'apparaît pas : il viendra avec B-004.
+- [ ] Clavier : le bouton est atteint par Tab ; Échap ferme toujours la popup.
+- [ ] Bouton de 44 px. Aucun débordement de la popup à 375 px.
+- [ ] Vérifié sur les quatre scénarios, en clair et en sombre. Captures de référence des popups refaites ; aperçus des cartes inchangés (popup fermée).
+- [ ] Textes dans `fr.json`. `node outils/verifier.mjs` passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée depuis la maquette du lot 4 (écran 2) ; Q4 à valider par Walid
+
+### Bloc C · Anglais (Q6 : français d'abord, à valider par Walid)
+
+### US-047 · Préparer un comité : textes d'interface en anglais
+- Statut : Maquette prête
+- Priorité : basse (proposée)
+- Taille : S
+- Maquette nécessaire : oui · Maquette : maquettes/lot4-comite-entrainement.html (écrans 1 à 3, transposés selon la maquette du lot 2)
+- Dépend de : US-043, US-044, US-045, US-046
+- Sert : B-003, B-001
+
+En tant que visiteur anglophone, je veux la page comité, la carte de l'accueil et la bande des popups en anglais afin d'utiliser l'outil dans ma langue.
+
+Critères d'acceptation
+- [ ] Tous les textes d'interface ajoutés au lot 4 existent dans `shared/libelles/en.json` (titre proposé : « Prepare a steering committee », section « Get ready » ; libellés exacts relus par Walid).
+- [ ] Les noms de phase restent en anglais dans les deux langues (Discover à Run, Roll-out).
+- [ ] Tant qu'une banque n'est pas traduite, ses questions s'affichent en français, avec l'étiquette « In French », comme pour un document.
+- [ ] Vérifié à 375 px et à 1440 px : aucun débordement (les libellés anglais sont parfois plus longs). Captures de référence anglaises refaites.
+- [ ] `node outils/verifier.mjs` vérifie l'alignement de `en.json` sur `fr.json` et passe sans erreur.
+
+Journal
+- 2026-11-26 · po · story créée (Q6 : anglais dans une story séparée, à valider par Walid)
+
+### US-048 · Banques de questions de comité en anglais
+- Statut : À affiner
+- Priorité : basse (proposée)
+- Taille : M
+- Maquette nécessaire : non (données)
+- Dépend de : US-040, US-041, US-042, US-047
+- Sert : B-003, B-001
+
+En tant que visiteur anglophone, je veux les questions, preuves et signaux d'alerte en anglais afin de préparer un comité dans ma langue.
+
+Critères d'acceptation
+- [ ] Un fichier anglais de même structure que le français (nom proposé : `comite.en.json`) contient toutes les banques remplies, avec les mêmes `id`.
+- [ ] Traduction fournie par l'agent `expert-sap` (règle des deux langues), avec le vocabulaire de `glossaire.en.json` (par exemple « Mitigation », « cutover »).
+- [ ] Une question absente en anglais s'affiche en français ; l'étiquette « In French » disparaît pour une banque entièrement traduite.
+- [ ] Mêmes longueurs maximales qu'en français.
+- [ ] `node outils/verifier.mjs` vérifie que les deux fichiers ont les mêmes banques, les mêmes `id` et les mêmes questions essentielles, et passe sans erreur.
+- [ ] Walid relit les 5 essentielles d'au moins une banque (Explore) ; relecture notée au journal.
+
+Journal
+- 2026-11-26 · po · story créée (Q6 : anglais dans une story séparée, à valider par Walid)
+
+### Questions du lot 4 (à trancher par Walid)
+
+Q1 à Q6 viennent de la maquette ; les stories suivent la recommandation de l'UX/UI. Q7 à Q9 sont des questions du PO.
+
+- Q1 · Accueil : section « Se préparer » sous le bandeau, avant le parcours conseillé (option A), ou trois boutons dans le bandeau (B) ? Recommandé : A. Écrit ainsi dans US-045.
+- Q2 · « 5 autres questions » ajoute sous les précédentes, ou remplace ? Recommandé : ajouter. Écrit ainsi dans US-043.
+- Q3 · Les 5 essentielles de chaque phase : proposées par l'agent `expert-sap`, relues par vous ? Recommandé : oui. Écrit ainsi dans US-040 à US-042.
+- Q4 · Banques : phases SAP Activate (Discover à Run) plus roll-out. Pour brownfield et bluefield, deux options : (a) les banques SAP Activate, avec quelques questions marquées « brownfield » ou « bluefield » (recommandé par l'UX/UI, déjà prévu par le champ `scenario`) ; (b) des banques propres, qui demanderaient deux stories de contenu de plus. Concerne aussi le scénario ouvert par « Voir dans le scénario » (US-044) et la bande des popups (US-046).
+- Q5 · Nouveau type « Outil » dans le manifeste, en sarcelle, sans nouvelle couleur ? Recommandé : oui. Écrit ainsi dans US-045, avec une solution de repli.
+- Q6 · Français d'abord, anglais ensuite (US-047, US-048) ? Recommandé : oui.
+- Q7 · Bandeau de l'accueil. La maquette ajoute « Et maintenant : vos questions de comité et un entraînement. » Option recommandée : ne pas toucher au bandeau avant que « S'entraîner » existe (B-004). Autre option : une phrase limitée au comité dès US-045.
+- Q8 · Pastille « Nouveau » sur la section « Se préparer » : combien de temps ? Option recommandée : jusqu'à la publication suivante qui ne touche pas ce lot, retrait sur votre demande. Autre option : pas de pastille.
+- Q9 · « Voir Explore dans le scénario » (US-044) : vers quel scénario pour les phases SAP Activate ? Option recommandée : greenfield (comme la maquette), le plus complet. Autre option : un lien par scénario (greenfield, brownfield, bluefield).
+
 ## Journal du backlog
 
 - 2026-11-24 · po · 18 stories créées (US-001 à US-018) depuis la demande de Walid « version anglaise du portail ». Lot 1 (US-001 à US-008) sans maquette ; lot 2 avec maquette pour US-009, US-010, US-012, US-013. Statut « À affiner » en attente des questions Q1 à Q8 et de l'inscription du besoin B-001 dans `besoins.md`. Suite : Walid répond aux questions et fixe les priorités ; le lot 1 peut démarrer par US-001 dès l'accord de Walid (pas de maquette).
@@ -1244,3 +1497,6 @@ Journal
 - 2026-11-24 · Walid · publication accordée (« Oui, publie ») : corrections du test du lot 3 (scénarios de mise en œuvre, Jalon sur téléphone, fictif, détails) et US-038, US-039.
 - 2026-11-24 · Walid · remarques directes : bouton « Chercher un terme » retiré du bandeau (le glossaire est déjà ouvert par défaut) ; croix de fermeture (40 px, « Fermer le document ») ajoutée à droite de la barre du lecteur : retour à la page précédente du site, sinon à la section d'origine de l'accueil. Non publié.
 - 2026-11-24 · Walid · lot 3 clos (« Oui, les deux ») : US-019 à US-039 en « Fait », réserves des tests acceptées (libellés devant le go-live avec halo, libellés à gauche de quatre barres). Publication du bouton retiré et de la croix du lecteur.
+- 2026-11-26 · ux-ui · Lot 4, B-003 et B-004 (demande de Walid : où et comment intégrer, questions qui changent) : maquette [`maquettes/lot4-comite-entrainement.html`](maquettes/lot4-comite-entrainement.html). Recommandé : section « Se préparer » sous le bandeau de l'accueil (A), alternative trois boutons dans le bandeau (B) ; liens depuis les popups d'étape et le glossaire filtré ; pages « Préparer un comité » (5 essentielles, « 5 autres », « Tout voir ») et « S'entraîner » (départ, question, correction, fin de série, boîtes de Leitner). Six choix à trancher par Walid en fin de maquette (Q1 à Q6). Aucune story encore : à écrire par le po après les choix de Walid.
+- 2026-11-26 · po · Lot 4 « Se préparer : questions de comité » écrit pour B-003, sur les recommandations de la maquette : 9 stories (US-040 à US-048). Contenu sans maquette, en « À affiner » : US-040 format, contrôle et banque Explore (M), US-041 Discover, Prepare, Realize (M), US-042 Deploy, Run, roll-out (M), US-048 banques en anglais (M). Écrans en « Maquette prête » : US-043 page « Préparer un comité » (L), US-044 bloc « Pour aller plus loin » (M), US-045 section d'accueil « Se préparer » (M), US-046 lien depuis les popups (S), US-047 interface en anglais (S). « S'entraîner » (B-004) non développé, sa place est prévue. Questions Q1 à Q9 du lot 4 à trancher par Walid. Suite : Walid valide la maquette et tranche les questions ; l'agent `expert-sap` peut rédiger la banque Explore (US-040) dès l'accord de Walid.
+- 2026-11-26 · expert-sap · Dossier contenus/ecc-vs-s4hana.md livré pour B-007 (ce qui change entre ECC et S/4HANA) : 3 schémas proposés (1. bascule ECC → S/4HANA sur les flux P2P et O2C existants ; 2. entrepôt : LE-WM en compatibilité, Stock Room Management, EWM embarqué, EWM décentralisé ; 3. disparaît / remplacé / obligatoire), contenu FR et EN, faits datés sourcés, 12 termes de glossaire. Écarts signalés : deck mig (transition option jusqu'en 2035 depuis le 13/10/2026 ; compatibility packs hors cloud arrêtés le 31/05/2026) et terme LE-WM du glossaire. Suite : Walid choisit les schémas, puis PO.

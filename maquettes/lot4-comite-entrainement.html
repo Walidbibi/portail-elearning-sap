@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maquette lot 4 · Préparer un comité et S'entraîner</title>
+<link rel="stylesheet" href="../shared/theme.css">
+<style>
+/* Maquette statique du lot 4 (B-003, B-004). Couleurs, tailles et rayons : uniquement les variables de shared/theme.css. */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var(--t-15);line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+button{font:inherit;color:inherit}
+
+/* ---------- habillage de la maquette ---------- */
+.mq-page{max-width:1240px;margin:0 auto;padding:20px 16px 80px}
+@media (max-width:480px){.mq-page{padding:12px 10px 60px}}
+.mq-banner{border:1px dashed var(--k-act);background:var(--aibg);border-radius:var(--r-14);padding:14px 16px;margin-bottom:28px}
+.mq-tag{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.08em;text-transform:uppercase;color:var(--aiink)}
+.mq-banner h1{font-size:var(--t-24);line-height:1.25;margin:4px 0 8px}
+.mq-banner p,.mq-banner li{font-size:var(--t-14);margin:0 0 6px;max-width:92ch}
+.mq-banner ul{margin:0 0 8px;padding-left:18px}
+.mq-banner h2{font-size:var(--t-13);margin:14px 0 4px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500}
+.mq-theme{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;font-size:var(--t-13);color:var(--muted)}
+.mq-theme button{cursor:pointer;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r-6);background:var(--surface);font-size:var(--t-13)}
+.mq-theme button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+/* schéma « comment les questions changent » */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:8px 0 4px}
+.flow div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:10px 12px;font-size:var(--t-13);line-height:1.45;min-width:0}
+.flow b{display:block;font-size:var(--t-14);margin-bottom:2px}
+.flow .n{font-family:var(--mono);font-size:var(--t-12);color:var(--aiink)}
+@media (max-width:820px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.flow{grid-template-columns:1fr}}
+
+.screen{margin:48px 0 0}
+.screen>h2{font-size:var(--t-20);margin:0 0 4px}
+.screen>h2 .n{font-family:var(--mono);font-size:var(--t-13);color:var(--aiink);margin-right:8px;font-weight:500}
+.screen>p.why{color:var(--muted);font-size:var(--t-14);margin:0 0 16px;max-width:90ch}
+.cap{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
+.cap b{color:var(--aiink);font-weight:500}
+.row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.row>div{min-width:0;max-width:100%}
+.note{font-size:var(--t-13);color:var(--muted);margin:8px 0 0;max-width:46ch}
+.note b{color:var(--ink)}
+/* cadres : bureau à largeur fixe qui défile à l'intérieur (jamais la page), téléphone 375 px */
+.desk-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-14);background:var(--bg);max-width:100%}
+.desk{width:1100px;background:var(--bg)}
+.phone{width:375px;max-width:100%;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--bg);box-shadow:var(--page-shadow)}
+
+/* ---------- en-tête commun (copie visuelle de shared/entete.js) ---------- */
+.hb{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:40px;flex:none}
+.logo svg{width:30px;height:30px;flex:none}
+.mot{font-weight:700;font-size:var(--t-20);letter-spacing:-.01em;line-height:1}
+.sig{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:12px}
+.ariane{font-size:var(--t-14);color:var(--muted);display:flex;gap:6px;min-width:0;white-space:nowrap}
+.ariane b{color:var(--ink);overflow:hidden;text-overflow:ellipsis}
+.sp{flex:1}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-6);overflow:hidden;font-family:var(--mono);font-size:var(--t-12);flex:none}
+.lang span{min-width:40px;min-height:40px;display:grid;place-items:center}
+.lang span.on{background:var(--ink);color:var(--surface)}
+.phone .hb{padding:8px 12px;gap:10px}.phone .mot{font-size:var(--t-17)}.phone .sig{display:none}
+
+/* ---------- accueil ---------- */
+.hero{background:var(--marque);color:var(--marque-texte);padding:28px 24px 24px}
+.hero .ey{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.08em;text-transform:uppercase;color:var(--jalon-clair)}
+.hero h3{font-size:var(--t-32);line-height:1.15;margin:8px 0 10px;max-width:22ch}
+.hero p{color:var(--marque-doux);margin:0 0 16px;max-width:60ch;font-size:var(--t-15)}
+.hbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r-6);font-weight:600;font-size:var(--t-15);text-decoration:none;border:0;cursor:pointer}
+.hbtn.p{background:var(--marque-texte);color:var(--marque)}
+.hbtn.s{background:transparent;border:1px solid var(--marque-doux);color:var(--marque-texte)}
+.hbtn:focus-visible{outline:3px solid var(--jalon-clair);outline-offset:2px}
+.phone .hero{padding:20px 14px 18px}
+.phone .hero h3{font-size:26px;line-height:1.2}
+.phone .hero p{font-size:var(--t-14)}
+.phone .hero .hbtn{width:100%}
+.phone .hero .cta{display:grid;gap:8px}
+.home{padding:0 24px 28px}
+.phone .home{padding:0 14px 20px}
+.home h4{font-size:var(--t-24);line-height:1.25;margin:28px 0 2px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.home h4 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(--muted);letter-spacing:.06em}
+.phone .home h4{font-size:var(--t-20);margin-top:22px}
+.sub{color:var(--muted);margin:0 0 14px;font-size:var(--t-14)}
+.phone .sub{font-size:var(--t-13);margin-bottom:10px}
+.new{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:var(--r-pastille);padding:0 8px;line-height:20px}
+/* cartes d'outil */
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tool{display:flex;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:16px;text-decoration:none;min-width:0}
+.tool:hover{border-color:var(--accent)}
+.ico{flex:none;width:48px;height:48px;border-radius:var(--r-10);background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.ico svg{width:26px;height:26px}
+.tool .kind{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tool b{display:block;font-size:var(--t-17);line-height:1.3;margin:2px 0 4px}
+.tool .d{display:block;color:var(--muted);font-size:var(--t-14);line-height:1.45}
+.tool .etat{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:var(--t-13);color:var(--muted)}
+.tool .etat strong{color:var(--ink);font-weight:600}
+.ghost{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ghost i{display:block;height:120px;border:1px dashed var(--line);border-radius:var(--r-10);background:var(--surface)}
+/* téléphone : outils en lignes */
+.rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);overflow:hidden}
+.rows li+li{border-top:1px solid var(--line)}
+.rows a{display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 12px;text-decoration:none}
+.rows .ico{width:40px;height:40px}.rows .ico svg{width:22px;height:22px}
+.rows .t{flex:1;min-width:0}
+.rows .t b{display:block;font-size:var(--t-15);line-height:1.3}
+.rows .t span{display:block;color:var(--muted);font-size:var(--t-13);line-height:1.35}
+.rows .go{color:var(--muted)}
+.ghostrows{border:1px dashed var(--line);border-radius:var(--r-10);height:150px;background:var(--surface)}
+
+/* ---------- liens contextuels ---------- */
+.pop{width:520px;max-width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-14);box-shadow:var(--shadow);overflow:hidden}
+.pop .ph{background:var(--c2);color:var(--ph-ink);padding:12px 16px}
+.pop .ph small{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;display:block}
+.pop .ph b{font-size:var(--t-20)}
+.pop .bd{padding:14px 16px}
+.pop .bd .lbl{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.pop .bd p{margin:0 0 10px;font-size:var(--t-14)}
+.filrouge{border-left:3px solid var(--jalon);padding:6px 0 6px 12px;margin:10px 0 4px}
+.filrouge .lbl{color:var(--jalon-texte)!important}
+.prep{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:var(--soft)}
+.prep .lbl{width:100%;font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 14px;border-radius:var(--r-6);font-weight:600;font-size:var(--t-14);text-decoration:none;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn.q{border-color:var(--accent);color:var(--accent);background:var(--surface)}
+.btn:hover{border-color:var(--accent)}
+.nav{display:flex;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--line)}
+.gl{width:340px;max-width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-14);overflow:hidden}
+.gl .top{padding:12px 14px;border-bottom:1px solid var(--line)}
+.gl .top b{font-size:var(--t-17)}
+.search{margin-top:8px;min-height:40px;border:1px solid var(--line);border-radius:var(--r-6);padding:8px 10px;color:var(--muted);font-size:var(--t-14)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r-pastille);background:var(--surface);font-size:var(--t-13);display:inline-flex;align-items:center;cursor:pointer}
+.chip[aria-pressed="true"],.chip.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.gl .test{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 14px;background:var(--accent-soft);font-size:var(--t-13)}
+.gl .test .btn{min-height:40px;font-size:var(--t-13)}
+.term{padding:10px 14px;border-top:1px solid var(--line);font-size:var(--t-13)}
+.term b{font-size:var(--t-14)}
+.term p{margin:2px 0 0;color:var(--muted)}
+
+/* ---------- Préparer un comité ---------- */
+.pg{padding:24px}
+.phone .pg{padding:16px 14px 20px}
+.pg .ey{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pg h3{font-size:var(--t-32);line-height:1.15;margin:4px 0 8px}
+.phone .pg h3{font-size:var(--t-24)}
+.pg .intro{color:var(--muted);margin:0 0 14px;max-width:70ch;font-size:var(--t-15)}
+.phone .pg .intro{font-size:var(--t-14)}
+.phases{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px;padding:0;list-style:none}
+.phases .chip{font-weight:500}
+.phases .sep{width:1px;background:var(--line);margin:4px 4px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
+.lhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;margin-bottom:10px}
+.lhead h4{margin:0;font-size:var(--t-20)}
+.lhead .ct{font-family:var(--mono);font-size:var(--t-12);color:var(--muted);letter-spacing:.06em}
+.qs{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:14px 16px;counter-increment:q}
+.q .qt{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:var(--t-15);line-height:1.4}
+.q .qt::before{content:counter(q);flex:none;font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(--surface);background:var(--ink);border-radius:var(--r-pastille);min-width:24px;height:22px;display:inline-grid;place-items:center;margin-top:1px}
+.q .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;padding-left:34px}
+.phone .q{padding:12px}
+.phone .q .two{grid-template-columns:1fr;padding-left:0;gap:8px}
+.q .lbl{display:block;font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.q .preuve .lbl{color:var(--c5)}
+.q .alerte .lbl{color:var(--risk)}
+.q .two div{font-size:var(--t-14);line-height:1.45}
+.q .alerte{border-left:3px solid var(--risk);padding-left:10px}
+.q .preuve{border-left:3px solid var(--c5);padding-left:10px}
+.q.tiree{border-style:dashed}
+.tirage{font-family:var(--mono);font-size:var(--t-12);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:16px 0 8px;display:flex;align-items:center;gap:10px}
+.tirage::after{content:"";flex:1;height:1px;background:var(--line)}
+.more{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.more .hint{font-size:var(--t-13);color:var(--muted);flex-basis:100%}
+.phone .more .btn{flex:1 1 140px}
+.aside{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:14px 16px;font-size:var(--t-14)}
+.aside h5{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:500}
+.aside ul{margin:0 0 12px;padding-left:18px}
+.aside li{margin-bottom:4px}
+.aside .btn{width:100%;margin-top:6px;justify-content:flex-start}
+.gate{display:inline-block;width:10px;height:10px;background:var(--gate);transform:rotate(45deg);margin-right:6px}
+.sel{display:flex;align-items:center;justify-content:space-between;min-height:44px;border:1px solid var(--line);border-radius:var(--r-6);background:var(--surface);padding:0 12px;font-weight:600;margin-bottom:12px}
+.sel span{font-family:var(--mono);font-size:var(--t-12);color:var(--muted);font-weight:500}
+
+/* ---------- S'entraîner ---------- */
+.qz{padding:16px 14px 20px}
+.qz .top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bar{height:6px;border-radius:var(--r-pastille);background:var(--line);margin:8px 0 16px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:var(--r-pastille)}
+.src{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:var(--t-12);letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:var(--r-6);padding:2px 8px;margin-bottom:8px}
+.qz h4{font-size:var(--t-20);line-height:1.3;margin:0 0 14px}
+.qz h4 em{font-style:normal;background:var(--mark);padding:0 4px;border-radius:4px}
+.opts{display:grid;gap:8px;list-style:none;margin:0;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;min-height:52px;padding:12px;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);cursor:pointer;font-size:var(--t-14);line-height:1.4}
+.opt:hover{border-color:var(--accent)}
+.opt .l{flex:none;font-family:var(--mono);font-size:var(--t-12);width:24px;height:24px;border-radius:var(--r-pastille);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+.opt.ok{border:2px solid var(--c5);background:var(--t5)}
+.opt.ok .l{background:var(--c5);border-color:var(--c5);color:var(--surface)}
+.opt.ko{border:2px solid var(--risk);background:var(--t4)}
+.opt.ko .l{background:var(--risk);border-color:var(--risk);color:var(--surface)}
+.opt.dim{opacity:.6}
+.opt .st{display:block;font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.opt.ok .st{color:var(--c5)}.opt.ko .st{color:var(--risk)}
+.qz .actions{display:flex;gap:8px;margin-top:14px}
+.qz .actions .btn{flex:1}
+.explic{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:12px}
+.explic p{margin:0 0 8px;font-size:var(--t-14)}
+.explic a.lien{display:flex;align-items:center;gap:8px;min-height:40px;font-size:var(--t-14);color:var(--accent);font-weight:600;text-decoration:none}
+.explic a.lien span{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(--muted)}
+.leit{font-size:var(--t-13);color:var(--muted);margin-top:6px}
+.themes{list-style:none;margin:0 0 14px;padding:0;border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);overflow:hidden}
+.themes li+li{border-top:1px solid var(--line)}
+.themes label{display:flex;align-items:center;gap:10px;min-height:52px;padding:8px 12px;cursor:pointer}
+.themes input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin:0}
+.themes .t{flex:1;min-width:0;font-size:var(--t-14);font-weight:600;line-height:1.3}
+.themes .t span{display:block;font-weight:400;font-size:var(--t-12);color:var(--muted);font-family:var(--mono)}
+.revoir{font-family:var(--mono);font-size:var(--t-12);color:var(--risk);white-space:nowrap}
+.stack{display:grid;gap:8px}
+.stack .btn{width:100%}
+.memo{font-size:var(--t-12);color:var(--muted);margin-top:12px;line-height:1.45}
+.memo a{color:var(--muted)}
+.score{display:flex;align-items:baseline;gap:8px;margin:4px 0 2px}
+.score b{font-size:var(--t-32);line-height:1}
+.score span{color:var(--muted);font-size:var(--t-15)}
+.parth{list-style:none;margin:12px 0 14px;padding:0;display:grid;gap:8px}
+.parth li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:var(--t-13)}
+.parth .bar{grid-column:1/-1;margin:0;height:8px}
+.parth .bar i.faible{background:var(--risk)}
+.boxes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0 14px}
+.boxes div{border:1px solid var(--line);border-radius:var(--r-10);background:var(--surface);padding:8px;text-align:center;font-size:var(--t-12);line-height:1.3;color:var(--muted)}
+.boxes b{display:block;font-size:var(--t-20);color:var(--ink)}
+.h5{font-family:var(--mono);font-size:var(--t-12);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 0}
+
+/* choix pour Walid */
+.qo{counter-reset:qo;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.qo li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-10);padding:12px 14px;font-size:var(--t-14);counter-increment:qo}
+.qo li::before{content:"Q" counter(qo);font-family:var(--mono);font-size:var(--t-12);color:var(--aiink);margin-right:8px}
+.qo .reco{color:var(--muted);display:block;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="mq-page">
+
+<!-- ================= BANDEAU DE LA MAQUETTE ================= -->
+<section class="mq-banner" aria-labelledby="mq-titre">
+  <span class="mq-tag">Maquette lot 4 · B-003 et B-004 · 26/11/2026</span>
+  <h1 id="mq-titre">Préparer un comité et S'entraîner</h1>
+  <p><b>Ce qui change.</b> Deux outils rejoignent Jalon. « Préparer un comité » donne, phase par phase, les questions à poser à l'intégrateur, la preuve à demander et le signal d'alerte. « S'entraîner » pose des séries de 10 questions et retient vos erreurs. Les deux sont reliés aux scénarios de mise en œuvre et au glossaire.</p>
+  <h2>Choix faits</h2>
+  <ul>
+    <li><b>Emplacement recommandé (A).</b> Une section « Se préparer » sur l'accueil, juste sous le bandeau, avant le parcours conseillé. Deux cartes d'outil. C'est ce qu'on fait la veille d'un comité : il faut le trouver sans défiler.</li>
+    <li><b>Liens en contexte.</b> En bas de chaque popup d'étape : « Questions de comité » et « Me tester sur cette phase ». Dans le glossaire, quand une catégorie est filtrée : « Me tester sur ces termes ».</li>
+    <li><b>Deux pages, une par outil</b> : <code>comite.html?phase=explore</code> et <code>entrainement.html?theme=phases</code>. L'adresse ouvre directement la bonne phase ou le bon thème.</li>
+    <li>Couleurs : sarcelle (<code>--accent</code>) pour les outils, vert (<code>--c5</code>) pour la preuve et la bonne réponse, rouge (<code>--risk</code>) pour l'alerte et l'erreur. L'ambre reste au logotype et au fil rouge.</li>
+  </ul>
+  <h2>Variantes écartées</h2>
+  <ul>
+    <li>Liens dans l'en-tête commun : il est déjà plein sur téléphone (logotype, fil d'Ariane, FR / EN).</li>
+    <li>Questions de comité dans chaque popup de frise : elles restent dispersées, c'est le problème décrit en B-003.</li>
+    <li>Quiz à la fin de chaque PDF : le lecteur ne sait pas ce qui a été lu, et un PDF ne change pas.</li>
+  </ul>
+  <h2>Comment les questions changent d'une visite à l'autre (sans serveur ni compte)</h2>
+  <div class="flow">
+    <div><span class="n">1 · Banque</span><b>Un fichier JSON par outil</b>Questions rédigées d'après les supports, rangées par thème ou par phase. Pour S'entraîner, en plus : questions générées depuis les 296 termes du glossaire.</div>
+    <div><span class="n">2 · Tirage</span><b>10 au hasard, réponses mélangées</b>Les mauvaises réponses d'une question générée viennent de la même catégorie du glossaire : elles sont plausibles.</div>
+    <div><span class="n">3 · Mémoire</span><b>Le navigateur retient</b>Questions ratées et déjà vues, dans le stockage local. Rien n'est envoyé. Un bouton efface tout.</div>
+    <div><span class="n">4 · Priorité</span><b>Boîtes de Leitner</b>Ratée : revient à chaque série. Réussie une fois : une série sur deux. Réussie deux fois : une série sur quatre.</div>
+  </div>
+  <div class="mq-theme" role="group" aria-label="Thème de la maquette">Thème :
+    <button type="button" data-t="auto" aria-pressed="true">Système</button>
+    <button type="button" data-t="light" aria-pressed="false">Clair</button>
+    <button type="button" data-t="dark" aria-pressed="false">Sombre</button>
+  </div>
+</section>
+
+<!-- ================= ÉCRAN 1 : ACCUEIL ================= -->
+<section class="screen" aria-labelledby="e1">
+  <h2 id="e1"><span class="n">Écran 1</span>Accueil : la section « Se préparer »</h2>
+  <p class="why">Variante A, recommandée : une section de deux cartes sous le bandeau. Chaque carte montre où vous en êtes (phase consultée, questions à revoir), lu dans le navigateur. Au premier passage, la ligne d'état dit simplement le nombre de questions.</p>
+
+  <div class="cap"><b>A · recommandée</b> · bureau, 1100 px</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="sig">Piloter un programme SAP®</span><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+    <div class="hero">
+      <div class="ey">Pour le directeur de programme</div>
+      <h3>Piloter un programme SAP, de la décision au run</h3>
+      <p>Scénarios de mise en œuvre, supports de révision et glossaire. Et maintenant : vos questions de comité et un entraînement.</p>
+      <div class="cta"><a class="hbtn p" href="#">Commencer le parcours</a></div>
+    </div>
+    <div class="home">
+      <h4>Se préparer <span class="new">Nouveau</span></h4>
+      <p class="sub">Avant un comité, ou entre deux réunions.</p>
+      <div class="tools">
+        <a class="tool" href="#e3">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+          <span><span class="kind">Outil</span><b>Préparer un comité</b><span class="d">Les questions à poser à l'intégrateur, phase par phase. La preuve à demander, le signal d'alerte. Lisible en 5 minutes.</span>
+          <span class="etat"><span>Dernière phase consultée : <strong>Explore</strong></span><span>7 phases · 112 questions</span></span></span>
+        </a>
+        <a class="tool" href="#e4">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg></span>
+          <span><span class="kind">Outil</span><b>S'entraîner</b><span class="d">Des séries de 10 questions par thème, jamais les mêmes. La correction renvoie au support ou au glossaire.</span>
+          <span class="etat"><span><strong>5 questions à revoir</strong></span><span>Dernière série : 7 sur 10</span></span></span>
+        </a>
+      </div>
+      <h4>Parcours conseillé <span class="ct">4 ÉTAPES</span></h4>
+      <p class="sub">Inchangé, il descend d'un cran.</p>
+      <div class="ghost" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div></div>
+
+  <div class="row" style="margin-top:8px">
+    <div>
+      <div class="cap"><b>A · recommandée</b> · téléphone, 375 px</div>
+      <div class="phone">
+        <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+        <div class="hero">
+          <div class="ey">Pour le directeur de programme</div>
+          <h3>Piloter un programme SAP</h3>
+          <p>Scénarios, supports et 296 termes de glossaire.</p>
+          <div class="cta"><a class="hbtn p" href="#">Commencer le parcours</a></div>
+        </div>
+        <div class="home">
+          <h4>Se préparer</h4>
+          <ul class="rows">
+            <li><a href="#e3"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><span class="t"><b>Préparer un comité</b><span>Reprendre : Explore</span></span><span class="go" aria-hidden="true">→</span></a></li>
+            <li><a href="#e4"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg></span><span class="t"><b>S'entraîner</b><span>5 questions à revoir</span></span><span class="go" aria-hidden="true">→</span></a></li>
+          </ul>
+          <h4>Parcours conseillé</h4>
+          <div class="ghostrows" aria-hidden="true"></div>
+        </div>
+      </div>
+      <p class="note"><b>A.</b> Deux lignes de 64 px, visibles sans défiler sous le bandeau court. La ligne d'état se lit dans le navigateur.</p>
+    </div>
+    <div>
+      <div class="cap"><b>B · alternative</b> · téléphone, 375 px</div>
+      <div class="phone">
+        <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+        <div class="hero">
+          <div class="ey">Pour le directeur de programme</div>
+          <h3>Piloter un programme SAP</h3>
+          <p>Scénarios, supports et 296 termes de glossaire.</p>
+          <div class="cta">
+            <a class="hbtn p" href="#">Commencer le parcours</a>
+            <a class="hbtn s" href="#e3">Préparer un comité</a>
+            <a class="hbtn s" href="#e4">S'entraîner</a>
+          </div>
+        </div>
+        <div class="home">
+          <h4>Parcours conseillé</h4>
+          <div class="ghostrows" aria-hidden="true"></div>
+        </div>
+      </div>
+      <p class="note"><b>B.</b> Trois boutons dans le bandeau, pas de nouvelle section. Plus compact, mais sans ligne d'état, et le bandeau s'allonge de 100 px sur téléphone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÉCRAN 2 : LIENS EN CONTEXTE ================= -->
+<section class="screen" aria-labelledby="e2">
+  <h2 id="e2"><span class="n">Écran 2</span>Liens en contexte : frise et glossaire</h2>
+  <p class="why">On arrive aussi aux outils depuis ce qu'on lit. La popup d'une étape reçoit une bande « Se préparer » au-dessus de Précédent / Suivant. Le glossaire propose un test dès qu'une catégorie est filtrée.</p>
+  <div class="row">
+    <div>
+      <div class="cap">Popup d'étape · scénario greenfield</div>
+      <div class="pop">
+        <div class="ph"><small>Explore · étape 3</small><b>Ateliers fit-to-standard</b></div>
+        <div class="bd">
+          <p class="lbl">Objectif</p>
+          <p>Montrer le standard au métier et décider, écart par écart, de l'adopter ou non.</p>
+          <div class="filrouge"><p class="lbl">Exemple fil rouge · Calvane (fictif)</p><p>42 ateliers en 9 semaines, 61 écarts relevés, 12 retenus.</p></div>
+        </div>
+        <div class="prep">
+          <span class="lbl">Se préparer · phase Explore</span>
+          <a class="btn q" href="#e3">Questions de comité</a>
+          <a class="btn q" href="#e4">Me tester sur Explore</a>
+        </div>
+        <div class="nav"><a class="btn" href="#">← Précédent</a><a class="btn" href="#">Suivant →</a></div>
+      </div>
+      <p class="note">Les liens ouvrent la phase de l'étape. Une gate ouvre les questions de la phase qu'elle clôt. Le chiffre fil rouge est fictif.</p>
+    </div>
+    <div>
+      <div class="cap">Glossaire · catégorie filtrée</div>
+      <div class="gl">
+        <div class="top"><b>Glossaire</b><div class="search">Chercher un terme</div>
+          <div class="chips"><span class="chip">Tout</span><span class="chip">Méthode</span><span class="chip">Tests</span><span class="chip on">Run</span></div></div>
+        <div class="test"><span>14 termes · Run</span><a class="btn q" href="#e4">Me tester sur ces termes</a></div>
+        <div class="term"><b>Hypercare</b><p>Période de support renforcé après le go-live, avec des critères de sortie.</p></div>
+        <div class="term"><b>TMA / AMS</b><p>Maintenance applicative confiée à une équipe de run.</p></div>
+        <div class="term"><b>SLA</b><p>Engagement de niveau de service : délais de prise en charge et de résolution.</p></div>
+      </div>
+      <p class="note">La série ne pose que des questions générées depuis les termes filtrés. Sans filtre, le bouton n'apparaît pas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÉCRAN 3 : PRÉPARER UN COMITÉ ================= -->
+<section class="screen" aria-labelledby="e3">
+  <h2 id="e3"><span class="n">Écran 3</span>Préparer un comité</h2>
+  <p class="why">Une phase à la fois. Les 5 questions essentielles d'abord, toujours les mêmes et dans le même ordre : ce sont celles qu'il ne faut pas oublier. « 5 autres questions » en tire 5 au hasard dans le reste et les ajoute en dessous, en pointillé. « Tout voir » affiche la liste complète.</p>
+
+  <div class="cap">Bureau, 1100 px · après un clic sur « 5 autres questions »</div>
+  <div class="desk-wrap"><div class="desk">
+    <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><nav class="ariane" aria-label="Fil d'Ariane"><span>Se préparer</span><span>/</span><b>Préparer un comité</b></nav><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+    <div class="pg">
+      <div class="ey">Se préparer</div>
+      <h3>Préparer un comité</h3>
+      <p class="intro">Choisissez la phase où en est votre projet. Pour chaque question : la preuve à demander à l'intégrateur et le signal qui doit vous alerter.</p>
+      <ul class="phases" aria-label="Phase du projet">
+        <li><button class="chip" type="button" aria-pressed="false">Discover</button></li>
+        <li><button class="chip" type="button" aria-pressed="false">Prepare</button></li>
+        <li><button class="chip" type="button" aria-pressed="true">Explore</button></li>
+        <li><button class="chip" type="button" aria-pressed="false">Realize</button></li>
+        <li><button class="chip" type="button" aria-pressed="false">Deploy</button></li>
+        <li><button class="chip" type="button" aria-pressed="false">Run</button></li>
+        <li class="sep" aria-hidden="true"></li>
+        <li><button class="chip" type="button" aria-pressed="false">Roll-out</button></li>
+      </ul>
+      <div class="cols">
+        <div>
+          <div class="lhead"><h4>Explore · les 5 essentielles</h4><span class="ct">10 SUR 18 AFFICHÉES</span></div>
+          <ol class="qs">
+            <li class="q"><div class="qt">« Fit-to-standard terminé à 90 % » : 90 % de quoi ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>La liste des processus, avec pour chacun : atelier tenu, écarts décidés, validation signée par le métier.</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>Le pourcentage compte les ateliers tenus, pas les décisions validées.</div></div></li>
+            <li class="q"><div class="qt">Combien d'écarts ont été relevés, et combien sont justifiés ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>Le backlog des écarts : justification légale ou chiffrée, décision, responsable métier.</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>Des écarts « pour faire comme avant », sans responsable métier.</div></div></li>
+            <li class="q"><div class="qt">Quels écarts deviennent des développements, et à quel coût ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>La liste RICEFW chiffrée, comparée au budget de Realize.</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>La liste grossit encore dans les dernières semaines d'Explore.</div></div></li>
+            <li class="q"><div class="qt">Où en est la qualité des données à reprendre ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>Un premier profilage des données, et un responsable nommé par objet (articles, fournisseurs, clients).</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>« On verra en Realize. »</div></div></li>
+            <li class="q"><div class="qt">La quality gate de fin d'Explore : qui signe, sur quels critères ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>Les critères écrits avant la gate, et les signataires côté métier.</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>Une gate passée « sous réserve », sans date pour lever les réserves.</div></div></li>
+          </ol>
+          <div class="tirage">5 autres, tirées au hasard</div>
+          <ol class="qs" start="6" style="counter-reset:q 5">
+            <li class="q tiree"><div class="qt">Les interfaces avec les autres systèmes sont-elles toutes inventoriées ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>L'inventaire des interfaces, avec sens, fréquence et responsable de chaque côté.</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>Les systèmes externes ne sont pas venus aux ateliers.</div></div></li>
+            <li class="q tiree"><div class="qt">Les key users seront-ils disponibles pendant Realize ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve à demander</span>Un taux de présence écrit, accepté par leur manager.</div>
+              <div class="alerte"><span class="lbl">Signal d'alerte</span>Les mêmes personnes gardent leur poste à temps plein.</div></div></li>
+          </ol>
+          <p class="note" style="max-width:none">Questions 8 à 10 masquées dans la maquette.</p>
+          <div class="more">
+            <button class="btn q" type="button">5 autres questions</button>
+            <button class="btn" type="button">Tout voir (18)</button>
+            <span class="hint">Un nouveau clic tire dans les 8 questions restantes. Quand il n'en reste plus, le bouton disparaît.</span>
+          </div>
+        </div>
+        <aside class="aside" aria-label="Pour aller plus loin">
+          <h5>Pour aller plus loin</h5>
+          <a class="btn" href="#e2"><span class="gate" aria-hidden="true"></span>Voir Explore dans le scénario greenfield</a>
+          <a class="btn" href="#e4">Me tester sur Explore</a>
+          <h5 style="margin-top:16px">Termes de cette phase</h5>
+          <ul><li>Fit-to-standard</li><li>Backlog</li><li>RICEFW</li><li>Quality gate</li></ul>
+          <h5>Sources</h5>
+          <ul><li>ACT100 · Livre de révision</li><li>Scénario greenfield, étapes Explore</li></ul>
+        </aside>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="row" style="margin-top:8px">
+    <div>
+      <div class="cap">Téléphone, 375 px · affichage par défaut</div>
+      <div class="phone">
+        <div class="hb"><a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="10.5" y="10.5" width="11" height="11" transform="rotate(45 16 16)" fill="var(--jalon)"/></svg><span class="mot">Jalon</span></a><span class="sp"></span><span class="lang"><span class="on">FR</span><span>EN</span></span></div>
+        <div class="pg">
+          <div class="ey">Se préparer</div>
+          <h3>Préparer un comité</h3>
+          <ul class="phases" aria-label="Phase du projet">
+            <li><button class="chip" type="button" aria-pressed="false">Discover</button></li>
+            <li><button class="chip" type="button" aria-pressed="false">Prepare</button></li>
+            <li><button class="chip" type="button" aria-pressed="true">Explore</button></li>
+            <li><button class="chip" type="button" aria-pressed="false">Realize</button></li>
+            <li><button class="chip" type="button" aria-pressed="false">Deploy</button></li>
+            <li><button class="chip" type="button" aria-pressed="false">Run</button></li>
+            <li><button class="chip" type="button" aria-pressed="false">Roll-out</button></li>
+          </ul>
+          <div class="lhead"><h4>Explore · 5 essentielles</h4><span class="ct">5 SUR 18</span></div>
+          <ol class="qs">
+            <li class="q"><div class="qt">« Fit-to-standard terminé à 90 % » : 90 % de quoi ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve</span>La liste des processus : atelier tenu, écarts décidés, validation signée par le métier.</div>
+              <div class="alerte"><span class="lbl">Alerte</span>Le pourcentage compte les ateliers tenus, pas les décisions.</div></div></li>
+            <li class="q"><div class="qt">Combien d'écarts relevés, et combien justifiés ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve</span>Le backlog des écarts, avec justification et responsable métier.</div>
+              <div class="alerte"><span class="lbl">Alerte</span>Des écarts « pour faire comme avant ».</div></div></li>
+            <li class="q"><div class="qt">Quels écarts deviennent des développements, et à quel coût ?</div></li>
+          </ol>
+          <p class="note">Questions 4 et 5 masquées dans la maquette.</p>
+          <div class="more">
+            <button class="btn q" type="button">5 autres questions</button>
+            <button class="btn" type="button">Tout voir (18)</button>
+          </div>
+        </div>
+      </div>
+      <p class="note">Sur téléphone, preuve et alerte passent l'une sous l'autre, libellés courts. 5 questions tiennent en 3 écrans : moins de 5 minutes de lecture.</p>
+    </div>
+    <div>
+      <div class="cap">Téléphone · roll-out</div>
+      <div class="phone">
+        <div class="pg">
+          <div class="lhead"><h4>Roll-out · 5 essentielles</h4><span class="ct">5 SUR 16</span></div>
+          <ol class="qs">
+            <li class="q"><div class="qt">Le core model est-il figé avant le delta design du pays ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve</span>La version du core model, datée, et la liste des changements refusés depuis.</div>
+              <div class="alerte"><span class="lbl">Alerte</span>Le core change encore pendant que le pays construit.</div></div></li>
+            <li class="q"><div class="qt">Chaque écart local a-t-il une justification légale ou chiffrée ?</div>
+              <div class="two"><div class="preuve"><span class="lbl">Preuve</span>Le registre des écarts locaux, avec la décision de l'autorité de design.</div>
+              <div class="alerte"><span class="lbl">Alerte</span>Des écarts acceptés « pour faire passer le projet ».</div></div></li>
+          </ol>
+        </div>
+      </div>
+      <p class="note">Le roll-out a sa propre banque : ses phases (Diagnose, Adjust, Deploy) ne sont pas celles de SAP Activate. Il est séparé des autres par un filet sur bureau.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÉCRAN 4 : S'ENTRAÎNER ================= -->
+<section class="screen" aria-labelledby="e4">
+  <h2 id="e4"><span class="n">Écran 4</span>S'entraîner</h2>
+  <p class="why">Une colonne de 680 px au plus, identique sur bureau et sur téléphone. On choisit ses thèmes, on répond, la correction arrive tout de suite. La source de chaque question est affichée : rédigée d'après un support, ou générée depuis le glossaire.</p>
+
+  <div class="row">
+    <div>
+      <div class="cap"><b>4a</b> · départ</div>
+      <div class="phone"><div class="qz">
+        <div class="ey" style="font-family:var(--mono);font-size:var(--t-12);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Se préparer</div>
+        <h4 style="font-size:var(--t-24);margin:4px 0 6px">S'entraîner</h4>
+        <p class="sub">10 questions tirées au hasard. Celles que vous avez ratées reviennent d'abord.</p>
+        <ul class="themes" aria-label="Thèmes">
+          <li><label><input type="checkbox" checked><span class="t">Phases SAP Activate<span>24 vues sur 60</span></span><span class="revoir">3 à revoir</span></label></li>
+          <li><label><input type="checkbox"><span class="t">Rôles du programme<span>8 vues sur 30</span></span></label></li>
+          <li><label><input type="checkbox" checked><span class="t">Bascule<span>12 vues sur 25</span></span><span class="revoir">2 à revoir</span></label></li>
+          <li><label><input type="checkbox"><span class="t">Tests<span>jamais commencé</span></span></label></li>
+          <li><label><input type="checkbox"><span class="t">Données<span>jamais commencé</span></span></label></li>
+          <li><label><input type="checkbox"><span class="t">Run<span>jamais commencé</span></span></label></li>
+          <li><label><input type="checkbox"><span class="t">Vocabulaire<span>glossaire · 296 termes</span></span></label></li>
+        </ul>
+        <div class="stack">
+          <button class="btn p" type="button">Commencer une série de 10</button>
+          <button class="btn" type="button">Revoir mes erreurs (5)</button>
+        </div>
+        <p class="memo">Votre progression reste dans ce navigateur. Pas de compte, rien n'est envoyé. <a href="#">Effacer ma progression</a></p>
+      </div></div>
+    </div>
+
+    <div>
+      <div class="cap"><b>4b</b> · une question</div>
+      <div class="phone"><div class="qz">
+        <div class="top"><span>Question 3 sur 10</span><span>Phases</span></div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="2" aria-label="Progression de la série"><i style="width:20%"></i></div>
+        <span class="src">Rédigée · d'après ACT100</span>
+        <h4>Fin d'Explore. L'intégrateur annonce « fit-to-standard terminé à 90 % ». Quelle preuve demandez-vous d'abord ?</h4>
+        <ul class="opts">
+          <li><button class="opt" type="button"><span class="l">A</span><span>Le nombre d'ateliers tenus sur le nombre prévu</span></button></li>
+          <li><button class="opt" type="button"><span class="l">B</span><span>Le planning détaillé des sprints de Realize</span></button></li>
+          <li><button class="opt" type="button"><span class="l">C</span><span>La liste des écarts décidés, validée par le métier</span></button></li>
+          <li><button class="opt" type="button"><span class="l">D</span><span>Le nombre de transports déjà créés</span></button></li>
+        </ul>
+        <p class="memo">L'ordre des réponses change à chaque tirage. Touches 1 à 4 sur clavier.</p>
+      </div></div>
+    </div>
+
+    <div>
+      <div class="cap"><b>4c</b> · correction</div>
+      <div class="phone"><div class="qz">
+        <div class="top"><span>Question 4 sur 10</span><span>Vocabulaire</span></div>
+        <div class="bar"><i style="width:40%"></i></div>
+        <span class="src">Générée · glossaire, catégorie Run</span>
+        <h4>Quelle définition correspond à <em>Hypercare</em> ?</h4>
+        <ul class="opts">
+          <li><div class="opt ko"><span class="l">A</span><span>Maintenance applicative confiée à une équipe de run.<span class="st">Votre réponse · c'est TMA / AMS</span></span></div></li>
+          <li><div class="opt ok"><span class="l">B</span><span>Période de support renforcé après le go-live, avec des critères de sortie.<span class="st">Bonne réponse</span></span></div></li>
+          <li><div class="opt dim"><span class="l">C</span><span>Engagement de niveau de service : délais de prise en charge et de résolution.</span></div></li>
+          <li><div class="opt dim"><span class="l">D</span><span>Le run observe l'équipe projet, puis l'inverse, avant le transfert.</span></div></li>
+        </ul>
+        <div class="explic">
+          <p><b>Pour le directeur de programme.</b> Les experts partent trop tôt : c'est le risque classique. Exigez des critères de sortie écrits.</p>
+          <a class="lien" href="#">Hypercare dans le glossaire <span>→</span></a>
+          <a class="lien" href="#">Formation SAP · Synthèse <span>PDF</span></a>
+          <p class="leit">Cette question reviendra dans votre prochaine série.</p>
+        </div>
+        <div class="actions"><button class="btn p" type="button">Question suivante</button></div>
+      </div></div>
+      <p class="note">Une erreur dit aussi à quoi correspond la réponse choisie (« c'est TMA / AMS ») : on apprend deux termes au lieu d'un.</p>
+    </div>
+
+    <div>
+      <div class="cap"><b>4d</b> · fin de série</div>
+      <div class="phone"><div class="qz">
+        <div class="top"><span>Série terminée</span><span>10 questions</span></div>
+        <div class="score"><b>7</b><span>sur 10</span></div>
+        <p class="sub" style="margin:0">Bon niveau sur les phases. La bascule est à reprendre.</p>
+        <p class="h5">Par thème</p>
+        <ul class="parth">
+          <li><span>Phases SAP Activate</span><span>5 / 6</span><span class="bar"><i style="width:83%"></i></span></li>
+          <li><span>Bascule</span><span>1 / 3</span><span class="bar"><i class="faible" style="width:33%"></i></span></li>
+          <li><span>Vocabulaire</span><span>1 / 1</span><span class="bar"><i style="width:100%"></i></span></li>
+        </ul>
+        <p class="h5">Votre mémoire, tous thèmes</p>
+        <div class="boxes">
+          <div><b>5</b>à revoir<br>chaque série</div>
+          <div><b>18</b>réussies une fois</div>
+          <div><b>13</b>acquises<br>espacées</div>
+        </div>
+        <div class="stack">
+          <button class="btn p" type="button">Revoir mes erreurs (3)</button>
+          <button class="btn" type="button">Nouvelle série</button>
+          <a class="btn" href="#">Lire : Bascule dans le scénario roll-out</a>
+        </div>
+      </div></div>
+      <p class="note">Le dernier bouton renvoie au support du thème le plus faible. « Acquises » : réussies deux fois, elles s'espacent sans disparaître.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHOIX POUR WALID ================= -->
+<section class="screen" aria-labelledby="e5">
+  <h2 id="e5"><span class="n">À valider</span>Choix pour Walid</h2>
+  <ol class="qo">
+    <li>Emplacement sur l'accueil : section « Se préparer » sous le bandeau (A) ou trois boutons dans le bandeau (B) ?<span class="reco">Recommandé : A.</span></li>
+    <li>« 5 autres questions » ajoute 5 questions sous les précédentes, ou les remplace ?<span class="reco">Recommandé : ajouter. On garde les essentielles sous les yeux.</span></li>
+    <li>Qui choisit les 5 essentielles de chaque phase : vous, ou une proposition du PO à relire ?<span class="reco">Recommandé : proposition du PO, relue par vous. C'est le cœur de B-003.</span></li>
+    <li>Le roll-out a sa banque propre (Diagnose, Adjust, Deploy). Faut-il aussi des banques brownfield et bluefield, ou les phases SAP Activate suffisent-elles ?<span class="reco">Recommandé : SAP Activate pour les trois, avec quelques questions marquées « brownfield » (conversion).</span></li>
+    <li>Nommer l'étiquette des cartes « Outil » : un nouveau type dans le manifeste, en sarcelle, sans nouvelle couleur.<span class="reco">Recommandé : oui.</span></li>
+    <li>Version anglaise dès le premier lot, ou français d'abord ?<span class="reco">Recommandé : français d'abord ; l'anglais suit la règle actuelle (texte absent = texte français).</span></li>
+  </ol>
+</section>
+
+</div>
+<script>
+// Maquette : bascule du thème clair / sombre (theme.css lit data-theme sur la racine)
+document.querySelectorAll('.mq-theme button').forEach(b=>b.addEventListener('click',()=>{
+  const t=b.dataset.t,r=document.documentElement;
+  if(t==='auto')r.removeAttribute('data-theme');else r.dataset.theme=t;
+  document.querySelectorAll('.mq-theme button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+}));
+</script>
+</body>
+</html>

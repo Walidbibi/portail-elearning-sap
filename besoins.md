@@ -53,7 +53,7 @@ Suivi
 ### B-003 · Mes questions de comité, prêtes en trente secondes
 - Source : persona-pm
 - Importance : vital
-- Couvert par :
+- Couvert par : US-040 à US-048
 
 Situation : comité de pilotage demain matin. L'intégrateur présente l'avancement d'Explore et dit « fit-to-standard terminé à 90 % ». Je révise le soir, sur téléphone.
 Ce qui bloque : les risques et parades existent, mais dispersés dans les popups des frises, étape par étape, et dans la simulation d'entretien en PDF. Je ne sais pas les retrouver vite. Je ne sais pas quelles questions poser pour vérifier que ce « 90 % » est réel.
