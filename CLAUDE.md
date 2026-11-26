@@ -35,7 +35,7 @@ shared/entete.js           en-tête commun : logotype, fil d'Ariane, sélecteur 
 shared/marque/             logotype, monogramme, favicon (SVG et PNG), image de partage partage.png (refaite depuis outils/partage.html)
 documents.json             manifeste : la liste des documents et l'ordre des sections de l'accueil
 shared/documents.js        chargeur du manifeste (SAP_DOCUMENTS) et SAP_HREF
-glossaire.json             les 296 termes du glossaire, un terme par ligne
+glossaire.json             les 308 termes du glossaire, un terme par ligne
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface (accueil, glossaire, lecteur, frises) ; en.json pour l'anglais
