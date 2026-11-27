@@ -22,7 +22,7 @@
 <style>html,body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 <title data-t="accueil.titreOnglet"></title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="shared/theme.css?v=202611262155">
+<link rel="stylesheet" href="shared/theme.css?v=202611271242">
 <style>
 /* Accueil de Jalon : bandeau d'entrée, grilles à 4 colonnes, lignes ; téléphone compact (US-032 à US-034). Couleurs : shared/theme.css. */
 *{box-sizing:border-box}
@@ -87,8 +87,13 @@ h2 .ct{font-family:var(--mono);font-size:var(--t-12);font-weight:500;color:var(-
 .rows .t b{display:block;font-size:var(--t-15);line-height:1.3}
 .rows .t span.d{display:block;color:var(--muted);font-size:var(--t-13);line-height:1.4}
 .rows .go{color:var(--muted);font-size:18px}
-#path,#flux,#certification,#frises,#other{scroll-margin-top:90px}
+#path,#passage,#flux,#certification,#frises,#other{scroll-margin-top:90px}
 ul.parcours{list-style:none}
+/* section « De ECC à S/4HANA » : pastille « Nouveau », renvoi vers la vue ECC → S/4HANA des flux */
+.new{font-family:var(--mono);font-size:var(--t-12);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:var(--r-pastille);padding:0 8px;line-height:20px}
+.pas{margin:12px 0 0;font-size:var(--t-14)}
+.pas a{color:var(--accent);font-weight:600;display:inline-block;padding:10px 0;margin:-10px 0}
+.bas{align-self:flex-start;display:inline-block;margin-top:6px;font-family:var(--mono);font-size:var(--t-12);color:var(--c1);border:1px solid var(--c1);border-radius:var(--r-pastille);padding:0 8px;line-height:20px}
 /* pied de page */
 .foot{margin-top:36px;padding:16px 0 28px;border-top:1px solid var(--line);font-size:var(--t-13);color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 .foot p{margin:0;max-width:70ch}
@@ -146,6 +151,12 @@ ul.parcours{list-style:none}
     <p class="sub" data-t="accueil.parcoursSousTitre"></p>
     <ol class="g4 parcours" id="path"></ol>
   </section>
+  <section class="sec" aria-labelledby="t-ecc">
+    <h2 id="t-ecc"><span data-t="accueil.eccTitre"></span><span class="ct" id="ct-ecc"></span><span class="new" data-t="accueil.nouveau"></span></h2>
+    <p class="sub" data-t="accueil.eccSousTitre"></p>
+    <ul class="g4 parcours" id="passage"></ul>
+    <p class="pas" id="ecc-flux"></p>
+  </section>
   <section class="sec" aria-labelledby="t-flux">
     <h2 id="t-flux"><span data-t="accueil.fluxTitre"></span><span class="ct" id="ct-flux"></span></h2>
     <p class="sub" data-t="accueil.fluxSousTitre"></p>
@@ -175,10 +186,10 @@ ul.parcours{list-style:none}
 </div></main>
 
 
-<script src="shared/libelles.js?v=202611262155"></script>
-<script src="shared/documents.js?v=202611262155"></script>
-<script src="shared/entete.js?v=202611262155"></script>
-<script src="shared/glossaire.js?v=202611262155"></script>
+<script src="shared/libelles.js?v=202611271242"></script>
+<script src="shared/documents.js?v=202611271242"></script>
+<script src="shared/entete.js?v=202611271242"></script>
+<script src="shared/glossaire.js?v=202611271242"></script>
 <script>
 Promise.all([SAP_LIBELLES,SAP_DOCUMENTS]).then(async([T,M])=>{
 const en=window.SAP_LANGUE==='en';
@@ -195,10 +206,18 @@ const parcours=M.section('parcours');
 document.getElementById('path').innerHTML=parcours.map((k,i)=>{const d=M.doc(k);if(!d)return '';
   return `<li><a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"${tgt(d.fichier)}><span class="step tel">${i+1}</span><span class="thumb">${apercu(d)}</span><span class="cb"><span class="kl"><span class="step">${i+1}</span>${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a></li>`;}).join('');
 document.getElementById('ct-parcours').textContent=T('accueil.compteEtapes',{n:parcours.length});
-// principaux flux logistiques : mêmes cartes, sans numéro
+// carte sans numéro (De ECC à S/4HANA, flux) ; un flux qui a la vue « ECC → S/4HANA » porte son étiquette
+const carte=k=>{const d=M.doc(k);if(!d)return '';const s4=(M.documents[k]||{}).vueS4||(M.documents[d.cle]||{}).vueS4;
+  return `<li><a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"><span class="thumb">${apercu(d)}</span><span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span>${s4?`<span class="bas">${esc(T('accueil.eccBascule'))}</span>`:''}</span></a></li>`;};
+// De ECC à S/4HANA : trois schémas, puis le renvoi vers les flux qui ont la vue « ECC → S/4HANA »
+const ecc=M.section('ecc');
+document.getElementById("passage").innerHTML=ecc.map(carte).join('');
+document.getElementById('ct-ecc').textContent=T('accueil.compteSchemas',{n:ecc.length});
+const lienFlux=k=>{const d=M.doc(k);return d?`<a href="${esc(d.fichier)}?vue=s4">${esc(d.titre)}</a>`:'';};
+document.getElementById('ecc-flux').innerHTML=esc(T('accueil.eccFlux',{p2p:'\u0001',o2c:'\u0002'})).replace('\u0001',lienFlux('p2p')).replace('\u0002',lienFlux('o2c'));
+// principaux flux logistiques : mêmes cartes
 const flux=M.section('flux');
-document.getElementById('flux').innerHTML=flux.map(k=>{const d=M.doc(k);if(!d)return '';
-  return `<li><a class="card k-${d.type}" href="${window.SAP_HREF(d.fichier)}"><span class="thumb">${apercu(d)}</span><span class="cb"><span class="kl">${kind(d)}</span><b>${esc(d.titre)}</b><span class="d">${esc(d.description)}</span></span></a></li>`;}).join('');
+document.getElementById('flux').innerHTML=flux.map(carte).join('');
 document.getElementById('ct-flux').textContent=T('accueil.compteFlux',{n:flux.length});
 // frises : vignette schématique tirée du JSON de chaque frise (phases proportionnelles, exemple fictif)
 const frises=M.section('frises');
@@ -222,7 +241,7 @@ document.getElementById('certification').innerHTML=M.section('certification').ma
 document.getElementById('other').innerHTML=M.section('autres').map(ligne).join('');
 // chiffres du bandeau, calculés : supports affichés hors frises, frises, termes du glossaire
 const G=await lire('glossaire.json');const termes=G&&G.termes?G.termes.length:0;
-const supports=['parcours','flux','certification','autres'].reduce((n,s)=>n+M.section(s).length,0);
+const supports=['parcours','ecc','flux','certification','autres'].reduce((n,s)=>n+M.section(s).length,0);
 document.getElementById('stats').textContent=T('accueil.stats',{supports,frises:frises.length,termes});
 document.getElementById('intro-courte').textContent=T('accueil.introCourte',{n:termes});
 });

@@ -115,6 +115,13 @@ btnHide.addEventListener('click',hide);
 voile.addEventListener('click',hide);
 openBtn.addEventListener('click',show);
 window.addEventListener('resize',layout);
+// un terme cité dans une page (data-gl-terme) ouvre le glossaire sur sa définition ; une popup ouverte se ferme
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-gl-terme]');if(!b)return;e.preventDefault();
+  const dl=b.closest('dialog[open]');if(dl)dl.close();
+  // exact, puis début du terme, puis pluriel (« Handling Units »), puis fin du terme (« GR/IR » pour « Compte GR/IR »)
+  const t=norm(b.dataset.glTerme),g=items.find(x=>norm(x.t)===t||norm(x.fr)===t)||items.find(x=>norm(x.t).startsWith(t))||items.find(x=>t.startsWith(norm(x.t)))||items.find(x=>norm(x.t).endsWith(' '+t));
+  cat='all';chips.querySelectorAll('.gl-chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.c==='all'));
+  q.value=g?g.t:b.dataset.glTerme;if(g)opened.add(g.i);render();show();});
 document.addEventListener('keydown',e=>{
   const t=e.target;const typing=t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable);
   if(e.key==='/'&&!typing){e.preventDefault();show();}

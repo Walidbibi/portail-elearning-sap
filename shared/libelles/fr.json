@@ -27,7 +27,13 @@
     "compteFlux": "{n} flux",
     "compteDemarches": "{n} scénarios",
     "autresSousTitre": "Pour s'entraîner avant un entretien.",
-    "exemple": "Exemple : {texte}"
+    "exemple": "Exemple : {texte}",
+    "eccTitre": "De ECC à S/4HANA",
+    "eccSousTitre": "Ce qui change quand on passe d'ECC à S/4HANA, vu du domaine logistique.",
+    "compteSchemas": "{n} schémas",
+    "nouveau": "Nouveau",
+    "eccFlux": "Étape par étape : ouvrez {p2p} ou {o2c} et choisissez la vue « ECC → S/4HANA ».",
+    "eccBascule": "ECC → S/4HANA"
   },
   "glossaire": {
     "titre": "Glossaire",
@@ -130,7 +136,8 @@
     "certification": "Certification",
     "frises": "Scénarios",
     "autres": "Annexes",
-    "signature": "Piloter un programme SAP®"
+    "signature": "Piloter un programme SAP®",
+    "ecc": "De ECC à S/4HANA"
   },
   "categoriesCourtes": {
     "meth": "Méthode",
@@ -140,5 +147,72 @@
     "test": "Tests",
     "run": "Run",
     "agile": "Agile"
+  },
+  "ecc": {
+    "exemple": "Exemple fil rouge",
+    "effort": "Effort : {n}",
+    "plus": "Pour aller plus loin",
+    "fermer": "Fermer",
+    "precedent": "Précédent",
+    "suivant": "Suivant",
+    "surN": "{i} sur {n}",
+    "enEcc": "En ECC",
+    "enS4": "En S/4HANA",
+    "concret": "Ce que ça change concrètement",
+    "qui": "Qui est touché",
+    "dp": "Pour le DP",
+    "quiVoit": "Qui le voit",
+    "aujourdhui": "Aujourd'hui",
+    "dateLimite": "Date limite",
+    "prealable": "Préalable à la conversion",
+    "s0": {
+      "rangee": "Rangée {i} sur {n}",
+      "bandeau": "Bandeau de pied",
+      "detail": "Détail",
+      "cliquez": "Cliquez pour le détail.",
+      "rangeeAria": "{dim} : ECC, {ecc} ; S/4HANA, {s4}. Qui le voit : {qui}. Ouvrir le détail."
+    },
+    "s2": {
+      "oui": "Oui",
+      "non": "Non",
+      "effacer": "Effacer les réponses",
+      "option": "Option {k}",
+      "optionSur": "Option {k} sur D",
+      "ecartee": "Écartée",
+      "etudier": "À étudier",
+      "nonTranchee": "Non tranchée",
+      "nonTrancheeTexte": "Les réponses ne l'écartent pas.",
+      "repondez": "Répondez aux questions",
+      "repondezTexte": "pour trier les options.",
+      "vosReponses": "Vos réponses",
+      "ligne": "Ligne de temps · {de} à {a}"
+    },
+    "s3": {
+      "domaine": "Domaine",
+      "tous": "Tous",
+      "prealables": "Préalables seulement",
+      "compte": "{n} cartes sur {total}",
+      "compteUn": "{n} carte sur {total}",
+      "vide": "Aucune carte pour ce filtre.",
+      "carte": "{col} · carte {n}"
+    },
+    "bascule": {
+      "vue": "Vue",
+      "flux": "Le flux",
+      "s4": "ECC → S/4HANA",
+      "aideFlux": "Voir ce qui change en S/4HANA, étape par étape.",
+      "aideS4": "Pastille d'impact sur chaque étape ; le détail s'ouvre au clic.",
+      "faible": "Faible",
+      "moyen": "Moyen",
+      "fort": "Fort",
+      "plage": "{de} à {a}",
+      "impact": "Impact : {n}",
+      "impactAria": "impact {n}",
+      "legende": "Impact du passage à S/4HANA :",
+      "etape": "{n} étape",
+      "etapes": "{n} étapes",
+      "pointilles": "Pointillés : fourchette, selon les choix du programme.",
+      "titre": "ECC → S/4HANA"
+    }
   }
 }

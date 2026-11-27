@@ -2,7 +2,7 @@
 // Aucune dépendance : Node 22+ (WebSocket intégré) et Google Chrome.
 //
 // Usage : node outils/captures/captures.mjs [page] [--out <dossier>]
-//   page    : accueil | glossaire | greenfield | brownfield | bluefield | rollout | lecteur | schema (toutes si absent)
+//   page    : accueil | glossaire | greenfield | brownfield | bluefield | rollout | lecteur | schema | ecc-s4hana | ecc-entrepot | ecc-changements | flux-p2p-s4 | flux-o2c-s4 (toutes si absent)
 //   --out   : dossier de sortie, relatif à outils/captures/ (défaut : reference)
 //   --langue : fr (défaut) ou en ; la langue est forcée par ?lang= dans l'adresse
 
@@ -44,6 +44,13 @@ const PAGES = {
   lecteur: { url: 'lecteur.html?doc=documents/formation-sap-synthese.pdf', plein: false, attente: `!!document.querySelector('canvas')` },
   // schéma des rôles : une page par langue (la version anglaise est un autre fichier)
   schema: { url: LANGUE === 'en' ? 'schemas/sap-program-roles.html' : 'schemas/roles-programme-sap.html', plein: true },
+  // De ECC à S/4HANA (lot 5) : schémas 0, 2 et 3, la popup commune, et la vue « ECC → S/4HANA » de P2P et O2C
+  'ecc-s4hana': { url: 'schemas/ecc-s4hana.html', plein: true, attente: `!!document.querySelector('.s0-row')` },
+  'ecc-s4hana-popup': { url: 'schemas/ecc-s4hana.html', plein: false, attente: `!!document.querySelector('.s0-row')`, action: `document.querySelector('.s0-row').click()`, groupe: 'ecc-s4hana' },
+  'ecc-entrepot': { url: 'schemas/ecc-entrepot.html', plein: true, attente: `!!document.querySelector('.opt')` },
+  'ecc-changements': { url: 'schemas/ecc-changements.html', plein: true, attente: `!!document.querySelector('.c3')` },
+  'flux-p2p-s4': { url: 'schemas/flux-p2p.html?vue=s4', plein: true, attente: `!!document.querySelector('.ipg')` },
+  'flux-o2c-s4': { url: 'schemas/flux-o2c.html?vue=s4', plein: true, attente: `!!document.querySelector('.ipg')` },
 };
 for (const f of FRISES) {
   PAGES[f] = { url: `frises/${f}.html`, plein: true };

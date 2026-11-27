@@ -28,14 +28,14 @@ Ce fichier donne à Claude Code tout le contexte du projet. Le lire en entier av
 ## Structure actuelle
 
 ```
-index.html                 accueil : parcours conseillé, principaux flux logistiques, scénarios de mise en œuvre, certification SAP Activate, supports annexes
+index.html                 accueil : parcours conseillé, De ECC à S/4HANA, principaux flux logistiques, scénarios de mise en œuvre, certification SAP Activate, supports annexes
 shared/theme.css           toutes les couleurs (clair, sombre), polices, tailles et rayons
 shared/polices/            IBM Plex Sans et Mono (woff2) et leur licence
 shared/entete.js           en-tête commun : logotype, fil d'Ariane, sélecteur FR / EN (data-entete sur chaque page)
 shared/marque/             logotype, monogramme, favicon (SVG et PNG), image de partage partage.png (refaite depuis outils/partage.html)
 documents.json             manifeste : la liste des documents et l'ordre des sections de l'accueil
 shared/documents.js        chargeur du manifeste (SAP_DOCUMENTS) et SAP_HREF
-glossaire.json             les 308 termes du glossaire, un terme par ligne
+glossaire.json             les 314 termes du glossaire, un terme par ligne
 shared/glossaire.js        composant glossaire, inclus sur toutes les pages
 shared/libelles.js         chargeur des textes d'interface (SAP_T, attributs data-t), inclus avant glossaire.js
 shared/libelles/fr.json    textes d'interface (accueil, glossaire, lecteur, frises) ; en.json pour l'anglais
@@ -51,7 +51,9 @@ shared/frise.js, frise.css gabarit commun des frises (dessin de la chronologie, 
 frises/brownfield.html     frise brownfield (SAP Activate), contenu dans frises/brownfield.json
 frises/bluefield.html      frise bluefield (SAP Activate), contenu dans frises/bluefield.json
 schemas/                   schémas interactifs (rôles d'un programme SAP), une page par langue (data-langue-fixe, lien rel=alternate vers l'autre langue)
-schemas/flux-<nom>.html     principaux flux logistiques (p2p, ptp, o2c, r2r), FR et -en.html ; contenu en JSON dans la page, affichage dans shared/flux.js et flux.css
+schemas/flux-<nom>.html     principaux flux logistiques (p2p, ptp, o2c, r2r), FR et -en.html ; contenu en JSON dans la page, affichage dans shared/flux.js et flux.css ; P2P et O2C ont la vue « ECC → S/4HANA » (champ s4 de chaque étape, ?vue=s4 l'ouvre)
+schemas/ecc-<nom>.html      De ECC à S/4HANA : ecc-s4hana (schéma 0), ecc-entrepot (schéma 2), ecc-changements (schéma 3), FR ; contenu en JSON dans la page (id ecc-data), affichage et popup commune dans shared/ecc.js et ecc.css
+contenus/ecc-vs-s4hana.md  dossier de l'expert SAP, source des textes des quatre schémas ECC / S/4HANA (toute retouche de fond passe par l'expert)
 lecteur.html               lecteur PDF page par page (PDF.js), lecteur.html?doc=documents/<fichier>.pdf
 apercus/<clé>.jpg          aperçu de chaque carte (1re page du PDF via `qlmanage -t`, réduit à 720 px de haut ; frises et schéma des rôles : Chrome headless 1080 × 673 sur `?lang=fr`, avec `--blink-settings=preferredColorScheme=1` pour forcer le thème clair, réduit à 720 de large), à refaire si le support change
 apercus/<clé>.en.jpg       aperçu anglais d'une frise (même capture sur `?lang=en`)
@@ -72,7 +74,8 @@ Le site ne demande aucune compilation, mais il doit être servi par un serveur, 
 `documents.json` contient deux blocs :
 
 - `documents` : une entrée par support, sous une clé courte (`synth`, `mig`…). Champs : `type` (`deck`, `doc`, `frise`, `schema`, `act`, `prat`, libellés dans `shared/libelles/fr.json` sous `types`), `titre`, `description`, `fichier` (chemin depuis la racine du site), `langue` (`fr`, `en` ou `fr en`), `versionEn` (clé de la version anglaise), `en` (titre et description en anglais).
-- `accueil` : l'ordre des cartes dans les cinq sections de l'accueil (`parcours`, `flux`, `frises`, `certification`, `autres`), par clé. Une nouvelle section demande aussi son bloc dans `index.html`, ses libellés et son ancre dans `ANCRES` de `shared/entete.js`.
+- `vueS4` (facultatif) : `true` pour un flux qui a la vue « ECC → S/4HANA » ; sa carte d'accueil porte l'étiquette.
+- `accueil` : l'ordre des cartes dans les six sections de l'accueil (`parcours`, `ecc`, `flux`, `frises`, `certification`, `autres`), par clé. Une nouvelle section demande aussi son bloc dans `index.html`, ses libellés et son ancre dans `ANCRES` de `shared/entete.js`.
 
 Ajouter un document :
 
@@ -98,6 +101,18 @@ Le lecteur n'ouvre que les PDF listés dans le manifeste et rangés sous `docume
 - Si `glossaire.json` ne se charge pas, le panneau affiche un message d'erreur au lieu de la liste.
 - Les clés de documents renvoient à `documents.json`. Un lien local (sans `http`) est résolu par rapport à la racine du site.
 - La recherche ignore les accents et cherche aussi dans les définitions.
+- Dans le contenu des schémas, `**terme**` devient un bouton qui ouvre le glossaire sur ce terme (`data-gl-terme`). `verifier.mjs` refuse un terme absent du glossaire.
+
+### De ECC à S/4HANA (lot 5, B-007)
+
+Section de l'accueil juste après le parcours conseillé (`accueil.ecc` : `s0`, `s2`, `s3`), pastille « Nouveau », puis une ligne qui renvoie à la vue « ECC → S/4HANA » de P2P et O2C. Textes repris de `contenus/ecc-vs-s4hana.md`, sans réécriture.
+
+- Schéma 0, `schemas/ecc-s4hana.html` : six rangées ECC / S/4HANA (`rangees` : `id`, `dimension`, `qui`, `ecc`, `s4`, `enEcc`, `enS4`, `concret`, `exemple`, `dp`) et le bandeau « Passer de l'un à l'autre » (`bandeau` : mêmes champs, plus `echeances` et `chemins`).
+- Schéma 2, `schemas/ecc-entrepot.html` : trois questions, quatre options. Les règles d'estompage sont dans le JSON de chaque option : `ecarte` et `etudier`, listes de `{si, pourquoi}` ; `si` vaut par exemple `q1=non`, `q3=oui&q2!=oui`, ou `*` (au moins une réponse). Ligne de temps : `ligne.evenements` (`date` ISO, `ancien` pour une date dépassée) ; le repère « Aujourd'hui » suit la date du jour.
+- Schéma 3, `schemas/ecc-changements.html` : 13 cartes en trois colonnes (`c` : `dis`, `rep`, `obl`), `dom` (domaines du filtre, `*` = tous), `pre` (préalable à la conversion), `lien` facultatif.
+- Schéma 1 : dans `schemas/flux-p2p.html` et `flux-o2c.html`, chaque étape a un champ `s4` : `impact` (`faible`, `moyen`, `fort`), `de` (bas de la fourchette, facultatif), `precision` (facultatif), `ecc`, `s4`, `qui`, `dp`, `lien`. La bascule n'apparaît que si le flux a ces données.
+- Popup commune (`shared/ecc.js`) : Précédent / Suivant, Échap, focus rendu à l'élément cliqué, panneau du bas sur téléphone. Textes d'interface sous `ecc` dans `shared/libelles/fr.json`.
+- Les dates sont celles lues le 26/11/2026 par l'expert SAP ; les points « à vérifier » du dossier restent affichés comme tels.
 
 ### Les frises
 
@@ -181,6 +196,7 @@ Quand Walid dit « fais avancer US-XXX », la session principale lit le statut e
 - Vérifier que « Jalon » n'est pas déjà déposé (INPI, EUIPO, classe 41) avant une diffusion large : à faire par Walid.
 - Convertir le mot « Jalon » du logotype en tracés : demande d'installer fontTools, en attente de l'accord de Walid.
 - Contrôler l'aperçu de partage avec LinkedIn Post Inspector.
+- Lot 5 (De ECC à S/4HANA) : le deck `mig` n'est pas à jour sur deux points (transition option jusqu'en 2035 sous conditions ; compatibility packs arrêtés le 31/05/2026 hors contrat cloud), alors que le schéma 0 y renvoie. Publié quand même sur décision de Walid du 27/11/2026 ; à corriger par Walid (US-058). Versions anglaises à faire (US-055 à US-057). Durée de la pastille « Nouveau » : selon Q8 du lot 4, pas encore tranchée.
 - Lot 4 : Walid choisit parmi les besoins B-003 à B-010 de `besoins.md` (B-007, flux logistiques, en partie couvert par la section « Principaux flux logistiques »).
 - Flux Order-to-Cash : l'exemple cite « une compagnie aérienne » ; à remplacer par « un client industriel » si Walid le souhaite.
 - Les PDF sont des copies anonymisées des supports claude.ai (les originaux citent le client, l'employeur et des sites réels). Si un original change, il faut refaire l'export puis l'anonymisation avant de remplacer le PDF.

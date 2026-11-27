@@ -1477,7 +1477,7 @@ Ordre de développement proposé : US-050 (termes), US-049 (schéma 0 et popup c
 ### Bloc A · Français
 
 ### US-049 · Schéma 0 : page « ECC et S/4HANA en un coup d'œil »
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : L
 - Maquette nécessaire : oui · Maquette : maquettes/ecc-s4hana.html (écran 2)
@@ -1487,28 +1487,30 @@ Ordre de développement proposé : US-050 (termes), US-049 (schéma 0 et popup c
 En tant que chef de projet débutant en SAP, je veux voir sur une seule page ce qui distingue ECC de S/4HANA afin de comprendre pourquoi le passage est un programme et pas une montée de version.
 
 Critères d'acceptation
-- [ ] Une page française à part existe dans `schemas/`, comme le schéma des rôles (Q2, décision de Walid du 26/11/2026). Elle a l'en-tête commun, le fil d'Ariane « De ECC à S/4HANA / ECC et S/4HANA en un coup d'œil », le sélecteur FR / EN et le glossaire.
-- [ ] Le contenu est un JSON dans la page, comme les flux. Champs par élément : `id`, `dimension`, `qui`, `ecc`, `s4`, `enEcc`, `enS4`, `concret`, `exemple`, `dp`. Textes repris de la section S0.1 du dossier.
-- [ ] En haut : surtitre « De ECC à S/4HANA », titre, puis le message central du dossier (« S/4HANA n'est pas une nouvelle version d'ECC… »).
-- [ ] Titres de colonne : « ECC · SAP ERP 6.0 » / « L'ERP historique, toutes bases de données » ; « S/4HANA » / « Le successeur, sur HANA seule, depuis 2015 ».
-- [ ] Six rangées, dans cet ordre : base de données, modèle de données, interface, analytique, extension, déploiement et rythme de mise à jour. Chaque rangée montre la valeur ECC, la dimension avec une flèche, la valeur S/4HANA, et « Qui le voit » en mots.
-- [ ] Clic, Entrée ou Espace sur une rangée : popup avec, dans cet ordre, « En ECC », « En S/4HANA », « Ce que ça change concrètement », « Pour le DP ». En tête : « Rangée 2 sur 6 », étiquettes « Qui le voit », « ECC » et « S/4HANA ».
-- [ ] L'exemple de la popup porte le repère ambre « Exemple fil rouge ».
-- [ ] Précédent / Suivant parcourent les six rangées, puis le bandeau. Échap ferme et rend le focus à l'élément cliqué. Sur téléphone, la popup monte du bas de l'écran.
-- [ ] La popup est un composant partagé (script et style dans `shared/`), prêt pour les schémas 2 et 3.
-- [ ] Bandeau « Passer de l'un à l'autre » (Qui le voit : Direction · Contrat) : repère « Aujourd'hui », fin 2027, fin 2030, « 2031 à 2033 (2035) », fin 2040. Trois boutons ouvrent les scénarios : Greenfield (Calvane, fictif), Brownfield (Ternova, fictif), Bluefield (Alvéa, fictif). Un clic sur le titre du bandeau ouvre sa popup.
-- [ ] Bloc « Pour aller plus loin » : schéma 1 (flux P2P), schéma 2, schéma 3, deck « Migration ECC vers S/4HANA » (lien par `SAP_HREF`). Un lien vers un schéma pas encore livré n'est pas affiché.
-- [ ] Mention « Dates lues le 26/11/2026. » en pied.
-- [ ] Sur téléphone, les rangées deviennent des cartes empilées : nom de la dimension, puis « ECC : … » et « S/4HANA : … » sur deux lignes.
-- [ ] Chaque rangée a un nom accessible complet (dimension, valeur ECC, valeur S/4HANA). Les ratios de contraste des colonnes ECC et S/4HANA sont notés au journal, en clair et en sombre.
-- [ ] La page est ajoutée aux captures de référence (`outils/captures/`).
+- [x] Une page française à part existe dans `schemas/`, comme le schéma des rôles (Q2, décision de Walid du 26/11/2026). Elle a l'en-tête commun, le fil d'Ariane « De ECC à S/4HANA / ECC et S/4HANA en un coup d'œil », le sélecteur FR / EN et le glossaire.
+- [x] Le contenu est un JSON dans la page, comme les flux. Champs par élément : `id`, `dimension`, `qui`, `ecc`, `s4`, `enEcc`, `enS4`, `concret`, `exemple`, `dp`. Textes repris de la section S0.1 du dossier.
+- [x] En haut : surtitre « De ECC à S/4HANA », titre, puis le message central du dossier (« S/4HANA n'est pas une nouvelle version d'ECC… »).
+- [x] Titres de colonne : « ECC · SAP ERP 6.0 » / « L'ERP historique, toutes bases de données » ; « S/4HANA » / « Le successeur, sur HANA seule, depuis 2015 ».
+- [x] Six rangées, dans cet ordre : base de données, modèle de données, interface, analytique, extension, déploiement et rythme de mise à jour. Chaque rangée montre la valeur ECC, la dimension avec une flèche, la valeur S/4HANA, et « Qui le voit » en mots.
+- [x] Clic, Entrée ou Espace sur une rangée : popup avec, dans cet ordre, « En ECC », « En S/4HANA », « Ce que ça change concrètement », « Pour le DP ». En tête : « Rangée 2 sur 6 », étiquettes « Qui le voit », « ECC » et « S/4HANA ».
+- [x] L'exemple de la popup porte le repère ambre « Exemple fil rouge ».
+- [x] Précédent / Suivant parcourent les six rangées, puis le bandeau. Échap ferme et rend le focus à l'élément cliqué. Sur téléphone, la popup monte du bas de l'écran.
+- [x] La popup est un composant partagé (script et style dans `shared/`), prêt pour les schémas 2 et 3.
+- [x] Bandeau « Passer de l'un à l'autre » (Qui le voit : Direction · Contrat) : repère « Aujourd'hui », fin 2027, fin 2030, « 2031 à 2033 (2035) », fin 2040. Trois boutons ouvrent les scénarios : Greenfield (Calvane, fictif), Brownfield (Ternova, fictif), Bluefield (Alvéa, fictif). Un clic sur le titre du bandeau ouvre sa popup.
+- [x] Bloc « Pour aller plus loin » : schéma 1 (flux P2P), schéma 2, schéma 3, deck « Migration ECC vers S/4HANA » (lien par `SAP_HREF`). Un lien vers un schéma pas encore livré n'est pas affiché.
+- [x] Mention « Dates lues le 26/11/2026. » en pied.
+- [x] Sur téléphone, les rangées deviennent des cartes empilées : nom de la dimension, puis « ECC : … » et « S/4HANA : … » sur deux lignes.
+- [x] Chaque rangée a un nom accessible complet (dimension, valeur ECC, valeur S/4HANA). Les ratios de contraste des colonnes ECC et S/4HANA sont notés au journal, en clair et en sombre.
+- [x] La page est ajoutée aux captures de référence (`outils/captures/`).
 
 Journal
 - 2026-11-26 · po · story créée depuis le dossier de l'expert SAP (schéma 0) et l'écran 2 de la maquette
 - 2026-11-26 · Walid · maquette validée, Q1 à Q6 tranchées (« ok vasy avec les recommandations ») ; statut « Validée » (inscrit par le po)
+- 2026-11-27 · session principale · livrée, vérifiée à 375 et 1440 px en clair et en sombre, sans débordement ; ratios notés : texte ECC sur fond ECC 13,9:1 (clair) et 12,4:1 (sombre) ; S/4HANA 13,6:1 et 12,6:1 ; titre S/4HANA 5,7:1 et 7,7:1. Non publiée.
+
 
 ### US-050 · Glossaire : six termes du schéma 0, FR et EN
-- Statut : À affiner
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : S
 - Maquette nécessaire : non (données)
@@ -1518,19 +1520,22 @@ Journal
 En tant que chef de projet débutant en SAP, je veux trouver dans le glossaire les mots du schéma 0 afin de ne pas buter sur SAP GUI ou BW en lisant la comparaison.
 
 Critères d'acceptation
-- [ ] `glossaire.json` reçoit les six termes de la section 5 du dossier (« Termes du schéma 0 à ajouter »), avec leur nom complet, catégorie, définition et « Pour le DP » : SAP GUI (`tech`), BW (`tech`), Analytique embarquée (`tech`), EhP (`run`), Feature Pack Stack (`run`), Suite on HANA (`tech`).
-- [ ] `documents` vaut `["mig"]` pour les six ; la clé du schéma 0 est ajoutée par US-054.
-- [ ] `glossaire.en.json` reçoit les six termes anglais du dossier, reliés par `termeFr`. « Embedded analytics » porte `nomFr` « Analytique embarquée ».
-- [ ] Le terme « Feature » (catégorie agile) ne change pas. Une recherche « feature » trouve les deux termes.
-- [ ] Chaque nouveau terme est trouvé par sa recherche, en français et en anglais.
-- [ ] Le glossaire compte 314 termes ; le compteur de l'accueil l'affiche. `CLAUDE.md` donne le bon nombre.
-- [ ] `node outils/verifier.mjs` passe sans erreur (anglais aligné sur le français).
+- [x] `glossaire.json` reçoit les six termes de la section 5 du dossier (« Termes du schéma 0 à ajouter »), avec leur nom complet, catégorie, définition et « Pour le DP » : SAP GUI (`tech`), BW (`tech`), Analytique embarquée (`tech`), EhP (`run`), Feature Pack Stack (`run`), Suite on HANA (`tech`).
+- [x] `documents` vaut `["mig"]` pour les six ; la clé du schéma 0 est ajoutée par US-054.
+- [x] `glossaire.en.json` reçoit les six termes anglais du dossier, reliés par `termeFr`. « Embedded analytics » porte `nomFr` « Analytique embarquée ».
+- [x] Le terme « Feature » (catégorie agile) ne change pas. Une recherche « feature » trouve les deux termes.
+- [x] Chaque nouveau terme est trouvé par sa recherche, en français et en anglais.
+- [x] Le glossaire compte 314 termes ; le compteur de l'accueil l'affiche. `CLAUDE.md` donne le bon nombre.
+- [x] `node outils/verifier.mjs` passe sans erreur (anglais aligné sur le français).
 
 Journal
 - 2026-11-26 · po · story créée depuis la section 5 du dossier de l'expert SAP
+- 2026-11-27 · Walid · Q7 : « Validée » sans maquette (« Oui »)
+- 2026-11-27 · session principale · livrée, vérifiée à 375 et 1440 px en clair et en sombre, sans débordement ; six termes FR et EN ajoutés, glossaire à 314. Non publiée.
+
 
 ### US-051 · Schéma 1 : bascule ECC → S/4HANA dans les flux P2P et O2C
-- Statut : Validée
+- Statut : À tester
 - Priorité : haute (proposée)
 - Taille : M
 - Maquette nécessaire : oui · Maquette : maquettes/ecc-s4hana.html (écran 3)
@@ -1540,24 +1545,26 @@ Journal
 En tant que chef de projet du domaine logistique, je veux voir, étape par étape d'un flux que je connais, ce qui change en S/4HANA afin de savoir où se situent l'effort et les risques de mon domaine.
 
 Critères d'acceptation
-- [ ] `shared/flux.js` et `shared/flux.css` ajoutent dans l'en-tête du flux une bascule à deux positions, « Le flux » / « ECC → S/4HANA ». « Le flux » est la position par défaut. La position active est annoncée aux lecteurs d'écran (`aria-pressed`).
-- [ ] En position « Le flux », les quatre flux FR et EN restent identiques à leurs captures de référence.
-- [ ] La bascule n'apparaît que si le JSON du flux contient des données `s4`. Plan-to-Produce, Record-to-Report et les pages anglaises n'en ont pas dans cette story.
-- [ ] Champs ajoutés à chaque étape du JSON de `schemas/flux-p2p.html` et `schemas/flux-o2c.html` : `s4.impact` (`faible`, `moyen` ou `fort`), `s4.de` (bas de la fourchette, facultatif), `s4.precision` (facultatif), `s4.ecc`, `s4.s4`, `s4.qui`, `s4.dp`. Textes repris des sections 1.1 et 1.2 du dossier.
-- [ ] En position « ECC → S/4HANA », chaque étape porte une pastille d'impact écrite en mots : Faible, Moyen ou Fort, fourchette permise, avec un mot de précision (Q3, décision de Walid du 26/11/2026).
-- [ ] Niveaux affichés. P2P : 1 Faible ; 2 Fort (préalable) ; 3 Fort ; 4 Faible ; 5 Fort (côté finance) ; 6 Faible. O2C : 1 Fort (préalable) ; 2 Fort ; 3 Faible à fort (selon l'entrepôt) ; 4 Fort ; 5 Faible à moyen ; 6 Faible.
-- [ ] Le détail de l'étape affiche un bloc « ECC → S/4HANA » avec sa pastille et quatre rubriques : « En ECC », « En S/4HANA », « Qui est touché », « Pour le DP ». Il se place avant « Ce que surveille le DP ». Le reste du détail ne change pas.
-- [ ] Changer d'étape garde la position de la bascule. Clavier : Entrée et Espace sur une étape, comme aujourd'hui.
-- [ ] Textes de la bascule, des niveaux et des rubriques dans `fr.json`.
-- [ ] Pastilles lisibles à 4,5:1 au moins en clair et en sombre ; ratios notés au journal. Bascule de 40 px de haut au moins.
-- [ ] Captures de référence de P2P et O2C ajoutées en position « ECC → S/4HANA ».
+- [x] `shared/flux.js` et `shared/flux.css` ajoutent dans l'en-tête du flux une bascule à deux positions, « Le flux » / « ECC → S/4HANA ». « Le flux » est la position par défaut. La position active est annoncée aux lecteurs d'écran (`aria-pressed`).
+- [ ] En position « Le flux », les quatre flux FR et EN restent identiques à leurs captures de référence. (Plan-to-Produce, Record-to-Report et les pages anglaises : inchangés. P2P et O2C : dessin et détail inchangés, mais la ligne de la bascule s'ajoute au-dessus du dessin.)
+- [x] La bascule n'apparaît que si le JSON du flux contient des données `s4`. Plan-to-Produce, Record-to-Report et les pages anglaises n'en ont pas dans cette story.
+- [x] Champs ajoutés à chaque étape du JSON de `schemas/flux-p2p.html` et `schemas/flux-o2c.html` : `s4.impact` (`faible`, `moyen` ou `fort`), `s4.de` (bas de la fourchette, facultatif), `s4.precision` (facultatif), `s4.ecc`, `s4.s4`, `s4.qui`, `s4.dp`. Textes repris des sections 1.1 et 1.2 du dossier.
+- [x] En position « ECC → S/4HANA », chaque étape porte une pastille d'impact écrite en mots : Faible, Moyen ou Fort, fourchette permise, avec un mot de précision (Q3, décision de Walid du 26/11/2026).
+- [x] Niveaux affichés. P2P : 1 Faible ; 2 Fort (préalable) ; 3 Fort ; 4 Faible ; 5 Fort (côté finance) ; 6 Faible. O2C : 1 Fort (préalable) ; 2 Fort ; 3 Faible à fort (selon l'entrepôt) ; 4 Fort ; 5 Faible à moyen ; 6 Faible.
+- [x] Le détail de l'étape affiche un bloc « ECC → S/4HANA » avec sa pastille et quatre rubriques : « En ECC », « En S/4HANA », « Qui est touché », « Pour le DP ». Il se place avant « Ce que surveille le DP ». Le reste du détail ne change pas.
+- [x] Changer d'étape garde la position de la bascule. Clavier : Entrée et Espace sur une étape, comme aujourd'hui.
+- [x] Textes de la bascule, des niveaux et des rubriques dans `fr.json`.
+- [x] Pastilles lisibles à 4,5:1 au moins en clair et en sombre ; ratios notés au journal. Bascule de 40 px de haut au moins.
+- [x] Captures de référence de P2P et O2C ajoutées en position « ECC → S/4HANA ».
 
 Journal
 - 2026-11-26 · po · story créée depuis le dossier de l'expert SAP (schéma 1) et l'écran 3 de la maquette
 - 2026-11-26 · Walid · maquette validée, Q1 à Q6 tranchées (« ok vasy avec les recommandations ») ; statut « Validée » (inscrit par le po)
+- 2026-11-27 · session principale · livrée, vérifiée à 375 et 1440 px en clair et en sombre, sans débordement ; pastilles Faible 13,9:1 / 12,4:1, Moyen 14,2:1 / 12,1:1, Fort 13,3:1 / 12,5:1 (clair / sombre) ; bascule active 6,2:1 (P2P) et 5,6:1 (O2C) en clair, 6,9:1 et 7,7:1 en sombre ; bascule de 40 px. Non publiée.
+
 
 ### US-052 · Schéma 2 : page « L'entrepôt : quelle cible pour un LE-WM d'ECC »
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui · Maquette : maquettes/ecc-s4hana.html (écran 4)
@@ -1567,31 +1574,33 @@ Journal
 En tant que chef de projet du domaine logistique, je veux comparer les quatre devenirs d'un entrepôt LE-WM et trier ceux qui conviennent à mon cas afin de poser la bonne question d'entrepôt dès le cadrage.
 
 Critères d'acceptation
-- [ ] Une page française existe dans `schemas/`, avec l'en-tête commun, le fil d'Ariane « De ECC à S/4HANA / L'entrepôt », le sélecteur FR / EN et le glossaire. Contenu en JSON dans la page, repris de la section 2.1 du dossier.
-- [ ] En haut : surtitre, titre, phrase d'introduction de la maquette.
-- [ ] Trois questions à réponse Oui / Non (Q1 contrat cloud, Q2 entrepôt automatisé ou autonome, Q3 processus simples). Un second clic sur la réponse choisie l'efface. Un bouton « Effacer les réponses » remet tout à zéro.
-- [ ] Règles d'estompage, celles du dossier relues par l'expert (Q5, décision de Walid du 26/11/2026) :
+- [x] Une page française existe dans `schemas/`, avec l'en-tête commun, le fil d'Ariane « De ECC à S/4HANA / L'entrepôt », le sélecteur FR / EN et le glossaire. Contenu en JSON dans la page, repris de la section 2.1 du dossier.
+- [x] En haut : surtitre, titre, phrase d'introduction de la maquette.
+- [x] Trois questions à réponse Oui / Non (Q1 contrat cloud, Q2 entrepôt automatisé ou autonome, Q3 processus simples). Un second clic sur la réponse choisie l'efface. Un bouton « Effacer les réponses » remet tout à zéro.
+- [x] Règles d'estompage, celles du dossier relues par l'expert (Q5, décision de Walid du 26/11/2026) :
   - A : écartée si Q1 = Non (voie fermée depuis le 31/05/2026) ; « À étudier » si Q1 = Oui (sursis jusqu'à fin 2030).
   - B : écartée si Q2 = Oui ou Q3 = Non ; « À étudier » si Q3 = Oui et Q2 n'est pas Oui.
   - C : jamais écartée ; « À étudier » dès qu'une réponse est donnée, avec la mention « Si l'entrepôt doit tourner quand l'ERP s'arrête, préférer D ».
   - D : écartée si Q2 = Non ; « À étudier » si Q2 = Oui.
   - Sans réponse : « Répondez aux questions ». Réponses qui ne tranchent pas : « Non tranchée ». Tout à Non ne laisse que C.
-- [ ] Une option écartée s'estompe, dit pourquoi en une phrase et reste cliquable.
-- [ ] La phrase « Aide à la réflexion, pas une décision » est toujours visible près des questions.
-- [ ] Quatre options cliquables, avec leur date limite, une jauge d'effort en mots (A Faible, B Faible à moyen, C Moyen à fort, D Fort) et leur cas d'usage. L'option A est présentée comme un sursis, pas une cible.
-- [ ] Clic sur une option : popup commune, rubriques « En ECC », « En S/4HANA », « Qui est touché », « Pour le DP ». Précédent / Suivant passent d'une option à l'autre.
-- [ ] Ligne de temps 2025 à 2031 : 31/12/2025 (fin annoncée à l'origine, marquée comme ancienne), 31/05/2026, 31/12/2027, 31/12/2030, et un repère « Aujourd'hui » placé à la date du jour. Sur téléphone, elle devient une liste.
-- [ ] Mention « Dates lues le 26/11/2026. Elles ont changé deux fois en 2026 : à revérifier avant chaque comité. »
-- [ ] Bloc « Pour aller plus loin » vers les schémas 0, 1 et 3 (un schéma pas encore livré n'est pas affiché).
-- [ ] Les réponses sont annoncées aux lecteurs d'écran (`aria-pressed`), et le changement d'état des options aussi.
-- [ ] La page est ajoutée aux captures de référence.
+- [x] Une option écartée s'estompe, dit pourquoi en une phrase et reste cliquable.
+- [x] La phrase « Aide à la réflexion, pas une décision » est toujours visible près des questions.
+- [x] Quatre options cliquables, avec leur date limite, une jauge d'effort en mots (A Faible, B Faible à moyen, C Moyen à fort, D Fort) et leur cas d'usage. L'option A est présentée comme un sursis, pas une cible.
+- [x] Clic sur une option : popup commune, rubriques « En ECC », « En S/4HANA », « Qui est touché », « Pour le DP ». Précédent / Suivant passent d'une option à l'autre.
+- [x] Ligne de temps 2025 à 2031 : 31/12/2025 (fin annoncée à l'origine, marquée comme ancienne), 31/05/2026, 31/12/2027, 31/12/2030, et un repère « Aujourd'hui » placé à la date du jour. Sur téléphone, elle devient une liste.
+- [x] Mention « Dates lues le 26/11/2026. Elles ont changé deux fois en 2026 : à revérifier avant chaque comité. »
+- [x] Bloc « Pour aller plus loin » vers les schémas 0, 1 et 3 (un schéma pas encore livré n'est pas affiché).
+- [x] Les réponses sont annoncées aux lecteurs d'écran (`aria-pressed`), et le changement d'état des options aussi.
+- [x] La page est ajoutée aux captures de référence.
 
 Journal
 - 2026-11-26 · po · story créée depuis le dossier de l'expert SAP (schéma 2) et l'écran 4 de la maquette
 - 2026-11-26 · Walid · maquette validée, Q1 à Q6 tranchées (« ok vasy avec les recommandations ») ; statut « Validée » (inscrit par le po)
+- 2026-11-27 · session principale · livrée, vérifiée à 375 et 1440 px en clair et en sombre, sans débordement ; règles d'estompage dans le JSON de chaque option, testées (tout à Non ne laisse que C). Non publiée.
+
 
 ### US-053 · Schéma 3 : page « Disparaît, remplacé, devient obligatoire »
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui · Maquette : maquettes/ecc-s4hana.html (écran 5, popup en variante B)
@@ -1601,25 +1610,27 @@ Journal
 En tant que chef de projet qui suit une conversion en comité, je veux la liste des changements imposés par S/4HANA dans mon domaine, avec l'effort et les préalables, afin de savoir quoi suivre et quoi lancer en premier.
 
 Critères d'acceptation
-- [ ] Une page française existe dans `schemas/`, avec l'en-tête commun, le fil d'Ariane « De ECC à S/4HANA / Disparaît, remplacé, obligatoire », le sélecteur FR / EN et le glossaire. Contenu en JSON dans la page, repris de la section 3.1 du dossier.
-- [ ] Trois colonnes : « Disparaît », « Remplacé par », « Devient obligatoire », chacune avec son nombre de cartes.
-- [ ] 13 cartes. Business Partner n'a qu'une carte, dans « Devient obligatoire » (Q6, décision de Walid du 26/11/2026). Elle reprend le texte ECC de la carte 3 du dossier, le texte S/4HANA de la carte 13 (« … la conversion ne démarre pas »), et « Qui est touché » et « Pour le DP » de la carte 3. « Disparaît » compte donc 3 cartes, « Remplacé par » 6, « Devient obligatoire » 4.
-- [ ] Chaque carte porte : un nom, une étiquette de domaine, une jauge d'effort en mots, et « Préalable à la conversion » quand c'est le cas (Base HANA, Universal Journal et Material Ledger, Business Partner).
-- [ ] Filtres : domaine (Tous, MM, SD, PP, WM, FI/CO, Données, Technique) et « Préalables seulement ». La carte « SAP GUI → Fiori » (Tous) reste sous chaque domaine. Un compteur « N cartes sur 13 » est annoncé aux lecteurs d'écran. Une colonne vide affiche « Aucune carte pour ce filtre ».
-- [ ] Clic sur une carte : popup commune, avec « En ECC » et « En S/4HANA » côte à côte sur bureau (Q4, décision de Walid du 26/11/2026), l'un sous l'autre sur téléphone, puis « Qui est touché » et « Pour le DP ».
-- [ ] Précédent / Suivant ne passent que par les cartes affichées par le filtre.
-- [ ] La carte « LE-WM » propose un lien vers le schéma 2 (s'il est livré).
-- [ ] Pied : « La liste exacte dépend de votre système : elle sort du SAP Readiness Check et du Simplification Item Check. », termes reliés au glossaire.
-- [ ] Bloc « Pour aller plus loin » vers les schémas 0, 1 et 2 (un schéma pas encore livré n'est pas affiché).
-- [ ] Sur téléphone, les colonnes s'empilent dans le même ordre. Filtres de 40 px de haut au moins.
-- [ ] La page est ajoutée aux captures de référence.
+- [x] Une page française existe dans `schemas/`, avec l'en-tête commun, le fil d'Ariane « De ECC à S/4HANA / Disparaît, remplacé, obligatoire », le sélecteur FR / EN et le glossaire. Contenu en JSON dans la page, repris de la section 3.1 du dossier.
+- [x] Trois colonnes : « Disparaît », « Remplacé par », « Devient obligatoire », chacune avec son nombre de cartes.
+- [x] 13 cartes. Business Partner n'a qu'une carte, dans « Devient obligatoire » (Q6, décision de Walid du 26/11/2026). Elle reprend le texte ECC de la carte 3 du dossier, le texte S/4HANA de la carte 13 (« … la conversion ne démarre pas »), et « Qui est touché » et « Pour le DP » de la carte 3. « Disparaît » compte donc 3 cartes, « Remplacé par » 6, « Devient obligatoire » 4.
+- [x] Chaque carte porte : un nom, une étiquette de domaine, une jauge d'effort en mots, et « Préalable à la conversion » quand c'est le cas (Base HANA, Universal Journal et Material Ledger, Business Partner).
+- [x] Filtres : domaine (Tous, MM, SD, PP, WM, FI/CO, Données, Technique) et « Préalables seulement ». La carte « SAP GUI → Fiori » (Tous) reste sous chaque domaine. Un compteur « N cartes sur 13 » est annoncé aux lecteurs d'écran. Une colonne vide affiche « Aucune carte pour ce filtre ».
+- [x] Clic sur une carte : popup commune, avec « En ECC » et « En S/4HANA » côte à côte sur bureau (Q4, décision de Walid du 26/11/2026), l'un sous l'autre sur téléphone, puis « Qui est touché » et « Pour le DP ».
+- [x] Précédent / Suivant ne passent que par les cartes affichées par le filtre.
+- [x] La carte « LE-WM » propose un lien vers le schéma 2 (s'il est livré).
+- [x] Pied : « La liste exacte dépend de votre système : elle sort du SAP Readiness Check et du Simplification Item Check. », termes reliés au glossaire.
+- [x] Bloc « Pour aller plus loin » vers les schémas 0, 1 et 2 (un schéma pas encore livré n'est pas affiché).
+- [x] Sur téléphone, les colonnes s'empilent dans le même ordre. Filtres de 40 px de haut au moins.
+- [x] La page est ajoutée aux captures de référence.
 
 Journal
 - 2026-11-26 · po · story créée depuis le dossier de l'expert SAP (schéma 3) et l'écran 5 de la maquette
 - 2026-11-26 · Walid · maquette validée, Q1 à Q6 tranchées (« ok vasy avec les recommandations ») ; statut « Validée » (inscrit par le po)
+- 2026-11-27 · session principale · livrée, vérifiée à 375 et 1440 px en clair et en sombre, sans débordement ; 13 cartes (3, 6, 4), Business Partner dans « Devient obligatoire » seulement. Non publiée.
+
 
 ### US-054 · Accueil : section « De ECC à S/4HANA »
-- Statut : Validée
+- Statut : À tester
 - Priorité : moyenne (proposée)
 - Taille : M
 - Maquette nécessaire : oui · Maquette : maquettes/ecc-s4hana.html (écran 1, option A)
@@ -1629,29 +1640,31 @@ Journal
 En tant que chef de projet qui arrive sur le portail, je veux trouver d'un bloc tout ce qui explique le passage d'ECC à S/4HANA afin de ne pas chercher dans les PDF.
 
 Critères d'acceptation
-- [ ] Une section « De ECC à S/4HANA » est placée juste après le parcours conseillé (Q1, option A, décision de Walid du 26/11/2026). Sous-titre : « Ce qui change quand on passe d'ECC à S/4HANA, vu du domaine logistique. »
-- [ ] `documents.json` déclare les trois pages (type `schema`) et la nouvelle section de l'accueil, dans l'ordre : schéma 0, schéma 2, schéma 3.
-- [ ] Trois cartes, avec titre et description de la maquette. Le compteur de section (« 3 schémas ») est calculé.
-- [ ] Sous les cartes, une ligne renvoie au schéma 1 : « Étape par étape : ouvrez Procure-to-Pay ou Order-to-Cash et choisissez la vue « ECC → S/4HANA ». », avec un lien vers chaque flux.
-- [ ] Dans la section des flux, les cartes P2P et O2C portent l'étiquette « ECC → S/4HANA ». Plan-to-Produce et Record-to-Report ne changent pas.
-- [ ] Pastille « Nouveau » à côté du titre de section, comme dans la maquette. Durée : la même règle que la question Q8 du lot 4, une fois tranchée.
-- [ ] Les fils d'Ariane des trois pages ramènent à cette section.
-- [ ] Aperçus `apercus/<clé>.jpg` des trois pages, faits comme celui du schéma des rôles.
-- [ ] Les 18 termes ajoutés pour B-007 (12 déjà publiés, 6 de US-050) citent la clé du schéma qui les emploie, en plus de `mig`.
-- [ ] Sur téléphone, la section suit le format compact de l'accueil (US-034).
-- [ ] `CLAUDE.md` décrit la nouvelle section, les trois pages et le champ `s4` des flux.
-- [ ] Captures de référence de l'accueil refaites (FR).
+- [x] Une section « De ECC à S/4HANA » est placée juste après le parcours conseillé (Q1, option A, décision de Walid du 26/11/2026). Sous-titre : « Ce qui change quand on passe d'ECC à S/4HANA, vu du domaine logistique. »
+- [x] `documents.json` déclare les trois pages (type `schema`) et la nouvelle section de l'accueil, dans l'ordre : schéma 0, schéma 2, schéma 3.
+- [x] Trois cartes, avec titre et description de la maquette. Le compteur de section (« 3 schémas ») est calculé.
+- [x] Sous les cartes, une ligne renvoie au schéma 1 : « Étape par étape : ouvrez Procure-to-Pay ou Order-to-Cash et choisissez la vue « ECC → S/4HANA ». », avec un lien vers chaque flux.
+- [x] Dans la section des flux, les cartes P2P et O2C portent l'étiquette « ECC → S/4HANA ». Plan-to-Produce et Record-to-Report ne changent pas.
+- [ ] Pastille « Nouveau » à côté du titre de section, comme dans la maquette. Durée : la même règle que la question Q8 du lot 4, une fois tranchée. (Pastille posée ; durée en attente de Q8 du lot 4.)
+- [x] Les fils d'Ariane des trois pages ramènent à cette section.
+- [x] Aperçus `apercus/<clé>.jpg` des trois pages, faits comme celui du schéma des rôles.
+- [x] Les 18 termes ajoutés pour B-007 (12 déjà publiés, 6 de US-050) citent la clé du schéma qui les emploie, en plus de `mig`.
+- [x] Sur téléphone, la section suit le format compact de l'accueil (US-034).
+- [x] `CLAUDE.md` décrit la nouvelle section, les trois pages et le champ `s4` des flux.
+- [x] Captures de référence de l'accueil refaites (FR).
 
 Journal
 - 2026-11-26 · po · story créée depuis l'écran 1 de la maquette (option A)
 - 2026-11-26 · Walid · maquette validée, Q1 à Q6 tranchées (« ok vasy avec les recommandations ») ; statut « Validée » (inscrit par le po)
+- 2026-11-27 · session principale · livrée, vérifiée à 375 et 1440 px en clair et en sombre, sans débordement ; section, cartes, ligne vers P2P et O2C, étiquettes, aperçus s0, s2, s3 ; termes reliés aux schémas. Non publiée.
+
 
 ### Bloc B · Anglais
 
 Règles communes au bloc : textes anglais repris du dossier (S0.2, 1.3, 1.4, 2.2, 3.2), mis en anglais américain selon Q6 du lot 2 (« program », « organized », « authorizations », « license », « labor », « decentralized »). « For the PD » devient le libellé déjà en place sur le portail (« For the program director »). Noms des entreprises fictives inchangés.
 
 ### US-055 · Schéma 0 et section d'accueil en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : basse (proposée)
 - Taille : M
 - Maquette nécessaire : non (traduction ; mise en page de US-049 et US-054)
@@ -1671,9 +1684,11 @@ Critères d'acceptation
 
 Journal
 - 2026-11-26 · po · story créée
+- 2026-11-27 · Walid · Q7 : « Validée » sans maquette (« Oui »)
+
 
 ### US-056 · Schéma 1 en anglais (P2P et O2C)
-- Statut : À affiner
+- Statut : Validée
 - Priorité : basse (proposée)
 - Taille : S
 - Maquette nécessaire : non (traduction ; mise en page de US-051)
@@ -1691,9 +1706,11 @@ Critères d'acceptation
 
 Journal
 - 2026-11-26 · po · story créée
+- 2026-11-27 · Walid · Q7 : « Validée » sans maquette (« Oui »)
+
 
 ### US-057 · Schémas 2 et 3 en anglais
-- Statut : À affiner
+- Statut : Validée
 - Priorité : basse (proposée)
 - Taille : M
 - Maquette nécessaire : non (traduction ; mise en page de US-052 et US-053)
@@ -1712,6 +1729,8 @@ Critères d'acceptation
 
 Journal
 - 2026-11-26 · po · story créée
+- 2026-11-27 · Walid · Q7 : « Validée » sans maquette (« Oui »)
+
 
 ### Bloc C · Supports existants
 
@@ -1742,9 +1761,9 @@ Journal
 
 Q1 à Q6 : tranchées par Walid le 26/11/2026 (voir en tête du lot).
 
-- Q7 · US-050 et US-055 à US-057 n'ont pas de maquette propre (données et traduction). Peuvent-elles passer en « Validée » ? Option recommandée : oui, comme les traductions du lot 2.
+- Q7 · (tranchée le 27/11/2026 : oui) US-050 et US-055 à US-057 n'ont pas de maquette propre (données et traduction). Peuvent-elles passer en « Validée » ? Option recommandée : oui, comme les traductions du lot 2.
 - Q8 · Publication. Option recommandée : publier le français dès US-054 livrée, les quatre schémas ensemble. Autre option : publier le schéma 1 seul plus tôt : il ne crée aucune page, la vue par défaut des flux ne change pas.
-- Q9 · Deck « Migration » (US-058). Le dossier ne demande pas de remplacer 2035 par 2033 : il demande d'ajouter « jusqu'à fin 2035 sous conditions » à la période 2031 à 2033. À confirmer avant de modifier le deck.
+- Q9 · (27/11/2026 : Walid publie le schéma 0 sans attendre la mise à jour du deck, en connaissance de l'écart) Deck « Migration » (US-058). Le dossier ne demande pas de remplacer 2035 par 2033 : il demande d'ajouter « jusqu'à fin 2035 sous conditions » à la période 2031 à 2033. À confirmer avant de modifier le deck.
 
 ## Journal du backlog
 
@@ -1805,3 +1824,5 @@ Q1 à Q6 : tranchées par Walid le 26/11/2026 (voir en tête du lot).
 - 2026-11-26 · ux-ui · B-007, maquette cliquable des quatre schémas ECC / S/4HANA : [`maquettes/ecc-s4hana.html`](maquettes/ecc-s4hana.html). Schéma 0 en page à part (bureau et téléphone, popup à quatre rubriques, bandeau vers les scénarios) ; schéma 1 dans le gabarit des flux (bascule « Le flux / ECC → S/4HANA », pastilles d'impact, bloc avant « Ce que surveille le DP », P2P complet et O2C) ; schéma 2 (trois questions qui estompent les options, matrice, ligne de temps 2025 à 2031) ; schéma 3 (trois colonnes, effort, « Préalable », filtres, popup en variante A bascule ou B côte à côte). Accueil : section dédiée « De ECC à S/4HANA » après le parcours conseillé (A, recommandée) ou place de l'expert (B). Maquette prête ; six questions pour Walid (Q1 à Q6 en fin de maquette). Aucune story encore : à écrire par le po après les choix de Walid.
 - 2026-11-26 · expert-sap · Relecture SAP de [`maquettes/ecc-s4hana.html`](maquettes/ecc-s4hana.html) : validée avec corrections faites dans la maquette et le dossier. Corrigé : réception et facture d'achat présentées à tort comme écrites « en FI puis en CO » (pas d'écriture CO sur une entrée en stock) ; codes de transaction « quatre caractères ou plus » (faux) ; SAP ASE ajouté aux bases ECC ; bandeau « 2031 à 2035 » ramené à « 2031 à 2033 (2035) » ; « Préalable » des cartes 11 (HANA) et 12 (Universal Journal) précisé ; texte S/4HANA de la carte 13. Règles du schéma 2 jugées justes (écrites dans le dossier, nuance ajoutée sur C). Avis : Q3 Faible / Moyen / Fort avec fourchettes, oui ; Q4 variante B, oui ; Q6 une seule carte Business Partner recommandée. Suite : Walid voit la maquette.
 - 2026-11-26 · po · Lot 5 « De ECC à S/4HANA » écrit pour B-007, avec les décisions de Walid du 26/11/2026 (« ok vasy avec les recommandations », Q1 à Q6) : 10 stories (US-049 à US-058). En « Validée » sur la maquette validée par Walid : US-049 schéma 0 et popup commune (L), US-051 schéma 1 dans P2P et O2C (M), US-052 schéma 2 entrepôt (M), US-053 schéma 3, une seule carte Business Partner (M), US-054 section d'accueil (M). En « À affiner » : US-050 six termes FR et EN (S), US-055 à US-057 versions anglaises (M, S, M), US-058 deck « Migration » à mettre à jour par Walid (S). Ordre proposé : US-050, US-049, US-051, US-052, US-053, US-054, puis US-055 à US-057. Questions Q7 à Q9 du lot 5 pour Walid. B-007 : « Couvert par » rempli.
+- 2026-11-27 · Walid · « Je veux déployer la comparaison ECC S4 » : développement du lot 5 en français lancé ; Q7 oui (US-050, US-055 à US-057 en « Validée ») ; Q9 : publier le schéma 0 sans attendre la mise à jour du deck `mig`.
+- 2026-11-27 · session principale · Lot 5 français livré : US-049 à US-054 en « À tester ». Pages `schemas/ecc-s4hana.html`, `ecc-entrepot.html`, `ecc-changements.html` ; popup commune `shared/ecc.js` / `ecc.css` ; bascule « ECC → S/4HANA » dans `shared/flux.js` ; section d'accueil ; un terme en gras ouvre le glossaire (`data-gl-terme`), contrôlé par `verifier.mjs` ; captures de référence ajoutées (`ecc-*`, `flux-*-s4`). Non publié. Suite : accord de Walid pour publier, puis persona-pm en mode test.

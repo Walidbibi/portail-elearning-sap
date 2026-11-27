@@ -7,6 +7,11 @@
       "roles",
       "fiche"
     ],
+    "ecc": [
+      "s0",
+      "s2",
+      "s3"
+    ],
     "flux": [
       "p2p",
       "ptp",
@@ -201,6 +206,7 @@
       "type": "schema",
       "titre": "Procure-to-Pay (P2P)",
       "description": "De la demande d'achat au paiement du fournisseur, étape par étape, avec les écritures comptables.",
+      "vueS4": true,
       "fichier": "schemas/flux-p2p.html",
       "langue": "fr",
       "versionEn": "p2pEN"
@@ -239,6 +245,7 @@
       "type": "schema",
       "titre": "Order-to-Cash (O2C)",
       "description": "De la commande du client à l'encaissement, avec la marge et les écritures comptables.",
+      "vueS4": true,
       "fichier": "schemas/flux-o2c.html",
       "langue": "fr",
       "versionEn": "o2cEN"
@@ -272,6 +279,27 @@
         "titre": "Record-to-Report (R2R)",
         "description": "From journal entry to financial statements: the month-end close that receives every other flow."
       }
+    },
+    "s0": {
+      "type": "schema",
+      "titre": "ECC et S/4HANA en un coup d'œil",
+      "description": "Six différences et le passage de l'un à l'autre.",
+      "fichier": "schemas/ecc-s4hana.html",
+      "langue": "fr"
+    },
+    "s2": {
+      "type": "schema",
+      "titre": "L'entrepôt : quelle cible pour LE-WM",
+      "description": "Quatre options, trois questions, les échéances.",
+      "fichier": "schemas/ecc-entrepot.html",
+      "langue": "fr"
+    },
+    "s3": {
+      "type": "schema",
+      "titre": "Disparaît, remplacé, obligatoire",
+      "description": "La liste à suivre en comité, avec l'effort.",
+      "fichier": "schemas/ecc-changements.html",
+      "langue": "fr"
     }
   }
 }

@@ -200,6 +200,18 @@ for (const f of ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(
 for (const m of readFileSync(join(RACINE, 'shared', 'theme.css'), 'utf8').matchAll(/url\("(polices\/[^"]+)"\)/g))
   if (!existsSync(join(RACINE, 'shared', m[1]))) erreur('shared/theme.css', 1, `la police « ${m[1]} » n'existe pas`);
 
+// 4 septies. Schémas : chaque **terme** du contenu existe dans le glossaire (il ouvre sa définition)
+if (G?.data?.termes) {
+  const sansAccent = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const noms = G.data.termes.map(t => sansAccent(t.terme));
+  const trouve = x => noms.some(n => n === x || n.startsWith(x) || x.startsWith(n) || n.endsWith(' ' + x));
+  for (const f of readdirSync(join(RACINE, 'schemas')).filter(f => f.endsWith('.html') && !f.endsWith('-en.html'))) {
+    const t = readFileSync(join(RACINE, 'schemas', f), 'utf8');
+    for (const m of new Set([...t.matchAll(/\*\*(.+?)\*\*/g)].map(m => m[1])))
+      if (!trouve(sansAccent(m))) erreur(`schemas/${f}`, ligneDe(t, `**${m}**`), `le terme « ${m} » n'est pas dans glossaire.json : son lien vers le glossaire ne trouvera rien`);
+  }
+}
+
 // 5. Chaque texte d'interface utilisé existe dans shared/libelles/fr.json
 const sources = ['index.html', 'lecteur.html', ...['frises', 'schemas'].flatMap(d => readdirSync(join(RACINE, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`)),
   ...readdirSync(join(RACINE, 'shared')).filter(f => f.endsWith('.js')).map(f => `shared/${f}`)];

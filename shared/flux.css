@@ -66,5 +66,47 @@ h1{font-size:var(--t-32);line-height:1.15;margin:4px 0 2px}
 .bt{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
 .bt span{display:block;height:100%;background:var(--k);transition:width .25s}.bt span.neg{background:var(--risk)}
 .dl{font:500 var(--t-12) var(--mono);color:var(--k);min-height:16px;margin-top:3px}
-@media (max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:var(--t-24)}.cnt{margin-left:0;width:100%}}
+/* vue « ECC → S/4HANA » (US-051) : bascule, pastilles d'impact (un mot et une jauge), bloc avant / après */
+.vue{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px}
+.vue .lbl{font:500 var(--t-12) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.vue .aide{font-size:var(--t-13);color:var(--muted)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--r-6);overflow:hidden;background:var(--surface)}
+.seg button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:inline-flex;align-items:center;font:600 var(--t-14) var(--sans);color:var(--ink)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--k);color:var(--surface)}
+.seg button:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.bars{display:inline-flex;gap:2px}
+.bars i{display:block;width:3px;height:9px;border-radius:1px;background:var(--line)}
+.bars i.f{background:var(--ink)}
+.ip{display:inline-flex;align-items:center;gap:6px;font:600 var(--t-12) var(--mono);border-radius:var(--r-pastille);padding:1px 9px;line-height:20px;border:1px solid var(--muted);background:var(--t0);color:var(--ink);white-space:nowrap}
+.ip.moyen{background:var(--t3);border-color:var(--c3)}
+.ip.fort{background:var(--t4);border-color:var(--risk)}
+.ip.plage{border-style:dashed}
+.ipg rect{fill:var(--t0);stroke:var(--muted);stroke-width:1}
+.ipg.moyen rect{fill:var(--t3);stroke:var(--c3)}
+.ipg.fort rect{fill:var(--t4);stroke:var(--risk)}
+.ipg.plage rect{stroke-dasharray:3 2}
+.ipg rect.bar{fill:var(--line);stroke:none}.ipg rect.bar.f{fill:var(--ink)}
+.ipg text{fill:var(--ink);font:600 10.5px var(--mono);text-anchor:middle}
+.leg{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:10px;font-size:var(--t-13);color:var(--muted)}
+.box.s4b{border:1.5px solid var(--c1);padding:12px 14px}
+.s4h{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.s4b .s4h h3{margin:0;font:600 var(--t-13) var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--c1)}
+.avap{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:stretch;margin-bottom:10px}
+.avap>div{border-radius:var(--r-6);padding:8px 10px}
+.avap .e{background:var(--t0);border-left:4px solid var(--c0)}
+.avap .s{background:var(--t1);border-left:4px solid var(--c1)}
+.avap b{display:block;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}
+.avap .s b{color:var(--c1)}
+.avap .fl{align-self:center;text-align:center;color:var(--muted);font-weight:700;padding:0}
+.qd{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.qd h4{margin:0 0 3px;font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.qd .dp{background:var(--accent-soft);border-radius:var(--r-6);padding:8px 10px}
+.qd .dp h4{color:var(--accent)}
+.qd .lien{margin-top:4px}
+.qd .lien a{display:inline-flex;align-items:center;min-height:40px;color:var(--accent);font-weight:600}
+.gl-mot{all:unset;cursor:pointer;font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:3px;border-radius:3px}
+.gl-mot:hover{text-decoration-style:solid;text-decoration-color:var(--ink)}
+.gl-mot:focus-visible,.qd .lien a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (max-width:720px){.grid,.qd,.avap{grid-template-columns:1fr}.avap .fl{transform:rotate(90deg);height:18px}h1{font-size:var(--t-24)}.cnt{margin-left:0;width:100%}}
 @media (prefers-reduced-motion:reduce){.bt span{transition:none}}
